@@ -26,31 +26,43 @@
   }
   .top-bar {
     position: sticky; top: 0; z-index: 100;
-    background: #1a1a1a; color: #f5efe0;
-    padding: 12px 24px;
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    background: #0a0a0a; color: #f0ebdb;
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,.5);
   }
-  .brand { font-family: "Playfair Display", "Noto Serif JP", serif; font-weight: 900; font-size: 20px; letter-spacing: 0.05em; }
-  .brand small { font-size: 11px; font-weight: 400; letter-spacing: 0.2em; opacity: 0.7; margin-left: 8px; vertical-align: middle; }
-  .selectors { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-left: auto; }
+  .brand { font-family: "Playfair Display", "Noto Serif JP", serif; font-weight: 900; font-size: 18px; letter-spacing: 0.05em; flex-shrink: 0; }
+  .brand small { font-size: 10px; font-weight: 400; letter-spacing: 0.2em; opacity: 0.7; margin-left: 6px; vertical-align: middle; }
+  .selectors { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; flex: 1; justify-content: flex-end; }
   select {
-    background: #f5efe0; color: #1a1a1a;
+    background: #f0ebdb; color: #0a0a0a;
     font-family: "Noto Serif JP", serif; font-size: 14px; font-weight: 700;
-    padding: 8px 14px; border: none; border-radius: 4px;
-    min-width: 220px; cursor: pointer;
+    padding: 8px 12px; border: none; border-radius: 4px;
+    min-width: 0; flex: 1 1 200px; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
   }
   .nav-btn {
-    background: transparent; color: #f5efe0; border: 1px solid #555;
+    background: transparent; color: #f0ebdb; border: 1px solid #666;
     padding: 8px 14px; border-radius: 4px; cursor: pointer;
     font-family: "Noto Serif JP", serif; font-size: 13px;
+    min-height: 36px; min-width: 56px;
   }
   .nav-btn:hover { background: #333; }
+  .nav-btn:active { background: #555; }
   .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-  .count { font-size: 12px; color: #aaa; }
+  .count { font-size: 12px; color: #aaa; flex-basis: 100%; text-align: right; }
+
+  @media (max-width: 600px) {
+    .top-bar { padding: 10px 12px; gap: 8px; }
+    .brand { font-size: 16px; flex-basis: 100%; }
+    .brand small { display: none; }
+    select { flex: 1 1 auto; min-width: 0; font-size: 13px; }
+    .nav-btn { font-size: 12px; padding: 8px 10px; min-width: 48px; }
+    .count { font-size: 11px; }
+  }
 
   .stage {
-    max-width: 1140px; margin: 0 auto; padding: 24px 16px 80px;
+    max-width: 800px; margin: 0 auto; padding: 16px 12px 80px;
   }
   .edition-card {
     background: var(--paper); border: 1px solid var(--line-strong);
@@ -58,21 +70,28 @@
     overflow: hidden;
   }
   .edition-header {
-    padding: 20px 24px; border-bottom: 3px double var(--line-strong);
-    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    padding: 16px 18px; border-bottom: 3px double var(--line-strong);
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
     background: linear-gradient(180deg, #faf4e4 0%, #f5efe0 100%);
   }
   .edition-date {
-    font-size: 24px; font-weight: 900; color: var(--ink);
+    font-size: 22px; font-weight: 900; color: var(--ink);
     font-family: "Playfair Display", "Noto Serif JP", serif;
+    flex-basis: 100%;
   }
   .edition-headline {
-    font-size: 15px; color: var(--ink-sub); flex: 1;
+    font-size: 14px; color: var(--ink-sub); line-height: 1.5; flex: 1 1 100%;
   }
-  .edition-topics { display: flex; gap: 6px; flex-wrap: wrap; }
+  .edition-topics { display: flex; gap: 6px; flex-wrap: wrap; flex-basis: 100%; }
   .topic-chip {
     font-size: 11px; padding: 2px 10px; background: var(--chip);
     border: 1px solid var(--line); color: var(--ink-sub); border-radius: 2px;
+  }
+  @media (max-width: 600px) {
+    .stage { padding: 12px 8px 60px; }
+    .edition-header { padding: 14px 16px; }
+    .edition-date { font-size: 19px; }
+    .edition-headline { font-size: 13px; }
   }
 
   .edition-image {
