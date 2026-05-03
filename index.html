@@ -69,29 +69,8 @@
     box-shadow: 0 8px 32px rgba(0,0,0,.5);
     overflow: hidden;
   }
-  .edition-header {
-    padding: 16px 18px; border-bottom: 3px double var(--line-strong);
-    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
-    background: linear-gradient(180deg, #faf4e4 0%, #f5efe0 100%);
-  }
-  .edition-date {
-    font-size: 22px; font-weight: 900; color: var(--ink);
-    font-family: "Playfair Display", "Noto Serif JP", serif;
-    flex-basis: 100%;
-  }
-  .edition-headline {
-    font-size: 14px; color: var(--ink-sub); line-height: 1.5; flex: 1 1 100%;
-  }
-  .edition-topics { display: flex; gap: 6px; flex-wrap: wrap; flex-basis: 100%; }
-  .topic-chip {
-    font-size: 11px; padding: 2px 10px; background: var(--chip);
-    border: 1px solid var(--line); color: var(--ink-sub); border-radius: 2px;
-  }
   @media (max-width: 600px) {
     .stage { padding: 12px 8px 60px; }
-    .edition-header { padding: 14px 16px; }
-    .edition-date { font-size: 19px; }
-    .edition-headline { font-size: 13px; }
   }
 
   .edition-image {
@@ -158,14 +137,8 @@ function render(idx) {
     return;
   }
   const e = EDITIONS[idx];
-  const topics = (e.topics || []).map(t => `<span class="topic-chip">${t}</span>`).join('');
   container.innerHTML = `
     <div class="edition-card">
-      <div class="edition-header">
-        <div class="edition-date">${fmtDate(e.date)}</div>
-        <div class="edition-headline">${e.headline || ''}</div>
-        <div class="edition-topics">${topics}</div>
-      </div>
       <img class="edition-image" src="pngs/${e.date}.png" alt="${e.date} NewGo Timez" loading="lazy">
     </div>
   `;
