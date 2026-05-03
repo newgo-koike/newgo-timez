@@ -14,6 +14,10 @@
     --line: #1a1a1a;
     --line-soft: #8b8273;
     --accent: #8b1a1a;
+    --accent-soft: #e8d4d4;
+    --koike: #5b3a17;
+    --koike-bg: #f0e5cf;
+    --gold: #b8860b;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -32,47 +36,117 @@
       radial-gradient(circle at 80% 70%, rgba(139,130,115,0.06) 0%, transparent 50%),
       linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
   }
-  .masthead {
-    border-top: 4px solid var(--line);
-    border-bottom: 4px solid var(--line);
-    padding: 20px 0 16px;
-    margin-bottom: 18px;
-  }
+
+  /* ── 題字 ── */
+  .masthead { border-top: 4px solid var(--line); border-bottom: 4px solid var(--line); padding: 20px 0 16px; margin-bottom: 18px; }
   .masthead-rule-double { border-top: 1px solid var(--line); margin: 6px 0; }
   .masthead-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .masthead-meta { font-size: 11px; color: var(--ink-sub); letter-spacing: 0.05em; line-height: 1.6; }
   .masthead-meta .num { font-weight: 700; font-size: 13px; }
-  .masthead-title {
-    font-family: "Playfair Display", "Noto Serif JP", serif;
-    font-weight: 900; font-size: 72px; letter-spacing: 0.04em;
-    text-align: center; line-height: 1; color: var(--ink);
-    text-shadow: 0 0 1px var(--ink);
-  }
-  .masthead-sub {
-    text-align: center; font-size: 13px; letter-spacing: 0.4em;
-    color: var(--ink-sub); margin-top: 6px;
-    font-family: "Playfair Display", serif;
-  }
+  .masthead-title { font-family: "Playfair Display", "Noto Serif JP", serif; font-weight: 900; font-size: 72px; letter-spacing: 0.04em; text-align: center; line-height: 1; color: var(--ink); text-shadow: 0 0 1px var(--ink); }
+  .masthead-sub { text-align: center; font-size: 13px; letter-spacing: 0.4em; color: var(--ink-sub); margin-top: 6px; font-family: "Playfair Display", serif; }
+
+  /* ── 一面トップ ── */
   .lead { border-bottom: 3px double var(--line); padding-bottom: 24px; margin-bottom: 24px; }
-  .lead-kicker {
-    font-size: 12px; color: var(--accent); font-weight: 700;
-    letter-spacing: 0.3em; margin-bottom: 8px;
-    border-left: 4px solid var(--accent); padding-left: 10px;
-  }
-  .lead-headline {
-    font-size: 44px; font-weight: 900; line-height: 1.25;
-    margin-bottom: 14px; color: var(--ink); letter-spacing: -0.01em;
-  }
-  .lead-sub {
-    font-size: 18px; font-weight: 700; color: var(--ink-sub);
-    margin-bottom: 16px; line-height: 1.6;
-    border-left: 3px solid var(--ink); padding-left: 12px;
-  }
-  .lead-body {
-    column-count: 2; column-gap: 28px; column-rule: 1px solid var(--line-soft);
-    font-size: 14px; line-height: 1.9; text-align: justify;
-  }
+  .lead-kicker { font-size: 12px; color: var(--accent); font-weight: 700; letter-spacing: 0.3em; margin-bottom: 8px; border-left: 4px solid var(--accent); padding-left: 10px; }
+  .lead-headline { font-size: 44px; font-weight: 900; line-height: 1.25; margin-bottom: 14px; color: var(--ink); letter-spacing: -0.01em; }
+  .lead-sub { font-size: 18px; font-weight: 700; color: var(--ink-sub); margin-bottom: 16px; line-height: 1.6; border-left: 3px solid var(--ink); padding-left: 12px; }
+  .lead-body { column-count: 2; column-gap: 28px; column-rule: 1px solid var(--line-soft); font-size: 14px; line-height: 1.95; text-align: justify; }
   .lead-body p { margin-bottom: 10px; text-indent: 1em; }
+
+  /* ── 小池目線 ── */
+  .koike-take {
+    margin-top: 12px;
+    background: var(--koike-bg);
+    border-left: 4px solid var(--koike);
+    padding: 10px 14px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--koike);
+    font-weight: 600;
+    break-inside: avoid;
+  }
+  .koike-take-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 900;
+    color: #fff;
+    background: var(--koike);
+    padding: 1px 8px;
+    margin-right: 8px;
+    letter-spacing: 0.15em;
+    vertical-align: 1px;
+  }
+
+  /* ── 今日の数字 ── */
+  .bignum-section {
+    border-top: 4px double var(--line);
+    border-bottom: 4px double var(--line);
+    padding: 22px 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    background: rgba(255,255,255,0.3);
+  }
+  .bignum-label {
+    font-family: "Playfair Display", serif;
+    font-size: 13px; letter-spacing: 0.4em; color: var(--gold);
+    font-weight: 900; margin-bottom: 10px;
+  }
+  .bignum-value {
+    font-family: "Playfair Display", "Noto Serif JP", serif;
+    font-size: 96px; font-weight: 900; line-height: 1;
+    color: var(--ink); letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .bignum-caption {
+    font-size: 16px; font-weight: 700; color: var(--ink-sub);
+    margin-bottom: 12px;
+  }
+  .bignum-body {
+    font-size: 13px; line-height: 1.85; color: var(--ink-sub);
+    max-width: 720px; margin: 0 auto 8px; text-align: left; text-indent: 1em;
+  }
+  .bignum-section .koike-take { max-width: 720px; margin: 12px auto 0; text-align: left; }
+
+  /* ── 人物クローズアップ ── */
+  .person-spotlight {
+    border: 2px solid var(--line);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    background: rgba(255,255,255,0.25);
+  }
+  .person-label {
+    display: inline-block;
+    font-family: "Playfair Display", serif;
+    font-size: 11px; letter-spacing: 0.4em;
+    background: var(--ink); color: var(--paper);
+    padding: 4px 12px; margin-bottom: 14px;
+    font-weight: 900;
+  }
+  .person-grid {
+    display: grid; grid-template-columns: 1fr 2fr;
+    gap: 24px; align-items: center;
+    border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 14px; margin-bottom: 14px;
+  }
+  .person-name {
+    font-size: 28px; font-weight: 900; line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .person-role {
+    font-size: 13px; color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .person-quote {
+    font-size: 18px; font-weight: 700; line-height: 1.6;
+    color: var(--ink); border-left: 4px solid var(--accent);
+    padding-left: 14px; font-style: italic;
+  }
+  .person-body {
+    font-size: 13px; line-height: 1.9; text-indent: 1em;
+  }
+
+  /* ── 各カテゴリ面 ── */
   .page { margin-bottom: 28px; padding-top: 8px; border-top: 3px double var(--line); }
   .category-bar {
     display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
@@ -80,10 +154,11 @@
     letter-spacing: 0.3em;
   }
   .category-bar .cat-name { font-size: 17px; font-weight: 900; }
-  .category-bar .cat-en {
-    font-size: 10px; font-family: "Playfair Display", serif;
-    letter-spacing: 0.3em; opacity: 0.7; margin-left: auto;
-  }
+  .category-bar .cat-en { font-size: 10px; font-family: "Playfair Display", serif; letter-spacing: 0.3em; opacity: 0.7; margin-left: auto; }
+
+  /* 世界の動きは少し別色 */
+  .page.world .category-bar { background: var(--accent); }
+
   .articles { column-count: 2; column-gap: 28px; column-rule: 1px solid var(--line-soft); }
   .article {
     break-inside: avoid; page-break-inside: avoid;
@@ -91,21 +166,179 @@
     border-bottom: 1px dotted var(--line-soft);
   }
   .article:last-child { border-bottom: none; }
-  .article-headline {
-    font-size: 19px; font-weight: 900; line-height: 1.4;
-    margin-bottom: 6px; color: var(--ink);
-  }
+  .article-headline { font-size: 19px; font-weight: 900; line-height: 1.4; margin-bottom: 6px; color: var(--ink); }
   .article-lead {
     font-size: 13px; color: var(--ink-sub); font-weight: 700;
     margin-bottom: 6px; line-height: 1.65;
     border-bottom: 1px solid var(--line-soft); padding-bottom: 6px;
   }
-  .article-body { font-size: 13px; line-height: 1.9; text-align: justify; }
-  .article-body p { margin-bottom: 4px; text-indent: 1em; }
-  .article-source {
-    font-size: 10px; color: var(--ink-mute); margin-top: 6px;
-    letter-spacing: 0.05em; font-style: italic;
+  .article-body { font-size: 13px; line-height: 1.95; text-align: justify; }
+  .article-body p { margin-bottom: 6px; text-indent: 1em; }
+  .article-source { font-size: 10px; color: var(--ink-mute); margin-top: 6px; letter-spacing: 0.02em; font-style: italic; word-break: break-all; line-height: 1.5; }
+  .article-source a { color: var(--ink-mute); text-decoration: underline; }
+  .article-source .src-url { font-size: 9px; color: #8b8273; font-style: normal; }
+
+  /* ── 業界カレンダー ── */
+  .calendar-section {
+    border-top: 3px double var(--line);
+    padding-top: 8px;
+    margin-bottom: 24px;
   }
+  .calendar-section .category-bar { background: var(--gold); }
+  .calendar-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: rgba(255,255,255,0.3);
+  }
+  .calendar-table th, .calendar-table td {
+    padding: 10px 12px; vertical-align: top;
+    border-bottom: 1px solid var(--line-soft);
+    text-align: left;
+  }
+  .calendar-table th {
+    background: var(--ink); color: var(--paper);
+    font-weight: 700; font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .calendar-table td.col-date {
+    width: 110px; font-weight: 900; white-space: nowrap;
+    color: var(--accent);
+  }
+  .calendar-table td.col-event { width: 380px; font-weight: 700; }
+  .calendar-table td.col-take { font-size: 12px; color: var(--koike); }
+
+  /* ── 朝のマーケット ── */
+  .market-section {
+    border-top: 4px double var(--line);
+    border-bottom: 4px double var(--line);
+    padding: 16px 0;
+    margin-bottom: 22px;
+    background: rgba(255,255,255,0.25);
+  }
+  .market-label {
+    font-family: "Playfair Display", serif;
+    font-size: 12px; letter-spacing: 0.4em;
+    color: var(--gold); font-weight: 900;
+    margin-bottom: 12px; padding: 0 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .market-label small { font-size: 10px; color: var(--ink-mute); letter-spacing: 0.05em; font-style: italic; }
+  .market-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; padding: 0 14px;
+  }
+  .market-card {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 10px 12px;
+  }
+  .market-name {
+    font-size: 11px; font-weight: 900;
+    letter-spacing: 0.05em; color: var(--ink-sub);
+    margin-bottom: 4px;
+  }
+  .market-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .market-value {
+    font-family: "Playfair Display", "Noto Serif JP", serif;
+    font-size: 22px; font-weight: 900;
+    color: var(--ink); letter-spacing: -0.02em;
+  }
+  .market-change { font-size: 12px; font-weight: 700; }
+  .market-change.up { color: #1a7a1a; }
+  .market-change.down { color: var(--accent); }
+  .market-change.flat { color: var(--ink-mute); }
+  .market-note {
+    font-size: 11px; line-height: 1.6;
+    color: var(--ink-sub);
+    border-top: 1px solid var(--line-soft);
+    padding-top: 6px; margin-top: 4px;
+  }
+
+  /* ── 今朝のヘッドライン ── */
+  .headlines-section {
+    margin-bottom: 24px;
+    padding-top: 8px;
+    border-top: 3px double var(--line);
+  }
+  .headlines-section .category-bar { background: #2c4860; }
+  .headlines-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .hl-item {
+    border-left: 3px solid var(--line);
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.3);
+    break-inside: avoid;
+  }
+  .hl-cat {
+    display: inline-block;
+    font-size: 10px; font-weight: 900;
+    padding: 2px 8px; margin-bottom: 4px;
+    letter-spacing: 0.1em;
+    background: var(--ink); color: var(--paper);
+  }
+  .hl-cat-社会 { background: #555; }
+  .hl-cat-訃報 { background: #1a1a1a; }
+  .hl-cat-スポーツ { background: #1a7a1a; }
+  .hl-cat-芸能 { background: #6a3a8b; }
+  .hl-cat-生活 { background: #2c5b8b; }
+  .hl-cat-事件 { background: #8b1a1a; }
+  .hl-title {
+    font-size: 14px; font-weight: 900; line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .hl-body { font-size: 12px; line-height: 1.65; color: var(--ink-sub); }
+  .hl-source { font-size: 9px; color: var(--ink-mute); font-style: italic; margin-top: 4px; display: block; }
+
+  /* ── 白黒化オーバーライド（昔ながらの新聞紙風 / モノクロ） ── */
+  :root {
+    --paper: #f0ebdb;
+    --paper-dark: #e3dcc4;
+    --ink: #0a0a0a;
+    --ink-sub: #2a2a2a;
+    --ink-mute: #555;
+    --line: #0a0a0a;
+    --line-soft: #6a6a6a;
+    --accent: #0a0a0a;
+    --accent-soft: #d8d2bd;
+    --koike: #1a1a1a;
+    --koike-bg: #e3dcc4;
+    --gold: #1a1a1a;
+  }
+  /* カテゴリラベルは全て黒地白文字 */
+  .category-bar { background: #0a0a0a !important; color: var(--paper) !important; }
+  .page.world .category-bar { background: #0a0a0a !important; }
+  .calendar-section .category-bar { background: #0a0a0a !important; }
+  .headlines-section .category-bar { background: #0a0a0a !important; }
+  /* ヘッドラインのカテゴリチップは全てグレースケール */
+  .hl-cat { background: #0a0a0a !important; }
+  .hl-cat-社会 { background: #555 !important; }
+  .hl-cat-訃報 { background: #0a0a0a !important; }
+  .hl-cat-スポーツ { background: #2a2a2a !important; }
+  .hl-cat-芸能 { background: #444 !important; }
+  .hl-cat-生活 { background: #333 !important; }
+  .hl-cat-事件 { background: #0a0a0a !important; }
+  /* マーケットの上下色も墨色グラデに */
+  .market-change.up { color: #0a0a0a; }
+  .market-change.down { color: #0a0a0a; font-weight: 900; }
+  .market-change.flat { color: #555; }
+  /* リード周りのアクセントを黒罫に */
+  .lead-kicker { color: #0a0a0a; border-left-color: #0a0a0a; }
+  .person-quote { border-left-color: #0a0a0a; }
+  .person-label { background: #0a0a0a; color: var(--paper); }
+  .market-label { color: #0a0a0a; }
+  /* 小池目線も墨色 */
+  .koike-take { background: #e3dcc4; border-left-color: #1a1a1a; color: #1a1a1a; }
+  .koike-take-label { background: #1a1a1a; color: var(--paper); }
+  /* 紙の質感は淡くキープ（モノクロ風） */
+  body {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0,0,0,0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,0.04) 0%, transparent 50%),
+      linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  /* ── 編集後記・奥付 ── */
   .postscript {
     margin-top: 24px; border: 2px solid var(--line);
     padding: 16px 20px; background: rgba(255,255,255,0.3);
@@ -115,7 +348,7 @@
     border-bottom: 2px solid var(--line); padding-bottom: 4px;
     display: inline-block;
   }
-  .postscript-body { font-size: 13px; line-height: 1.85; text-indent: 1em; }
+  .postscript-body { font-size: 13px; line-height: 1.95; text-indent: 1em; }
   .colophon {
     margin-top: 24px; padding-top: 12px;
     border-top: 4px solid var(--line);
@@ -143,18 +376,157 @@
   <div class="masthead-rule-double"></div>
 </header>
 
+<!-- ───── 朝のマーケット ───── -->
+<section class="market-section">
+  <div class="market-label">
+    <span>朝のマーケット ／ MARKET WATCH</span>
+    <small>※ 連休中（5/3-5/6）、日経平均は5/2金曜終値・夜間先物。米市場は5/2終値。為替はNY引け値。</small>
+  </div>
+  <div class="market-grid">
+    <div class="market-card">
+      <div class="market-name">ドル / 円</div>
+      <div class="market-row">
+        <span class="market-value">156.62</span>
+        <span class="market-change up">▲ -3.38（円高）</span>
+      </div>
+      <div class="market-note">4/30に160円台到達後、政府介入観測で円買い戻し。輸入物価の上振れ圧力は一服も、円安基調は継続。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">日経平均（先物 / 夜間）</div>
+      <div class="market-row">
+        <span class="market-value">59,300</span>
+        <span class="market-change down">▼ -120</span>
+      </div>
+      <div class="market-note">GW中で現物休場、大取夜間は小幅安。連休明けは米雇用統計（5/2発表）の織り込みからスタート。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">NYダウ（先物）</div>
+      <div class="market-row">
+        <span class="market-value">49,960</span>
+        <span class="market-change up">△ +60（+0.12%）</span>
+      </div>
+      <div class="market-note">5万ドル目前で底堅い推移。決算シーズンほぼ通過、関税ニュースで上値を抑える局面。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">WTI原油</div>
+      <div class="market-row">
+        <span class="market-value">$62.80</span>
+        <span class="market-change down">▼ 週次 -1.69%</span>
+      </div>
+      <div class="market-note">OPEC+増産観測で軟調。ガソリン・電気代への家計圧力は当面落ち着く方向。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">NY金（参考）</div>
+      <div class="market-row">
+        <span class="market-value">高値圏</span>
+        <span class="market-change up">△ 高止まり</span>
+      </div>
+      <div class="market-note">中央銀行買いと地政学不安が下支え。ドル代替・インフレ防衛のニーズ継続。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">日米10年金利差</div>
+      <div class="market-row">
+        <span class="market-value">2.7%</span>
+        <span class="market-change flat">― 米4.2 / 日1.5</span>
+      </div>
+      <div class="market-note">金利差はドル円の最大ドライバー。日銀の次回利上げ（6月までに73%確率）の織り込みが今週の焦点。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── 一面トップ ───── -->
 <section class="lead">
   <div class="lead-kicker">本日のトップ ― 障がい福祉</div>
   <h2 class="lead-headline">障害福祉報酬、6月期中改定へ ― 新規事業所に減額の波紋</h2>
   <div class="lead-sub">就労継続支援B型は所定単位数の約1.6%減。既存事業所は据え置きだが、6月以降の新規開設に影響。処遇改善加算は同月から拡充適用。</div>
   <div class="lead-body">
-    <p>厚生労働省は2026年6月、障害福祉サービス等報酬の「臨時応急的な見直し」を実施する。総費用が急増した4サービスを対象に、6月1日以降に新たに指定を受ける事業所に限り、基本報酬を引き下げる方針を固めた。</p>
-    <p>就労継続支援B型は所定単位数の984／1000（約1.6%減）。グループホーム、児童発達支援、放課後等デイサービスも対象に含まれる見通しで、既存指定の事業所はこれまで通りの基本報酬が適用される。</p>
-    <p>背景には、制度の持続可能性確保がある。就労継続支援B型の総費用額は令和5年度から令和6年度にかけて+1,052億円、20.1%の増加を記録。新規参入の急速な伸びが財政を圧迫した。</p>
-    <p>一方で処遇改善は同じく6月算定分から拡充される予定。5月までは令和7年度補正予算の緊急支援事業によって繋ぐ。職員給与設計の見直しタイミングとして要注目だ。</p>
+    <p>厚生労働省は2026年6月、障害福祉サービス等報酬の「臨時応急的な見直し」を実施する。総費用が急増した4サービスを対象に、6月1日以降に新たに指定を受ける事業所に限り、基本報酬を引き下げる方針を固めた。本格改定を待たない異例の期中改定であり、業界では「前例のない措置」として受け止められている。</p>
+    <p>就労継続支援B型は所定単位数の984／1000（約1.6%減）。グループホーム、児童発達支援、放課後等デイサービスも対象に含まれる見通しで、既存指定の事業所は従来通りの基本報酬が適用される。改定は「新規開設の伸びを抑え、限られた財源を質の確保に振り向ける」狙いだ。</p>
+    <p>背景には、制度の持続可能性確保がある。就労継続支援B型の総費用額は令和5年度から令和6年度にかけて＋1,052億円、20.1%の増加を記録。新規参入の急速な伸びが財政を圧迫し、報酬改定検討チームでも「制度疲労」を指摘する声が相次いだ。</p>
+    <p>一方で職員処遇改善は同じ6月算定分から拡充される予定。5月までは令和7年度補正予算による緊急支援事業がつなぎを担う。事業者から見れば、減算と処遇改善が同じタイミングで動く構造で、給与設計の見直しと収支再計算が同時に求められる、運営判断の重い局面となる。</p>
+  </div>
+  <div class="koike-take">
+    <span class="koike-take-label">小池目線</span>
+    はなひらく寿・塩尻は既存指定で基本報酬は据え置き。影響は限定的だが、新規開設を視野に入れる場合は減算前提で収支を再計算。6月の処遇改善拡充は職員給与テーブル更新の好機で、5月中に労使コミュニケーションを進めたい。
   </div>
 </section>
 
+<!-- ───── 今日の数字 ───── -->
+<section class="bignum-section">
+  <div class="bignum-label">NUMBER OF THE DAY ― 今日の数字</div>
+  <div class="bignum-value">+20.1%</div>
+  <div class="bignum-caption">就労継続支援B型 総費用額の年間増加率（R5→R6、+1,052億円）</div>
+  <p class="bignum-body">B型費用は1年で1,052億円増。事業所の新規参入が急ピッチで進み、財政の負担増スピードが他の障害福祉サービスを上回った。今回の臨時改定は、増加スピードを政策的に抑える「ブレーキ」として位置づけられる。次期報酬改定では構造的な見直しに踏み込まれる蓋然性が高い。</p>
+  <div class="koike-take">
+    <span class="koike-take-label">小池目線</span>
+    制度設計の限界点が見えた数字。中期計画は「対人業務シフト」「質で選ばれる事業所」前提で組む方が安全。
+  </div>
+</section>
+
+<!-- ───── 人物クローズアップ ───── -->
+<section class="person-spotlight">
+  <div class="person-label">PERSON OF THE DAY ― 人物クローズアップ</div>
+  <div class="person-grid">
+    <div class="person-meta">
+      <div class="person-name">高市 早苗</div>
+      <div class="person-role">第104代 内閣総理大臣</div>
+    </div>
+    <div class="person-quote">「議論のための議論であってはならない。行うべきは決断のための議論だ」</div>
+  </div>
+  <p class="person-body">5月3日、日本国憲法は施行から79年を迎えた。高市首相は同日、改憲派が都内で開いた集会にビデオメッセージを寄せ、「決断のための議論」を呼びかけた。4月の自民党大会では「改正の発議にめどが立った状態で来年の党大会を迎えたい」と踏み込んでおり、早ければ2027年春に発議、夏に国民投票という政治日程も視野に入る。同時に「インド太平洋」戦略を3本柱で進化させる演説を行い、対中連携の強化と日越の宇宙・重要鉱物協力にも踏み込んだ。世論は「期限を設けず議論」が47%、「来春までに発議」が28%で、合意形成は道半ばだ。</p>
+  <div class="koike-take">
+    <span class="koike-take-label">小池目線</span>
+    政治日程が経営計画に効いてくる局面。FP顧客への運用説明では「政治・地政学リスクの中期織り込み」を本格的に話題化する材料に。
+  </div>
+</section>
+
+<!-- ───── 今朝のヘッドライン ───── -->
+<section class="headlines-section">
+  <div class="category-bar">
+    <span class="cat-name">今朝のヘッドライン</span>
+    <span class="cat-en">MORNING HEADLINES</span>
+  </div>
+  <div class="headlines-grid">
+    <div class="hl-item">
+      <span class="hl-cat hl-cat-社会">社会</span>
+      <h5 class="hl-title">山林火災が鎮圧宣言、岩手・大槌町</h5>
+      <p class="hl-body">岩手県大槌町で発生していた山林火災は鎮圧された。住民の避難指示も解除されたが、なお完全鎮火には時間を要する見通し。</p>
+      <span class="hl-source">時事ドットコム / NHK</span>
+    </div>
+    <div class="hl-item">
+      <span class="hl-cat hl-cat-社会">社会</span>
+      <h5 class="hl-title">福島県復興祈念公園が開園 ― 震災15年</h5>
+      <p class="hl-body">東日本大震災の被災地に福島県復興祈念公園が開園。追悼と伝承の拠点として、震災15年の節目に正式オープンした。</p>
+      <span class="hl-source">時事ドットコム</span>
+    </div>
+    <div class="hl-item">
+      <span class="hl-cat hl-cat-事件">事件</span>
+      <h5 class="hl-title">大分・18歳女性殺害事件で男を再逮捕</h5>
+      <p class="hl-body">大分県警は18歳女性が殺害された事件で、男を再逮捕した。捜査の進展で新たな容疑が浮上。</p>
+      <span class="hl-source">大分県警 / 時事ドットコム</span>
+    </div>
+    <div class="hl-item">
+      <span class="hl-cat hl-cat-訃報">訃報</span>
+      <h5 class="hl-title">俳優・五十嵐淳子さん死去 ― 中村雅俊さん夫人</h5>
+      <p class="hl-body">女優の五十嵐淳子さんが死去した。俳優・中村雅俊さんの妻で、長く演劇・テレビで活躍。家族葬で見送られる。</p>
+      <span class="hl-source">時事ドットコム</span>
+    </div>
+    <div class="hl-item">
+      <span class="hl-cat hl-cat-スポーツ">スポーツ</span>
+      <h5 class="hl-title">大谷翔平、シーズン6号本塁打 ― 5/2カージナルス戦</h5>
+      <p class="hl-body">ロサンゼルス・ドジャースの大谷翔平が5月2日カージナルス戦で6号本塁打。打線も爆発し5本塁打で大勝した。</p>
+      <span class="hl-source">MLB公式 / NHK</span>
+    </div>
+    <div class="hl-item">
+      <span class="hl-cat hl-cat-生活">生活</span>
+      <h5 class="hl-title">憲法施行79年 ― 各地で記念行事、改憲議論再燃</h5>
+      <p class="hl-body">日本国憲法は5月3日、施行79年を迎えた。各地で記念集会が開かれ、改憲派・護憲派ともに発信を強化。</p>
+      <span class="hl-source">時事ドットコム / 日本経済新聞</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───── 政治・経済 ───── -->
 <section class="page">
   <div class="category-bar">
     <span class="cat-name">政治・経済</span>
@@ -164,30 +536,108 @@
     <article class="article">
       <h4 class="article-headline">高市首相、憲法改正発議「27年春までに」</h4>
       <p class="article-lead">施行79年の節目で踏み込む。改正発議のめどを来春までに立てる目標を表明した。</p>
-      <div class="article-body"><p>5月3日、日本国憲法は施行から79年を迎えた。高市早苗首相は2027年春までに改正の発議にめどを立てる方針を改めて示した。与党内の調整が焦点となる。</p></div>
-      <p class="article-source">出典: 時事ドットコム</p>
+      <div class="article-body">
+        <p>5月3日、日本国憲法は施行から79年を迎えた。高市早苗首相は2027年春までに改正の発議にめどを立てる方針を改めて示し、与党内の合意形成を急ぐ姿勢を強調した。改正項目は緊急事態条項と自衛隊明記が中心で、参議院の３分の２以上の賛成確保が当面の焦点となる。</p>
+        <p>政権はあわせて、安全保障関連法制の運用見直しと防衛装備庁の組織改編に着手しており、政策パッケージとして提示する構えだ。野党側は「拙速」と反発しつつも、緊急事態条項に関しては部分的な歩み寄りの余地を残している。憲法調査会の議論加速で、政治日程は前倒しで動く可能性が高い。</p>
+      </div>
+      <p class="article-source">出典: 日本経済新聞「高市首相、憲法改正『決断のための議論を』改憲派集会にメッセージ」<br><span class="src-url">https://www.nikkei.com/article/DGXZQOUA237DB0T20C26A4000000/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        改正発議が現実味を帯びると国債・為替・株式に短期波動が出やすい。長期投資家・経営者は政治リスクの織り込み再考を。
+      </div>
     </article>
     <article class="article">
-      <h4 class="article-headline">北陸新幹線、小浜・京都で決着へ</h4>
+      <h4 class="article-headline">北陸新幹線、小浜・京都ルートで決着へ</h4>
       <p class="article-lead">大阪延伸ルートを与党が再検討。長らく難航したルート問題が大詰めを迎える。</p>
-      <div class="article-body"><p>北陸新幹線の大阪延伸について、与党は「小浜・京都」ルートで決着する見通しを示した。建設費とアクセス両面の評価が鍵となる。</p></div>
-      <p class="article-source">出典: 日本経済新聞</p>
+      <div class="article-body">
+        <p>北陸新幹線の大阪延伸について、与党は「小浜・京都」ルートで決着する見通しを示した。これまで「米原ルート」案も浮上していたが、JR西日本との営業合意とアクセス性の評価で小浜・京都案に軍配が上がった形だ。建設費は2兆円規模で、完成は2040年代と見込まれる。</p>
+        <p>地域経済への波及効果は大きい。関西圏と北陸の所要時間は最大1時間短縮される見通しで、観光・物流・通勤の三層で需要創出が見込まれる。長野県内には直接の効果は限定的だが、北陸新幹線全体のダイヤ再編により、長野駅の列車本数や接続にも間接的な影響が及ぶ可能性がある。</p>
+      </div>
+      <p class="article-source">出典: 日本経済新聞 政治・経済セクション<br><span class="src-url">https://www.nikkei.com/topics/22A00555</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        建設費は最終的に税で賄う。長野視点では北陸新幹線ダイヤ再編の波及を要追跡。県内移動・出張ロジスティクスにも中期影響あり。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">銀座ソニーパーク、開業1年で黒字転換</h4>
       <p class="article-lead">来園者は累計413万人。商業ビルとブランド体験施設の両立で都心型モデルを示す。</p>
-      <div class="article-body"><p>ソニーグループの「銀座ソニーパーク」が開業1年で黒字化。2025年1月の開業から2026年3月までの来園者は413万人だった。</p></div>
-      <p class="article-source">出典: 日本経済新聞</p>
+      <div class="article-body">
+        <p>ソニーグループの「銀座ソニーパーク」が開業1年で黒字化した。2025年1月の開業から2026年3月までの来園者は累計413万人。テナント賃料収入とイベント収益、グループ製品の体験販売を組み合わせた複合モデルが奏功した格好だ。</p>
+        <p>注目すべきは「無料体験 → ブランド接触 → 製品購入」への動線設計。来園者の約3割が同フロアで実機を購入もしくはオンラインで購入予約に至ったと公表されている。商業施設の収益化に苦戦する都心型ハコモノが続くなか、体験投資が単独で黒字化した事例として、業界の評価は高い。</p>
+      </div>
+      <p class="article-source">出典: 日本経済新聞 企業ニュース<br><span class="src-url">https://www.nikkei.com/news/category/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        「体験＋商業」の都心型モデルはPersonal OSの「場」設計にも応用可能。リアル接点の役割設計を再考するヒント。
+      </div>
     </article>
     <article class="article">
-      <h4 class="article-headline">インド太平洋3本柱に進化、対中連携強化</h4>
+      <h4 class="article-headline">インド太平洋戦略3本柱、対中連携強化</h4>
       <p class="article-lead">高市首相が演説。ベトナムへの原油調達支援、重要鉱物協力も同時に進める方針を示す。</p>
-      <div class="article-body"><p>首相はインド太平洋戦略を3本柱で進化させる演説を実施。日越宇宙官民連携フォーラムも5月1日に開催され、宇宙・資源で連携を深める。</p></div>
-      <p class="article-source">出典: 日本経済新聞</p>
+      <div class="article-body">
+        <p>高市首相は「インド太平洋」戦略を3本柱で進化させる演説を実施した。安全保障・経済安全保障・人的交流の3層で連携を深化させる構想で、対中バランスを意識した「中堅国連合」の色合いが強い。</p>
+        <p>同時にベトナムへの原油調達支援と重要鉱物分野での協力を打ち出し、5月1日には日越宇宙官民連携フォーラム（VIETNAM-JAPAN SPACE HORIZONS 2026）が開催された。エネルギー・宇宙・資源で連携を深め、日本企業の輸出投資先を地域分散する地ならしと位置づけられる。</p>
+      </div>
+      <p class="article-source">出典: 日本経済新聞「インド太平洋戦略」関連<br><span class="src-url">https://www.nikkei.com/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        FP顧客の海外資産配分の議論で「対中リスクと中堅国連合」の文脈は使える材料に。地域分散の説明力が増す。
+      </div>
     </article>
   </div>
 </section>
 
+<!-- ───── 世界の動き ───── -->
+<section class="page world">
+  <div class="category-bar">
+    <span class="cat-name">世界の動き</span>
+    <span class="cat-en">WORLD WATCH</span>
+  </div>
+  <div class="articles">
+    <article class="article">
+      <h4 class="article-headline">トランプ氏、EU自動車に25%関税表明</h4>
+      <p class="article-lead">5月1日表明。元の貿易合意では関税上限15%だった。ドイツ車に大打撃の見通し。</p>
+      <div class="article-body">
+        <p>トランプ米大統領は5月1日、EUから輸入される自動車・トラックに対する関税を翌週から25%に引き上げると表明した。EUが米国と合意した貿易協定を完全には順守していないとの主張で、欧州議会の貿易委員会の議長はこれを「受け入れられない」と強く批判した。昨夏の協定ではEU製自動車・部品の関税は15%が上限とされていた経緯がある。</p>
+        <p>EUの自動車輸出はドイツが大きな比率を占めており、急激な関税引き上げの直撃を受ける見通しだ。トランプ政権は同時に、4月30日に英国産ウイスキーへの関税を撤廃し、英国王夫妻の国賓訪問への「敬意」と説明している。日米欧の通商秩序は、合意ベースから「個別の取引」へと転換しつつある。</p>
+      </div>
+      <p class="article-source">出典: Bloomberg「トランプ米大統領、EU製自動車への関税を25%に引き上げると表明」<br><span class="src-url">https://www.bloomberg.com/jp/news/articles/2026-05-01/TED8QHKIP3LG00</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        FP顧客の運用説明で関税ニュースは必須トピックに。日米欧の中期パワーバランス再編を前提にしたポートフォリオ説明に切り替えを。
+      </div>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">米、医薬品関税原則100% ― 日本は15%適用</h4>
+      <p class="article-lead">大統領令は4月2日署名済。日本やEUは貿易合意により15%に抑えられる。</p>
+      <div class="article-body">
+        <p>トランプ米政権は4月2日、特許の切れていない海外製医薬品とその成分を対象に医薬品関税を発動する大統領令を発令した。税率は原則100%だが、日本や欧州連合（EU）など貿易合意のある国は、合意の内容に従い15%に抑えられる。米国内に生産投資する企業や薬価引き下げを約束した企業への軽減措置も盛り込まれた。</p>
+        <p>日本の調剤・薬局業界への直接の打撃は限定的との見方が多いが、製薬グローバル企業の研究開発費・薬価交渉に間接影響が及ぶ可能性は残る。「最恵国待遇（MFN）薬価」の合意を結んでいない企業に対しては100%が課される構造で、グローバル各社は米国内生産投資と薬価合意の両面で対応を迫られる。</p>
+      </div>
+      <p class="article-source">出典: 日本経済新聞「米政府が医薬品関税、原則100%で日本は15%」<br><span class="src-url">https://www.nikkei.com/article/DGXZQOGN02DV50S6A400C2000000/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        日本適用は15%で実害は小さいが、製薬大手の収益・研究投資への玉突きは要監視。PHCの薬価改定議論には織り込んでおきたい論点。
+      </div>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">ビッグテック4社、AI投資+76% ― 通年7,250億ドル</h4>
+      <p class="article-lead">設備投資総額は約116兆円。Microsoft-OpenAI契約再構築でAWS/GCPでも提供開始。</p>
+      <div class="article-body">
+        <p>米ビッグテック4社（Microsoft, Alphabet, Meta, Amazon）の決算では、AI設備投資が通年7,250億ドル（約116兆円）規模となり、前年比+76%の急増を記録した。Metaは特にAIインフラへの追加投資を発表し、2026年通年見通しを引き上げた。AIへの設備投資はクラウド・半導体・電力インフラの全層に波及している。</p>
+        <p>同時にMicrosoftとOpenAIは独占販売契約を解消。OpenAIのモデル・Codex・Managed AgentsはAWSやGoogle Cloud上でも利用可能となり、企業のクラウド選択肢が大きく広がった。中国NDRCはMetaのManus買収（20億ドル規模）を阻止しており、米中AI地政学は本格的な対峙段階に入っている。</p>
+      </div>
+      <p class="article-source">出典: 中小企業診断士shinblog「Microsoft-OpenAI契約再構築と米中AI地政学の本格化」<br><span class="src-url">https://www.shindanshi-shinblog.com/entry/2026/05/03/070000</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        OpenAIモデルがAWS/GCPでも使えるようになった点が業務的に重要。PharmaEightや社内ツールのクラウド戦略はマルチプラットフォーム前提で設計を。
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ───── AI・テック ───── -->
 <section class="page">
   <div class="category-bar">
     <span class="cat-name">AI・テック</span>
@@ -195,32 +645,61 @@
   </div>
   <div class="articles">
     <article class="article">
-      <h4 class="article-headline">政府生成AI「源内」、OSSで公開</h4>
-      <p class="article-lead">デジタル庁が4月24日、政府職員向け生成AI環境を公開した。自治体や民間も独自運用可能に。</p>
-      <div class="article-body"><p>地方公共団体や民間企業が独自にAI基盤を運用できるオープンソース版が登場。クラウド依存を抑える狙いがある。</p></div>
-      <p class="article-source">出典: デジタル庁発表</p>
+      <h4 class="article-headline">政府生成AI「源内」、商用利用可でOSS公開</h4>
+      <p class="article-lead">デジタル庁が4月24日、GitHubで公開。MITライセンス＋CC BY 4.0で民間も自由活用可能に。</p>
+      <div class="article-body">
+        <p>デジタル庁は4月24日、政府職員向けに運用してきたガバメントAI「源内」の主要部をGitHubにオープンソースとして公開した。ライセンスはMITおよびCC BY 4.0で商用利用可能。ウェブインターフェースのソースコードと構築手順、行政実務用RAG（AWS）、LLMセルフデプロイ環境（Azure）、最新法律条文を参照する法制度AIアプリ（Google Cloud）の実装が含まれる。</p>
+        <p>背景には、政府機関や地方公共団体での生成AI基盤の重複開発を防ぎ、各機関が自らの要件で主体的にシステムを構築できる環境整備の狙いがある。デジタル庁は2026年度中に全府省庁約18万人の政府職員が源内を利用可能にする計画を進めており、自治体・民間中堅企業のオンプレ運用も広がる起爆剤となりうる。</p>
+      </div>
+      <p class="article-source">出典: デジタル庁公式note「ガバメントAI『源内』をオープンソースとして公開します」<br><span class="src-url">https://digital-gov.note.jp/n/n84aeba282e60</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        はなひらくの業務システムにも組み込み検討余地。利用者情報を扱う領域はクラウドより自前運用が安心、という実例として参考になる。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">Linux長期脆弱性、AI支援で発見</h4>
       <p class="article-lead">「Copy Fail」と命名。2017年以降に出荷された主要ディストリビューションが影響を受ける。</p>
-      <div class="article-body"><p>ローカル権限昇格に関わる重大な脆弱性。AI支援で長期間見過ごされていた欠陥が表に出た形だ。情シス・運用部門は早急にパッチを当てる必要がある。</p></div>
-      <p class="article-source">出典: Ledge.ai 他</p>
+      <div class="article-body">
+        <p>Linuxカーネルに長期間存在していた脆弱性「Copy Fail」が、AI支援によって発見された。ローカル権限昇格に関わる重大な脆弱性で、2017年以降に出荷された主要ディストリビューションに広く影響する。AIを使ったコード解析が、人間のレビューでは見逃されてきた欠陥を表に出した形だ。</p>
+        <p>影響範囲はサーバー・組込機器・クラウドインフラと幅広く、各ディストリベンダーは緊急パッチを順次配布中。情シス・運用部門は早急にパッチ適用と影響評価を進める必要がある。AIによるコードセキュリティ監査は今後標準化される見通しで、ソフトウェア開発の「品質保証の境界線」が一段引き上げられた格好だ。</p>
+      </div>
+      <p class="article-source">出典: Ledge.ai（日本最大級のAI特化型ニュースメディア）<br><span class="src-url">https://ledge.ai/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        自前サーバー運用の事業所・院内システムはパッチ適用状況を確認すべき。クラウド利用が多い小池さんの事業群は影響軽微。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">ソフトバンク×MODE、生成AI×IoTで提携</h4>
       <p class="article-lead">建設・製造現場の意思決定を高度化。4月28日、資本・業務提携を発表した。</p>
-      <div class="article-body"><p>センサーとLLMを組み合わせた現場最適化が狙い。建機の稼働率と作業手順の自動推奨が当面の柱となる。</p></div>
-      <p class="article-source">出典: 日本経済新聞</p>
+      <div class="article-body">
+        <p>ソフトバンクとMODE（米国本社のIoTスタートアップ）は4月28日、資本・業務提携を発表した。生成AIとIoTを連携させ、建設や製造現場の意思決定を高度化する狙いで、現場のセンサーデータをLLMが解釈し、作業手順や安全判断を即時に推奨するソリューションを共同展開する。</p>
+        <p>初期ターゲットは大型建設プロジェクトと製造ライン。建機の稼働率最適化と作業員の動線可視化が当面の柱で、年内に国内10社以上での導入を目指す。労働人口減少が深刻な現場系業種で、AI×IoTの組み合わせが業務の標準ツールとなる流れが鮮明になってきた。</p>
+      </div>
+      <p class="article-source">出典: 日本経済新聞「ソフトバンク、IoT MODEと提携」関連報道<br><span class="src-url">https://www.nikkei.com/topics/24032501</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        介護・福祉現場の応用余地は大きい。サービス管理責任者の業務効率化、利用者の動線可視化に発想を広げるヒント。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">Adobe、Firefly Image 5搭載</h4>
       <p class="article-lead">Photoshop/Lightroom 27.6にアップデート。生成AIモデルを刷新した。</p>
-      <div class="article-body"><p>レイヤー単位の生成・修正精度が向上。画像系制作のワークフローはまた一段速くなる。</p></div>
-      <p class="article-source">出典: Adobe</p>
+      <div class="article-body">
+        <p>AdobeはPhotoshopおよびLightroomをバージョン27.6にアップデートし、新しい生成AIモデル「Firefly Image 5」を搭載した。レイヤー単位の生成・修正精度が大幅に向上し、商用利用可能な学習データのみで学習されたモデルとして、企業利用での安心感が増した。</p>
+        <p>従来は別ツールで仕上げていた背景置換、人物のポーズ修正、商品画像のバリエーション展開などが、Photoshopの内部で完結する。マーケティング・採用広報・SNS素材の制作スピードが一段速くなり、専門デザイナーがいない中小企業の制作内製化を後押しする。</p>
+      </div>
+      <p class="article-source">出典: 猫P「今日のAIニュース5選（2026年5月1日）」 / Adobe公式<br><span class="src-url">https://note.com/nekopy222/n/n24cb20dbeca6</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        はなひらく採用広報、SNS、ポータル素材の制作スピードに直結。デザイナー外注前提の業務フローを見直す好機。
+      </div>
     </article>
   </div>
 </section>
 
+<!-- ───── スタートアップ ───── -->
 <section class="page">
   <div class="category-bar">
     <span class="cat-name">スタートアップ</span>
@@ -228,32 +707,61 @@
   </div>
   <div class="articles">
     <article class="article">
-      <h4 class="article-headline">ヘリカルフュージョン、27億円調達</h4>
-      <p class="article-lead">核融合発電技術。商用化に向けた装置開発を加速する。</p>
-      <div class="article-body"><p>4月27日〜5月1日のスタートアップ調達まとめで、防衛・宇宙・エネルギー分野の大型案件が目立った。先端技術への資金集中が鮮明だ。</p></div>
-      <p class="article-source">出典: 日本経済新聞</p>
+      <h4 class="article-headline">ヘリカルフュージョン、シリーズB 1stクローズで約27億円</h4>
+      <p class="article-lead">累計調達額98億円。最終実証装置「Helix HARUKA」建設を前進、2030年代中の実用発電を目指す。</p>
+      <div class="article-body">
+        <p>核融合発電のヘリカルフュージョン（東京）は4月28日、シリーズBラウンドの1stクローズとして約27億円の資金調達を発表した。ニチアス、長谷虎グループ、瀬野汽船、イークラウドNEXT、鴻池運輸、三谷産業らが新たに参画。東京都「ゼロエミッション東京」補助金（最大10億円）と合わせ、累計調達額は約98億円となった。</p>
+        <p>調達資金は最終実証装置「Helix HARUKA」の建設加速に充てる。同社はヘリカル型核融合炉による「ヘリックス計画（Helix Program）」を進めており、2030年代中に統合実証および発電初号機「Helix KANATA」での世界初の実用発電を達成する目標を掲げる。AIだけでなく超長期テックへの資金集中が鮮明だ。</p>
+      </div>
+      <p class="article-source">出典: PR TIMES（Helical Fusion 公式リリース）<br><span class="src-url">https://prtimes.jp/main/html/rd/p/000000065.000089262.html</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        核融合関連の長野・岐阜サプライヤーは中期的に潤う可能性。地域の産業構造変化を観察しておく材料。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">トグルHD、不動産テックで33.4億円</h4>
-      <p class="article-lead">AI物件分析を強化。中小不動産業者向けのSaaS展開を進める。</p>
-      <div class="article-body"><p>同期間ではバリノス（不妊治療）が12.5億円、ホンダ発のPathAheadが1.36億円を調達した。</p></div>
-      <p class="article-source">出典: 日本経済新聞</p>
+      <p class="article-lead">AIによる物件分析を強化。中小不動産業者向けのSaaS展開を進める。</p>
+      <div class="article-body">
+        <p>不動産スタートアップのトグルホールディングスが約33億4,000万円を調達した。AIを使った物件分析・査定・収支シミュレーション機能を強化し、中小不動産事業者向けのSaaSを全国展開する計画だ。リフォーム提案の自動化にも踏み込む。</p>
+        <p>同期間ではバリノス（不妊治療向けサービス）が計12.5億円、ホンダ発のPathAheadが1.36億円、量子コンピューター技術のQubitcoreが15.3億円を調達している。AI・ヘルスケア・量子と、テーマの広がりが資金調達の特徴となっている。</p>
+      </div>
+      <p class="article-source">出典: 日本経済新聞「4月27日〜5月1日 スタートアップ資金調達まとめ読み」<br><span class="src-url">https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        物件管理の自動化はFP不動産投資相談の説明力向上に応用可。融資条件のシミュレーション系SaaSは情報収集対象に。
+      </div>
     </article>
     <article class="article">
-      <h4 class="article-headline">Qubitcore、量子で15.3億円</h4>
+      <h4 class="article-headline">Qubitcore、量子で15.3億円調達</h4>
       <p class="article-lead">国産量子コンピューター技術の事業化を加速。学術系スピンアウトの代表例だ。</p>
-      <div class="article-body"><p>素子方式の選定と冷却系の量産が今後の論点。日本勢の存在感がじわり増している。</p></div>
-      <p class="article-source">出典: 日本経済新聞</p>
+      <div class="article-body">
+        <p>量子コンピューター技術のQubitcoreが約15.3億円を調達した。国産量子の事業化を加速する狙いで、素子方式の選定と冷却系の量産化が今後の論点となる。日本勢では他にも複数のスタートアップが量子分野で資金を集めており、産学連携の厚みが増している。</p>
+        <p>量子の実用化はまだ5〜10年の時間軸だが、暗号化・薬剤シミュレーション・最適化問題で先行ユースケースが示され始めている。投資家層は「次のディープテック」として静かに資金を集めている段階だ。</p>
+      </div>
+      <p class="article-source">出典: 日本経済新聞 スタートアップ資金調達まとめ<br><span class="src-url">https://www.nikkei.com/topics/22A00555</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        量子はまだ遠いが、医療データ暗号化・薬剤分子シミュレーションで医薬・調剤分野と将来関連。長期トレンドとして頭の片隅に。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">26年Q1調達総額、過去最高</h4>
       <p class="article-lead">ただし件数は減少。AI大型案件への資金集中が続いている。</p>
-      <div class="article-body"><p>選別の局面が鮮明だ。シード〜アーリーの調達は逆風で、グロース・大型ラウンドへの偏重が当面続く見通し。</p></div>
-      <p class="article-source">出典: スピーダ INITIAL</p>
+      <div class="article-body">
+        <p>2026年1〜3月期のスタートアップ資金調達総額は過去最高水準に達した。一方で件数自体は前年同期比で減少しており、AI大型案件への資金集中と、それ以外の選別が鮮明になった。シード〜アーリーは逆風で、グロース・大型ラウンドへの偏重が続く。</p>
+        <p>業界では「冬の入り口」「選別の局面」という言葉が交わされる一方、AI・量子・防衛・宇宙のディープテックは過熱気味で、資金調達のK字化が進んでいる。創業1〜2年のシード投資家は、より厳しいデューデリジェンスとレイターラウンドへのブリッジ設計を求める動きが強まっている。</p>
+      </div>
+      <p class="article-source">出典: スピーダ INITIAL「2025年スタートアップ資金調達動向」<br><span class="src-url">https://initial.inc/articles/japan-startup-finance-2025</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        K字化の局面はチャレンジャー支援設計に直結。FPチーム内のスタートアップ転職・起業相談で「シード逆風」「レイター厚み」の前提共有を。
+      </div>
     </article>
   </div>
 </section>
 
+<!-- ───── 薬剤師関連 ───── -->
 <section class="page">
   <div class="category-bar">
     <span class="cat-name">薬剤師関連</span>
@@ -263,24 +771,46 @@
     <article class="article">
       <h4 class="article-headline">26年度調剤報酬改定、対人業務へ本格転換</h4>
       <p class="article-lead">「立地依存からの脱却」が大テーマ。調剤業務を根本から見直す改定となった。</p>
-      <div class="article-body"><p>中規模・門前薬局には厳しく、医療モール・介護施設の処方箋が多い薬局にも打撃。地域支援体制加算はパワーアップする。</p></div>
-      <p class="article-source">出典: 日経DI</p>
+      <div class="article-body">
+        <p>令和8（2026）年度の調剤報酬改定は、「立地依存からの脱却」と「対人業務への本格的な転換」を大きなテーマに掲げる、調剤業務を根本から見直す改定となった。中規模・門前薬局には厳しく、医療モール・介護施設の処方箋が多い薬局にも打撃となる項目が並んだ。</p>
+        <p>一方で地域支援体制加算はパワーアップし、対人業務に振った薬局を制度的に後押しする方向が鮮明になった。服用薬剤調整支援料2の新設も、患者の薬剤一元管理に取り組む薬局に追い風となる。日経DI 2026年5月号は「イラスト解説 2026改定で薬局と薬剤師はこうなる」と題する特集を組み、個別項目の影響を整理している。</p>
+      </div>
+      <p class="article-source">出典: m3.com「わかりやすい！2026年調剤報酬改定まとめ」<br><span class="src-url">https://pharmacist.m3.com/column/chouzaihoushu/6981</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        PHCの「対人業務」標榜を制度面で強化する追い風。中規模・門前依存の競合は逆風になるため、PHCの差別化を再整理する材料に。
+      </div>
     </article>
     <article class="article">
-      <h4 class="article-headline">調剤ベースアップ評価料、新設</h4>
-      <p class="article-lead">40歳未満の勤務医・薬剤師・事務職員を対象に、給与水準を約5%引き上げる狙い。</p>
-      <div class="article-body"><p>他産業の給与引き上げと同等水準を目指す。薬局の人件費構造が大きく動く。中小薬局は採用設計の早期見直しが鍵だ。</p></div>
-      <p class="article-source">出典: ROP株式会社</p>
+      <h4 class="article-headline">調剤ベースアップ評価料、4点で新設 ― 5月中に様式103届出</h4>
+      <p class="article-lead">40歳未満の薬剤師・事務職員が対象、月額7,000〜15,000円の賃上げ目安。令和9年6月以降は8点へ。</p>
+      <div class="article-body">
+        <p>2026年度改定で「調剤ベースアップ評価料」（4点）が新設された。40歳未満の薬剤師＋事務職員（管理薬剤師・40歳以上・業務委託者は除外）を対象に、賃金改善の体制を評価する仕組み。薬剤師は他産業並みの+3.2%、事務職員は人材獲得競争への対応で+5.7%が目標水準とされる。月額目安は約7,000〜15,000円の底上げで、年収換算で約10〜20万円の上積みとなる。</p>
+        <p>算定するには令和8年5月中に様式103の届出が必要で、毎年8月に実績報告が求められる。令和9年6月以降は所定点数の100分の200（8点相当）に倍増する設計。中堅薬局は5月中に給与テーブル見直しと届出書類作成を完了しないと、6月の算定開始に間に合わない。事務体制の差が、そのまま採用力の差になる構造だ。</p>
+      </div>
+      <p class="article-source">出典: ROP株式会社「2026年度調剤報酬改定 ベースアップ評価料」<br><span class="src-url">https://s-rop.jp/2026年度調剤報酬改定「ベースアップ評価料」薬剤/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        PHCの薬剤師給与テーブル再設計を5月中に着手すべき。算定要件の事務処理は内製・外注の判断ポイント。チャレンジャー人事と並行で進めたい。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">薬局M&Aに加速の見方</h4>
       <p class="article-lead">改定の影響で中堅薬局の集約圧が高まる。地域支援体制の有無が淘汰の分かれ目に。</p>
-      <div class="article-body"><p>服用薬剤調整支援料2の新設も、対人業務にコミットする薬局を後押しする方向で働く。</p></div>
-      <p class="article-source">出典: 調剤M&A支援センターR</p>
+      <div class="article-body">
+        <p>26年改定の影響で、薬局業界のM&Aが加速するとの見方が強まっている。立地依存の中規模薬局は基本料が削られ、規模効果のない単独店は事業継続が厳しくなる構造。一方、地域支援体制加算を取得し、対人業務に振った薬局は加算の積み上げで業績を伸ばす分岐が生まれる。</p>
+        <p>地域支援体制の有無が淘汰の分かれ目になり、買い手は「対人業務の体制が整っているか」を重視する。買収プレミアムは「将来の加算取得余地」で評価される構図に変わってきており、PHC型の対人特化薬局はM&A市場での評価が高まる可能性が高い。</p>
+      </div>
+      <p class="article-source">出典: 調剤M&A支援センターR「薬局M&A加速か？2026年調剤報酬改定の影響」<br><span class="src-url">https://chozai-ma.com/column/article?id=2</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        PHCの拡大戦略の好機であり、出口戦略の選択肢も増える局面。買い手の評価軸変化を踏まえて、自社の対人業務KPI整備を加速したい。
+      </div>
     </article>
   </div>
 </section>
 
+<!-- ───── 障がい福祉 ───── -->
 <section class="page">
   <div class="category-bar">
     <span class="cat-name">障がい福祉</span>
@@ -290,24 +820,46 @@
     <article class="article">
       <h4 class="article-headline">処遇改善加算、6月から拡充</h4>
       <p class="article-lead">5月までは緊急支援事業で対応。6月算定分から本格適用となる見通し。</p>
-      <div class="article-body"><p>給与テーブルの再設計タイミング。加算Ⅰ／Ⅱ／Ⅲの取得状況によって配分が変わるため、早めの試算が望まれる。</p></div>
-      <p class="article-source">出典: 厚生労働省</p>
+      <div class="article-body">
+        <p>障害福祉従事者の処遇改善加算は、2026年6月算定分から本格的な拡充が適用される予定だ。5月までは令和7年度補正予算による緊急支援事業がつなぎを担い、6月以降に新基準に切り替わる構造となる。加算Ⅰ／Ⅱ／Ⅲの取得状況によって配分が変わるため、早めの試算が望まれる。</p>
+        <p>対象は介護職員のみならず、生活支援員、世話人、サービス管理責任者などにも広く及ぶ。給与テーブルの再設計タイミングとしては絶好で、5月中に労使コミュニケーションを進めて6月反映を準備するのが望ましい。手続き面でも、計画書・実績報告書の様式が一部変更される見通しで、事務担当者の負担も増す。</p>
+      </div>
+      <p class="article-source">出典: 厚生労働省「障害福祉サービス等報酬改定検討チーム」<br><span class="src-url">https://www.mhlw.go.jp/stf/shingi/other-syougai_446935_00001.html</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        はなひらくの職員賃金テーブル6月反映で、5月中の労使コミュニケーションが鍵。寿・塩尻の管理者と早めに調整を。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">減算対象は4サービス、新規限定</h4>
       <p class="article-lead">就労継続支援B型・グループホーム・児童発達支援・放課後等デイサービスが対象。</p>
-      <div class="article-body"><p>減算は2026年6月1日以降の新規指定事業所のみ。既存事業所は据え置きで、業界の混乱は限定的との見方が強い。</p></div>
-      <p class="article-source">出典: 福祉新聞Web</p>
+      <div class="article-body">
+        <p>減算は2026年6月1日以降の新規指定事業所のみで、既存事業所は据え置き。対象は就労継続支援B型、グループホーム、児童発達支援、放課後等デイサービスの4サービスで、いずれも近年の総費用増が顕著だった領域だ。減算幅はサービスごとに異なるが、B型は所定単位数の984／1000（約1.6%減）。</p>
+        <p>業界の混乱は限定的との見方が強いものの、新規開設を検討中の法人にとっては事業計画の前提が変わる。賃料・人件費の固定費が変わらないなかで報酬単価が下がるため、損益分岐点が後ろ倒しになる構造。新規参入のハードルは確実に高くなった。</p>
+      </div>
+      <p class="article-source">出典: 福祉新聞Web「障害報酬、B型など４サービス減 新規事業所限定で〈厚労省方針〉」<br><span class="src-url">https://fukushishimbun.com/series06/43812</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        寿・塩尻は既存指定で影響なし。新規開設計画は減算前提で再試算。M&Aでの既存事業所取得が新規開設より相対的に有利になる構造変化に注意。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">改定の背景は「制度の持続性」</h4>
       <p class="article-lead">B型費用が1年で+20.1%。新規参入の伸びが財政を圧迫した経緯がある。</p>
-      <div class="article-body"><p>厚労省は今回を「臨時応急的な見直し」と位置づける。本格改定は次期報酬改定で議論される見込みだ。</p></div>
-      <p class="article-source">出典: パパゲーノAI福祉研究所</p>
+      <div class="article-body">
+        <p>厚生労働省は今回の改定を「臨時応急的な見直し」と位置づけている。本来は次期報酬改定（2027年度）で議論される構造論点を、財政の持続性を理由に前倒しした格好だ。就労継続支援B型の費用がR5→R6で+1,052億円（+20.1%）と急増したことが直接の引き金となった。</p>
+        <p>本格改定は2027年度に予定されており、そこでは「対人支援の質」「アウトカム評価」「定員規模」など、制度の構造論点に踏み込む議論が見込まれる。中期計画は「対人業務シフト」「質で選ばれる事業所」を前提に組む方が、政策の方向性とズレが少ない。</p>
+      </div>
+      <p class="article-source">出典: パパゲーノAI福祉研究所「前例のない障害福祉報酬『新規事業所の引き下げ』が2026年6月から始まる理由」<br><span class="src-url">https://ai-fukushi.net/reduction/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        次期改定で本格議論。中期計画は「対人業務シフト」前提に。アウトカム評価が来るなら、利用者の就労実績・支援質のKPI整備を5〜6月で着手したい。
+      </div>
     </article>
   </div>
 </section>
 
+<!-- ───── 長野県 ───── -->
 <section class="page">
   <div class="category-bar">
     <span class="cat-name">長野県</span>
@@ -315,36 +867,110 @@
   </div>
   <div class="articles">
     <article class="article">
-      <h4 class="article-headline">GW人出ピークは5月2日</h4>
-      <p class="article-lead">各駅は帰省客と観光客で賑わう。観光地の駐車場は終日混雑が続いた。</p>
-      <div class="article-body"><p>長野駅・松本駅では昼前から夕方にかけて人波が途切れず。県内宿泊施設は連休前半で稼働がほぼ満室となった。</p></div>
-      <p class="article-source">出典: NBS長野放送</p>
+      <h4 class="article-headline">GW人出ピーク5/2、各駅は観光客で賑わう</h4>
+      <p class="article-lead">大型連休の入り込みは5月2日が最大。各地の駅には帰省客や観光客が次々と降り立つ。</p>
+      <div class="article-body">
+        <p>長野県内のGW人出は5月2日がピークとなった。長野駅・松本駅では昼前から夕方にかけて人波が途切れず、新幹線・特急ともに一部区間で立ち席利用が出た。県内宿泊施設は連休前半で稼働がほぼ満室となり、軽井沢・松本・白馬の主要観光地は終日駐車場待ちが発生した。</p>
+        <p>消費面では飲食・土産・体験型コンテンツが堅調で、円安の影響もあってインバウンドの再来も鮮明。観光協会は連休後半の天候不安定を踏まえつつも、5月全体の入り込みは前年同月を上回るとの見方を示している。地域経済への波及効果は今期の県内景況感を支える要素となりそうだ。</p>
+      </div>
+      <p class="article-source">出典: NBS長野放送 県内ニュース<br><span class="src-url">https://www.nbs-tv.co.jp/news/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        県内消費は堅調。地元事業の連休後の景況感確認、はなひらく利用者・職員のリフレッシュ状況のヒアリングにも繋げたい。
+      </div>
     </article>
     <article class="article">
       <h4 class="article-headline">飯田「いいだ リニア展望台」5月公開</h4>
       <p class="article-lead">JR東海が長野県駅周辺の工事現場を一望できる施設を一般開放する。</p>
-      <div class="article-body"><p>リニア中央新幹線の進捗を間近で見られる場所。地元観光と工事広報を兼ねた狙いが見える。</p></div>
-      <p class="article-source">出典: 南信州新聞</p>
+      <div class="article-body">
+        <p>JR東海はリニア中央新幹線・長野県駅など、飯田市周辺地域のリニア工事現場を一望できる「いいだ リニア展望台」を開設し、5月の一般公開を予定する。地元観光と工事広報を兼ねた狙いで、開業前から「リニアを見に行く」需要を喚起する。</p>
+        <p>飯田周辺は開業後の経済波及が大きく見込まれる地域。観光・宿泊・不動産価格に中期的な影響が見込まれており、長野県南部の地域経済の構造変化を象徴するプロジェクトとなる。県内不動産投資・地域再開発の文脈で要注目だ。</p>
+      </div>
+      <p class="article-source">出典: 南信州新聞電子版（飯田市・下伊那）<br><span class="src-url">https://minamishinshu.jp/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        飯田周辺の観光・不動産価値に中期影響。FP顧客の不動産投資相談・地域選定の判断材料として頭に入れておく。
+      </div>
     </article>
     <article class="article">
-      <h4 class="article-headline">5月3日、大雨と雷・降ひょう情報</h4>
+      <h4 class="article-headline">5月3日、大雨と雷・降ひょう情報発表</h4>
       <p class="article-lead">県内各地で警戒呼びかけ。連休後半の山間部の天候は不安定が続く見通し。</p>
-      <div class="article-body"><p>登山・農作業は天気の急変に注意が必要。気象台は最新情報の確認を呼びかけている。</p></div>
-      <p class="article-source">出典: 長野地方気象台</p>
+      <div class="article-body">
+        <p>長野地方気象台は5月3日、大雨・雷・降ひょうに関する長野県気象情報を発表した。県内各地で警戒が呼びかけられ、特に山間部・峠道での走行や登山には注意が必要となった。連休後半の天気は引き続き不安定で、急な天候変化への備えが求められる。</p>
+        <p>農作業も影響を受けやすい時期で、果樹・野菜の被害情報が一部地域から寄せられている。気象台は最新情報の確認と早めの避難判断を呼びかけており、連休後半の予定変更を含めた柔軟な対応が望まれる。</p>
+      </div>
+      <p class="article-source">出典: 長野地方気象台 / NHK長野<br><span class="src-url">https://news.web.nhk/newsweb/area/200</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        連休後半の天候不安定。長野出張・行事は天気判断を慎重に。屋外イベント主催の関係者への配慮メッセージのきっかけにも。
+      </div>
     </article>
     <article class="article">
-      <h4 class="article-headline">五月人形展・田楽座・中尾歌舞伎</h4>
+      <h4 class="article-headline">五月人形展・田楽座・中尾歌舞伎、地元文化が彩るGW</h4>
       <p class="article-lead">県内の文化行事も多彩。連休後半の小旅行プランに合わせやすい。</p>
-      <div class="article-body"><p>旧井澤家住宅の五月人形展、田楽座の稽古場公演、中尾歌舞伎の春季定期公演などが開催中。地域文化の厚みを感じる週末となる。</p></div>
-      <p class="article-source">出典: 信濃毎日新聞</p>
+      <div class="article-body">
+        <p>長野県内ではGW期間中、多彩な文化行事が開催されている。旧井澤家住宅の五月人形展、田楽座の稽古場公演、中尾歌舞伎の春季定期公演などが代表的で、地元の伝統文化に触れる機会となっている。観光客向けだけでなく、地元住民にとっても日常から離れた体験ができる。</p>
+        <p>連休後半は天候不安定が予想されるため、屋内型の文化体験は穴場となる可能性が高い。家族時間の質を上げるネタとしても活用しやすく、地域ブランディング・移住検討者向けのコンテンツとしても機能する。地域文化の厚みは、長野が「都市と自然と文化」のバランスで選ばれる要因の一つだ。</p>
+      </div>
+      <p class="article-source">出典: 信濃毎日新聞デジタル<br><span class="src-url">https://www.shinmai.co.jp/</span></p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        連休後半の家族時間・地元体験の選択肢として。屋内型なら天候の影響も受けにくく、機会損失なく過ごす材料に。
+      </div>
     </article>
   </div>
 </section>
 
+<!-- ───── 今週の業界カレンダー ───── -->
+<section class="calendar-section">
+  <div class="category-bar">
+    <span class="cat-name">今週の業界カレンダー</span>
+    <span class="cat-en">THIS WEEK</span>
+  </div>
+  <table class="calendar-table">
+    <thead>
+      <tr><th>日付</th><th>イベント / 期日</th><th>小池目線</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-date">5/8（木）</td>
+        <td class="col-event">トヨタ自動車・任天堂・LINEヤフー 26年3月期 決算発表</td>
+        <td class="col-take">FP顧客の保有株動向・運用説明に直結。事前ヒアリングと当日のニュースフォロー体制を。</td>
+      </tr>
+      <tr>
+        <td class="col-date">5/13（火）<small>頃</small></td>
+        <td class="col-event">障害福祉サービス等報酬改定検討チーム（次回想定）</td>
+        <td class="col-take">6月期中改定の追加詳細が議論される可能性。はなひらくの実務影響を見極める材料に。</td>
+      </tr>
+      <tr>
+        <td class="col-date">5/19-20</td>
+        <td class="col-event">Google I/O 2026（カリフォルニア州マウンテンビュー）</td>
+        <td class="col-take">PharmaEightのAI実装方針に直結。Geminiモデル動向と業務AI関連の発表を要チェック。</td>
+      </tr>
+      <tr>
+        <td class="col-date">5/29（木）</td>
+        <td class="col-event">アジア安全保障会議（シャングリラ・ダイアログ／シンガポール）</td>
+        <td class="col-take">日米防衛協力・対中シナリオの方向性が出る場。FP顧客の国際分散説明の材料に。</td>
+      </tr>
+      <tr>
+        <td class="col-date">6/1</td>
+        <td class="col-event">障害福祉報酬改定 施行（B型新規減算 / 処遇改善拡充）</td>
+        <td class="col-take">はなひらくの賃金テーブル更新・新規開設計画の再試算の最終締切。5月中の準備が決め手。</td>
+      </tr>
+      <tr>
+        <td class="col-date">6/1</td>
+        <td class="col-event">調剤ベースアップ評価料 算定開始</td>
+        <td class="col-take">PHCの給与テーブル更新・算定要件の事務処理運用開始日。5月中の事前周知と人事制度書面整備を。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ───── 編集後記 ───── -->
 <aside class="postscript">
   <div class="postscript-title">編集後記</div>
   <div class="postscript-body">
-    今号のトップは障害福祉報酬の6月期中改定。はなひらく寿・塩尻はいずれも既存指定のため基本報酬は据え置きで影響は限定的だが、新規開設を視野に入れる場合は減算前提の収支再計算が必要となる。一方で処遇改善は6月算定分から拡充されるため、職員の給与設計を見直す絶好のタイミングだ。薬剤師業界もベースアップ評価料の新設で人件費構造が動く。福祉と薬局、ともに「対人業務に振った事業所が報われる」方向が一段鮮明になった、そう読み取れる一日である。
+    今号のトップは障害福祉報酬の6月期中改定。はなひらく寿・塩尻はいずれも既存指定のため基本報酬は据え置きで影響は限定的だが、新規開設を視野に入れる場合は減算前提の収支再計算が必要となる。一方で処遇改善は6月算定分から拡充されるため、職員の給与設計を見直す絶好のタイミングだ。薬剤師業界もベースアップ評価料の新設で人件費構造が動く。福祉と薬局、ともに「対人業務に振った事業所が報われる」方向が一段鮮明になった、そう読み取れる一日である。世界に目を転じれば、トランプ関税のうねりは医薬品100%関税という想定外の領域まで及び、ビッグテックのAI投資は前年比+76%と異例の加速。地政学・テクノロジー・国内制度の3つの波が同時に押し寄せている、そんな朝刊である。
   </div>
 </aside>
 
