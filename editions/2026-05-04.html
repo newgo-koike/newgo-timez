@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>NewGo Timez ― 令和8年5月4日号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5efe0;
+    --paper-dark: #ebe2c8;
+    --ink: #1a1a1a;
+    --ink-sub: #3a3a3a;
+    --ink-mute: #6a6256;
+    --line: #1a1a1a;
+    --line-soft: #8b8273;
+    --accent: #8b1a1a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", "ヒラギノ明朝 ProN W3", serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 14px;
+    font-feature-settings: "palt";
+  }
+  body {
+    width: 1080px; margin: 0 auto;
+    padding: 32px 36px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(139,130,115,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(139,130,115,0.06) 0%, transparent 50%),
+      linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+  .masthead {
+    border-top: 4px solid var(--line);
+    border-bottom: 4px solid var(--line);
+    padding: 20px 0 16px;
+    margin-bottom: 18px;
+  }
+  .masthead-rule-double { border-top: 1px solid var(--line); margin: 6px 0; }
+  .masthead-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .masthead-meta { font-size: 11px; color: var(--ink-sub); letter-spacing: 0.05em; line-height: 1.6; }
+  .masthead-meta .num { font-weight: 700; font-size: 13px; }
+  .masthead-title {
+    font-family: "Playfair Display", "Noto Serif JP", serif;
+    font-weight: 900; font-size: 72px; letter-spacing: 0.04em;
+    text-align: center; line-height: 1; color: var(--ink);
+    text-shadow: 0 0 1px var(--ink);
+  }
+  .masthead-sub {
+    text-align: center; font-size: 13px; letter-spacing: 0.4em;
+    color: var(--ink-sub); margin-top: 6px;
+    font-family: "Playfair Display", serif;
+  }
+  .lead { border-bottom: 3px double var(--line); padding-bottom: 24px; margin-bottom: 24px; }
+  .lead-kicker {
+    font-size: 12px; color: var(--accent); font-weight: 700;
+    letter-spacing: 0.3em; margin-bottom: 8px;
+    border-left: 4px solid var(--accent); padding-left: 10px;
+  }
+  .lead-headline {
+    font-size: 44px; font-weight: 900; line-height: 1.25;
+    margin-bottom: 14px; color: var(--ink); letter-spacing: -0.01em;
+  }
+  .lead-sub {
+    font-size: 18px; font-weight: 700; color: var(--ink-sub);
+    margin-bottom: 16px; line-height: 1.6;
+    border-left: 3px solid var(--ink); padding-left: 12px;
+  }
+  .lead-body {
+    column-count: 2; column-gap: 28px; column-rule: 1px solid var(--line-soft);
+    font-size: 14px; line-height: 1.9; text-align: justify;
+  }
+  .lead-body p { margin-bottom: 10px; text-indent: 1em; }
+  .page { margin-bottom: 28px; padding-top: 8px; border-top: 3px double var(--line); }
+  .category-bar {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+    background: var(--ink); color: var(--paper); padding: 6px 14px;
+    letter-spacing: 0.3em;
+  }
+  .category-bar .cat-name { font-size: 17px; font-weight: 900; }
+  .category-bar .cat-en {
+    font-size: 10px; font-family: "Playfair Display", serif;
+    letter-spacing: 0.3em; opacity: 0.7; margin-left: auto;
+  }
+  .articles { column-count: 2; column-gap: 28px; column-rule: 1px solid var(--line-soft); }
+  .article {
+    break-inside: avoid; page-break-inside: avoid;
+    margin-bottom: 18px; padding-bottom: 16px;
+    border-bottom: 1px dotted var(--line-soft);
+  }
+  .article:last-child { border-bottom: none; }
+  .article-headline {
+    font-size: 19px; font-weight: 900; line-height: 1.4;
+    margin-bottom: 6px; color: var(--ink);
+  }
+  .article-lead {
+    font-size: 13px; color: var(--ink-sub); font-weight: 700;
+    margin-bottom: 6px; line-height: 1.65;
+    border-bottom: 1px solid var(--line-soft); padding-bottom: 6px;
+  }
+  .article-body { font-size: 13px; line-height: 1.9; text-align: justify; }
+  .article-body p { margin-bottom: 4px; text-indent: 1em; }
+  .article-source {
+    font-size: 10px; color: var(--ink-mute); margin-top: 6px;
+    letter-spacing: 0.05em; font-style: italic;
+  }
+  .postscript {
+    margin-top: 24px; border: 2px solid var(--line);
+    padding: 16px 20px; background: rgba(255,255,255,0.3);
+  }
+  .postscript-title {
+    font-size: 16px; font-weight: 900; margin-bottom: 8px;
+    border-bottom: 2px solid var(--line); padding-bottom: 4px;
+    display: inline-block;
+  }
+  .postscript-body { font-size: 13px; line-height: 1.85; text-indent: 1em; }
+  .colophon {
+    margin-top: 24px; padding-top: 12px;
+    border-top: 4px solid var(--line);
+    font-size: 11px; color: var(--ink-mute);
+    text-align: center; letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-rule-double"></div>
+  <div class="masthead-row">
+    <div class="masthead-meta">
+      第 <span class="num">1</span> 号<br>
+      令和8年5月4日（月）
+    </div>
+    <h1 class="masthead-title">NewGo Timez</h1>
+    <div class="masthead-meta" style="text-align:right">
+      2026-05-04<br>
+      <span class="num">月</span>曜日
+    </div>
+  </div>
+  <div class="masthead-sub">DAILY EDITION ― FOR YUGO KOIKE</div>
+  <div class="masthead-rule-double"></div>
+</header>
+
+<section class="lead">
+  <div class="lead-kicker">本日のトップ ― 障がい福祉</div>
+  <h2 class="lead-headline">障害福祉報酬、6月期中改定へ ― 新規事業所に減額の波紋</h2>
+  <div class="lead-sub">就労継続支援B型は所定単位数の約1.6%減。既存事業所は据え置きだが、6月以降の新規開設に影響。処遇改善加算は同月から拡充適用。</div>
+  <div class="lead-body">
+    <p>厚生労働省は2026年6月、障害福祉サービス等報酬の「臨時応急的な見直し」を実施する。総費用が急増した4サービスを対象に、6月1日以降に新たに指定を受ける事業所に限り、基本報酬を引き下げる方針を固めた。</p>
+    <p>就労継続支援B型は所定単位数の984／1000（約1.6%減）。グループホーム、児童発達支援、放課後等デイサービスも対象に含まれる見通しで、既存指定の事業所はこれまで通りの基本報酬が適用される。</p>
+    <p>背景には、制度の持続可能性確保がある。就労継続支援B型の総費用額は令和5年度から令和6年度にかけて+1,052億円、20.1%の増加を記録。新規参入の急速な伸びが財政を圧迫した。</p>
+    <p>一方で処遇改善は同じく6月算定分から拡充される予定。5月までは令和7年度補正予算の緊急支援事業によって繋ぐ。職員給与設計の見直しタイミングとして要注目だ。</p>
+  </div>
+</section>
+
+<section class="page">
+  <div class="category-bar">
+    <span class="cat-name">政治・経済</span>
+    <span class="cat-en">POLITICS &amp; ECONOMY</span>
+  </div>
+  <div class="articles">
+    <article class="article">
+      <h4 class="article-headline">高市首相、憲法改正発議「27年春までに」</h4>
+      <p class="article-lead">施行79年の節目で踏み込む。改正発議のめどを来春までに立てる目標を表明した。</p>
+      <div class="article-body"><p>5月3日、日本国憲法は施行から79年を迎えた。高市早苗首相は2027年春までに改正の発議にめどを立てる方針を改めて示した。与党内の調整が焦点となる。</p></div>
+      <p class="article-source">出典: 時事ドットコム</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">北陸新幹線、小浜・京都で決着へ</h4>
+      <p class="article-lead">大阪延伸ルートを与党が再検討。長らく難航したルート問題が大詰めを迎える。</p>
+      <div class="article-body"><p>北陸新幹線の大阪延伸について、与党は「小浜・京都」ルートで決着する見通しを示した。建設費とアクセス両面の評価が鍵となる。</p></div>
+      <p class="article-source">出典: 日本経済新聞</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">銀座ソニーパーク、開業1年で黒字転換</h4>
+      <p class="article-lead">来園者は累計413万人。商業ビルとブランド体験施設の両立で都心型モデルを示す。</p>
+      <div class="article-body"><p>ソニーグループの「銀座ソニーパーク」が開業1年で黒字化。2025年1月の開業から2026年3月までの来園者は413万人だった。</p></div>
+      <p class="article-source">出典: 日本経済新聞</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">インド太平洋3本柱に進化、対中連携強化</h4>
+      <p class="article-lead">高市首相が演説。ベトナムへの原油調達支援、重要鉱物協力も同時に進める方針を示す。</p>
+      <div class="article-body"><p>首相はインド太平洋戦略を3本柱で進化させる演説を実施。日越宇宙官民連携フォーラムも5月1日に開催され、宇宙・資源で連携を深める。</p></div>
+      <p class="article-source">出典: 日本経済新聞</p>
+    </article>
+  </div>
+</section>
+
+<section class="page">
+  <div class="category-bar">
+    <span class="cat-name">AI・テック</span>
+    <span class="cat-en">AI &amp; TECHNOLOGY</span>
+  </div>
+  <div class="articles">
+    <article class="article">
+      <h4 class="article-headline">政府生成AI「源内」、OSSで公開</h4>
+      <p class="article-lead">デジタル庁が4月24日、政府職員向け生成AI環境を公開した。自治体や民間も独自運用可能に。</p>
+      <div class="article-body"><p>地方公共団体や民間企業が独自にAI基盤を運用できるオープンソース版が登場。クラウド依存を抑える狙いがある。</p></div>
+      <p class="article-source">出典: デジタル庁発表</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">Linux長期脆弱性、AI支援で発見</h4>
+      <p class="article-lead">「Copy Fail」と命名。2017年以降に出荷された主要ディストリビューションが影響を受ける。</p>
+      <div class="article-body"><p>ローカル権限昇格に関わる重大な脆弱性。AI支援で長期間見過ごされていた欠陥が表に出た形だ。情シス・運用部門は早急にパッチを当てる必要がある。</p></div>
+      <p class="article-source">出典: Ledge.ai 他</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">ソフトバンク×MODE、生成AI×IoTで提携</h4>
+      <p class="article-lead">建設・製造現場の意思決定を高度化。4月28日、資本・業務提携を発表した。</p>
+      <div class="article-body"><p>センサーとLLMを組み合わせた現場最適化が狙い。建機の稼働率と作業手順の自動推奨が当面の柱となる。</p></div>
+      <p class="article-source">出典: 日本経済新聞</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">Adobe、Firefly Image 5搭載</h4>
+      <p class="article-lead">Photoshop/Lightroom 27.6にアップデート。生成AIモデルを刷新した。</p>
+      <div class="article-body"><p>レイヤー単位の生成・修正精度が向上。画像系制作のワークフローはまた一段速くなる。</p></div>
+      <p class="article-source">出典: Adobe</p>
+    </article>
+  </div>
+</section>
+
+<section class="page">
+  <div class="category-bar">
+    <span class="cat-name">スタートアップ</span>
+    <span class="cat-en">STARTUPS</span>
+  </div>
+  <div class="articles">
+    <article class="article">
+      <h4 class="article-headline">ヘリカルフュージョン、27億円調達</h4>
+      <p class="article-lead">核融合発電技術。商用化に向けた装置開発を加速する。</p>
+      <div class="article-body"><p>4月27日〜5月1日のスタートアップ調達まとめで、防衛・宇宙・エネルギー分野の大型案件が目立った。先端技術への資金集中が鮮明だ。</p></div>
+      <p class="article-source">出典: 日本経済新聞</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">トグルHD、不動産テックで33.4億円</h4>
+      <p class="article-lead">AI物件分析を強化。中小不動産業者向けのSaaS展開を進める。</p>
+      <div class="article-body"><p>同期間ではバリノス（不妊治療）が12.5億円、ホンダ発のPathAheadが1.36億円を調達した。</p></div>
+      <p class="article-source">出典: 日本経済新聞</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">Qubitcore、量子で15.3億円</h4>
+      <p class="article-lead">国産量子コンピューター技術の事業化を加速。学術系スピンアウトの代表例だ。</p>
+      <div class="article-body"><p>素子方式の選定と冷却系の量産が今後の論点。日本勢の存在感がじわり増している。</p></div>
+      <p class="article-source">出典: 日本経済新聞</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">26年Q1調達総額、過去最高</h4>
+      <p class="article-lead">ただし件数は減少。AI大型案件への資金集中が続いている。</p>
+      <div class="article-body"><p>選別の局面が鮮明だ。シード〜アーリーの調達は逆風で、グロース・大型ラウンドへの偏重が当面続く見通し。</p></div>
+      <p class="article-source">出典: スピーダ INITIAL</p>
+    </article>
+  </div>
+</section>
+
+<section class="page">
+  <div class="category-bar">
+    <span class="cat-name">薬剤師関連</span>
+    <span class="cat-en">PHARMACY</span>
+  </div>
+  <div class="articles">
+    <article class="article">
+      <h4 class="article-headline">26年度調剤報酬改定、対人業務へ本格転換</h4>
+      <p class="article-lead">「立地依存からの脱却」が大テーマ。調剤業務を根本から見直す改定となった。</p>
+      <div class="article-body"><p>中規模・門前薬局には厳しく、医療モール・介護施設の処方箋が多い薬局にも打撃。地域支援体制加算はパワーアップする。</p></div>
+      <p class="article-source">出典: 日経DI</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">調剤ベースアップ評価料、新設</h4>
+      <p class="article-lead">40歳未満の勤務医・薬剤師・事務職員を対象に、給与水準を約5%引き上げる狙い。</p>
+      <div class="article-body"><p>他産業の給与引き上げと同等水準を目指す。薬局の人件費構造が大きく動く。中小薬局は採用設計の早期見直しが鍵だ。</p></div>
+      <p class="article-source">出典: ROP株式会社</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">薬局M&Aに加速の見方</h4>
+      <p class="article-lead">改定の影響で中堅薬局の集約圧が高まる。地域支援体制の有無が淘汰の分かれ目に。</p>
+      <div class="article-body"><p>服用薬剤調整支援料2の新設も、対人業務にコミットする薬局を後押しする方向で働く。</p></div>
+      <p class="article-source">出典: 調剤M&A支援センターR</p>
+    </article>
+  </div>
+</section>
+
+<section class="page">
+  <div class="category-bar">
+    <span class="cat-name">障がい福祉</span>
+    <span class="cat-en">DISABILITY WELFARE</span>
+  </div>
+  <div class="articles">
+    <article class="article">
+      <h4 class="article-headline">処遇改善加算、6月から拡充</h4>
+      <p class="article-lead">5月までは緊急支援事業で対応。6月算定分から本格適用となる見通し。</p>
+      <div class="article-body"><p>給与テーブルの再設計タイミング。加算Ⅰ／Ⅱ／Ⅲの取得状況によって配分が変わるため、早めの試算が望まれる。</p></div>
+      <p class="article-source">出典: 厚生労働省</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">減算対象は4サービス、新規限定</h4>
+      <p class="article-lead">就労継続支援B型・グループホーム・児童発達支援・放課後等デイサービスが対象。</p>
+      <div class="article-body"><p>減算は2026年6月1日以降の新規指定事業所のみ。既存事業所は据え置きで、業界の混乱は限定的との見方が強い。</p></div>
+      <p class="article-source">出典: 福祉新聞Web</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">改定の背景は「制度の持続性」</h4>
+      <p class="article-lead">B型費用が1年で+20.1%。新規参入の伸びが財政を圧迫した経緯がある。</p>
+      <div class="article-body"><p>厚労省は今回を「臨時応急的な見直し」と位置づける。本格改定は次期報酬改定で議論される見込みだ。</p></div>
+      <p class="article-source">出典: パパゲーノAI福祉研究所</p>
+    </article>
+  </div>
+</section>
+
+<section class="page">
+  <div class="category-bar">
+    <span class="cat-name">長野県</span>
+    <span class="cat-en">NAGANO LOCAL</span>
+  </div>
+  <div class="articles">
+    <article class="article">
+      <h4 class="article-headline">GW人出ピークは5月2日</h4>
+      <p class="article-lead">各駅は帰省客と観光客で賑わう。観光地の駐車場は終日混雑が続いた。</p>
+      <div class="article-body"><p>長野駅・松本駅では昼前から夕方にかけて人波が途切れず。県内宿泊施設は連休前半で稼働がほぼ満室となった。</p></div>
+      <p class="article-source">出典: NBS長野放送</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">飯田「いいだ リニア展望台」5月公開</h4>
+      <p class="article-lead">JR東海が長野県駅周辺の工事現場を一望できる施設を一般開放する。</p>
+      <div class="article-body"><p>リニア中央新幹線の進捗を間近で見られる場所。地元観光と工事広報を兼ねた狙いが見える。</p></div>
+      <p class="article-source">出典: 南信州新聞</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">5月3日、大雨と雷・降ひょう情報</h4>
+      <p class="article-lead">県内各地で警戒呼びかけ。連休後半の山間部の天候は不安定が続く見通し。</p>
+      <div class="article-body"><p>登山・農作業は天気の急変に注意が必要。気象台は最新情報の確認を呼びかけている。</p></div>
+      <p class="article-source">出典: 長野地方気象台</p>
+    </article>
+    <article class="article">
+      <h4 class="article-headline">五月人形展・田楽座・中尾歌舞伎</h4>
+      <p class="article-lead">県内の文化行事も多彩。連休後半の小旅行プランに合わせやすい。</p>
+      <div class="article-body"><p>旧井澤家住宅の五月人形展、田楽座の稽古場公演、中尾歌舞伎の春季定期公演などが開催中。地域文化の厚みを感じる週末となる。</p></div>
+      <p class="article-source">出典: 信濃毎日新聞</p>
+    </article>
+  </div>
+</section>
+
+<aside class="postscript">
+  <div class="postscript-title">編集後記</div>
+  <div class="postscript-body">
+    今号のトップは障害福祉報酬の6月期中改定。はなひらく寿・塩尻はいずれも既存指定のため基本報酬は据え置きで影響は限定的だが、新規開設を視野に入れる場合は減算前提の収支再計算が必要となる。一方で処遇改善は6月算定分から拡充されるため、職員の給与設計を見直す絶好のタイミングだ。薬剤師業界もベースアップ評価料の新設で人件費構造が動く。福祉と薬局、ともに「対人業務に振った事業所が報われる」方向が一段鮮明になった、そう読み取れる一日である。
+  </div>
+</aside>
+
+<footer class="colophon">
+  NewGo Timez ― 編集発行 NewGo Editorial ／ お届け 小池の秘書 ／ 第 1 号 2026-05-04
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewGo Timez バックナンバー</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5efe0;
+    --ink: #1a1a1a;
+    --ink-sub: #555;
+    --ink-mute: #888;
+    --line: #c9bfa8;
+    --line-strong: #1a1a1a;
+    --accent: #8b1a1a;
+    --chip: #ebe4d2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    background: #2c2620;
+    color: var(--ink);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .top-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: #1a1a1a; color: #f5efe0;
+    padding: 12px 24px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,.4);
+  }
+  .brand { font-family: "Playfair Display", "Noto Serif JP", serif; font-weight: 900; font-size: 20px; letter-spacing: 0.05em; }
+  .brand small { font-size: 11px; font-weight: 400; letter-spacing: 0.2em; opacity: 0.7; margin-left: 8px; vertical-align: middle; }
+  .selectors { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-left: auto; }
+  select {
+    background: #f5efe0; color: #1a1a1a;
+    font-family: "Noto Serif JP", serif; font-size: 14px; font-weight: 700;
+    padding: 8px 14px; border: none; border-radius: 4px;
+    min-width: 220px; cursor: pointer;
+  }
+  .nav-btn {
+    background: transparent; color: #f5efe0; border: 1px solid #555;
+    padding: 8px 14px; border-radius: 4px; cursor: pointer;
+    font-family: "Noto Serif JP", serif; font-size: 13px;
+  }
+  .nav-btn:hover { background: #333; }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .count { font-size: 12px; color: #aaa; }
+
+  .stage {
+    max-width: 1140px; margin: 0 auto; padding: 24px 16px 80px;
+  }
+  .edition-card {
+    background: var(--paper); border: 1px solid var(--line-strong);
+    box-shadow: 0 8px 32px rgba(0,0,0,.5);
+    overflow: hidden;
+  }
+  .edition-header {
+    padding: 20px 24px; border-bottom: 3px double var(--line-strong);
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    background: linear-gradient(180deg, #faf4e4 0%, #f5efe0 100%);
+  }
+  .edition-date {
+    font-size: 24px; font-weight: 900; color: var(--ink);
+    font-family: "Playfair Display", "Noto Serif JP", serif;
+  }
+  .edition-headline {
+    font-size: 15px; color: var(--ink-sub); flex: 1;
+  }
+  .edition-topics { display: flex; gap: 6px; flex-wrap: wrap; }
+  .topic-chip {
+    font-size: 11px; padding: 2px 10px; background: var(--chip);
+    border: 1px solid var(--line); color: var(--ink-sub); border-radius: 2px;
+  }
+
+  .edition-image {
+    display: block; width: 100%; height: auto;
+    background: #fff;
+  }
+  .empty {
+    color: #f5efe0; text-align: center; padding: 80px 20px;
+    font-size: 16px; opacity: 0.6;
+  }
+  .footer {
+    text-align: center; color: #888; font-size: 12px; margin-top: 24px;
+    padding: 16px;
+  }
+  .footer a { color: #c9bfa8; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="brand">NewGo Timez<small>バックナンバー</small></div>
+  <div class="selectors">
+    <button class="nav-btn" id="prevBtn">◀ 前日</button>
+    <select id="dateSelect"></select>
+    <button class="nav-btn" id="nextBtn">翌日 ▶</button>
+    <span class="count" id="countLabel"></span>
+  </div>
+</div>
+
+<main class="stage">
+  <div id="editionContainer"></div>
+  <div class="footer">NewGo Timez ― 編集発行 NewGo Editorial / お届け 小池の秘書 / <a href="https://github.com/newgo-koike/newgo-timez">archive on GitHub</a></div>
+</main>
+
+<script>
+// ─────────────────────────────────────────────
+// EDITIONS array. New entries inserted at the top by the skill.
+// 各オブジェクト: { date, headline, topics }
+// 対応PNG: pngs/${date}.png  / 対応HTML: editions/${date}.html
+// ─────────────────────────────────────────────
+const EDITIONS = [
+  /* __INSERT_NEW_EDITION_HERE__ */
+];
+
+const sel = document.getElementById('dateSelect');
+const container = document.getElementById('editionContainer');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const countLabel = document.getElementById('countLabel');
+
+function fmtDate(iso) {
+  const d = new Date(iso);
+  const wk = ['日','月','火','水','木','金','土'][d.getDay()];
+  return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${wk}）`;
+}
+
+function render(idx) {
+  if (EDITIONS.length === 0) {
+    container.innerHTML = '<div class="empty">まだ発行された号はありません。<br>毎朝6時に最新号が届きます。</div>';
+    countLabel.textContent = '';
+    prevBtn.disabled = true;
+    nextBtn.disabled = true;
+    return;
+  }
+  const e = EDITIONS[idx];
+  const topics = (e.topics || []).map(t => `<span class="topic-chip">${t}</span>`).join('');
+  container.innerHTML = `
+    <div class="edition-card">
+      <div class="edition-header">
+        <div class="edition-date">${fmtDate(e.date)}</div>
+        <div class="edition-headline">${e.headline || ''}</div>
+        <div class="edition-topics">${topics}</div>
+      </div>
+      <img class="edition-image" src="pngs/${e.date}.png" alt="${e.date} NewGo Timez" loading="lazy">
+    </div>
+  `;
+  countLabel.textContent = `${idx+1} / ${EDITIONS.length} 号`;
+  prevBtn.disabled = idx >= EDITIONS.length - 1;  // 古い側
+  nextBtn.disabled = idx <= 0;                    // 新しい側
+}
+
+EDITIONS.forEach((e, i) => {
+  const opt = document.createElement('option');
+  opt.value = i;
+  opt.textContent = fmtDate(e.date) + (i === 0 ? ' ― 最新号' : '');
+  sel.appendChild(opt);
+});
+
+sel.addEventListener('change', e => render(parseInt(e.target.value, 10)));
+prevBtn.addEventListener('click', () => {
+  const i = parseInt(sel.value, 10) + 1;
+  if (i < EDITIONS.length) { sel.value = i; render(i); }
+});
+nextBtn.addEventListener('click', () => {
+  const i = parseInt(sel.value, 10) - 1;
+  if (i >= 0) { sel.value = i; render(i); }
+});
+
+render(0);
+</script>
+</body>
+</html>
