@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NewGo Timez ― 2026年5月6日号</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper: #f0ebdb;
+      --paper-dark: #e3dcc4;
+      --ink: #0a0a0a;
+      --ink-sub: #2a2a2a;
+      --ink-note: #555;
+      --border-thick: 3px double #0a0a0a;
+      --border-thin: 1px solid #0a0a0a;
+      --border-dotted: 1px dotted #6a6a6a;
+    }
+
+    body {
+      background: #c8bfa0;
+      font-family: "Noto Serif JP", "Hiragino Mincho ProN", "ヒラギノ明朝 ProN W3", serif;
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.95;
+    }
+
+    .paper-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--paper);
+      padding: 0 0 40px 0;
+    }
+
+    /* ===== MASTHEAD ===== */
+    .masthead {
+      border-bottom: var(--border-thick);
+      padding: 20px 24px 16px;
+      text-align: center;
+    }
+    .masthead-top-bar {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--ink-sub);
+      margin-bottom: 8px;
+      border-bottom: var(--border-thin);
+      padding-bottom: 6px;
+    }
+    .masthead-title {
+      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-weight: 900;
+      font-size: 72px;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+    .masthead-sub {
+      font-size: 14px;
+      letter-spacing: 4px;
+      color: var(--ink-sub);
+      margin-top: 4px;
+    }
+    .masthead-date-bar {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--ink-sub);
+      margin-top: 10px;
+      border-top: var(--border-thin);
+      padding-top: 6px;
+    }
+
+    /* ===== SECTION LABEL ===== */
+    .section-label {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 2px 10px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== MARKET WATCH ===== */
+    .market-section {
+      border-bottom: var(--border-thick);
+      padding: 20px 24px;
+      background: var(--paper-dark);
+    }
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .market-card {
+      border: var(--border-thin);
+      padding: 12px 14px;
+      background: var(--paper);
+    }
+    .market-card-label {
+      font-size: 12px;
+      color: var(--ink-note);
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .market-card-value {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .market-card-diff {
+      font-size: 14px;
+      color: var(--ink-sub);
+      margin-top: 2px;
+    }
+    .market-card-note {
+      font-size: 12px;
+      color: var(--ink-note);
+      margin-top: 4px;
+      border-top: var(--border-dotted);
+      padding-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* ===== LEAD ARTICLE ===== */
+    .lead-article {
+      border-bottom: var(--border-thick);
+      padding: 24px 24px 20px;
+    }
+    .lead-headline {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      border-bottom: var(--border-thin);
+      padding-bottom: 12px;
+    }
+    .lead-tag {
+      display: inline-block;
+      border: 2px solid var(--ink);
+      font-size: 13px;
+      padding: 1px 8px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .lead-body {
+      font-size: 20px;
+      line-height: 2.0;
+      color: var(--ink-sub);
+      margin-bottom: 12px;
+    }
+    .lead-source {
+      font-size: 12px;
+      color: var(--ink-note);
+      border-top: var(--border-dotted);
+      padding-top: 6px;
+      margin-top: 12px;
+    }
+
+    /* ===== BIGNUM ===== */
+    .bignum-section {
+      border-bottom: var(--border-thick);
+      padding: 24px;
+      background: var(--paper-dark);
+      text-align: center;
+    }
+    .bignum-label {
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: var(--ink-note);
+      margin-bottom: 8px;
+    }
+    .bignum-value {
+      font-size: 116px;
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--ink);
+    }
+    .bignum-caption {
+      font-size: 18px;
+      color: var(--ink-sub);
+      margin-top: 8px;
+      border-top: var(--border-thin);
+      padding-top: 8px;
+    }
+    .bignum-body {
+      font-size: 17px;
+      color: var(--ink-sub);
+      margin-top: 10px;
+      text-align: left;
+      line-height: 1.9;
+    }
+
+    /* ===== MORNING HEADLINES ===== */
+    .headlines-section {
+      border-bottom: var(--border-thick);
+      padding: 20px 24px;
+    }
+    .hl-list {
+      margin-top: 12px;
+    }
+    .hl-item {
+      border-bottom: var(--border-dotted);
+      padding: 12px 0;
+    }
+    .hl-item:last-child { border-bottom: none; }
+    .hl-top {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .hl-cat {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 7px;
+      white-space: nowrap;
+      letter-spacing: 1px;
+    }
+    .hl-cat-社会 { background: #555; color: var(--paper); }
+    .hl-cat-訃報 { background: var(--ink); color: var(--paper); }
+    .hl-cat-スポーツ { background: #2a2a2a; color: var(--paper); }
+    .hl-cat-芸能 { background: #444; color: var(--paper); }
+    .hl-cat-生活 { background: #666; color: var(--paper); }
+    .hl-cat-テック { background: #333; color: var(--paper); }
+    .hl-title {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .hl-body {
+      font-size: 17px;
+      color: var(--ink-sub);
+      line-height: 1.8;
+    }
+    .hl-source {
+      font-size: 12px;
+      color: var(--ink-note);
+    }
+
+    /* ===== PERSON SPOTLIGHT ===== */
+    .person-section {
+      border-bottom: var(--border-thick);
+      padding: 20px 24px;
+      background: var(--paper-dark);
+    }
+    .person-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      margin: 12px 0;
+      align-items: start;
+    }
+    .person-meta { min-width: 120px; }
+    .person-name {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.2;
+      border-bottom: var(--border-thin);
+      padding-bottom: 4px;
+    }
+    .person-role {
+      font-size: 14px;
+      color: var(--ink-note);
+      margin-top: 4px;
+    }
+    .person-quote {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.6;
+      border-left: 4px solid var(--ink);
+      padding-left: 12px;
+    }
+    .person-body {
+      font-size: 19px;
+      color: var(--ink-sub);
+      line-height: 1.9;
+    }
+
+    /* ===== CATEGORY PAGES ===== */
+    .page {
+      border-bottom: var(--border-thick);
+      padding: 20px 24px;
+    }
+    .page:nth-child(even) { background: var(--paper-dark); }
+    .category-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      border-bottom: var(--border-thick);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .article {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: var(--border-dotted);
+    }
+    .article:last-child { border-bottom: none; margin-bottom: 0; }
+    .article-headline {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .article-lead {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-sub);
+      margin-bottom: 10px;
+      border-left: 3px solid var(--ink);
+      padding-left: 10px;
+    }
+    .article-body {
+      font-size: 19px;
+      color: var(--ink-sub);
+      line-height: 1.95;
+    }
+    .article-source {
+      font-size: 12px;
+      color: var(--ink-note);
+      margin-top: 8px;
+      border-top: var(--border-dotted);
+      padding-top: 6px;
+    }
+    .src-url { word-break: break-all; }
+
+    /* ===== KOIKE TAKE ===== */
+    .koike-take {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 10px 14px;
+      margin-top: 12px;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    .koike-take-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      opacity: 0.7;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    /* ===== CALENDAR ===== */
+    .calendar-section {
+      border-bottom: var(--border-thick);
+      padding: 20px 24px;
+    }
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 17px;
+    }
+    .calendar-table th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .calendar-table td {
+      padding: 10px;
+      border-bottom: var(--border-dotted);
+      vertical-align: top;
+      color: var(--ink-sub);
+    }
+    .calendar-table tr:last-child td { border-bottom: none; }
+    .cal-date { font-weight: 700; white-space: nowrap; color: var(--ink); }
+    .cal-koike { font-size: 14px; color: var(--ink-note); }
+
+    /* ===== POSTSCRIPT ===== */
+    .postscript {
+      padding: 24px;
+      border-top: var(--border-thick);
+      border-bottom: var(--border-thick);
+      background: var(--paper-dark);
+    }
+    .postscript h3 {
+      font-size: 18px;
+      letter-spacing: 3px;
+      border-bottom: var(--border-thin);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+    .postscript p {
+      font-size: 18px;
+      color: var(--ink-sub);
+      line-height: 2.0;
+    }
+
+    /* ===== COLOPHON ===== */
+    .colophon {
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-note);
+      padding: 16px 24px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+<div class="paper-wrap">
+
+  <!-- ===== MASTHEAD ===== -->
+  <header class="masthead">
+    <div class="masthead-top-bar">
+      <span>第 3 号</span>
+      <span>NewGo Editorial / 朝刊</span>
+      <span>定価: 無料</span>
+    </div>
+    <h1 class="masthead-title">NewGo Timez</h1>
+    <div class="masthead-sub">― 小池雄悟 専用オリジナル朝刊 ―</div>
+    <div class="masthead-date-bar">
+      <span>令和8年5月6日（水）</span>
+      <span>2026-05-06</span>
+      <span>GW最終日号</span>
+    </div>
+  </header>
+
+  <!-- ===== MARKET WATCH ===== -->
+  <section class="market-section">
+    <div class="section-label">MARKET WATCH ― 朝のマーケット</div>
+    <p style="font-size:13px;color:var(--ink-note);margin-bottom:8px;">※ 本日（5/6）は東証GW休場中。日経平均は前営業日（4/28）終値、NYは5/5終値を表示。</p>
+    <div class="market-grid">
+
+      <div class="market-card">
+        <div class="market-card-label">ドル / 円</div>
+        <div class="market-card-value">157.89</div>
+        <div class="market-card-diff">+0.16円（5/5 NY終値）</div>
+        <div class="market-card-note">中東リスク再燃でドル買い・円売り復活。UAE ミサイル警告が引き金。FP顧客の外貨建て資産は評価益が継続する局面。</div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-label">日経平均（前営業日）</div>
+        <div class="market-card-value">59,513</div>
+        <div class="market-card-diff">+228円（4/28 東証終値）</div>
+        <div class="market-card-note">GW明け5/7に1週間の海外要因を一気に織り込む。AI株・半導体高が下支え。月内最高値更新が焦点。</div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-label">NYダウ / S&P500</div>
+        <div class="market-card-value">直近値</div>
+        <div class="market-card-diff">GW期間中・詳細取得不可</div>
+        <div class="market-card-note">5/1週の米雇用統計・FOMC結果を受け5月相場入り。利下げ観測の温度感が5/7の東証に直結する。</div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-label">WTI 原油</div>
+        <div class="market-card-value">102.27</div>
+        <div class="market-card-diff">-4.15ドル（-3.89%）5/5終値</div>
+        <div class="market-card-note">米イラン停戦維持観測で急落後、UAE警告で揺り戻し。100ドル超継続は輸入コスト・はなひらく仕入れにじわり影響。</div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-label">NY 金（先物）</div>
+        <div class="market-card-value">4,567.80</div>
+        <div class="market-card-diff">-0.70ドル（5/6 05:59時点）</div>
+        <div class="market-card-note">高止まりが続く金価格。地政学リスクのヘッジ需要が根強い。FP顧客の金積立・NISA金ETF相談の増加局面。</div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-label">日米 10年金利差</div>
+        <div class="market-card-value">直近値</div>
+        <div class="market-card-diff">推計 ≈ 3.5%前後</div>
+        <div class="market-card-note">日銀追加利上げ観測くすぶるも、金利差は高水準維持。円安の根本的な解消には時間を要し、ドル建て運用の優位が続く。</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== LEAD ARTICLE ===== -->
+  <section class="lead-article">
+    <div class="lead-tag">【一面トップ】障がい福祉</div>
+    <h2 class="lead-headline">「6月1日施行」障害福祉報酬を臨時改定 ― B型新規事業所に減算、全従事者に月1万円処遇改善</h2>
+    <p class="lead-body">厚生労働省は2026年6月1日、就労継続支援B型など4サービスの新規事業所を対象に基本報酬を「984/1000」へ引き下げる臨時改定を施行する。同時に、全障害福祉従事者を対象に月額1万円（3.3%相当）のベースアップを含む処遇改善加算を大幅拡充する。GW明け1カ月を切った今、既存事業所・新規参入者ともに対応を迫られる。</p>
+    <p class="article-body" style="font-size:19px;line-height:1.95;color:var(--ink-sub);">
+      この臨時改定は令和8年2月18日の第53回障害福祉サービス等報酬改定検討チームで決定された「期中改定」だ。通常は3年ごとの定期改定だが、国の総合経済対策を受けた前倒し措置として実施される。<br><br>
+      <strong>新規事業所への基本報酬調整：</strong>令和8年6月1日以降に都道府県から指定を受ける事業所が対象で、就労継続支援B型の基本報酬は所定単位数の984/1000に設定される。約1.6%の実質的な減額だ。ただし、重度障害者を積極的に受け入れる事業所や、サービス不足地域での開設については適用除外となる配慮措置も設けられた。<br><br>
+      減算の背景には、障害福祉費用の急膨張がある。就労継続支援B型の費用は2018年度から2023年度にかけ急増し、事業所数の急速な増加が収益性の高いモデルに集中していることが制度設計の限界を示していた。今回の改定は、質の高い事業所への報酬集中という方向性を打ち出したものと言えよう。<br><br>
+      <strong>処遇改善加算の大幅拡充：</strong>既存・新規を問わず全事業所で、6月以降は全障害福祉従事者を対象に月額1.0万円（3.3%相当）の基本ベースアップが算定可能となる。さらに生産性向上の取り組みを示す事業所には月0.3万円の上乗せもある。相談系サービスでは5.1%相当の新規加算も設定された。<br><br>
+      就労継続支援B型の基本報酬区分では「平均工賃月額の基準を一律3,000円引き上げ」する見直しも同時実施される。激変緩和として、報酬が下がる事業所に対しては減少を3%程度に抑える中間区分が新設された。<br><br>
+      また就労移行支援体制加算については4月から既に厳格化が始まっており、算定対象人数への定員上限設定と過去3年間の重複算定原則禁止が適用されている。GW明けに実務対応の総点検が必要だ。
+    </p>
+    <div class="koike-take">
+      <span class="koike-take-label">小池目線</span>
+      はなひらく寿・塩尻は既存指定事業所のため今回の新規減算は対象外。むしろ処遇改善拡充を活用した賃金テーブルの見直しで、求人競争力を高める好機だ。6月1日施行まで残り約25日 ― 職員への説明と加算届出を先手で進めたい。
+    </div>
+    <p class="lead-source">出典: 厚生労働省 第53回障害福祉サービス等報酬改定検討チーム（2026年2月18日）、aimari-office.com/contents/2026-houshu-kaitei/、福祉新聞Web</p>
+  </section>
+
+  <!-- ===== BIGNUM ===== -->
+  <section class="bignum-section">
+    <div class="bignum-label">今日の数字</div>
+    <div class="bignum-value">+1万円</div>
+    <div class="bignum-caption">障害福祉従事者の月額ベースアップ額（2026年6月〜）</div>
+    <p class="bignum-body">6月施行の処遇改善拡充で、全障害福祉従事者に月額1万円（3.3%相当）のベースアップが算定可能となる。生産性向上加算で更に月0.3万円の上乗せもある。人材確保が最大の経営課題であるB型・グループホーム事業者にとって、賃金引き上げの財源確保に国が踏み込んだ意義は大きい。ただし加算算定には届出と実績要件が必要なため、GW明けの速やかな対応が欠かせない。</p>
+    <div class="koike-take">
+      <span class="koike-take-label">小池目線</span>
+      はなひらく両事業所のスタッフに「6月から給料が上がる」と先に伝えることで、採用・定着に活かしたい。給与改訂の告知タイミングが早いほど求人効果が高まる。
+    </div>
+  </section>
+
+  <!-- ===== MORNING HEADLINES ===== -->
+  <section class="headlines-section">
+    <div class="section-label">MORNING HEADLINES ― 今朝のヘッドライン</div>
+    <div class="hl-list">
+
+      <div class="hl-item">
+        <div class="hl-top">
+          <span class="hl-cat hl-cat-社会">社会</span>
+          <h5 class="hl-title">長野・阿智村の住宅で3遺体、10代長男が「母から暴力」と届け出</h5>
+        </div>
+        <p class="hl-body">5月5日午前、長野県阿智村の民家で成人女性と子ども2人の遺体が発見された。同日午前3時頃、10代の長男が頭部に怪我を負って交番に駆け込み「母親から暴力を受けた」と届け出。約5時間後に警察官が家屋内に入ったところ3人の遺体を発見した。子ども2人は他殺とみられ、県警が身元確認と捜査を進めている。</p>
+        <span class="hl-source">時事ドットコム・中日新聞Web（2026年5月5日）</span>
+      </div>
+
+      <div class="hl-item">
+        <div class="hl-top">
+          <span class="hl-cat hl-cat-スポーツ">スポーツ</span>
+          <h5 class="hl-title">大谷翔平、投手部門で3・4月の月間MVP初受賞 今季6号HRも</h5>
+        </div>
+        <p class="hl-body">ドジャースの大谷翔平がMLBナショナルリーグ投手部門の3月・4月月間MVP（最優秀選手）を受賞した。今季は1番指名打者として打撃でも活躍し、5月5日時点でシーズン6本塁打。同日のドジャース対アストロズ戦（8対3でドジャース勝利）でも存在感を示した。</p>
+        <span class="hl-source">NHKニュース・岩手日報ONLINE（2026年5月）</span>
+      </div>
+
+      <div class="hl-item">
+        <div class="hl-top">
+          <span class="hl-cat hl-cat-社会">社会</span>
+          <h5 class="hl-title">クルーズ船でハンタウイルス集団感染の疑い、3人死亡</h5>
+        </div>
+        <p class="hl-body">クルーズ船でハンタウイルスによる集団感染が疑われる事案が発生し、日本人1人が乗船していることが確認された。3人が死亡しており、当局が感染ルートを調査中。クルーズ旅行の感染リスク管理が改めて問われる事態となっている。</p>
+        <span class="hl-source">テレビ朝日系ANN（2026年5月5日）</span>
+      </div>
+
+      <div class="hl-item">
+        <div class="hl-top">
+          <span class="hl-cat hl-cat-テック">テック</span>
+          <h5 class="hl-title">日本初AIスマートグラス「SABERA」先行販売初日で4,500万円超を達成</h5>
+        </div>
+        <p class="hl-body">鯖江発のAIスマートグラス「SABERA」が先行販売を開始し、初日で4,500万円超の売上を達成した。度付きレンズ対応で日常使いを想定した設計が特徴で、眼鏡産地・鯖江のものづくりとAIを融合した国内初の本格製品として注目を集めている。</p>
+        <span class="hl-source">各メディア（2026年5月）</span>
+      </div>
+
+      <div class="hl-item">
+        <div class="hl-top">
+          <span class="hl-cat hl-cat-生活">生活</span>
+          <h5 class="hl-title">本日GW最終日、明日5/7から仕事再開 ― 全国的に晴れ間の行楽日和</h5>
+        </div>
+        <p class="hl-body">5月6日（水）はゴールデンウィーク最終日。東京証券取引所はじめ多くの機関が本日まで休場・休業となり、翌5月7日（木）から通常業務が再開する。全国的に晴れの予報で行楽日和となる見込みだが、Uターンラッシュで交通機関の混雑が見込まれる。</p>
+        <span class="hl-source">気象情報（2026年5月6日）</span>
+      </div>
+
+      <div class="hl-item">
+        <div class="hl-top">
+          <span class="hl-cat hl-cat-芸能">芸能</span>
+          <h5 class="hl-title">松本駅の名物アナウンス「まつもとぉ〜」が復活、SNSで話題</h5>
+        </div>
+        <p class="hl-body">JR松本駅の名物として親しまれてきた独特の抑揚の駅アナウンス「まつもとぉ〜」が復活し、SNS上で大きな話題となっている。地元住民だけでなく全国の鉄道ファンからも歓迎の声が上がっており、長野県のローカル魅力再発信の好例となっている。</p>
+        <span class="hl-source">各メディア（2026年5月）</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PERSON SPOTLIGHT ===== -->
+  <section class="person-section">
+    <div class="section-label">PERSON OF THE DAY ― 人物クローズアップ</div>
+    <div class="person-grid">
+      <div class="person-meta">
+        <div class="person-name">大谷翔平</div>
+        <div class="person-role">MLB・ドジャース<br>投手 / 指名打者</div>
+      </div>
+      <div class="person-quote">「月間MVPはチームメートのおかげ。投打ともに貢献し続けることが僕の役割だ」</div>
+    </div>
+    <p class="person-body">
+      1994年7月5日生まれ、岩手県奥州市出身。花巻東高校からプロ入りし、日本ハムファイターズを経て2018年にMLB・エンゼルスへ移籍。「二刀流」という新たな野球のスタイルを世界に示し、2023年にア・リーグMVPを全会一致で受賞した。2024年からロサンゼルス・ドジャースに移籍、2025年ワールドシリーズ制覇に貢献し、2026年シーズンも投打で圧倒的な存在感を示している。<br><br>
+      今季（2026年）はNLの投手月間MVPを3・4月に受賞し、打者としてもシーズン6本塁打を記録中。GW期間中も連戦で活躍し続けており、ドジャースの強力打線の中核として君臨している。今年の契約は10年7億ドルの超大型という事業規模は日本の大企業に匹敵する。
+    </p>
+    <div class="koike-take">
+      <span class="koike-take-label">小池目線</span>
+      大谷の「二刀流」継続成功は、FP兼コンサルタント兼はなひらく経営という複数役割の自分に重なる。「どちらかに絞れ」という常識への反証として、クライアントに語れる生きたストーリーだ。
+    </div>
+  </section>
+
+  <!-- ===== 政治・経済 ===== -->
+  <section class="page">
+    <h3 class="category-title">政治・経済</h3>
+
+    <article class="article">
+      <h4 class="article-headline">2026年度予算が過去最大規模で成立 ― GW明けから本格執行、経済対策の効果が焦点</h4>
+      <p class="article-lead">4月7日成立の2026年度予算は過去最大規模。GW後から補助金・給付が本格執行段階に入る。</p>
+      <p class="article-body">高市政権のもとで成立した令和8年度（2026年度）予算は、防衛費の増額とデジタル投資を柱に据えた過去最大規模の編成となった。4月7日に参議院本会議で可決・成立し、GW明けの5月7日以降、各省庁・自治体を通じた給付・補助金の本格執行が始まる。<br><br>
+      障害福祉・医療・介護の予算規模も拡大しており、6月施行の報酬改定と合わせて事業者へのリソース配分が増す見込みだ。一方で予算規模拡大に伴う財政健全化への懸念もあり、利払い費の増大がインフレ・金利上昇と相まって家計の可処分所得を圧迫するリスクも指摘されている。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        予算成立で処遇改善加算の財源は確保された。GW明け速やかに加算届出の確認と、FP顧客向けには給付・補助金活用の相談ネタとして使える。
+      </div>
+      <p class="article-source">出典: NHKニュース、日本経済新聞（2026年4〜5月）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">GW中に円高が急進、一時155円台 ― 政府・日銀が5兆円規模の市場介入</h4>
+      <p class="article-lead">5月初旬、ドル円が一時155円台まで急騰。政府・日銀が推計5兆円規模の市場介入を実施した。</p>
+      <p class="article-body">GW直前の4月下旬から5月初旬にかけて急速な円高が進行し、一時1ドル＝155円台まで円が買われる局面があった。政府・日銀は市場介入で対応し、規模は5兆円規模と推計されている。その後、中東情勢再燃や米金利の底堅さからドル高が再び進み、5月5日のNY終値では157.89円まで戻している。<br><br>
+      為替は年初来の「ドル高・円安」基調を基本としつつも、日銀の追加利上げ観測と米国のインフレ落ち着きによって振れ幅が大きくなっている。FP業務においては、外貨建て保険・外貨預金の解約・乗り換え相談が増加する局面だ。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        円高局面では外貨建て保険の解約・スイッチング相談が増える。GW明けの顧客連絡タイミングとして活用し、ドル・コスト平均法の継続メリットを訴求できる好機だ。
+      </div>
+      <p class="article-source">出典: Yahoo!ニュース、財経新聞（2026年5月）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">LINEヤフー・川辺会長が6月退任 ― AIスタートアップとして「AIソロプレナー」に転身</h4>
+      <p class="article-lead">LINEヤフーの川辺健太郎会長が6月末で退任し、AI活用型の個人事業（AIソロプレナー）として起業すると発表した。</p>
+      <p class="article-body">LINEヤフー（旧ヤフー）の創業に準じる人物として長年にわたり日本のインターネット産業を牽引してきた川辺健太郎会長が、2026年6月末をもって同社会長職を退任する意向を表明した。退任後は、AIを最大限に活用した「AIソロプレナー」として起業するという。大企業のトップが個人で事業を回す新しい働き方を体現することで、業界外にも「AI×個人事業」の可能性を示すシンボル的な転身として注目されている。<br><br>
+      この動きは、AIが大組織のリソース優位性を相殺しつつあることを象徴する。コンサルタントや士業の個人が高付加価値サービスを提供できる時代が本格化している。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        「AI×個人事業」の最先端を大企業トップ自身が実践するという文脈は、Personal OS事業の訴求軸と完全に一致。川辺氏の転身をケーススタディとしてセミナーで活用したい。
+      </div>
+      <p class="article-source">出典: 日本経済新聞（2026年5月）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">憲法大集会に5万人 ― 高市政権の改憲・防衛路線に市民が反発</h4>
+      <p class="article-lead">「改憲で戦争に加担する」と反発した市民団体が憲法記念日に合わせ5万人規模の大集会を開催した。</p>
+      <p class="article-body">5月3日の憲法記念日（GW期間中）、全国各地で憲法に関する集会が開催され、高市政権の改憲路線・防衛費増額に反対する市民団体が主催する大集会には5万人が参加したとされる。高市首相は「2027年春までに憲法改正の発議にめどを立てる」と繰り返し発言しており、参院選（2026年夏）に向け改憲論議が政治の最前線テーマとなっている。<br><br>
+      政治的対立の深まりは、政策の不確実性として経営・投資判断にも影を落とす。選挙結果次第で社会保障・福祉政策の方向性が変わる可能性もあるため、事業者としての情勢把握が重要だ。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        夏の参院選が福祉・社会保障政策の転換点になり得る。はなひらくの報酬改定や処遇改善制度の継続性に直結するため、選挙後の政策動向は引き続き注視が必要だ。
+      </div>
+      <p class="article-source">出典: NHKニュース（2026年5月）</p>
+    </article>
+  </section>
+
+  <!-- ===== 世界の動き ===== -->
+  <section class="page">
+    <h3 class="category-title">世界の動き</h3>
+
+    <article class="article">
+      <h4 class="article-headline">中東情勢が再燃 ― UAEがミサイル警告、イラン停戦も綱渡り</h4>
+      <p class="article-lead">米イラン停戦維持で緩んだ市場を、UAE のミサイル警告が一気に引き締めた。原油・ドルが乱高下。</p>
+      <p class="article-body">米国のヘグセス国防長官が停戦維持を表明したことで原油相場と金利は低下し、ドル売りが優勢となったが、その後アラブ首長国連邦（UAE）がミサイル警告を発出したことで市場は中東情勢の脆弱性を再認識した。ドル買い・円売りが強まり、WTI原油も急反発する場面があった。<br><br>
+      中東情勢は原油価格を通じてエネルギーコスト全般に波及し、日本の輸入物価・電力料金・ガソリン価格への影響が続く。GW明けの企業収益見通しにも中東リスクプレミアムが折り込まれることになる。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        原油100ドル超が続けば光熱費上昇でB型事業所の固定費も圧迫される。電力固定費の再点検と、エネルギー節約の設備投資（補助金活用）を今期中に検討したい。
+      </div>
+      <p class="article-source">出典: 財経新聞 NY為替概況（2026年5月5日）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">ASEANで米国離れが加速 ― 中国が「自由貿易の守護者」として台頭</h4>
+      <p class="article-lead">第2次トランプ政権の「アメリカ・ファースト」外交がASEAN諸国に米国不信を広げ、中国が存在感を高めている。</p>
+      <p class="article-body">第2次トランプ米政権が推進するAmerica First政策の下、関税引き上げや多国間協定からの離脱がASEAN各国の対米信頼を損なっている。タイのタマサート大のリサーチによれば、ASEANは「中国にも期待と不安」を抱えながらも、自由貿易体制の旗手として中国を見る視点が強まっている。中国はEV・ソーラーパネルなど得意分野での技術力と価格競争力を背景に、ASEAN向け輸出を拡大している。<br><br>
+      日本企業にとっては、ASEANサプライチェーンの再編やFTA活用の観点で地政学リスクを織り込んだ戦略が求められる局面だ。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        PHC（ウィーメックス）はASEAN展開も視野に入れるメーカー系。地政学変化は中長期の薬局IT市場にも影響し得る。FP顧客の海外株式ファンドの地域配分見直しも話題になりやすい局面。
+      </div>
+      <p class="article-source">出典: 日経ビジネス・ジェトロ（2026年）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">EUはドイツ主導の構造改革へ ― 防衛費・エネルギー転換で覚悟の一手</h4>
+      <p class="article-lead">ユーロ圏はドイツの構造改革路線で再加速を狙う。ロシア依存・輸出依存からの脱却が課題。</p>
+      <p class="article-body">ユーロ圏の2026年経済見通しはドイツを主軸とした構造転換によって再加速が期待されている。ドイツは長年の「ロシア産エネルギー依存」「輸出主導・内需軽視」「防衛費抑制」という3つのモデルを転換し始めており、財政出動と再生可能エネルギー投資を加速させている。再軍備を含む防衛費拡大はGDPの2%超を目標とする。<br><br>
+      欧州の再活性化はユーロ高要因となり得るため、ユーロ建て資産を持つFP顧客の運用計画にも影響する。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        欧州の再活性化はユーロ建て保険・投資信託（欧州株ファンド）の追い風になり得る。顧客の地域分散ポートフォリオの見直し相談に欧州視点を加える素材として使いたい。
+      </div>
+      <p class="article-source">出典: PwC・日本経済研究所（2026年）</p>
+    </article>
+  </section>
+
+  <!-- ===== AI・テック ===== -->
+  <section class="page">
+    <h3 class="category-title">AI・テック</h3>
+
+    <article class="article">
+      <h4 class="article-headline">GPT-5.5リリース ― 「自律型エージェント」が商業実運用段階へ</h4>
+      <p class="article-lead">OpenAIが4月23日にGPT-5.5を正式リリース。ブラウザ操作・システムログインを含む複雑業務を自律実行する新世代AIが本格普及段階に入った。</p>
+      <p class="article-body">OpenAIが4月23日にリリースしたGPT-5.5（および上位版GPT-5.5 Pro）は「単なるテキスト生成を超えた」自律的なタスク完結を実現した。経費システムへのログイン、ウェブブラウザの操作、複数ソースからの情報収集・統合など、これまで人間が行ってきた複雑なワークフローを最小限のユーザー確認で実行できる。人間の専門家が数時間かかるリサーチやコードのデバッグを、数秒〜数分で複数解法を検証しながら完結させる能力は、ホワイトカラー業務の根本的な効率変革を示唆する。<br><br>
+      同時期にGoogleもGeminiの「ビジュアルレイアウト」「動的ビュー」機能を発表し、パラメータ操作可能なダッシュボードを動的生成するなど、AIとの対話が「読む」から「触る」へと進化している。NVIDIAの「Vera Rubin」プラットフォームはエージェント型推論に特化したインフラを整備し、AWSは「OpenClaw」をLightsail上で提供してAIエージェント構築の民主化を進めている。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        PharmaEightのAI業務支援プロダクトはエージェント化が次の競合差別化軸になる。GPT-5.5のAPI活用でレセプトチェック・薬剤相互作用確認の自律処理が視野に入ってきた。
+      </div>
+      <p class="article-source">出典: kishioka-design.net/entry/2026/05/05、各メディア（2026年5月）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">デジタル庁が政府AI「源内」をOSS公開 ― 商用利用可ライセンスでGitHubに無償公開</h4>
+      <p class="article-lead">デジタル庁が開発した政府AI補助システム「源内（げんない）」をオープンソースとして公開。商用利用可能ライセンスにより民間でも活用できる。</p>
+      <p class="article-body">デジタル庁は政府業務支援AI「源内」をGitHubに商用利用可能なライセンスで無償公開した。政府の行政DXツールを民間にオープンにするという異例の取り組みで、日本国内のAI活用推進の起爆剤として期待される。「源内」の名称は江戸時代の発明家・平賀源内にちなんだとされ、「日本版の行政AI基盤」として位置づけられている。<br><br>
+      一方、日本初のAI法案は欧州の厳格規制路線とは異なり「研究開発促進」と「規制サンドボックス」を軸とした「攻めの規制」を採用している。産業界には歓迎の声が多い一方、個人情報保護やバイアス対策の実効性を疑問視する声もある。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        PharmaEightの薬局向けAI開発では「源内」のコード・アーキテクチャを参照できる可能性がある。OSSとして活用できれば開発コスト削減の好機だ。まずGitHubリポジトリを確認したい。
+      </div>
+      <p class="article-source">出典: kishioka-design.net、各メディア（2026年5月）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">2026年のAIトレンドは「エージェント実運用・著作権整理・電力制約」の3点に集中</h4>
+      <p class="article-lead">ガートナーと国内AI専門家が2026年の主要論点を整理。エージェント実装・データ権利・インフラが企業AI戦略の核心に。</p>
+      <p class="article-body">ガートナーをはじめとする調査会社が2026年のAIトレンドを整理した結果、主要な争点として（1）エージェントの実運用、（2）学習データと著作権の整理、（3）推論コストと電力制約、（4）企業ITへの組み込みの4点が浮かび上がった。特にエージェント型AIの実運用化は、単なる実験段階から「業務フローへの恒久的な組み込み」へと移行しつつある。<br><br>
+      また、中国のDeepSeekがMoE（専門家混在型）技術で効率的なAIを実現し、米国主要プレイヤーに並ぶ可能性が示されたことで、AI覇権争いは多極化の様相を呈している。企業のAI調達・導入判断は、単なるスペック比較から地政学的リスクを含む包括的な評価へと移行を迫られている。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        Personal OSのコーチングで「AIエージェントを業務にどう組み込むか」が最頻質問になりつつある。自分自身が最先端ユーザーであることが差別化の源泉なので、Claude Codeの実例を惜しみなく公開していきたい。
+      </div>
+      <p class="article-source">出典: ガートナー・kishoika-design.net（2026年5月）</p>
+    </article>
+  </section>
+
+  <!-- ===== スタートアップ ===== -->
+  <section class="page">
+    <h3 class="category-title">スタートアップ</h3>
+
+    <article class="article">
+      <h4 class="article-headline">ヘリカルフュージョン、核融合発電で約27億円調達 ― 国産核融合スタートアップが加速</h4>
+      <p class="article-lead">東京・中央区の核融合発電スタートアップ「ヘリカルフュージョン」が鴻池運輸・三谷産業などを引受先に約27億円を第三者割当増資で調達した。</p>
+      <p class="article-body">ヘリカルフュージョン（東京・中央）は、日本発の核融合発電の実用化を目指すスタートアップだ。今回の約27億円の資金調達により、ヘリカル型（螺旋型）の磁気閉じ込め方式による核融合炉の研究・試作フェーズを加速させる。出資元には物流大手の鴻池運輸や製造商社の三谷産業が名を連ねており、産業界からの期待の高さが伺える。<br><br>
+      核融合は「夢のエネルギー」として長年研究されてきたが、2024〜2026年にかけて世界的に商業化に向けた投資が急増しており、日本国内でもヘリカルフュージョンを含む複数のスタートアップが存在感を示している。実用化が実現すれば、原子力・化石燃料に代わるクリーンエネルギーの柱となる。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        長期投資の文脈でFP顧客にエネルギー転換テーマを語る材料として使える。未上場段階だが、上場後のエネルギー株としての関心醸成につながる話題だ。
+      </div>
+      <p class="article-source">出典: 日本経済新聞「4月27日〜5月1日スタートアップ資金調達まとめ」（2026年5月）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">Qubitcore、量子コンピュータで15.3億円調達 ― SBIインベストメント主導</h4>
+      <p class="article-lead">横浜市の量子コンピュータ開発スタートアップ「Qubitcore（キュービットコア）」がSBIインベストメント等を引受先に15億3,000万円を調達した。</p>
+      <p class="article-body">Qubitcore（横浜市）は量子コンピュータの実用技術開発に取り組むスタートアップで、今回の調達により研究・開発体制を大幅に強化する。引受先にはSBIインベストメントを主幹事とするVCが並んでおり、金融系資本の量子技術への本格参入を象徴する資金調達となった。量子コンピュータはAI・創薬・金融工学での応用が期待されており、日本でも国家戦略の一環として産業育成が進んでいる。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        SBIが量子へ本格投資したことは、金融×テックの融合深化のシグナル。FP業界でも量子ベースのポートフォリオ最適化が10年以内に実用化され得る。早期知識吸収を続けたい領域だ。
+      </div>
+      <p class="article-source">出典: 日本経済新聞（2026年5月1日）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">トグルHD、不動産AIで33.4億円調達 ― シンガポール系VCが主導、グローバル展開へ</h4>
+      <p class="article-lead">不動産テックのトグルホールディングス（東京・港）がシンガポール系VC「アクシオム・アジア・プライベート・キャピタル」を引受先に約33億4,000万円を調達。</p>
+      <p class="article-body">トグルホールディングス（東京・港区）は不動産開発プロセスのAI自動化を軸に事業を展開するスタートアップだ。シンガポール系のVCが主導する今回の調達は、アジア圏での不動産テック需要を見据えたグローバル展開の第一歩と位置づけられる。33億4,000万円という規模は国内不動産テック調達としても大型の部類に入る。AIによる用途地域・容積率・収益シミュレーションの自動化が主要機能で、デベロッパーの初期検討コストを大幅に削減する。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        FP顧客の不動産投資相談で「AI活用した物件シミュレーション」の精度向上が期待できる。realestate-cashflowスキルとの組み合わせで、より精緻なアドバイスができる時代が近づいている。
+      </div>
+      <p class="article-source">出典: 日本経済新聞（2026年5月1日）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">PathAhead（ホンダ発）、インキュベイトF主導で1.36億円調達 ― 次世代キャリア支援を展開</h4>
+      <p class="article-lead">ホンダのカーブアウトスタートアップ「PathAhead（パスアヘッド、東京・港）」がインキュベイトファンド・ホンダを引受先に1億3,600万円を調達した。</p>
+      <p class="article-body">PathAhead（東京・港区）はホンダからスピンオフする形で設立されたキャリア支援スタートアップだ。大企業を起点とした「カーブアウト型」スタートアップの事例として注目されており、インキュベイトファンドが主幹事となることで事業の信用力と成長支援体制が整った。調達規模は1.36億円とシード規模だが、ホンダという大企業の後ろ盾と独立性のバランスが今後の展開を左右する。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        大企業カーブアウト型スタートアップは今後増加トレンド。ベンチャー系クライアントへの資金調達アドバイスの文脈で、「補助金＋VC」の組み合わせ活用策として語れるネタだ。
+      </div>
+      <p class="article-source">出典: 日本経済新聞（2026年5月1日）</p>
+    </article>
+  </section>
+
+  <!-- ===== 薬剤師関連 ===== -->
+  <section class="page">
+    <h3 class="category-title">薬剤師関連</h3>
+
+    <article class="article">
+      <h4 class="article-headline">調剤ベースアップ評価料が5月1日から施行 ― 40歳未満薬剤師・事務職も対象、5%賃上げ目標</h4>
+      <p class="article-lead">2026年度調剤報酬改定のベースアップ評価料が5月1日より正式施行。従来対象外だった40歳未満の薬剤師・事務職員にも賃上げの財源が拡大された。</p>
+      <p class="article-body">2026年度（令和8年度）の調剤報酬改定で新設・拡充された「調剤ベースアップ評価料」が5月1日から本格施行された。今改定の特徴は、これまで処遇改善の対象外とされていた40歳未満の勤務薬剤師や薬局事務職員が新たに対象に加わった点だ。他産業の給与引き上げ水準（5%前後）と同等まで薬局従事者の賃金を引き上げることを目的としており、調剤薬局の人材確保競争が激化する中で重要な制度整備となる。<br><br>
+      算定には届出要件があり、賃上げの実施状況と使途の明確化が求められる。PHCの松本調剤薬局においても本評価料の届出が完了しているか確認が必要だ。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        松本調剤薬局（PHC）で5月1日のベースアップ評価料届出が正しく処理されているか早急に確認したい。算定漏れは収益機会の逸失に直結する。GW明け7日に最初に確認すべき事項だ。
+      </div>
+      <p class="article-source">出典: m3.com薬剤師 / ROP株式会社（2026年度調剤報酬改定解説、2026年5月）<br><span class="src-url">https://pharmacist.m3.com/column/chouzaihoushu/6981</span></p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">かかりつけ薬剤師の運用変更 ― 同意書廃止、お薬手帳への担当薬剤師記載方式に</h4>
+      <p class="article-lead">かかりつけ薬剤師制度の手続きが大幅に簡素化。同意書の書面作成が不要になりお薬手帳への記載で代替できるようになった。</p>
+      <p class="article-body">2026年度の調剤報酬改定では「かかりつけ薬剤師」の登録運用が大きく変わった。従来は患者の書面同意が必要で、同意書の管理・更新が薬局スタッフの業務負担となっていたが、今回の改定でお薬手帳への担当薬剤師の氏名・連絡先記載をもって同意の代替とする運用に変更された。患者の手間が減り、かかりつけ薬剤師の普及促進につながる措置と評価されている。<br><br>
+      一方で、在宅医療要件については厳格化が進んでおり、地域支援体制加算の要件に含まれる在宅訪問の実績基準が「直近1年間24回以上」から「48回以上」へと倍増された。在宅医療に積極的でない薬局にとっては加算算定が難しくなる改定だ。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        松本調剤薬局（PHC）の在宅訪問実績が48回基準に達しているか確認が必要。届いていない場合は地域支援体制加算の見直しと在宅推進の具体策が急務となる。
+      </div>
+      <p class="article-source">出典: 令和8年度（2026年）調剤報酬改定 kanri.nkdesk.com、2026年5月<br><span class="src-url">https://kanri.nkdesk.com/houshu/r8.php</span></p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">同一グループ判定基準が厳格化 ― 調剤基本料の受付回数区分が「月3.5万回」に変更</h4>
+      <p class="article-lead">調剤基本料の同一グループ判定に使う受付回数基準が「月4万回」から「月3.5万回」に変更され、対象範囲が拡大した。</p>
+      <p class="article-body">2026年度改定では調剤基本料の算定体系にも見直しが入り、同一グループ判定における受付回数の基準が変更された。従来「月4万回」を超えた場合に適用されていた割引区分の基準が「月3.5万回」に引き下げられ、中規模チェーン薬局でも基本料の減額対象になりやすくなっている。大手チェーン・調剤薬局グループにとってはさらなる収益圧迫要因となる一方、個別・独立系の調剤薬局には相対的に有利な状況が続く。<br><br>
+      PHC（松本調剤薬局）は独立系薬局であるため直接の影響は限定的だが、調剤薬局M&A市場では大手が経営を見直す動きが出やすくなり、買収好機が生まれる可能性もある。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        大手チェーン薬局の収益圧迫でM&A市場に出物が増える可能性。PHCが将来的に薬局M&Aを検討する際の市況として頭に入れておきたい情報だ。
+      </div>
+      <p class="article-source">出典: 薬剤師おすし note、2026年度調剤報酬改定解説（2026年5月）<br><span class="src-url">https://note.com/osushi_yaku/n/n43a7e8755aaf</span></p>
+    </article>
+  </section>
+
+  <!-- ===== 障がい福祉関連 ===== -->
+  <section class="page">
+    <h3 class="category-title">障がい福祉関連</h3>
+
+    <article class="article">
+      <h4 class="article-headline">【6月1日施行まで残り25日】B型等4サービスの新規事業所に基本報酬減算 ― 既存事業所は据え置き</h4>
+      <p class="article-lead">就労継続支援B型・グループホーム・児童発達支援・放課後等デイサービスの新規事業所が6月1日から約1.6%の報酬減算対象となる。既存事業所の報酬は変わらない。</p>
+      <p class="article-body">厚生労働省は令和8年6月1日の障害福祉サービス等報酬臨時改定において、就労継続支援B型など4サービスの新規事業所（6月1日以降に指定を受ける事業所）を対象に基本報酬を所定単位数の「984/1000」に設定すると決定した。約1.6%の実質減額となるが、既存事業所は改定前の報酬水準が継続される。<br><br>
+      減算が見送られるケースとして、重度障害者の積極的な受け入れを行う事業所、またはサービスが不足している地域での開設が挙げられており、政策意図として「質の高い事業所の開設促進」が込められている。減算対象の4サービスは、いずれも年間費用の増加率・収支差率・事業所数増加率の3要件を満たすものとされた。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        はなひらく寿・塩尻は既存指定のため減算は非適用。競合新規参入が抑制される効果もあり、既存事業所として安定した地位が維持される。将来の新事業所開設計画時には十分な事前試算が必要だ。
+      </div>
+      <p class="article-source">出典: aimari-office.com、福祉新聞Web（2026年）<br><span class="src-url">https://aimari-office.com/contents/2026-houshu-kaitei/</span></p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">処遇改善加算が大幅拡充 ― 障害福祉従事者全員に月額1万円ベースアップ、6月から算定可能</h4>
+      <p class="article-lead">6月施行の処遇改善拡充で、対象が「障害福祉従事者」全体に広がり、月額1万円（3.3%相当）のベースアップ原資を事業所が確保できるようになる。</p>
+      <p class="article-body">令和8年6月施行の処遇改善加算拡充では、これまで対象が限定されていた処遇改善の枠組みを大幅に広げ、障害福祉従事者全体（正規・非正規を問わず）を対象とした月額1万円（3.3%相当）のベースアップが算定可能となる。さらに生産性向上の取り組みを実施する事業所には月額0.3万円の上乗せ加算もある。相談支援系サービス（計画相談・地域相談支援）では5.1%相当の新規加算が設定された。<br><br>
+      算定にあたっては事前の届出が必要であり、賃上げの実施方法・対象者・金額を明確化した計画書の作成と提出が求められる。GW明け速やかに都道府県への届出準備を進めることが求められる。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        はなひらく寿・塩尻の全スタッフへ「6月から給与が上がる」と伝え、採用面接でも前面に出したい。加算算定計画書の提出期限を確認し、5月中に書類を整えることが今週の最優先アクションだ。
+      </div>
+      <p class="article-source">出典: aimari-office.com、かべなしクラウドコラム（2026年）<br><span class="src-url">https://kabe-nashi.jp/column/invoice/remuneration-revision-2026-overview.html</span></p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">就労移行支援体制加算が4月から厳格化 ― 重複算定原則禁止、定員上限を設定</h4>
+      <p class="article-lead">4月から施行された就労移行支援体制加算の厳格化で、過去3年間の重複算定が原則禁止となり、1事業所の算定人数にも上限が設けられた。</p>
+      <p class="article-body">就労継続支援B型の「就労移行支援体制加算」は、B型から就労移行支援などの上位サービスへ移行した利用者数に応じて算定できる加算だが、これまで一部事業所で不正または意図的な重複算定が行われていたことが指摘されていた。今回の改定では算定対象人数への定員上限設定と、過去3年間の同一人物に対する重複算定原則禁止が盛り込まれた。<br><br>
+      既に4月から施行されており、GW明けには各事業所で加算の適正算定状況を確認することが急務だ。誤算定が発覚した場合は指導監査の対象となり、返還請求リスクも生じる。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        はなひらくの就労移行実績と加算算定状況をGW明けに帳簿で確認したい。算定要件の誤認は監査リスクに直結するため、必要であれば専門家（社労士・行政書士）への相談も検討する。
+      </div>
+      <p class="article-source">出典: ai-fukushi.net・aimari-office.com（2026年）<br><span class="src-url">https://ai-fukushi.net/reduction/</span></p>
+    </article>
+  </section>
+
+  <!-- ===== 長野県関連 ===== -->
+  <section class="page">
+    <h3 class="category-title">長野県関連</h3>
+
+    <article class="article">
+      <h4 class="article-headline">阿智村の住宅で3遺体 ― 10代長男「母から暴力」と交番に届け出、県警が捜査</h4>
+      <p class="article-lead">5月5日、長野県阿智村の民家で成人女性と子ども2人の遺体が発見された。10代の長男が夜中に交番へ駆け込んだことが端緒。</p>
+      <p class="article-body">5月5日午前8時頃、長野県下伊那郡阿智村の民家で成人女性と子ども2名の遺体が発見された。同日午前3時頃、頭部に怪我を負った10代の長男が地元の交番に「母親から暴力を受けた」と届け出たことが発端となり、約5時間後に警察官が家屋に立ち入ったところ、3人の遺体を発見した。子ども2人は他殺と見られており、長野県警が遺体の身元確認と詳しい経緯の捜査を進めている。父親は事件当時不在だったという。<br><br>
+      阿智村は長野県南部・下伊那郡に位置し、「日本一の星空の里」として知られる観光地でもある。地元コミュニティへの衝撃は大きく、GW中の報道で全国的にも注目された。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        長野南部・下伊那でのこの種の事件は、はなひらくの利用者家族の中にも困難を抱えるケースがあることを改めて思い起こさせる。家族支援・ソーシャルワークの重要性を現場スタッフと共有したい。
+      </div>
+      <p class="article-source">出典: 時事ドットコム・中日新聞Web（2026年5月5日）<br><span class="src-url">https://www.jiji.com/jc/article?k=2026050500531&g=soc</span></p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">北アルプス・白馬岳で50代男性が行動不能 ― GW登山の遭難相次ぐ</h4>
+      <p class="article-lead">北アルプス白馬岳で50代の男性登山者が体調不良で行動不能となり、長野県警が救助活動を実施。GW期間中の登山遭難が相次いでいる。</p>
+      <p class="article-body">GW期間中、北アルプス白馬岳（長野・新潟県境）で登山をしていた50代の男性が体調不良により行動不能となる遭難事案が発生した。長野県警山岳警備隊が早朝から捜索・救助に向かった。GW期間は例年、残雪期の北アルプスへ多くの登山者が入山するが、急変しやすい天候と残雪による転倒・滑落のリスクも高く、毎年複数の遭難事案が報告される。<br><br>
+      2026年の登山シーズンも本格化しており、長野県警は「残雪期の北アルプスはアイゼン・ピッケルが必須」として装備の充実と無理のない計画を呼びかけている。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        GW明けから登山シーズン本番。はなひらくスタッフが長野の自然豊かな環境を生かしたアウトドア活動プログラムを展開するなら、安全管理の徹底が前提となる。
+      </div>
+      <p class="article-source">出典: NBS長野放送、各メディア（2026年5月）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">いいだリニア展望台が5月に一般公開 ― JR東海が飯田市周辺に整備</h4>
+      <p class="article-lead">JR東海がリニア中央新幹線の飯田市周辺工事現場を一望できる「いいだ リニア展望台」を整備し、5月に一般公開を開始する予定だ。</p>
+      <p class="article-body">JR東海はリニア中央新幹線の建設工事が進む長野県飯田市周辺に、工事の進捗を一般市民が見学できる「いいだ リニア展望台」を整備し、2026年5月に一般公開を予定している。リニア開業（2027年名古屋開業目標）に向けた工事の透明性確保と地域理解促進が目的とされている。飯田市は長野県南部のリニア沿線都市として開業後の経済波及効果への期待が高まっており、展望台は観光資源としての役割も担う。<br><br>
+      リニア開業は飯田・下伊那エリアの人流・物流を変える可能性を持ち、はなひらくの塩尻・寿両拠点の商圏変化にも間接的に影響し得る。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        リニア飯田開業で長野南部の人口動態・労働市場が変化する可能性がある。はなひらくの採用戦略と利用者確保計画を3〜5年視点で再点検するきっかけにしたい。
+      </div>
+      <p class="article-source">出典: 伊那谷ねっと・各メディア（2026年5月）</p>
+    </article>
+
+    <article class="article">
+      <h4 class="article-headline">長野市の男性がSNS型投資詐欺で3,400万円の被害 ― 県内の詐欺被害が急増</h4>
+      <p class="article-lead">長野市の男性がSNS上の投資グループに誘われ、3,400万円を詐取された。長野県内でのSNS型詐欺被害が急増している。</p>
+      <p class="article-body">長野市在住の男性がSNS上の投資グループに勧誘されて多額の資金を入金した結果、3,400万円を詐取されたことが明らかになった。この種の「SNS型投資詐欺」は全国的に急増しており、長野県内でも被害件数・被害額が増加傾向にある。手口は、著名人・著名投資家の名前を騙ったグループチャットへの誘導→少額の利益提示→多額の追加入金→出金不能という流れが典型的だ。<br><br>
+      長野県警は被害防止啓発を強化しているが、被害者の年齢層は50〜70代に多く、FP相談の現場でも注意喚起が欠かせない。</p>
+      <div class="koike-take">
+        <span class="koike-take-label">小池目線</span>
+        FP業務でSNS型詐欺の被害相談を受けるケースが増えている。顧客への定期的な注意喚起と、「怪しい投資話は必ず相談を」というメッセージの発信がチャレンジャーFPとしての社会的役割でもある。
+      </div>
+      <p class="article-source">出典: 各メディア（2026年5月）</p>
+    </article>
+  </section>
+
+  <!-- ===== カレンダー ===== -->
+  <section class="calendar-section">
+    <div class="section-label">THIS WEEK ― 今週の業界カレンダー</div>
+    <table class="calendar-table">
+      <tr>
+        <th>日付</th>
+        <th>イベント</th>
+        <th>小池目線</th>
+      </tr>
+      <tr>
+        <td class="cal-date">5/7（木）</td>
+        <td>東証GW明け初日<br>1週間の海外動向を一気に織り込む</td>
+        <td class="cal-koike">GW中の中東リスク・円高介入・米雇用統計を消化。寄り付き急落・急騰どちらもあり得る。FP顧客のパニック売り防止のフォロー準備を。</td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/7（木）</td>
+        <td>ベースアップ評価料 届出状況確認<br>（PHC松本調剤薬局）</td>
+        <td class="cal-koike">5月1日施行のベースアップ評価料の届出が正しく処理されているかGW明け第一に確認。算定漏れは収益逸失に直結。</td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/7（木）</td>
+        <td>障害福祉処遇改善加算 届出準備開始<br>（6月施行に向けて）</td>
+        <td class="cal-koike">はなひらく両拠点の処遇改善計画書を作成し、都道府県への届出を5月中に完了させる。6月からの加算算定に間に合わせるための実質最終期限が近い。</td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/8（金）</td>
+        <td>トヨタ・任天堂 2026年3月期 決算発表</td>
+        <td class="cal-koike">FP顧客の保有株・投信の運用状況に直結。円安・AI・EV転換コストが業績にどう現れるか確認し、運用相談の素材として活用。</td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/中旬</td>
+        <td>ソフトバンクG・NTT 決算発表</td>
+        <td class="cal-koike">AI投資（ビジョンファンド）とNTT光量子コンピュータへの投資の進捗が判明。PharmaEightのAI調達・クラウド選定の参考にもなる。</td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/19〜20</td>
+        <td>Google I/O 2026</td>
+        <td class="cal-koike">PharmaEightのAI実装方針に直結する新機能が発表される可能性。Gemini・Workspaceの医療・薬局向け機能に注目。</td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/31</td>
+        <td>令和8年5月 障害福祉 処遇改善届出 実質締切</td>
+        <td class="cal-koike">6月1日施行に間に合わせるため、5月中の届出完了が事実上のデッドライン。提出先（長野県）の受付スケジュールを早期確認。</td>
+      </tr>
+      <tr>
+        <td class="cal-date">6/1（月）</td>
+        <td>障害福祉サービス等報酬 臨時改定 施行<br>B型新規事業所減算・処遇改善加算拡充</td>
+        <td class="cal-koike">はなひらくにとって今年最大の制度変更日。全スタッフへの賃金改定通知と、利用者への処遇改善の告知を同日に準備しておく。</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ===== POSTSCRIPT ===== -->
+  <aside class="postscript">
+    <h3>編集後記</h3>
+    <p>
+      本日はGW最終日。明日5月7日からいよいよ本番モードが始まる。6月1日の障害福祉報酬改定まで残り25日という事実が、今日の紙面を貫くテーマだ。はなひらく両拠点にとっては既存指定の強みを活かせる改定でもある。処遇改善加算の届出を最速で動かすことが今週最大のアクションだ。<br><br>
+      一方でAIの世界はGW中も止まらなかった。GPT-5.5リリース、デジタル庁のOSS公開、鯖江のAIスマートグラス快進撃。「働く個人」が最強になる時代の兆しがまた一つ積み重なった。GW明けの加速を、自分自身でも楽しんでほしい。
+    </p>
+  </aside>
+
+  <footer class="colophon">NewGo Timez 第3号 ― 編集発行: NewGo Editorial / お届け: 小池の秘書 ― 2026-05-06</footer>
+
+</div>
+</body>
+</html>
