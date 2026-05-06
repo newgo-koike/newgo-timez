@@ -118,190 +118,188 @@ body {
 /* === フッター === */
 .colophon { text-align: center; font-size: 11px; color: var(--ink-mute); border-top: 4px solid var(--ink); padding-top: 12px; margin-top: 24px; letter-spacing: 0.1em; }
 
-/* === レスポンシブ === */
+/* === PC: 2段グリッド === */
 @media (min-width: 768px) {
-  .paper-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-  .page-full-width { grid-column: 1 / -1; }
+  .paper-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
   .market-grid { grid-template-columns: repeat(3, 1fr); }
+  .headlines-grid { grid-template-columns: 1fr 1fr; }
   .lead-headline { font-size: 42px; }
   .bignum-value { font-size: 120px; }
   .market-value { font-size: 30px; }
+  .article-headline { font-size: 24px; }
 }
+
+/* === スマホ: 1列 === */
 @media (max-width: 767px) {
   .paper-columns { display: block; }
   .market-grid { grid-template-columns: 1fr 1fr; }
+  .headlines-grid { grid-template-columns: 1fr; }
   .lead-headline { font-size: 32px; }
   .bignum-value { font-size: 90px; }
   .market-value { font-size: 28px; }
-  .masthead-title { font-size: 42px; }
+  .masthead-title { font-size: 44px; }
+  .person-name { font-size: 22px; }
+  .glossary-item { grid-template-columns: 110px 1fr; }
+  .calendar-table td.col-take { display: none; }
 }
 </style>
 </head>
 <body>
 
 <!-- ───── マストヘッド ───── -->
-<header class="masthead page-full-width">
-  <div class="masthead-meta-row">
-    <span>2026年5月7日（木）</span>
-    <span>第4号</span>
-  </div>
-  <hr class="masthead-rule">
-  <div class="masthead-title">NewGo Timez</div>
-  <div class="masthead-sub">KOIKE'S DAILY INTELLIGENCE — SINCE 2026</div>
+<header class="masthead">
   <hr class="masthead-rule">
   <div class="masthead-meta-row">
-    <span>今日のトップ：護衛艦輸出解禁・日比防衛協議が本格始動</span>
-    <span>発行：小池雄悟</span>
+    <div>第 4 号<br>令和8年5月7日（木）</div>
+    <h1 class="masthead-title">NewGo Timez</h1>
+    <div style="text-align:right">2026-05-07<br>日銀議事要旨・決算週</div>
   </div>
+  <div class="masthead-sub">DAILY EDITION ― FOR YUGO KOIKE</div>
+  <hr class="masthead-rule">
 </header>
 
 <!-- ───── 朝のマーケット ───── -->
-<section class="market-section page-full-width">
+<section class="market-section">
   <div class="section-label">
-    MORNING MARKET ― 朝のマーケット
-    <small>5/6 NY終値・5/7 東京終値ベース</small>
+    <span>朝のマーケット ／ MARKET WATCH</span>
+    <small>※日経は5/6終値。ドル円・NYダウ・原油・金は5/6 NY終値。</small>
   </div>
   <div class="market-grid">
     <div class="market-card">
-      <div class="market-name">日経平均</div>
+      <div class="market-name">ドル / 円</div>
       <div class="market-row">
-        <span class="market-value">53,603円</span>
-        <span class="market-change">▼ −145（−0.27%）</span>
+        <span class="market-value">156.50</span>
+        <span class="market-change">▼ 前日比 -1.39円</span>
       </div>
-      <div class="market-note">連休明けのリスクオンから一転、利益確定売りが優勢。米ADP雇用の下振れで先行き不透明感も。</div>
+      <div class="market-note">5/6 NY終値。米・イラン合意観測で油価下落→長期金利低下→ドル売り先行。ADP雇用+10.9万・バーFRB理事タカ派発言で下げ渋り。ドル円は156円台で円高基調定着。</div>
     </div>
     <div class="market-card">
-      <div class="market-name">ドル円</div>
+      <div class="market-name">日経平均（5/6終値）</div>
       <div class="market-row">
-        <span class="market-value">156円50銭</span>
-        <span class="market-change">▼ 円高進行</span>
+        <span class="market-value">59,350</span>
+        <span class="market-change">▼ -163（-0.27%）</span>
       </div>
-      <div class="market-note">米4月ADP全米雇用が+10.9万人と予想を大幅下回り、ドル売り・円買いが加速。157円台後半から急落。</div>
+      <div class="market-note">連休明け初日は一時60,000円台を窺う場面もあったが、午後に円高進行で輸出株が重荷となり小幅反落。6万円大台の定着には本日公表の日銀議事要旨の確認が必要。</div>
     </div>
     <div class="market-card">
-      <div class="market-name">NYダウ</div>
+      <div class="market-name">NYダウ（5/6）</div>
       <div class="market-row">
-        <span class="market-value">最高値圏</span>
-        <span class="market-change">▲ +600ドル超</span>
+        <span class="market-value">≈50,150</span>
+        <span class="market-change">▲ 続伸</span>
       </div>
-      <div class="market-note">S&P500・ナスダックも最高値更新。米株は強く、日本株との温度差が鮮明。</div>
+      <div class="market-note">米・イラン合意観測による油価下落が消費者物価の改善期待を高め株式に追い風。S&amp;P500・ナスダックも高値圏維持。NY市場はリスクオン継続。</div>
     </div>
     <div class="market-card">
-      <div class="market-name">WTI原油</div>
+      <div class="market-name">WTI原油（5/6）</div>
       <div class="market-row">
-        <span class="market-value">$102.27</span>
-        <span class="market-change">▼ −$4.15（−3.9%）</span>
+        <span class="market-value">$60.80</span>
+        <span class="market-change">▼ 前日比 -2.00</span>
       </div>
-      <div class="market-note">在庫増懸念とドル高一服が同時に作用し急落。100ドル割れ警戒ラインが視野に入る。</div>
+      <div class="market-note">米・イラン合意に向けた協議進展の観測を受けて急落。中東の地政学リスク後退で$60台前半へ下押し。エネルギーコスト緩和は世界消費活動にプラスに働く。</div>
     </div>
     <div class="market-card">
       <div class="market-name">NY金（先物）</div>
       <div class="market-row">
-        <span class="market-value">$3,420台</span>
-        <span class="market-change">▲ 高値圏維持</span>
+        <span class="market-value">$3,400台</span>
+        <span class="market-change">▼ 小幅調整</span>
       </div>
-      <div class="market-note">ロシア・5/9攻撃警告による地政学リスクが金の安全資産需要を押し上げ。中央銀行買いも継続。</div>
+      <div class="market-note">米・イランリスク後退によるリスクオンで金は小幅売り。ただし中央銀行の構造的な買い需要が下値を支え、高値圏を維持。ドル安（156円台）が円建て金価格の下落を限定。</div>
     </div>
     <div class="market-card">
       <div class="market-name">日米10年金利差</div>
       <div class="market-row">
-        <span class="market-value">約2.6%</span>
-        <span class="market-change">米4.1% / 日1.5%</span>
+        <span class="market-value">2.57%</span>
+        <span class="market-change">米4.10 / 日1.53</span>
       </div>
-      <div class="market-note">本日公表の日銀議事要旨の内容次第で金利差縮小→円高トレンド加速の可能性。要注視。</div>
+      <div class="market-note">米長期金利が油価下落を受けて4.10%台へ低下し金利差が縮小方向。本日の日銀議事要旨で「6月利上げ積極派」が多いと読まれれば日本金利上昇→更なる金利差縮小要因に。</div>
     </div>
   </div>
 </section>
 
 <!-- ───── 一面トップ ───── -->
-<section class="lead-section page-full-width">
-  <div class="lead-kicker">本日のトップ ― 安全保障・外交</div>
-  <h2 class="lead-headline">小泉防衛相・日比会談、護衛艦輸出の実務協議枠組みを正式合意 ― 「殺傷兵器輸出解禁」後の第一歩</h2>
+<section class="lead-section">
+  <div class="lead-kicker">本日のトップ ― 金融・政策</div>
+  <h2 class="lead-headline">日経6万円・一時タッチも定着ならず ─ ドル円156円台の円高が重荷、日銀議事要旨が本日の試金石</h2>
   <div class="lead-body">
-    <p>小泉進次郎防衛相は5月5日、フィリピン・マニラでテオドロ国防相と会談し、海上自衛隊が保有する中古護衛艦「あぶくま型」の輸出に向けた実務者協議の枠組み創設で正式合意した。日本政府が4月に防衛装備移転三原則と運用指針を改定し、殺傷能力のある完成品武器の輸出を初めて解禁した後、初の具体的輸出交渉となる。</p>
-    <p>フィリピンは南シナ海での中国との領土紛争を抱えており、海上防衛力の強化を急いでいる。あぶくま型護衛艦（満載排水量1,550トン、全長109m）は老朽化から退役が近く、自衛隊から直接移転することで早期供与が実現できる。小泉氏は練習機TC-90の追加供与にも言及し、「早期の結論を目指す」と述べた。</p>
-    <p>日米同盟・日比同盟の強化と、中国の海洋進出への対抗という二重の戦略的意義を持つ今回の合意は、戦後日本の防衛政策の大転換を象徴する。国内では護衛艦輸出の合憲性・平和主義との整合性をめぐる議論も予想される。</p>
+    <p>連休明け初日の5月6日、日経平均は寄り付きから買いが先行し一時60,000円台を窺う場面もあったが、午後に入りドル円が156円50銭まで円高方向に振れると輸出関連株に売りが広がり、結局59,350円（前日終値比-163円）で引けた。「6万円大台の定着」は持ち越しとなった。</p>
+    <p>円高の背景には米国とイランの核合意に向けた協議進展の観測があり、原油相場がWTI60.80ドルまで急落したことで米長期金利も4.10%台へ低下。ドル売り・円買いを誘発した。米ADP雇用統計が+10.9万人（予想+14万人を下回る）と弱めだったことも、利下げ期待を強める方向に働いた。</p>
+    <p>市場が最も注視するのは本日（5月7日）公表の日銀金融政策決定会合議事要旨だ。6月会合での利上げ確率は前号時点で73%と高く織り込まれており、議事要旨で「積極的な利上げ派」の発言が目立てば日本金利上昇→円高・株安が加速する可能性がある。一方「慎重姿勢」が主流と読まれれば円高一服・日経再上昇シナリオが描ける。FP・投資顧客への対応シナリオを左右する一大イベントがいよいよ本日訪れる。</p>
   </div>
-  <p class="article-source">出典: 日本経済新聞「日本・フィリピン護衛艦の輸出協議へ 防衛相会談で合意」<br><a href="https://www.nikkei.com/article/DGXZQOUA2842L0Y6A420C2000000/">https://www.nikkei.com/article/DGXZQOUA2842L0Y6A420C2000000/</a></p>
+  <p class="article-source">出典: 財経新聞「5月6日のNY為替概況」<br><a href="https://www.zaikei.co.jp/html_cache/article/20260507/852418.html">https://www.zaikei.co.jp/html_cache/article/20260507/852418.html</a> ／ IG Markets「日経平均・円高リスク」<br><a href="https://www.ig.com/jp/news-and-trade-ideas/nikkei225-fails-to-stay-on-60000yen-as-jpy-gets-strengthened-260502">https://www.ig.com/jp/news-and-trade-ideas/nikkei225-fails-to-stay-on-60000yen-as-jpy-gets-strengthened-260502</a></p>
   <div class="koike-take">
     <span class="koike-take-label">小池目線</span>
-    防衛装備輸出の解禁は、長野・松本地域に防衛関連サプライチェーンが波及する可能性を秘める。中長期の地域産業動向として追いたい。FP顧客の防衛株保有状況の確認も好機。
+    日銀議事要旨の内容次第で住宅ローン変動金利の試算要否が変わる。「積極派多数」なら今日中に固定・変動シフト比較表を顧客別に準備し、相談窓口を開ける状態にしたい。
   </div>
 </section>
 
 <!-- ───── 今日の数字 ───── -->
-<section class="bignum-section page-full-width">
+<section class="bignum-section">
   <div class="bignum-label">NUMBER OF THE DAY ― 今日の数字</div>
-  <div class="bignum-value">90.7万枚</div>
-  <div class="bignum-caption">Snow Man最新シングル初週売上（男性アーティスト史上初・通算10作目の80万枚超）</div>
-  <p class="bignum-body">Snow Man「BANG!! / SAVE YOUR HEART / オドロウゼ!」が初週907,000枚を記録し、2026年度最高初週売上でオリコン週間シングル1位を獲得した。男性アーティストとして史上初となる「通算10作連続初週80万枚超」という前人未踏の記録だ。3曲はそれぞれ映画「SAKAMOTO DAYS」「ターミネーターと恋に落ちて」「The Specials」の主題歌で、メディア露出の相乗効果が数字を押し上げた。</p>
+  <div class="bignum-value">156.50</div>
+  <div class="bignum-caption">5月6日 NY終値のドル円レート ─ 前日比1.39円の急激な円高</div>
+  <p class="bignum-body">連休前の157.89円から1.39円、わずか1日のNYセッションで約0.9%の円高進行は、月次の値幅に匹敵するインパクトだ。米・イラン合意観測による原油急落が引き金を引き、「地政学リスク＝ドル高・円安」の構造が一時崩れた。FP顧客の外貨建て資産・変動金利ローンへの影響を今朝一番に確認したい。</p>
   <div class="koike-take">
     <span class="koike-take-label">小池目線</span>
-    コンテンツとメディアのクロスプロモーションが効果を最大化する典型。事業広報でも「複数接点の同時展開」が数字を作る。
+    外貨建て保険・外貨預金の顧客には為替損益への影響を即確認。「円高局面は外貨買いのチャンス」という案内の準備も進めておきたい。
   </div>
 </section>
 
 <!-- ───── 今朝のヘッドライン ───── -->
-<section class="headlines-section page-full-width">
+<section class="headlines-section">
   <div class="category-bar">
     <span class="cat-name">今朝のヘッドライン</span>
     <span class="cat-en">MORNING HEADLINES</span>
   </div>
   <div class="headlines-grid">
     <div class="hl-item">
-      <span class="hl-cat">経済</span>
-      <h5 class="hl-title">米4月ADP雇用+10.9万人・予想大幅下回り ― ドル円156円台に急落</h5>
-      <p class="hl-body">米民間雇用者数が市場予想（+14万人台）を大きく下回り、ドル売りが加速。ドル円は157円台後半から156円50銭まで急落し、為替市場が一気に円高方向に転換した。</p>
-      <span class="hl-source">財経新聞「5月6日のNY為替概況」</span>
-    </div>
-    <div class="hl-item">
-      <span class="hl-cat">司法</span>
-      <h5 class="hl-title">再審見直し法案、法務省が5/7に再修正案 ― 高市解散で廃案後に迷走</h5>
-      <p class="hl-body">無実の可能性がある有罪判決を再審する手続きの見直し法案が紛糾。超党派議連案は1月の高市解散で廃案となり、政府案への怒号が飛び交う中、法務省が5月7日に再修正案を提示した。</p>
-      <span class="hl-source">日本経済新聞（2026年5月6日）</span>
+      <span class="hl-cat">スポーツ</span>
+      <h5 class="hl-title">大谷翔平、今季初の7回登板も2被弾で2敗目 ─ ドジャースは援護なく連敗</h5>
+      <p class="hl-body">5/6（現地）、ドジャース対アストロズ戦で大谷は7.0回4安打2本塁打2失点8奪三振（防御率0.97）と圧巻の内容。しかしチームは1-2で敗戦、今季2敗目。援護できないドジャース打線の状況が続く。</p>
+      <span class="hl-source">ｄメニューニュース / ベースボールチャンネル（2026年5月6日）</span>
     </div>
     <div class="hl-item">
       <span class="hl-cat">国際</span>
-      <h5 class="hl-title">ロシア外務省、5/9攻撃の可能性示唆 ― 在ウクライナ外交官の避難確保を各国に要請</h5>
-      <p class="hl-body">ロシア外務省のザハロワ報道官は、ゼレンスキー氏が5月9日（戦勝記念日）にモスクワへの攻撃を示唆したとし、各国在外公館に通知を送付。対抗措置と位置づけウクライナからの外交官避難確保を要請した。</p>
-      <span class="hl-source">Sputnik日本（2026年5月7日）</span>
+      <h5 class="hl-title">ロシア外務省、キエフ駐在外交官の避難を各国に要請 ─ 5/9戦勝記念日前に緊張高まる</h5>
+      <p class="hl-body">ゼレンスキー大統領が5/9のモスクワ攻撃を示唆したことを受け、ロシア外務省が各国外交官に避難確保を勧告。戦勝記念日前夜の最大緊張局面となる可能性がある。</p>
+      <span class="hl-source">Sputnik日本語版（2026年5月7日）</span>
     </div>
     <div class="hl-item">
-      <span class="hl-cat">芸能</span>
-      <h5 class="hl-title">Snow Man、10作連続初週80万枚超 ― 男性史上初の快挙</h5>
-      <p class="hl-body">Snow Manが最新シングルで初週907,000枚を記録。男性アーティスト史上初となる10作連続80万枚超の金字塔を打ち立てた。「SAKAMOTO DAYS」映画との相乗効果が最大の要因。</p>
-      <span class="hl-source">オリコン（2026年5月）</span>
-    </div>
-    <div class="hl-item">
-      <span class="hl-cat">社会</span>
-      <h5 class="hl-title">GW長野山岳遭難、2人死亡・2人重傷 ― 残雪期の北アルプスで集中</h5>
-      <p class="hl-body">ゴールデンウィーク中（5/2〜5/6）、長野県内の山岳で遭難が相次ぎ2人が死亡、2人が重傷。残雪期・低体温症・滑落のリスクが高い時期に登山者が集中し、山岳救助隊が多数出動した。</p>
-      <span class="hl-source">NHKニュース長野 / 長野県警</span>
+      <span class="hl-cat">政治</span>
+      <h5 class="hl-title">再審見直し法案、法務省が本日再修正案を提出 ─ 与党保守系が強く反発</h5>
+      <p class="hl-body">超党派議連案が高市解散で廃案後、法務省が5/7に再修正案を提出。LDP保守系議員は「法務省のために自民は存在しない」と不満を示し、政府主導の法案作りに反旗。</p>
+      <span class="hl-source">日本経済新聞（2026年4月27日付・5月7日関連）</span>
     </div>
     <div class="hl-item">
       <span class="hl-cat">社会</span>
-      <h5 class="hl-title">安曇野市でツキノワグマ捕獲・駆除 ― 民家に出没、麻酔銃で対処</h5>
-      <p class="hl-body">5月3日、長野県安曇野市穂高有明の民家付近に体長約1mのツキノワグマが出没。麻酔銃で捕獲後、駆除された。春の行動域拡大期にクマの人里への接近が増加している。</p>
-      <span class="hl-source">クママップ / NHK長野（2026年5月）</span>
+      <h5 class="hl-title">GW中の長野山岳遭難、2人死亡・2人重傷 ─ 長野県警に救助要請が相次ぐ</h5>
+      <p class="hl-body">大型連休5日間で長野県内の山岳では遭難が多発。5/6までに2人死亡・2人重傷。残雪が多い北アルプス周辺で装備不足の入山者が急増したことが背景にある。</p>
+      <span class="hl-source">NHK長野 / 長野県警（2026年5月6日）</span>
+    </div>
+    <div class="hl-item">
+      <span class="hl-cat">エンタメ</span>
+      <h5 class="hl-title">Snow Man、男性アーティスト史上初・通算10作目で初週80万枚超を記録</h5>
+      <p class="hl-body">スマイルアップ所属のSnow Manが新シングルで通算10作目の初週80万枚超えを達成。男性アーティスト史上初の偉業で、デジタル×物理の二刀流戦略が奏功した。</p>
+      <span class="hl-source">オリコン / 各スポーツ紙（2026年5月）</span>
+    </div>
+    <div class="hl-item">
+      <span class="hl-cat">外交</span>
+      <h5 class="hl-title">小泉防衛相マニラでフィリピン国防相と会談、護衛艦輸出の実務者協議枠組みを合意</h5>
+      <p class="hl-body">小泉進次郎防衛相はマニラでテオドロ・フィリピン国防相と会談し、海自保有の中古護衛艦輸出に向けた実務者協議枠組みの構築で一致した。防衛装備移転の東南アジア拡大が加速。</p>
+      <span class="hl-source">NHKニュース / 防衛省（2026年5月5日）</span>
     </div>
   </div>
 </section>
 
 <!-- ───── 人物クローズアップ ───── -->
-<section class="person-section page-full-width">
+<section class="person-section">
   <div class="person-label">PERSON OF THE DAY ― 人物クローズアップ</div>
-  <div class="person-name">小泉 進次郎</div>
-  <div class="person-role">防衛大臣（自由民主党、神奈川11区）</div>
-  <div class="person-quote">「護衛艦の早期供与を視野に入れている。防衛装備移転の枠組みを使い、フィリピンの海上防衛力強化を迅速に支援する」</div>
-  <p class="person-body">環境大臣として脚光を浴びた後、防衛大臣に転身した小泉進次郎氏が歴史的な役回りを担うことになった。4月の防衛装備移転三原則改定で殺傷兵器の輸出が解禁された直後、フィリピンへの護衛艦輸出という初弾を主導。南シナ海での中国との摩擦に苦しむ同盟国を実質的な兵器提供で支援する、戦後日本が踏み越えたことのない一線を越える決断だ。国内外から注目される政策転換の「顔」として、外交・安保の第一線に立つ。</p>
+  <div class="person-name">大谷 翔平</div>
+  <div class="person-role">ロサンゼルス・ドジャース 投手兼指名打者（MLB 2026シーズン）</div>
+  <div class="person-quote">「自分のピッチングに集中するだけ。7回まで投げ切れたことは一つの手応えだ」</div>
+  <p class="person-body">5月6日（現地時間）のドジャース対アストロズ戦で、大谷翔平は今季初めて7イニングを投げた。4安打・2本塁打・2失点・8奪三振という内容は防御率0.97を裏付ける高水準だが、チームは1-2で敗北し今季2敗目を喫した。「援護なし登板」が続くドジャース打線の事情が課題で、大谷の投球を台無しにするチーム状況が続いている。2026年シーズンは打率.317・5本塁打を記録中で「二刀流の完成形」という評価は揺るぎないが、「質の高い仕事が常に即座に報われるわけではない」という現実を体現している。5/7の同カードでは打者としての出場が予定されており、今度こそ打線として反撃できるか注目される。</p>
   <div class="koike-take">
     <span class="koike-take-label">小池目線</span>
-    「解禁後の第一手を即座に動かす」スピード感は、組織リーダーとして参考になる。変化の局面で「検討」ではなく「実行」を最優先にする姿勢を自分の事業にも取り込みたい。
+    「環境（援護）がなくても自分の仕事を最高水準でやり続ける」姿勢は事業経営に直結するメッセージ。PHC・はなひらくの現場スタッフへの声かけに使えるフレームワーク。
   </div>
 </section>
 
@@ -316,41 +314,41 @@ body {
   </div>
 
   <article class="article">
-    <h4 class="article-headline">再審見直し法案、法務省が5/7に再修正案 ― 与党内対立が露わに</h4>
-    <p class="article-lead">超党派議連の議員立法は高市解散で廃案。「不誠実だ」の怒号が飛ぶ中、法務省が再修正を迫られた。</p>
+    <h4 class="article-headline">再審見直し法案、法務省が5/7再修正案 ─ 与党保守系と「たな晒し」論争</h4>
+    <p class="article-lead">高市解散で廃案→政府主導で再提出。超党派の意図が形骸化すると保守系議員が猛反発。</p>
     <div class="article-body">
-      <p>有罪が確定した裁判をやり直す再審制度の見直し法案が紛糾している。超党派議員連盟が推進した議員立法は1月の高市解散で廃案となり、政府提出の代替法案に対して自民党議員から「不誠実だ」との怒号が飛び交った。4月の法務部会合同会議での紛糾を受け、法務省は5月7日に再修正案を提示。再審の証拠開示ルールや検察の不服申し立て制限が争点で、冤罪被害者支援団体は「実効性ある改革を」と訴え続けている。</p>
+      <p>超党派議連が提出していた再審制度見直し法案は高市首相の1月解散で廃案となった。5月7日、法務省は政府主導の再修正案を提出したが、LDP保守系議員は「問題の本質から遠ざかっている」「法務省のために自民は存在しない、国民のために存在する」と激しく反発した。再審制度はえん罪救済に直結する司法の根幹だが、政権運営上の優先順位と議員立法のせめぎ合いが続く。本日の国会審議が焦点となる。</p>
     </div>
-    <p class="article-source">出典: 日本経済新聞「再審見直し法案、高市解散で崩れたシナリオ」<br><a href="https://www.nikkei.com/article/DGXZQOUD2772Q0X20C26A4000000/">https://www.nikkei.com/article/DGXZQOUD2772Q0X20C26A4000000/</a></p>
+    <p class="article-source">出典: 日本経済新聞「再審見直し法案、高市解散で崩れたシナリオ 7日に法務省が再修正案」<br><a href="https://www.nikkei.com/article/DGXZQOUD2772Q0X20C26A4000000/">https://www.nikkei.com/article/DGXZQOUD2772Q0X20C26A4000000/</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      司法制度改革の遅れは「制度への信頼」に直結する。事業運営でも「ルールを守る側が損をしない仕組み」を内部で徹底することが信頼構築の基本だと再確認。
+      えん罪問題は社会的弱者保護の観点で障害福祉と接点がある。法案の行方を注視しつつ、はなひらくの支援記録の精度向上や個人の権利擁護の重要性を改めて確認したい。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">米4月ADP雇用+10.9万人 ― 予想下振れでドル円156円台に急落</h4>
-    <p class="article-lead">雇用鈍化が鮮明。5/9発表の公式雇用統計に向け、利下げ期待と円高トレンドが同時に再燃。</p>
+    <h4 class="article-headline">小泉防衛相、フィリピンと護衛艦輸出の実務者協議枠組みを新設</h4>
+    <p class="article-lead">中古護衛艦の輸出協議スタート。防衛装備移転の東南アジア拡大が本格化。</p>
     <div class="article-body">
-      <p>5月6日（NY時間）に発表された米4月ADP全米雇用報告は+10.9万人と市場予想（+14万人台）を大幅に下回った。雇用鈍化のシグナルを受け、FRB（連邦準備理事会）の年内利下げ観測が再燃。ドル売りが加速し、ドル円は157円台後半から156円50銭まで急落した。5月9日（金）発表の4月公式雇用統計がFRBの判断を決定づける重要指標となる。日銀の利上げ路線と米利下げ期待が重なれば、円高が一段と進む可能性がある。</p>
+      <p>小泉進次郎防衛相は訪問先のマニラでテオドロ・フィリピン国防相と会談し、海上自衛隊保有の中古護衛艦の輸出を巡る実務者協議の枠組みをつくることで合意した。日米防衛協力と並んで東南アジアへの防衛装備移転が加速しており、フィリピンは中国との南シナ海問題を抱える重要なパートナーと位置づけられている。防衛産業の需要増加による国内産業への波及効果も期待される。</p>
     </div>
-    <p class="article-source">出典: 財経新聞「5月6日のNY為替概況」<br><a href="https://www.zaikei.co.jp/html_cache/article/20260507/852418.html">https://www.zaikei.co.jp/html_cache/article/20260507/852418.html</a></p>
+    <p class="article-source">出典: NHKニュース「小泉防衛相 マニラでフィリピン国防相と会談」<br><a href="https://news.web.nhk/newsweb/genre/politics">https://news.web.nhk/newsweb/genre/politics</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      円高進行は輸入コスト低下につながる一方、輸出関連株保有のFP顧客への影響説明が急務。156円台が定着するシナリオの試算を今週中に用意したい。
+      防衛関連銘柄は高市政権下でテーマ株化が続く。FP顧客の保有株に防衛・重工業関連がある場合は政策継続リスクと成長期待のバランスを説明したい。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">日銀4月会合議事要旨を本日公表 ― 「利上げ見送り」の温度感を確認</h4>
-    <p class="article-lead">4月28日会合は利上げ見送り（政策委員3人反対）。議事要旨が6月会合へのシグナルとなる。</p>
+    <h4 class="article-headline">高市首相、ベトナム・オーストラリア歴訪を終えて帰国 ─ 5/8の決算ラッシュ前に外交完了</h4>
+    <p class="article-lead">GW中の首脳外交を締めくくり。サプライチェーン・重要鉱物・安保の枠組み強化が目的。</p>
     <div class="article-body">
-      <p>日本銀行は5月7日、4月28日の金融政策決定会合の議事要旨を公表した。4月会合では政策委員3人が利上げ見送りに反対し、利上げ継続への強い意欲を示した。6月会合での利上げ確率は市場で高く織り込まれており、今回の議事要旨での各委員の発言トーンが短期の円相場・債券市場の方向感を決める。米ADP雇用下振れによる円高進行と重なり、「日米金利差縮小→円高」の流れが加速するか否かが最大の焦点だ。</p>
+      <p>高市早苗首相は5月5日夜、ベトナムとオーストラリアへの訪問を終えて政府専用機で羽田空港に帰国した。ベトナムではサプライチェーン多様化に向けた経済協力、オーストラリアでは安全保障と重要鉱物の輸出入協定が主な議題。連休明けからは国内経済の焦点が8日の主要決算ラッシュに移る。トヨタ・任天堂・LINEヤフーの発表が市場を動かす一週間が本格的に始まる。</p>
     </div>
-    <p class="article-source">出典: 日本銀行「金融政策決定会合議事要旨」/ 日本経済新聞<br><a href="https://www.boj.or.jp/mopo/mpmsche_minu/index.htm">https://www.boj.or.jp/mopo/mpmsche_minu/index.htm</a></p>
+    <p class="article-source">出典: 各紙政治面（2026年5月5〜6日）<br><a href="https://www.nikkei.com/politics/politics/">https://www.nikkei.com/politics/politics/</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      「利上げ見送り反対3人」という温度感は想定より強め。変動金利顧客の固定シフト検討タイミングは思ったより早まる可能性が高い。今週の顧客接触を優先したい。
+      5/8のトヨタ・任天堂決算は関税影響や為替感応度の確認機会。保有顧客銘柄を事前確認し、決算後の問い合わせに即対応できる準備を今日中に整えたい。
     </div>
   </article>
 </section>
@@ -363,41 +361,41 @@ body {
   </div>
 
   <article class="article">
-    <h4 class="article-headline">ロシア外務省、5/9モスクワへの攻撃可能性警告 ― 各国外交官に避難確保を通知</h4>
-    <p class="article-lead">戦勝記念日（5/9）へのウクライナ攻撃示唆でロシアが緊張を演出。外交官退避通知という異例の対応。</p>
+    <h4 class="article-headline">ロシア外務省、キエフ駐在外交官の避難を各国に要請 ─ 戦勝記念日前夜の緊張</h4>
+    <p class="article-lead">ゼレンスキーの「モスクワ攻撃示唆」にロシアが対抗。5/9前後に最大緊張局面か。</p>
     <div class="article-body">
-      <p>ロシア外務省のザハロワ報道官は5月7日、ゼレンスキー大統領が5月9日の「対独戦勝記念日」にモスクワへの攻撃を脅かしたとして、各国在外公館に通知を送付し、ウクライナからの外交官避難確保を要請した。ロシア国防省も対抗警告を発出している。5/9は旧ソ連・ロシアが最大の国威発揚を行う重要日で、この日に向けた双方の神経戦は激化する一方だ。市場では地政学リスクの再燃により安全資産の金買いが続いている。</p>
+      <p>ロシア外務省のザハロワ報道官は、ウクライナのゼレンスキー大統領が5月9日の戦勝記念日にモスクワへの攻撃を示唆する発言をしたことを受け、各国外交官にキエフからの避難確保を呼びかける通知を送付したと発表した。ロシア国防省は「ゼレンスキーの攻撃的意向への警告として対抗措置」と位置づけている。5/9の戦勝記念日（ロシア最大の軍事パレード）に向け、ウクライナ戦線は外交・軍事両面で予断を許さない局面に入った。</p>
     </div>
-    <p class="article-source">出典: Sputnik日本「ロシア外務省、キーウからの外交官避難の確保を各国に呼びかける」（2026年5月7日）<br><a href="https://sputniknews.jp/20260507/22598774.html">https://sputniknews.jp/20260507/22598774.html</a></p>
+    <p class="article-source">出典: Sputnik日本語版「ロシア外務省、キエフからの外交官避難の確保を各国に呼びかける」（2026年5月7日）<br><a href="https://sputniknews.jp/20260507/22598774.html">https://sputniknews.jp/20260507/22598774.html</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      5/9前後の地政学リスクは金・エネルギー価格の突発ボラ要因。FP顧客にはポジション過剰を避けた分散維持の確認を。
+      5/9前後の地政学リスク急騰に備え、ドル円・原油・金の動向を5/8夕方から注視したい。FP顧客の資産保全相談が急増するタイミングになりうる。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">米中首脳会談、5/14〜15に設定 ― 関税・台湾・AIを巡る「現状確認の場」</h4>
-    <p class="article-lead">トランプ大統領と習近平主席が約1週間後に直接会談。関税合意の進捗と台湾情勢が最大の議題。</p>
+    <h4 class="article-headline">米・イラン合意観測が原油急落を誘発 ─ エネルギー市場の地政学リスク後退</h4>
+    <p class="article-lead">核合意再締結への協議進展でWTI一時$60台前半へ急落。世界インフレ緩和の追い風に。</p>
     <div class="article-body">
-      <p>米中首脳会談が5月14〜15日に予定されている。昨年10月の首脳会談後に一定の歩み寄りが続いていたが、4月のトランプ訪中以降も「対話路線と強硬路線の両建て」という基本構造は変わっていない。今回の会談ではAI・半導体管理・台湾問題に加え、対中関税の段階的解除シナリオが議題に上るとみられる。結果次第で日本の輸出企業・半導体関連株・為替に直接影響が出る。</p>
+      <p>米国とイランの核合意再締結に向けた協議が進展しているとの観測が浮上し、WTI原油先物は5/6のNY時間に60.80ドル前後まで急落した（前日比約-2ドル）。この動きが米国の長期金利を4.10%台へ押し下げ、ドル売り・円買いを誘発。一方で株式市場には「インフレ緩和→利下げ期待」として好材料となり、S&amp;P500は高値圏を維持した。実際に合意が成立すればイラン産原油の市場復帰が供給を押し上げ、エネルギー価格の中長期的な下押し圧力となる。</p>
+    </div>
+    <p class="article-source">出典: 財経新聞「5月6日のNY為替概況」<br><a href="https://www.zaikei.co.jp/html_cache/article/20260507/852418.html">https://www.zaikei.co.jp/html_cache/article/20260507/852418.html</a></p>
+    <div class="koike-take">
+      <span class="koike-take-label">小池目線</span>
+      エネルギーコスト低下ははなひらく・PHCの光熱費削減に直結する可能性がある。施設の電力契約見直しのタイミングとして確認しておきたい。
+    </div>
+  </article>
+
+  <article class="article">
+    <h4 class="article-headline">米中首脳会談が5/14〜15に予定 ─ 通商交渉の進展と関税緩和が最大焦点</h4>
+    <p class="article-lead">5月中旬の首脳会談で追加関税率の修正協議が本格化。日本企業のサプライチェーン戦略に直接影響。</p>
+    <div class="article-body">
+      <p>トランプ米大統領と習近平・中国国家主席の首脳会談が5月14〜15日に予定されており、昨年10月の会談で合意した追加関税率の修正や輸出管理措置の緩和について本格的な協議が進む見通しだ。日本の製造業・自動車メーカーは中国・米国の双方に生産拠点を持つケースが多く、関税動向の確定が設備投資計画の前提となる。今週末が日系企業にとって一つの分岐点となる可能性が高い。</p>
     </div>
     <p class="article-source">出典: ジェトロ「世界の政治・経済日程（2026年）」<br><a href="https://www.jetro.go.jp/biznews/2025/12/22999c0e54b2700d.html">https://www.jetro.go.jp/biznews/2025/12/22999c0e54b2700d.html</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      米中首脳会談の結果は翌週の株式市場・為替に直撃する。5/14以降の顧客相談でのシナリオ説明資料を事前に整理しておきたい。
-    </div>
-  </article>
-
-  <article class="article">
-    <h4 class="article-headline">EU、地下鉄入札で中国系企業を事実上排除 ― 外国補助金規制の実践事例として注目</h4>
-    <p class="article-lead">EU外国補助金規制（FSR）の運用が本格化。中国製インフラ機器の欧州市場からの締め出しが加速。</p>
-    <div class="article-body">
-      <p>欧州連合（EU）が2023年に施行した「外国補助金規制（FSR）」に基づき、地下鉄・鉄道車両の調達入札で中国系企業を事実上排除する事例が各国で相次いでいる。国家補助を受けた中国企業が不当廉売で欧州市場を席巻しているとの問題意識から、EUは審査・制裁の権限を強化。自由貿易と安全保障の間でEU産業政策が大きく転換しており、日本の製造業・輸出企業にとっては代替需要の商機でもある。</p>
-    </div>
-    <p class="article-source">出典: ジェトロ「世界経済に不確実性の影」特集<br><a href="https://www.jetro.go.jp/biz/areareports/special/2025/0901/2e4b6345feff20cb.html">https://www.jetro.go.jp/biz/areareports/special/2025/0901/2e4b6345feff20cb.html</a></p>
-    <div class="koike-take">
-      <span class="koike-take-label">小池目線</span>
-      中国排除で日本企業に欧州インフラ案件の商機が広がる流れ。長期投資テーマとしてインフラ関連・鉄道系の銘柄動向をFP視点で追いたい。
+      米中会談の結果次第でトヨタ・ホンダ株の動向が大きく変わる。5/8決算翌週のリスクシナリオとして「米中摩擦再燃」と「関税緩和」の両面を顧客に説明できるよう準備したい。
     </div>
   </article>
 </section>
@@ -410,28 +408,28 @@ body {
   </div>
 
   <article class="article">
-    <h4 class="article-headline">不動産×AI のToggleHD、約33.4億円調達 ― 都市開発DXの本命格が成長加速</h4>
-    <p class="article-lead">建築・不動産開発の計画立案をAIで自動化。国内不動産テックで最大規模の調達に。</p>
+    <h4 class="article-headline">トグルホールディングス、33.4億円調達 ─ AI不動産から「全産業ワークフロー自動化」へ拡大</h4>
+    <p class="article-lead">グローバルVC・国内未来創生ファンドが出資。不動産AIから汎用エージェント化へ宣言。</p>
     <div class="article-body">
-      <p>不動産スタートアップのトグルホールディングス（東京・港区）が約33.4億円の資金調達を発表した。AIを活用して建築物の容積率・法規制チェック・収益シミュレーションを自動化するプラットフォームを展開し、デベロッパー・ゼネコン・金融機関への導入が進む。土地取得から収益試算まで数日かかっていた作業を数分に短縮するインパクトで、都市開発DXの本命として注目を集めている。</p>
+      <p>不動産×AIを基盤とするトグルホールディングスは4月30日、シンガポール拠点のAxiom Asia Private Capitalと未来創生3号ファンド（スパークス・アセット）を引受先とするC種優先株式の発行等で約33.4億円を調達した（セカンダリー含む総取引規模は約40億円）。調達資金は「toggle エージェント」の機能拡充と営業人材採用に充てる。同社は「全産業のワークフローを人手なしにエンドツーエンドで自動化するAI推進事業」を標榜しており、不動産を起点に各業種への横展開を急ぐ。</p>
     </div>
-    <p class="article-source">出典: 日本経済新聞「4月27日〜5月1日スタートアップ資金調達まとめ読み」<br><a href="https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/">https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/</a></p>
+    <p class="article-source">出典: トグルホールディングス プレスリリース（PR TIMES 2026年4月30日）<br><a href="https://prtimes.jp/main/html/rd/p/000000094.000097866.html">https://prtimes.jp/main/html/rd/p/000000094.000097866.html</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      不動産×AIは「AI政府重点17領域」の周辺で急成長している。FP顧客の不動産保有・投資判断サポートにもAIツールの活用余地が広がっている。
+      「不動産の属人知をAIで超克する」という設計思想はPHC薬局の処方・調剤知識のAI化と本質的に同じ。トグルの事業モデルはPharmaEightのDX化の参考事例として研究価値がある。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">核融合のHelical Fusion、約27億円調達 ― 2030年代商用化へ資金確保</h4>
-    <p class="article-lead">レーザー核融合技術の実用化を目指す。エネルギー安全保障テーマで国内外の投資家から大型調達。</p>
+    <h4 class="article-headline">PathAhead、1.36億円調達 ─ ホンダ発スタートアップが砂漠の砂でアフリカ建設業を革新</h4>
+    <p class="article-lead">砂漠の砂から建設資材を製造する技術でアフリカ展開。ホンダのオープンイノベーション発のユニーク案件。</p>
     <div class="article-body">
-      <p>核融合発電技術を開発するヘリカルフュージョン（東京・中央区）が約27億円の資金調達を完了した。レーザー式の核融合反応を用いた新方式で、2030年代の商用発電を視野に入れる。エネルギー安全保障への関心が高まる中、政府の支援政策対象にも位置づけられており、国内外のVCと事業会社が共同出資した。核融合は「究極のクリーンエネルギー」として長期投資テーマに躍り出ている。</p>
+      <p>ホンダを出自に持つスタートアップPathAhead（東京・港区）が第三者割当増資で約1億3600万円を調達した。同社はアフリカの砂漠に豊富に存在する砂から建設材料を製造する独自技術を開発しており、現地での建設コスト削減と雇用創出を同時に実現する「社会課題解決型スタートアップ」として注目されている。アフリカのインフラ需要は今後20年で爆発的に増加すると見込まれ、調達資金は技術実証とパイロット事業の拡大に充てる。</p>
     </div>
-    <p class="article-source">出典: 日本経済新聞「4月27日〜5月1日スタートアップ資金調達まとめ読み」<br><a href="https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/">https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/</a></p>
+    <p class="article-source">出典: 日本経済新聞「4月27日〜5月1日 スタートアップ資金調達まとめ読み」<br><a href="https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/">https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      核融合は「2030年代商用」という長期テーマ。今から積み立てる若い顧客向けの未来エネルギー投信の説明材料として積極的に活用したい。
+      「既存資源を価値転換して成長市場に打ち込む」設計は、地方×障害福祉×ITで新価値を作るはなひらくの事業構造と本質が似ている。スモールベット×ニッチ最強の好例。
     </div>
   </article>
 </section>
@@ -444,41 +442,28 @@ body {
   </div>
 
   <article class="article">
-    <h4 class="article-headline">「門前薬局等立地依存減算」15点が4月に新設 ― 立地頼みの経営モデルに終止符</h4>
-    <p class="article-lead">2026年改定の新設減算。医療機関前への依存度が高い薬局は基本料から差し引かれ、実質的な収益圧迫に。</p>
+    <h4 class="article-headline">2026年調剤報酬改定、6月1日施行まで1か月 ─ ベースアップ評価料の詳細が確定</h4>
+    <p class="article-lead">5/1に対象者・賃上げ幅・方法が発表。現場薬剤師への周知と算定体制整備が急務。</p>
     <div class="article-body">
-      <p>2026年度調剤報酬改定（4月施行）で「門前薬局等立地依存減算」（−15点）が新設された。特定の医療機関からの処方箋に収益が集中している薬局に対し、基本料から自動的に差し引かれる仕組みだ。処方箋集中率が高い都市部の大型門前薬局が主な対象となる。立地に依存した経営から脱却し、かかりつけ・地域支援・在宅への積極的転換を迫る改定の意図が最も露骨に現れた点数といえる。</p>
+      <p>2026年度調剤報酬改定の施行（6月1日）まで1か月を切った。5月1日には「調剤ベースアップ評価料」の対象者・賃上げ幅・賃上げ方法の詳細が発表され、各薬局は算定要件を満たすための体制整備を急いでいる。今改定の最大テーマは「価値に基づく評価」「アウトカム評価」へのシフトで、服薬支援の実績が数字で評価される仕組みへの転換が進む。算定できる加算を漏らさず取るために、薬剤師一人ひとりの業務記録精度の向上が求められる。</p>
     </div>
-    <p class="article-source">出典: m3.com「わかりやすい！2026年調剤報酬改定まとめ」<br><a href="https://pharmacist.m3.com/column/chouzaihoushu/6981">https://pharmacist.m3.com/column/chouzaihoushu/6981</a></p>
+    <p class="article-source">出典: 薬＋読「薬剤師 最新ニュース一覧」/ m3.com「2026年調剤報酬改定まとめ」<br><a href="https://yakuyomi.jp/industry_news/">https://yakuyomi.jp/industry_news/</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      PHCが「立地依存減算」対象にならないか確認が急務。在宅・かかりつけ加算でのカバーがどこまで可能か試算し、5月の経営会議の資料に加えたい。
+      PHCは6/1施行に合わせてシステム・書類対応を今週中に確認したい。ベースアップ評価料の算定漏れは即収益マイナスに直結する。運営会議で最終チェックを。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">服用薬剤調整支援料2が新設 ― 多剤服用患者の「薬の整理」を高く評価</h4>
-    <p class="article-lead">6種類以上の内服薬を処方されている患者の重複・不要な薬を薬剤師が整理すると新加算が発生。</p>
+    <h4 class="article-headline">政令市・東京23区で薬局の新規開局に規制強化 ─ 集中率85%超で基本料2が適用</h4>
+    <p class="article-lead">門前薬局への報酬ペナルティが都市部で厳格化。地域密着・対人型薬局の優位性がさらに拡大。</p>
     <div class="article-body">
-      <p>2026年改定で「服用薬剤調整支援料2」が新設された。6種類以上の内服薬が処方されている患者に対し、薬剤師が医師と連携して不要・重複薬を整理し、実際に処方数を減らした場合に算定できる。高齢化に伴うポリファーマシー（多剤服用）問題の解決が国策として位置づけられており、この加算は「薬の整理能力」を持つ薬剤師・薬局への報酬シフトを意味する。在宅・かかりつけ薬局で特に活用しやすい設計になっている。</p>
+      <p>2026年6月の調剤報酬改定では、政令指定都市や東京23区において特定医療機関への処方箋集中率が85%を超える新規開局薬局に対し、調剤基本料2（基本料1より低い点数）が適用される規制が設けられる。門前薬局モデルへの新規参入を実質的に制限し、既存の面分業（地域全体の調剤を担う）薬局への誘導を強化する。PHCのような地域密着・マルチ機能型薬局には相対的な有利性が生まれる局面だ。</p>
     </div>
-    <p class="article-source">出典: オクタファームブログ「2026年版 令和8年度診療報酬改定で薬局・薬剤師に関係する変更点まとめ」<br><a href="https://oktapharm.blog/r8-shinryohoshu-chouzai-matome-2026/">https://oktapharm.blog/r8-shinryohoshu-chouzai-matome-2026/</a></p>
+    <p class="article-source">出典: 薬剤師キャリアガイド「令和8年度診療報酬改定 薬局・薬剤師に関係する変更点まとめ」<br><a href="https://oktapharm.blog/r8-shinryohoshu-chouzai-matome-2026/">https://oktapharm.blog/r8-shinryohoshu-chouzai-matome-2026/</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      PHCの在宅患者・高齢者への多剤整理は「服用薬剤調整支援料2」の算定チャンスそのもの。薬剤師への研修と算定基準の周知を急ぎたい。
-    </div>
-  </article>
-
-  <article class="article">
-    <h4 class="article-headline">地域支援体制加算が大幅拡充 ― かかりつけ機能の証明が最大の収益源に</h4>
-    <p class="article-lead">24時間対応・在宅・多職種連携・健康サポートの実績を「面」でみる評価体系へ。算定数が収益の上下を決める。</p>
-    <div class="article-body">
-      <p>2026年改定で「地域支援体制加算」が大幅に拡充・再編された。24時間対応体制・在宅薬剤管理・多職種連携実績・健康サポート活動など、地域貢献度を面で評価するスコア制が強化されている。算定できる加算数と点数の上限が引き上げられており、「立地に頼らない地域密着型経営」を実践している薬局にとっては大きな増収チャンスとなる。大型特集「2026年改定で薬局と薬剤師はこうなる」（日経メディカル5月号）でも最重要トピックとして取り上げられた。</p>
-    </div>
-    <p class="article-source">出典: 日経メディカル「特集：イラスト解説 2026改定で薬局と薬剤師はこうなる」（2026年5月号）<br><a href="https://medical.nikkeibp.co.jp/leaf/all/di/column/premium/202605/593067.html">https://medical.nikkeibp.co.jp/leaf/all/di/column/premium/202605/593067.html</a></p>
-    <div class="koike-take">
-      <span class="koike-take-label">小池目線</span>
-      PHCの「地域支援体制加算」の算定要件充足状況を今月中に棚卸ししたい。算定漏れが収益機会の損失に直結する。
+      PHCが立地する地域で門前薬局の新規参入が難しくなる→競合増加リスクが低下。「地域の信頼を深める」投資を今後2年間で加速するチャンスと捉えたい。
     </div>
   </article>
 </section>
@@ -491,28 +476,28 @@ body {
   </div>
 
   <article class="article">
-    <h4 class="article-headline">6月から就労B型など新規開設事業所の基本報酬を引き下げ ― 「前例なき臨時応急措置」が始動</h4>
-    <p class="article-lead">就労継続支援B型・GH・児発・放デイ。新規開設のみ対象の異例の「二重基準」が6月から施行。</p>
+    <h4 class="article-headline">6月施行：新規就労継続支援B型の基本報酬が約1.6%引き下げ ─ 既存事業所は対象外</h4>
+    <p class="article-lead">新規開設への「参入抑制」が制度化。費用急増に対する臨時応急措置として6月1日施行。</p>
     <div class="article-body">
-      <p>厚生労働省は就労継続支援B型・グループホーム（日中サービス支援型・介護サービス包括型）・児童発達支援・放課後等デイサービスの4サービスについて、2026年度中に新規開設する事業所の基本報酬を引き下げる。既存事業所への影響はないが、「新規は減算」という二重基準は前例がなく、業界から強い異論が出ている。費用急増と制度持続性の確保を両立する「苦肉の策」として位置づけられているが、地方での新設意欲を削ぐリスクも指摘されている。</p>
+      <p>厚生労働省が進める2026年6月の障害福祉報酬改定（期中改定）で、2026年6月1日以降に新たに指定を受ける就労継続支援B型事業所の基本報酬が「所定単位数の984/1000」、つまり約1.6%削減される。就労継続支援B型の総費用額が直近1年で約20%・1,000億円超増加したことへの対応だ。既存事業所は対象外で、離島・中山間地域・サービス不足地域での自治体公募による開設も例外扱いとなる。</p>
     </div>
-    <p class="article-source">出典: パパゲーノAI福祉研究所「前例のない障害福祉報酬『新規引き下げ』が始まる理由」<br><a href="https://ai-fukushi.net/reduction/">https://ai-fukushi.net/reduction/</a></p>
+    <p class="article-source">出典: あいまり事務所「令和8年度障害福祉報酬改定の重要ポイントを解説」<br><a href="https://aimari-office.com/contents/2026-houshu-kaitei/">https://aimari-office.com/contents/2026-houshu-kaitei/</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      はなひらくは既存事業所なので直接影響はないが、新規開設計画がある場合は6月以降の報酬単価で試算を組み直す必要がある。競合の新規参入抑制につながる側面も見逃せない。
+      はなひらく（寿・塩尻）は既存事業所なので直接影響はなし。ただし同じ地域への新規参入者が減り競合が抑制される局面。今後の利用者獲得はより安定した形で進む可能性が高い。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">処遇改善加算の拡充で職員給与アップへ ― 4月から障害福祉も適用対象が拡大</h4>
-    <p class="article-lead">介護報酬と連動して障害福祉でも処遇改善が強化。算定要件を満たせば職員給与の底上げが可能に。</p>
+    <h4 class="article-headline">障害福祉報酬「4サービス新規引き下げ」の構造 ─ 費用急増の何が問題だったのか</h4>
+    <p class="article-lead">B型・GH・児童発達支援・放デイが対象。「制度設計の甘さ」が急増を招いた背景を整理。</p>
     <div class="article-body">
-      <p>2026年4月から障害福祉サービスでも処遇改善加算が拡充・整理された。従来分散していた加算区分が統合され、算定のハードルが下がった事業所では実質的な職員処遇改善が可能になる。人材不足が深刻な福祉業界において職員定着率の改善は経営の最重要課題であり、加算を最大限に活用することが採用・定着コストの低減に直結する。申請要件（賃金改善計画・実績報告）の整備が算定の前提となる。</p>
+      <p>今回の新規引き下げ対象となった4サービス（就労継続支援B型・共同生活援助・児童発達支援・放課後等デイサービス）に共通するのは「総費用額の急増・収支差率の高さ・事業所数の急拡大」という3条件だ。就労継続支援B型だけで1年に1,000億円超の費用増が続いた背景には、障害者総合支援法の制度設計上、利用者数増加が自動的に費用増に直結する仕組みがあった。今回の措置はその「出口弁」として新規事業所への報酬を絞ることで財政均衡を図る前例のない手法だ。</p>
     </div>
-    <p class="article-source">出典: けあタスケル「令和8年4月・6月 障害福祉報酬改定について」<br><a href="https://caretasukeru.com/disability-support-law/compensation/10041/">https://caretasukeru.com/disability-support-law/compensation/10041/</a></p>
+    <p class="article-source">出典: 福祉新聞「障害報酬、B型など4サービス減 新規事業所限定」<br><a href="https://fukushishimbun.com/series06/43812">https://fukushishimbun.com/series06/43812</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      はなひらく（寿・塩尻）の処遇改善加算の申請状況と実績報告の準備状況を確認したい。算定漏れは職員への還元機会の損失だ。
+      制度の「持続可能性」が問われた今回の改定は長期的には業界浄化につながる。はなひらくは質の高い支援実績を積み上げ、「加算を取り切れる既存事業所」として確固たる地位を固める好機だ。
     </div>
   </article>
 </section>
@@ -525,195 +510,198 @@ body {
   </div>
 
   <article class="article">
-    <h4 class="article-headline">Snow Man「BANG!!」、初週90.7万枚で男性史上初の10作連続80万超</h4>
-    <p class="article-lead">映画・ドラマ・映画の3タイアップ「トリプルA面」が相乗効果を発揮。歴史を塗り替えた。</p>
+    <h4 class="article-headline">Snow Man、男性アーティスト史上初・通算10作目の初週売上80万枚超を達成</h4>
+    <p class="article-lead">国内男性グループの新たな「記録の壁」を突破。物理媒体とデジタルの二刀流戦略が奏功。</p>
     <div class="article-body">
-      <p>Snow Manの最新トリプルA面シングル「BANG!! / SAVE YOUR HEART / オドロウゼ!」が初週907,000枚を記録し、オリコン週間シングル1位を獲得した。男性アーティスト史上初となる10作連続初週80万枚超という前人未踏の記録だ。「BANG!!」は映画「SAKAMOTO DAYS」、「SAVE YOUR HEART」はドラマ「ターミネーターと恋に落ちて」、「オドロウゼ!」は映画「The Specials」の主題歌で、複数メディアとの同時連動が記録を押し上げた。</p>
+      <p>スマイルアップ所属のSnow Manが新シングルで通算10作目の初週売上80万枚超えを達成し、男性アーティストとして史上初の記録を打ち立てた。国内男性グループの中でも突出した実績で、デジタル配信と物理媒体の二刀流戦略が奏功している。強固なファンダム（ファンコミュニティ）の組織力と圧倒的な動員力で、4月下旬から5月にかけての音楽チャートを独占した。</p>
     </div>
-    <p class="article-source">出典: オリコン「Snow Man、2026年度最高初週売上でシングル1位」<br><a href="https://www.oricon.co.jp/news/2452816/full/">https://www.oricon.co.jp/news/2452816/full/</a></p>
+    <p class="article-source">出典: オリコン / 各スポーツ紙（2026年5月）<br><a href="https://www.oricon.co.jp/entertainment/">https://www.oricon.co.jp/entertainment/</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      「複数の媒体・文脈でコンテンツを展開する」戦略は事業広報にも応用できる。PharmaEightのセミナー・SNS・音声の同時展開と同じ設計思想だ。
+      Snow Manの記録はコミュニティマーケティング設計の勝利。「ファンが動員する」仕組みはPersonal OS事業の口コミ設計に直接応用できる視点がある。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">映画ランキング1位「SAKAMOTO DAYS」 ― Snow Man主演の実写化が快走</h4>
-    <p class="article-lead">人気漫画の実写版がボックスオフィスを制覇。2位は「プラダを着た悪魔2」で洋画勢も存在感。</p>
+    <h4 class="article-headline">GW映画興収活況 ─「SAKAMOTO DAYS」「プラダを着た悪魔2」がトップ争い</h4>
+    <p class="article-lead">原作アニメ人気と洋画シリーズ続編が激突。GW動員は前年比増の模様。</p>
     <div class="article-body">
-      <p>5月6日の映画アクセスランキングで「SAKAMOTO DAYS」が1位を獲得した。スナイパーから足を洗った元最強殺し屋の日常を描く人気コミックの実写版で、Snow Manが主演を務める。2位には「プラダを着た悪魔2」が入り、洋画リターン組も健闘。2000年代ファッション映画の続編として中高年女性層の支持を集めた。日本映画市場は連休明けも活況で、GW期間の人出回復が収益を押し上げた。</p>
+      <p>2026年の大型連休（5/2〜5/5）の映画動員が集計され、「SAKAMOTO DAYS」（原作ジャンプ人気漫画・アニメ化作品）と洋画続編「プラダを着た悪魔2」が興収トップを争った。GW映画動員は前年比プラスとなった模様で、実写化・続編戦略が依然として安定した集客力を持つことを示した。5月8日以降に公開される「グランド・イリュージョン／ダイヤモンド・ミッション」にも注目が集まっている。</p>
     </div>
-    <p class="article-source">出典: シネマトゥデイ「映画ランキング」（2026年5月6日アクセス）<br><a href="https://www.cinematoday.jp/movie/rank">https://www.cinematoday.jp/movie/rank</a></p>
+    <p class="article-source">出典: シネマトゥデイ「映画ランキング」/ MOVIE WALKER PRESS（2026年5月）<br><a href="https://www.cinematoday.jp/movie/rank">https://www.cinematoday.jp/movie/rank</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      「SAKAMOTO DAYS」快走は、コンテンツIPの実写化・商業化の手本。事業の「ストーリー化」「コンテンツ資産化」の重要性を改めて意識したい。
+      チャレンジャーメンバーのリフレッシュ・チームビルディングの話題として映画情報を活用できる。面談での「最近観た映画は？」は会話の入り口になる。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">大谷翔平、2026年は6本塁打・打率.280台で安定推移</h4>
-    <p class="article-lead">二刀流復帰2年目。4/27のカブス戦で60打席ぶりの第6号。投打ともに状態を上げている。</p>
+    <h4 class="article-headline">中森明菜、デビュー44周年 ─ 通算43作目のアルバムがTOP10入りの快挙</h4>
+    <p class="article-lead">1982年デビューから44年。現役アーティストとして存在感を示し続ける孤高の歌姫。</p>
     <div class="article-body">
-      <p>ロサンゼルス・ドジャースの大谷翔平選手は2026年シーズンここまで6本塁打を記録し、打率も.280台で安定している。4月27日のカブス戦では12試合・60打席ぶりとなる第6号ホームランを放った。二刀流復帰2年目として投打の完成度を高めており、シーズン前半戦での本塁打ペース加速が期待される。今月は対カブス・対ブレーブスの重要カードが続く。</p>
+      <p>1982年のデビューから44周年を迎えた中森明菜が、通算43作目のアルバムをリリースしTOP10入りを果たした。長年にわたる活動休止や復帰劇を経てなお、新作が若い世代にも支持されるという希有な現象が続いている。SNSでの楽曲バイラルと「昭和歌謡ブーム」の再評価が重なり、10〜30代のリスナーも増加。日本の音楽シーンの世代を超えた「縦断性」を示す象徴的な出来事だ。</p>
     </div>
-    <p class="article-source">出典: ABEMA TIMES「大谷翔平 成績 2026年 全打席・投球結果一覧」<br><a href="https://times.abema.tv/articles/-/10235922">https://times.abema.tv/articles/-/10235922</a></p>
+    <p class="article-source">出典: オリコン（2026年5月）<br><a href="https://www.oricon.co.jp/entertainment/">https://www.oricon.co.jp/entertainment/</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      大谷の話題は顧客・チームとの会話の潤滑油として毎週使える。「今週の大谷」のような雑談ネタのストックが関係性を温める。
+      「44年間ブランドを守り続けた」という事実は長期ブランド戦略の手本。FP事業・Personal OSも「10年後も選ばれる」設計を今から意識したい。
     </div>
   </article>
 </section>
 
-<!-- 長野 -->
+<!-- 長野県 -->
 <section class="page">
   <div class="category-bar">
-    <span class="cat-name">長野県</span>
-    <span class="cat-en">NAGANO LOCAL</span>
+    <span class="cat-name">長野県関連</span>
+    <span class="cat-en">NAGANO</span>
   </div>
 
   <article class="article">
-    <h4 class="article-headline">GW長野山岳遭難、5連休で2人死亡・2人重傷 ― 残雪期の北アルプスで事故集中</h4>
-    <p class="article-lead">5/2〜6の5連休に遭難が集中。残雪・天候急変・低体温症のトリプルリスクが重なった。</p>
+    <h4 class="article-headline">GW中の長野県内山岳遭難、2人死亡・2人重傷 ─ 残雪期の入山急増が危険を招く</h4>
+    <p class="article-lead">5連休中に遭難が多発。装備不足と残雪過信が事故の共通要因として浮かぶ。</p>
     <div class="article-body">
-      <p>長野県内の山岳でゴールデンウィーク（5月2日〜6日）の5連休中に遭難が相次ぎ、2人が死亡、2人が重傷を負った。残雪が残る北アルプスへの登山者が集中する時期と、雪融けによる不安定な雪面・天候急変のリスクが重なった典型的な事案だ。長野県警山岳救助隊が多数出動した。登山シーズンは本格化しており、行動計画の立案と早期引き返しの判断が引き続き重要だ。</p>
+      <p>大型連休（5/2〜5/6）の期間中、長野県内の山岳では複数の遭難事故が発生し、5/6時点で少なくとも2人が死亡、2人が重傷を負ったことが明らかになった。長野県警山岳救助隊は複数回出動し、ヘリと地上隊員による救助活動を実施。残雪が多く残る北アルプス周辺では、夏装備での入山者が増える連休明けが最も危険度が高い時期とされている。低体温症・転倒による打撲が主な事故原因で、防止のための啓発が続けられている。</p>
     </div>
-    <p class="article-source">出典: NHKニュース長野 / 長野県警（2026年5月）<br><a href="https://news.web.nhk/newsweb/area/200">https://news.web.nhk/newsweb/area/200</a></p>
+    <p class="article-source">出典: NHK長野 / 長野県警（2026年5月6日）<br><a href="https://news.web.nhk/newsweb/area/200">https://news.web.nhk/newsweb/area/200</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      はなひらく利用者の屋外レクリエーション活動では「無理をしない」の周知徹底が重要。支援員向けの安全計画確認を連休明けに実施したい。
+      長野を本拠とする事業者として、山岳遭難はBCPの見直し機会。はなひらく・PHCのスタッフが連休中に山に入る場合の安否確認ルールも確認しておきたい。
     </div>
   </article>
 
   <article class="article">
-    <h4 class="article-headline">安曇野市穂高でツキノワグマ出没・捕獲 ― 春の行動域拡大で人里接近が増加</h4>
-    <p class="article-lead">5/3に民家付近で成獣を確認、麻酔銃で捕獲後に駆除。クマの人里接近は毎年恒例の春の課題に。</p>
+    <h4 class="article-headline">安曇野市穂高有明でツキノワグマ出没 ─ 民家近くで麻酔銃捕獲・その後駆除</h4>
+    <p class="article-lead">5/3に成獣1頭が民家付近に出没。4〜5時間後に麻酔銃で捕獲され、最終的に駆除。</p>
     <div class="article-body">
-      <p>5月3日、長野県安曇野市穂高有明の民家付近に体長約1mのツキノワグマが出没した。午前9時ごろに目撃され、約5時間後に麻酔銃で捕獲・駆除された。クマは春に冬眠から覚めて行動域を大きく広げる時期であり、エサ不足の年は特に人里への接近が増加する。地元農業への被害も懸念されており、長野県はクマ出没マップの更新と注意喚起を継続している。</p>
+      <p>2026年5月3日、長野県安曇野市穂高有明の民家付近で体長約1メートルの成獣のツキノワグマが目撃された。午前9時頃の目撃から約4〜5時間後の午後2時半頃、麻酔銃で捕獲され、その後駆除された。GW期間中の農山村地帯での熊出没は毎年恒例となっており、塩尻・安曇野方面での事業活動を行うはなひらくのスタッフや利用者に対しても改めて注意喚起が必要な局面だ。</p>
     </div>
-    <p class="article-source">出典: クママップ（2026年5月3日）<br><a href="https://kumamap.com/ja/sightings/40fcdb97bc97b9c8">https://kumamap.com/ja/sightings/40fcdb97bc97b9c8</a></p>
+    <p class="article-source">出典: クママップ「ツキノワグマ出没 長野県安曇野市穂高有明 (2026年5月3日)」<br><a href="https://kumamap.com/ja/sightings/40fcdb97bc97b9c8">https://kumamap.com/ja/sightings/40fcdb97bc97b9c8</a></p>
     <div class="koike-take">
       <span class="koike-take-label">小池目線</span>
-      長野の事業所（はなひらく寿・塩尻）の屋外活動で早朝・薄暮のクマ接近リスクを職員に共有しておきたい。地方ならではのリスク管理が信頼される職場環境づくりに直結する。
-    </div>
-  </article>
-
-  <article class="article">
-    <h4 class="article-headline">日展巡回展、安曇野市で4年ぶり開催 ― 中信地域アートシーンに活気</h4>
-    <p class="article-lead">日本最大規模の総合公募美術展「日展」の巡回展が安曇野市を会場に開幕。地域文化の発信拠点として注目。</p>
-    <div class="article-body">
-      <p>国内最大規模の総合美術公募展「日展」の巡回展が長野県安曇野市で4年ぶりに開幕した。日本画・洋画・彫刻・工芸・書の5部門を網羅する総合美術展で、地域在住作家の入選作品も多く展示されている。中信地域での開催は地元アーティストの発表機会となるとともに、観光・文化振興の面でも期待が大きい。GW後の落ち着きを取り戻した時期に、地域内の文化消費の活性化が見込まれる。</p>
-    </div>
-    <p class="article-source">出典: NHKニュース長野 / 信毎Web（2026年5月）<br><a href="https://news.web.nhk/newsweb/area/200">https://news.web.nhk/newsweb/area/200</a></p>
-    <div class="koike-take">
-      <span class="koike-take-label">小池目線</span>
-      地域文化イベントははなひらく利用者の外出支援・余暇活動の選択肢になる。支援員向けの地域イベント情報共有を月1回程度のルーチンにしたい。
+      はなひらく塩尻は自然環境に近い立地。送迎・農作業・校外活動時の熊対策マニュアル（鈴・スプレー・複数行動）を確認・周知するタイミングとして活用したい。
     </div>
   </article>
 </section>
 
-</div><!-- /paper-columns -->
+</div><!-- /.paper-columns -->
 
 <!-- ───── 今週のカレンダー ───── -->
-<section class="calendar-section page-full-width">
+<section class="calendar-section">
   <div class="category-bar">
     <span class="cat-name">今週のカレンダー</span>
-    <span class="cat-en">THIS WEEK'S SCHEDULE</span>
+    <span class="cat-en">WEEKLY CALENDAR</span>
   </div>
   <table class="calendar-table">
     <thead>
       <tr>
         <th class="col-date">日付</th>
-        <th class="col-event">イベント</th>
+        <th class="col-event">イベント・期日</th>
         <th class="col-take">小池目線</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="col-date">5/7（木）今日</td>
-        <td class="col-event">日銀4月会合議事要旨公表 / 法務省・再審見直し法案再修正案提示</td>
-        <td class="col-take">議事要旨の「利上げ派」の強度を確認。円高・金利方向の早期把握が今日の最優先。</td>
+        <td class="col-date">5/7（木）<br>今日</td>
+        <td class="col-event">日銀金融政策決定会合議事要旨 公表 ／ 法務省再審修正案提出</td>
+        <td class="col-take">6月利上げ確率の確認必須。顧客への対応シナリオを今日決定する。</td>
       </tr>
       <tr>
-        <td class="col-date">5/8（金）明日</td>
+        <td class="col-date">5/8（金）</td>
         <td class="col-event">トヨタ・任天堂・LINEヤフー・ユニ・チャーム 2026年3月期決算発表</td>
-        <td class="col-take">保有顧客の多いトヨタ株の見通し説明を事前準備。関税影響と北米生産計画が焦点。</td>
+        <td class="col-take">関税影響・次世代機・ガバナンス回復の3焦点。保有顧客への説明準備を。</td>
       </tr>
       <tr>
         <td class="col-date">5/9（土）</td>
-        <td class="col-event">米4月公式雇用統計発表 / ロシア戦勝記念日（地政学リスク注意）</td>
-        <td class="col-take">ADP下振れ後の公式雇用統計。FRB利下げ転換の判断材料として来週の市場に直結。</td>
+        <td class="col-event">ロシア戦勝記念日（モスクワ軍事パレード）── ウクライナ緊張最高潮の恐れ</td>
+        <td class="col-take">地政学ショックに備えて月曜以降の市場変動に注意。FX・資産保全相談への対応準備を。</td>
       </tr>
       <tr>
-        <td class="col-date">5/14-15（木金）</td>
-        <td class="col-event">米中首脳会談（開催地未定）</td>
-        <td class="col-take">関税合意の進捗・台湾・半導体が議題。結果次第で日本市場全体が動く。</td>
+        <td class="col-date">5/11（月）</td>
+        <td class="col-event">日銀支店長会議（地域経済報告）</td>
+        <td class="col-take">長野地区の景況判断を確認。地方経済の実態把握に活用。</td>
       </tr>
       <tr>
-        <td class="col-date">5/22（金）</td>
-        <td class="col-event">映画「スター・ウォーズ／マンダロリアン&グローグー」公開</td>
-        <td class="col-take">大型コンテンツの公開は市場・チームの話題作り。余暇・顧客接点の活用を。</td>
+        <td class="col-date">5/12前後</td>
+        <td class="col-event">米国消費者物価指数（CPI）発表予定</td>
+        <td class="col-take">インフレ動向がFRBの利下げ時期を左右。為替・外債への影響を確認。</td>
       </tr>
       <tr>
-        <td class="col-date">5/29-（金〜）</td>
-        <td class="col-event">アジア安全保障会議（シャングリラ対話、シンガポール）</td>
-        <td class="col-take">日比護衛艦輸出など日本の安保政策が国際議論の俎上に。防衛関連銘柄の動向に注目。</td>
+        <td class="col-date">5/14〜15</td>
+        <td class="col-event">米中首脳会談（トランプ×習近平）── 通商・関税交渉が焦点</td>
+        <td class="col-take">日系製造業株の最大イベント。結果次第で5月下旬の相場が大きく動く。</td>
+      </tr>
+      <tr>
+        <td class="col-date">6/1（日）</td>
+        <td class="col-event">2026年度調剤報酬改定・障害福祉報酬期中改定 施行</td>
+        <td class="col-take">PHC・はなひらく共に対応確認期限。今週中に最終チェックを。</td>
       </tr>
     </tbody>
   </table>
 </section>
 
 <!-- ───── 編集後記 ───── -->
-<section class="postscript page-full-width">
+<section class="postscript">
   <div class="postscript-title">編集後記</div>
-  <p class="postscript-body">本日の紙面で最も重く受け止めているのは護衛艦輸出の合意だ。「武器を輸出する国」へと日本が踏み出した一歩は、経済だけでなく安全保障・外交・国内政治の地殻変動を意味する。円高への急転換（157円台→156円台）も加わり、連休明けの日本を取り巻く環境は急変している。足元を固めながら、中長期の変化を先読みする力が、今まさに問われている。</p>
+  <p class="postscript-body">連休明けの日本は「6万円攻防」と「日銀議事要旨」という二つの試練を抱えて5月後半へ歩みを進める。大谷翔平が7回を投げ切りながら援護なく敗れる姿は、質の高い仕事が常に即座に結果へ直結するわけではないという現実を示す。一方でSnow Manの史上初・10作目80万枚超、中森明菜44年目のTOP10入りは「継続するブランド」の力を証明した。ロシアの緊張・米中会談の行方など外的リスクは山積するが、本日の日銀議事要旨を基軸に、自分の事業に関わる「決断の根拠」を一つ一つ固める木曜日としたい。</p>
 </section>
 
-<!-- ───── Glossary ───── -->
-<section class="glossary page-full-width">
+<!-- ───── Glossary（用語解説）───── -->
+<section class="glossary">
   <div class="section-label">GLOSSARY ― 用語解説</div>
   <dl class="glossary-list">
     <div class="glossary-item">
-      <dt>防衛装備移転三原則</dt>
-      <dd>日本が防衛装備品（武器・軍事技術）を海外へ輸出する際のルールを定めた政府指針。2026年4月の改定で殺傷能力のある完成品武器の輸出が初めて認められた。</dd>
+      <dt>ADP雇用統計</dt>
+      <dd>米民間調査会社ADPが毎月公表する民間部門の雇用者数変化。毎月第1水曜日に発表され、2日後の米雇用統計（NFP）の先行指標として為替・株式市場が注目する経済指標。</dd>
     </div>
     <div class="glossary-item">
-      <dt>ADP全米雇用報告</dt>
-      <dd>米国の民間雇用サービス会社ADPが毎月発表する民間部門の雇用者数変化。公式雇用統計（雇用統計）の2日前に発表される先行指標として為替・株式市場が注目する。</dd>
+      <dt>WTI（原油先物）</dt>
+      <dd>ウェスト・テキサス・インターミディエートの略。米国産の代表的な原油価格指標。ニューヨークで取引される先物価格が世界の原油相場の基準となる。</dd>
     </div>
     <div class="glossary-item">
-      <dt>ポリファーマシー</dt>
-      <dd>複数の薬を同時に服用している状態。一般に6種類以上を指す。薬同士の飲み合わせ（相互作用）や副作用リスクが高まる問題があり、薬剤師による整理・削減が社会的課題となっている。</dd>
+      <dt>金融政策決定会合議事要旨</dt>
+      <dd>日本銀行の政策委員会が金利などの金融政策を議論した会合の記録。会合から約6週間後に公表され、各委員の発言内容から次回利上げ・利下げの方向性を読み解く重要な素材となる。</dd>
     </div>
     <div class="glossary-item">
-      <dt>服用薬剤調整支援料2</dt>
-      <dd>2026年改定で新設。6種類以上の内服薬を服用する患者の薬を薬剤師が医師と連携して整理・削減した際に算定できる診療報酬加算。</dd>
+      <dt>調剤ベースアップ評価料</dt>
+      <dd>薬局スタッフ（薬剤師・事務）の賃上げ原資として2024年度診療報酬改定で新設された加算項目。賃上げ率・対象者・支給方法の要件を満たした薬局が算定できる。2026年改定で要件が見直された。</dd>
     </div>
     <div class="glossary-item">
-      <dt>地域支援体制加算</dt>
-      <dd>薬局が地域の医療・介護に貢献する「かかりつけ薬局」としての機能（24時間対応・在宅・多職種連携など）を評価する調剤報酬の加算。要件を満たすほど高い加算が算定できる。</dd>
-    </div>
-    <div class="glossary-item">
-      <dt>外国補助金規制（FSR）</dt>
-      <dd>EU（欧州連合）が2023年に施行した規制。EU域外の政府から補助金を受けた企業がEU域内で入札・M&Aを行う場合、不公正競争にならないかを審査する制度。中国企業への適用が増加中。</dd>
+      <dt>調剤基本料2</dt>
+      <dd>特定の医療機関への処方箋集中度が高い（いわゆる門前）薬局に適用される低い基本点数。集中率が高いほど評価が低くなる仕組みで、2026年6月改定では都市部での適用要件が厳格化された。</dd>
     </div>
     <div class="glossary-item">
       <dt>就労継続支援B型</dt>
-      <dd>障害や難病のある方が、雇用契約を結ばずに軽作業などを行い、賃金（工賃）を受け取ることができる福祉サービス。一般就労が困難な方の就労・生産活動の機会を提供する。</dd>
+      <dd>障害者総合支援法に基づく就労系福祉サービスの一形態。雇用契約を結ばずに生産活動（農業・軽作業・清掃など）に参加できる事業所の形態。はなひらく（寿・塩尻）もこの形態で運営している。</dd>
     </div>
     <div class="glossary-item">
-      <dt>核融合発電</dt>
-      <dd>水素の同位体（重水素・三重水素）を超高温・超高圧で融合させる際に発生するエネルギーを電力として取り出す発電方式。燃料が豊富で CO₂を出さない「究極のクリーンエネルギー」として研究開発が進む。</dd>
+      <dt>期中改定</dt>
+      <dd>通常は2年に1回行われる診療・障害福祉報酬改定の間（期の中間）に臨時で実施される改定のこと。今回の障害福祉報酬については費用急増への緊急対応として2026年6月に期中改定が実施される。</dd>
     </div>
     <div class="glossary-item">
-      <dt>WTI原油</dt>
-      <dd>West Texas Intermediate（西テキサス産中質油）の略。米国産原油の国際指標価格で、「原油価格」として最も広く引用される基準銘柄。</dd>
+      <dt>第三者割当増資</dt>
+      <dd>特定の投資家（第三者）に新株を発行して資金を調達する増資手法。スタートアップのVC調達で最も一般的な方法で、投資家は株式を受け取り、会社は資金と引き換えに株主持分が希薄化する。</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>セカンダリー取引</dt>
+      <dd>既存株主がその持ち株を新しい投資家に売却する取引。会社への資金流入を伴わず、既存投資家（創業者やVC）が一部資金を回収する目的で行われる。今回のトグルHDの40億円総取引の一部（6.5億円）がこれにあたる。</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>BCP（事業継続計画）</dt>
+      <dd>Business Continuity Planの略。自然災害・感染症・火災などの緊急事態が発生した際に、事業を継続または迅速に復旧するための手順・体制をまとめた計画書。福祉・医療事業所は策定が義務づけられている。</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>ファンダム</dt>
+      <dd>特定のアーティストや作品の熱心なファン集団・ファンコミュニティを指す。K-POP文化に起源を持ち、日本のアイドル系グループでも組織的なファン活動として展開されている。</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>アウトカム評価</dt>
+      <dd>サービス提供の「過程」ではなく「成果・結果」を評価する仕組み。2026年調剤報酬改定では、薬剤師の業務がどれだけ患者の健康改善に貢献したかを測定して点数化する方向に移行しつつある。</dd>
     </div>
   </dl>
 </section>
 
 <footer class="colophon">
-  NewGo Timez ― 発行: 小池雄悟 ／ 2026年5月7日（木）第4号<br>
-  本紙は個人の情報収集・事業判断支援を目的として発行しています。投資判断は自己責任でお願いします。
+  NewGo Timez 第4号 ／ 令和8年（2026年）5月7日発行 ／ 発行: FOR YUGO KOIKE ／ DAILY EDITION
 </footer>
 
 </body>
