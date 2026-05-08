@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewGo Timez ― 2026年5月9日（土）第147号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f0ebdb;
+  --ink: #0a0a0a;
+  --ink-sub: #3a3a3a;
+  --ink-mute: #666;
+  --line: #c8bfa8;
+  --line-strong: #0a0a0a;
+  --chip: #e4dcc8;
+  --take-bg: #e8e0cc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.8;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  border-top: 6px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  padding: 20px 0 14px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.masthead-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 8vw, 80px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+.masthead-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ── LAYOUT ── */
+.page-full-width { width: 100%; }
+.paper-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 767px) {
+  .paper-columns { display: block; }
+  .paper-columns > * { margin-bottom: 0; }
+}
+
+/* ── SECTION HEADERS ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 4px 0;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+/* ── MARKET GRID ── */
+.market-wrap {
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+  margin-bottom: 28px;
+}
+.market-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 767px) {
+  .market-grid { grid-template-columns: 1fr 1fr; }
+}
+.market-card {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.3);
+}
+.market-name { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.1em; }
+.market-val {
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 4px 0 2px;
+}
+.market-change { font-size: 13px; color: var(--ink-sub); }
+.market-note { font-size: 12px; color: var(--ink-mute); margin-top: 6px; line-height: 1.6; }
+
+/* ── TOP STORY ── */
+.top-story {
+  border-top: 3px solid var(--ink);
+  padding: 20px 0 24px;
+  margin-bottom: 28px;
+}
+.top-kicker { font-size: 13px; letter-spacing: 0.2em; color: var(--ink-mute); margin-bottom: 8px; }
+.top-headline {
+  font-size: clamp(28px, 4.5vw, 42px);
+  font-weight: 900;
+  line-height: 1.3;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 767px) {
+  .top-headline { font-size: 28px; }
+}
+.top-body p { font-size: 17px; margin-bottom: 12px; }
+.source-link { font-size: 12px; color: var(--ink-mute); margin-top: 8px; }
+.source-link a { color: var(--ink-mute); }
+
+/* ── NUMBER OF THE DAY ── */
+.num-of-day {
+  border: 3px solid var(--ink);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+.num-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; }
+.num-big {
+  font-size: clamp(80px, 12vw, 120px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 8px 0 4px;
+}
+@media (max-width: 767px) { .num-big { font-size: 90px; } }
+.num-caption { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.num-body { font-size: 16px; color: var(--ink-sub); }
+
+/* ── HEADLINES GRID ── */
+.headlines-wrap {
+  border-top: 3px solid var(--ink);
+  padding: 16px 0 24px;
+  margin-bottom: 28px;
+}
+.headline-items { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+@media (max-width: 767px) { .headline-items { grid-template-columns: 1fr; } }
+.headline-item {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 16px 12px 0;
+}
+.headline-item:nth-child(odd) { border-right: 1px solid var(--line); padding-right: 16px; }
+.hl-cat { font-size: 11px; letter-spacing: 0.2em; color: var(--ink-mute); font-weight: 700; margin-bottom: 4px; }
+.hl-title { font-size: 17px; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
+.hl-body { font-size: 15px; color: var(--ink-sub); line-height: 1.7; }
+.hl-source { font-size: 11px; color: var(--ink-mute); margin-top: 4px; }
+
+/* ── PERSON ── */
+.person-wrap {
+  border-top: 3px solid var(--ink);
+  padding: 18px 0 24px;
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 767px) { .person-wrap { grid-template-columns: 1fr; } }
+.person-name { font-size: 24px; font-weight: 900; line-height: 1.2; }
+.person-role { font-size: 13px; color: var(--ink-mute); margin-top: 4px; }
+.person-quote {
+  font-size: 18px;
+  font-style: italic;
+  border-left: 4px solid var(--ink);
+  padding-left: 16px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.person-body { font-size: 16px; color: var(--ink-sub); }
+
+/* ── SECTION ARTICLES ── */
+.section-wrap {
+  border-top: 3px solid var(--ink);
+  padding: 16px 0 24px;
+  margin-bottom: 28px;
+}
+.article {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.article:last-child { border-bottom: none; }
+.art-headline { font-size: clamp(19px, 2.5vw, 24px); font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
+@media (max-width: 767px) { .art-headline { font-size: 22px; } }
+.art-lead { font-size: 14px; color: var(--ink-mute); font-style: italic; margin-bottom: 8px; }
+.art-body p { font-size: 17px; color: var(--ink-sub); margin-bottom: 10px; line-height: 1.75; }
+.art-source { font-size: 12px; color: var(--ink-mute); margin-top: 4px; }
+.art-source a { color: var(--ink-mute); }
+
+/* ── KOIKE TAKE ── */
+.koike-take {
+  background: var(--take-bg);
+  border-left: 3px solid var(--ink);
+  padding: 8px 12px;
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--ink-sub);
+  line-height: 1.65;
+}
+.koike-take::before { content: "▶ 小池目線 "; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; color: var(--ink); }
+
+/* ── CALENDAR ── */
+.calendar-wrap {
+  border-top: 3px solid var(--ink);
+  padding: 16px 0 24px;
+  margin-bottom: 28px;
+}
+.cal-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.cal-item { border: 1px solid var(--line); padding: 12px; }
+.cal-date { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink-mute); }
+.cal-event { font-size: 16px; font-weight: 700; margin: 4px 0 6px; line-height: 1.4; }
+.cal-take { font-size: 13px; color: var(--ink-sub); }
+
+/* ── POSTSCRIPT ── */
+.postscript {
+  border-top: 3px double var(--ink);
+  border-bottom: 3px double var(--ink);
+  padding: 20px 0;
+  margin-bottom: 28px;
+  text-align: center;
+}
+.ps-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+.ps-body { font-size: 17px; line-height: 1.9; max-width: 720px; margin: 0 auto; }
+
+/* ── GLOSSARY ── */
+.glossary-wrap {
+  border-top: 3px solid var(--ink);
+  padding: 16px 0 32px;
+  margin-bottom: 28px;
+}
+.gloss-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.gloss-item { border: 1px solid var(--line); padding: 12px; }
+.gloss-term { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.gloss-def { font-size: 13px; color: var(--ink-sub); line-height: 1.65; }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 16px 0 32px;
+  font-size: 12px;
+  color: var(--ink-mute);
+  border-top: 1px solid var(--line);
+}
+</style>
+</head>
+<body>
+
+<!-- ① MASTHEAD -->
+<header class="masthead page-full-width">
+  <div class="masthead-title">NewGo Timez</div>
+  <div class="masthead-sub">
+    <span>2026年（令和8年）5月9日（土）</span>
+    <span>第147号</span>
+    <span>NAGANO / JAPAN</span>
+    <span>小池雄悟 Morning Intelligence</span>
+  </div>
+</header>
+
+<!-- ② MARKET -->
+<section class="market-wrap page-full-width">
+  <div class="market-label">朝のマーケット ― Morning Markets</div>
+  <div class="market-grid">
+    <div class="market-card">
+      <div class="market-name">日経平均</div>
+      <div class="market-val">62,713円</div>
+      <div class="market-change">▼120（-0.19%）</div>
+      <div class="market-note">5/8終値。前日の史上最高値更新（62,833円）から3日ぶり反落。米・イラン停戦合意の不透明感再燃が重荷。トヨタ決算が市場予想を下回り年初来安値更新も下押し要因。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">USD/JPY</div>
+      <div class="market-val">157.20円</div>
+      <div class="market-change">▼0.40円（-0.25%）</div>
+      <div class="market-note">5/8 NY終値。米・イラン停戦観測後退でリスクオフ気味の円買いも、日米金利差3%超が円安圧力を継続。ベッセント訪日（5/11〜）前に投機的な動きが警戒される。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">NYダウ</div>
+      <div class="market-val">49,597ドル台</div>
+      <div class="market-change">▼313（-0.63%）</div>
+      <div class="market-note">5/8終値。米・イラン停戦協議への先行き不透明感から半導体・エネルギー株に利益確定売り。前日比の急騰後のポジション調整が主因。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">WTI原油</div>
+      <div class="market-val">$62.80</div>
+      <div class="market-change">▼$0.60（-0.95%）週間-1.69%</div>
+      <div class="market-note">5/8終値。米・イラン和平合意の不透明感が再燃し週間では反落。一時$96台に急騰する場面もあったが需給緩和観測が押し戻した。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">金（GOLD）</div>
+      <div class="market-val">$4,750台</div>
+      <div class="market-change">▲続伸（+$53前後）</div>
+      <div class="market-note">5/8 NY終値。地政学リスク後退と安全資産需要が交錯しながら続伸。国内小売価格は1g＝25,924円（前日比+152円）と過去最高水準更新。</div>
+    </div>
+    <div class="market-card">
+      <div class="market-name">日米金利差</div>
+      <div class="market-val">約3.0%</div>
+      <div class="market-change">米4.50% / 日1.50%</div>
+      <div class="market-note">ベッセント訪日では日銀追加利上げ促進と円安是正が議題の中心となる見込み。FRBの利上げ派・据え置き派の対立も国内債券市場の不安定要因。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ TOP STORY -->
+<section class="top-story page-full-width">
+  <div class="top-kicker">本日のトップ ― 国際経済</div>
+  <h1 class="top-headline">トランプ大統領「対中関税80%が正しい」─ 米中首脳会談（5/14-15）直前に火種、ベッセントの判断に委ねる</h1>
+  <div class="top-body">
+    <p>ドナルド・トランプ米大統領は5月9日、ソーシャルメディアへの投稿で「中国に80%の関税をかけるのは正しいようだ。それはベッセント財務長官次第だ」と述べた。5月14〜15日に北京で予定するトランプ訪中・習近平主席との首脳会談を目前にしての発言で、事前に交渉の雰囲気を高関税圧力で固めるトランプ流の外交戦術とみられる。</p>
+    <p>米中は2026年4月に経済・貿易協議の枠組み設置で合意しており、一定の緊張緩和が期待されていた。しかし中国側は、イラン問題が解決する前に重要な首脳会談を実施することへの不安があると報じられており、訪中が延期あるいは中断するリスクを市場は注視する。USTRも同日、中国への301条（通商法）追加関税の4年目見直しを官報で公示しており、米中貿易摩擦は新たなフェーズに入りつつある。</p>
+    <p>ベッセント財務長官は本週末に訪日（5/11〜13）し高市首相・植田日銀総裁と会談する日程を抱えるが、「ベッセント次第」という発言が日米交渉にも圧力をかけてくる可能性がある。日本企業のサプライチェーンは米中双方に深く組み込まれており、関税60〜80%シナリオが現実化した場合の影響は甚大だ。</p>
+    <div class="source-link">出典: <a href="https://www.bloomberg.com/jp/news/articles/2026-05-08/TEOZ1KT9NJLY00" target="_blank">Bloomberg「トランプ氏、習氏との会談の計画進める－イラン情勢で中国が不安も」</a></div>
+    <div class="koike-take">対中関税80%が現実化すれば中国原薬依存度が高い薬局の仕入れコストが急上昇する。PHC薬局での在庫・代替品源の戦略見直しを今のうちに進めるべき局面だ。</div>
+  </div>
+</section>
+
+<!-- ④ NUMBER OF THE DAY -->
+<section class="num-of-day page-full-width">
+  <div class="num-label">Today's Number ― 今日の数字</div>
+  <div class="num-big">98億円</div>
+  <div class="num-caption">ヘリカルフュージョンの核融合発電開発・累計調達総額</div>
+  <div class="num-body">核融合発電スタートアップ「Helical Fusion（ヘリカルフュージョン）」がシリーズBの1stクローズで27億円を調達し、累計調達額が98億円に達した。2030年代の「世界初・実用発電」を目指し、最終実証装置「Helix HARUKA」の建設へ前進。核融合は無限に近いエネルギーをCO2ゼロで生む究極のクリーンエネルギーとして期待される。</div>
+  <div class="koike-take">エネルギーコスト問題は薬局・福祉施設の経営に直結。核融合実用化が2030年代に実現すれば電気代の構造変化が訪れる。長期事業計画にエネルギー転換シナリオを組み込む価値がある。</div>
+</section>
+
+<!-- ⑤ HEADLINES -->
+<section class="headlines-wrap page-full-width">
+  <div class="section-label">今朝のヘッドライン</div>
+  <div class="headline-items">
+    <div class="headline-item">
+      <div class="hl-cat">映画</div>
+      <div class="hl-title">高倉健主演「新幹線大爆破」4Kレストア版が第79回カンヌ国際映画祭クラシック部門に正式選出</div>
+      <div class="hl-body">1975年公開の国産パニック映画の傑作が4K修復され、カンヌ・クラシック部門に選出。50年を経ても色あせないオリジナル版の映画史的価値が国際的に評価された形だ。</div>
+      <div class="hl-source">CINRA・映画.com</div>
+    </div>
+    <div class="headline-item">
+      <div class="hl-cat">音楽</div>
+      <div class="hl-title">ゴダイゴが「SONGS」に5/14放送で19年ぶり登場 ─ 「ガンダーラ」「銀河鉄道999」を披露予定</div>
+      <div class="hl-body">NHK総合の音楽番組「SONGS」に伝説のバンド・ゴダイゴが19年ぶりに出演。「ガンダーラ」「銀河鉄道999」などの代表曲を演奏予定。昭和を席巻したサウンドが再注目されている。</div>
+      <div class="hl-source">NHK「SONGS」公式</div>
+    </div>
+    <div class="headline-item">
+      <div class="hl-cat">交通</div>
+      <div class="hl-title">JR中央本線・篠ノ井線に新型E131系が2026年秋から投入予定 ─ 防犯カメラ搭載でサービス向上</div>
+      <div class="hl-body">JR東日本は中央本線（松本〜長野〜上田周辺）と篠ノ井線に新型車両E131系を2026年秋頃から順次投入予定。車内防犯カメラの設置などで安全性とサービスが大幅に向上する見込みだ。</div>
+      <div class="hl-source">長野県内メディア・鉄道ファン情報</div>
+    </div>
+    <div class="headline-item">
+      <div class="hl-cat">スポーツ</div>
+      <div class="hl-title">大谷翔平が2026年も二刀流を完全維持 ─ 打率2割9分台、投手では5月初旬時点で5勝</div>
+      <div class="hl-body">大谷翔平（ロサンゼルス・ドジャース）は2026年シーズンも先発ローテを完全維持しながら打者としてもOPS.900台を記録。4/27にはカブス戦で今季6号本塁打を放ち二刀流の存在感を示している。</div>
+      <div class="hl-source">ABEMA TIMES・Goal.com</div>
+    </div>
+    <div class="headline-item">
+      <div class="hl-cat">長野</div>
+      <div class="hl-title">岡谷ジャンクション工事が来週再開 ─ 事故多発エリアで長野県警とNEXCOが安全運転呼びかけ</div>
+      <div class="hl-body">長野県岡谷市の岡谷ジャンクション（中央道・長野道の結節点）のリニューアル工事が来週から再開。工事期間中は付近で事故が相次いでいるため、長野県警察と中日本高速道路が利用者に注意を促している。</div>
+      <div class="hl-source">長野放送（NBS）・NHK長野</div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ PERSON -->
+<section class="person-wrap page-full-width">
+  <div>
+    <div class="section-label" style="margin-bottom:12px;">人物クローズアップ</div>
+    <div class="person-name">高市 早苗</div>
+    <div class="person-role">内閣総理大臣（第102代）</div>
+  </div>
+  <div>
+    <div class="person-quote">「責任ある積極財政と経済安全保障の両立で、日本の未来を切り拓く」</div>
+    <div class="person-body">5月5日夜にベトナム・オーストラリア歴訪から帰国した高市首相は、週明けからベッセント訪日（5/11〜13）、トランプ訪中（5/14〜15）という重大外交イベントを間近に迎える。エネルギー・重要鉱物のサプライチェーン拡充と米関税圧力への対応という二正面作戦を迫られる中、「責任ある積極財政」を掲げる経済政策の実行力が試されている。日経平均の史上最高値と実質賃金プラスという好材料を背景に、6月参院選に向けた政権基盤固めが急務だ。</div>
+    <div class="koike-take">高市政権の経済政策の動向は薬局・障がい福祉の補助金・加算設計にも直結する。政策動向のモニタリングをPersonal OSの「情報管理」軸に組み込みたい。</div>
+  </div>
+</section>
+
+<!-- 2カラムゾーン -->
+<div class="paper-columns">
+
+  <!-- ⑦ 政治・経済 -->
+  <section class="section-wrap">
+    <div class="section-label">政治・経済</div>
+
+    <div class="article">
+      <h2 class="art-headline">日経平均3日ぶり反落62,713円 ─ トヨタ決算が市場予想を下回り年初来安値、米イラン停戦不透明感も重荷</h2>
+      <div class="art-lead">前日比120円安。最高値圏での利確売り加速。週明けの値動きはベッセント訪日と米CPIが左右する。</div>
+      <div class="art-body">
+        <p>5月8日（金）の東京株式市場で日経平均株価は前日比120円19銭（0.19%）安の6万2713円65銭で終了し、3日ぶりに反落した。前日（5/7）に史上最高値62,833円・上げ幅3,320円という歴史的急騰を演じた直後だけに、利益確定売りが集中した。</p>
+        <p>下押しの主要因となったのはトヨタ自動車の通期業績が市場予想を下回り、年初来安値を更新したこと。米・イラン停戦合意をめぐる不透明感の再燃も半導体・輸出株への売りを誘った。下げ幅は一時700円近くに拡大したが、好業績銘柄への押し目買いが入り底堅く推移した。</p>
+      </div>
+      <div class="art-source"><a href="https://www.nikkei.com/article/DGXZQOFL080MX0Y6A500C2000000/" target="_blank">出典: 日本経済新聞「日経平均株価が3日ぶり反落 終値は120円安の6万2713円」</a></div>
+      <div class="koike-take">FP顧客の株式・投信の含み益は依然高水準。トヨタ年初来安値は個別株の下方リスクを改めて示した好事例で、分散投資の重要性を顧客に再確認するタイミング。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">高市首相、ベトナム・オーストラリア帰国後にベッセント訪日・トランプ訪中という外交正念場へ</h2>
+      <div class="art-lead">エネルギー・鉱物サプライチェーン拡充を両国と確認。米中の狭間で経済安保の主体性を示せるかが焦点。</div>
+      <div class="art-body">
+        <p>高市早苗首相は5月5日夜に羽田空港に帰国。ベトナム・オーストラリアとの首脳会談では、重要鉱物の安定調達と再生可能エネルギー分野での協力拡大を確認した。エネルギー安全保障における「中国・ロシア依存脱却」を実現するうえで、インド太平洋地域のパートナー構築が重要との認識を共有した。</p>
+        <p>帰国後すぐ、今週はベッセント財務長官訪日（5/11〜13）と米中首脳会談（5/14〜15）という連続する外交ヤマ場が控える。特にベッセント会談では日米関税交渉の実質的な進展が期待される一方、トランプの「80%関税」発言が日本の交渉カードにも影響を及ぼす可能性がある。</p>
+      </div>
+      <div class="art-source"><a href="https://www.policynews.jp/schedule/2026/005.html" target="_blank">出典: KSI政策ニュース.jp「2026年5月の政治・政策カレンダー」</a></div>
+      <div class="koike-take">日豪・日越の資源外交は長野県内製造業や調剤薬局の原材料コストにも間接的に影響。エネルギーコスト見通しを事業計画に織り込む際の参考情報として押さえておきたい。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">USTR、301条対中追加関税の4年目見直しを開始 ─ 2022年に続き2回目、米中首脳会談前の施策公示</h2>
+      <div class="art-lead">トランプ政権が法定手続きに沿って中国関税の見直し手続きを開始。率の方向性はまだ未定。</div>
+      <div class="art-body">
+        <p>米国通商代表部（USTR）は5月6日、1974年通商法301条に基づく中国への追加関税措置について、4年目の法定見直しを官報で公示した。2022年の見直しから4年が経過したもので、今後パブリックコメントや産業界からのヒアリングを経て関税率の継続・引き下げ・引き上げが決定される。</p>
+        <p>今回の公示はトランプ大統領の「80%関税が正しい」発言と同日のタイミングとなり、5/14〜15の米中首脳会談に向けた圧力外交の一環との見方も根強い。関税見直しの最終決定は数ヶ月先だが、審査開始自体が市場の中国関連リスクへの警戒感を高めている。</p>
+      </div>
+      <div class="art-source"><a href="https://www.jetro.go.jp/biznews/2026/05/a35f1e47b714a3a5.html" target="_blank">出典: ジェトロ ビジネス短信「米USTR、301条対中追加関税の4年目見直し開始」</a></div>
+      <div class="koike-take">対中関税率が引き上げられれば医薬品原薬・医療機器の輸入コスト上昇に直結。PHC薬局での仕入れリスクヘッジを事前に検討しておく価値がある。</div>
+    </div>
+  </section>
+
+  <!-- ⑧ 世界の動き -->
+  <section class="section-wrap">
+    <div class="section-label">世界の動き</div>
+
+    <div class="article">
+      <h2 class="art-headline">トランプ「対中関税80%が正しい」─ 訪中直前の揺さぶり発言、習近平との会談に暗雲</h2>
+      <div class="art-lead">米中首脳会談（5/14-15）5日前に衝撃発言。「ベッセント次第」として自ら判断を委ねるトランプ式圧力外交。</div>
+      <div class="art-body">
+        <p>トランプ大統領は5月9日、「中国に80%の関税をかけるのは正しいようだ。それはベッセント財務長官次第だ」とSNSに投稿した。米中が5月14〜15日に北京で首脳会談を予定しているタイミングでの発言で、交渉を有利に進めるための事前圧力との見方が支配的だ。</p>
+        <p>中国側はすでに、イラン問題が解決しない状況での重要会談への不安があると報じられており、訪中が延期・中断されるリスクも排除できない。米中の通商・安全保障摩擦は2026年を通じた最大の地政学リスクであり、日本の外交・産業政策に直接影響する。</p>
+      </div>
+      <div class="art-source"><a href="https://www.bloomberg.com/jp/news/articles/2026-05-08/TEOZ1KT9NJLY00" target="_blank">出典: Bloomberg「トランプ氏、習氏との会談の計画進める」</a></div>
+      <div class="koike-take">米中対立の激化は医薬品原薬・医療機器の安定調達に直結。PharmaEightのセミナーで「地政学リスクと薬局経営」をテーマにした回を企画する絶好のタイミング。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">米・イラン停戦合意の不透明感が再燃 ─ 原油は週間-1.69%も一時$96台に急騰、市場は乱高下</h2>
+      <div class="art-lead">合意観測の強弱で原油・株式が激しく揺れた1週間。イラン側が否定的立場をとり情勢は不安定なまま。</div>
+      <div class="art-body">
+        <p>米国とイランの戦闘終結に向けた協議をめぐって、週前半は和平観測が強まりWTI原油が$60台まで急落した。しかしイラン側が「合意について否定的な立場をとっている」と表明したことで不透明感が再燃、一時$96台に急騰する場面も見られた。</p>
+        <p>最終的なWTI週末終値は$62.80（週間-1.69%）で落ち着いたが、中東情勢の見通し次第で大幅な価格変動が続くリスクは払拭されていない。エネルギーコストの不安定化は薬局・福祉施設の光熱費・物流費にも波及するため、引き続き注視が必要だ。</p>
+      </div>
+      <div class="art-source"><a href="https://www.oanda.jp/lab-education/market_news/2026_05_08_wtioil/" target="_blank">出典: OANDA「WTI原油見通し：米国とイランの和平合意への先行き不透明感」</a></div>
+      <div class="koike-take">燃料費・物流費の乱高下はB型事業所の管理費にも影響。はなひらくの光熱費・送迎コストの予算に「原油リスク枠」を設けることを検討したい。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">小泉防衛相がフィリピン国防相と会談 ─ 海上自衛隊の中古護衛艦輸出に向けた実務者協議の枠組みで合意</h2>
+      <div class="art-lead">「防衛装備移転」が具体化。フィリピンとの安全保障協力が東南アジアへの日本のプレゼンス強化を加速する。</div>
+      <div class="art-body">
+        <p>小泉進次郎防衛相は5月5日にフィリピンのテオドロ国防相と会談し、海上自衛隊の中古護衛艦のフィリピンへの輸出に向けた実務者協議の枠組みを設けることで一致した。南シナ海における中国の活動活発化を受け、日フィリピンの安全保障協力を実質化させる重要な一歩だ。</p>
+        <p>2022年の「防衛装備移転三原則」改定以降、日本の防衛装備輸出が具体化する初期事例となる可能性が高い。フィリピンとの関係強化はASEAN全体への経済・安保的影響力を持ち、日本外交の「インド太平洋戦略」における重要な実績となる。</p>
+      </div>
+      <div class="art-source"><a href="https://www.policynews.jp/schedule/2026/005.html" target="_blank">出典: KSI政策ニュース.jp「2026年5月の政治・政策カレンダー」</a></div>
+      <div class="koike-take">日フィリピン安保協力の強化はPharmaEightが注目する東南アジア市場での薬局・医療ビジネス展開に追い風となる。安定した日比関係はビジネス環境改善の基盤だ。</div>
+    </div>
+  </section>
+
+  <!-- ⑨ AI・テック -->
+  <section class="section-wrap">
+    <div class="section-label">AI・テック</div>
+
+    <div class="article">
+      <h2 class="art-headline">OpenAI、GPT-5.5の法人向けAPI展開を本格化 ─ 医療・金融・製造業の業務自動化パイロットが相次ぐ</h2>
+      <div class="art-lead">4月23日発表のGPT-5.5がエージェンティックAIとして企業現場に浸透。日本企業での試験導入が急増中。</div>
+      <div class="art-body">
+        <p>4月23日に発表されたOpenAIの最新モデル「GPT-5.5」が、エージェンティックAI（自律的に複数の業務を実行するAI）としての特性を活かし、法人向けAPIの展開を本格化させている。医療記録のサマリー化、金融コンプライアンスチェック、製造業の品質管理レポート生成など、専門職補助としての需要が特に大きい。</p>
+        <p>GPT-5.5はハルシネーション（誤情報生成）を前世代比52.5%削減しており、高い正確性が求められる医療・法律・金融分野での本格採用の障壁が下がった。日本の薬局チェーンや医療機関でも処方チェック補助・服薬指導テキスト生成への試験活用が始まっている。</p>
+      </div>
+      <div class="art-source"><a href="https://www.sbbit.jp/article/cont1/185117" target="_blank">出典: SB biz IT「OpenAIが最新AIモデル『GPT-5.5』発表、エージェンティックAIとして大幅進化」</a></div>
+      <div class="koike-take">GPT-5.5の処方チェック・服薬指導補助への応用はPharmaEightの研修コンテンツとして最有力。薬剤師向けAI活用ハンズオンの設計に今すぐ着手したい。</div>
+    </div>
+  </section>
+
+  <!-- ⑩ スタートアップ -->
+  <section class="section-wrap">
+    <div class="section-label">スタートアップ</div>
+
+    <div class="article">
+      <h2 class="art-headline">Helical Fusion（ヘリカルフュージョン）が27億円調達 ─ 核融合実証装置「Helix HARUKA」建設へ、累計98億円</h2>
+      <div class="art-lead">日本発の核融合スタートアップが大型資金調達。2030年代の世界初・実用発電に向け最終実証装置の建設を前進。</div>
+      <div class="art-body">
+        <p>フュージョンエネルギーの実用化を目指すHelical Fusion（ヘリカルフュージョン）が、シリーズBラウンド1stクローズで約27億円の資金調達を完了した。鴻池運輸・三谷産業などが新たな投資家として参画し、累計調達額は98億円に達した。</p>
+        <p>調達資金は最終実証装置「Helix HARUKA」の建設に充てる。「ヘリカル型」核融合炉は日本固有の技術で、2030年代には世界初の発電実証を目指す。経済産業省の600億円補助金への申請も予定。</p>
+      </div>
+      <div class="art-source"><a href="https://www.nikkei.com/article/DGXZQOUC282ZW0Y6A420C2000000/" target="_blank">出典: 日本経済新聞「ヘリカルフュージョン、27億円調達 最終実証装置の様子を初公開」</a></div>
+      <div class="koike-take">核融合が実用化すれば電力コストの構造変化が起き、薬局・福祉施設の光熱費が劇的に改善しうる。2030年代のビジョンとしてPersonal OSの「エネルギーと暮らしの未来設計」に組み込める話題。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">PathAhead（ホンダ発）が1.36億円調達 ─ 砂漠の砂から建材を開発、アフリカ展開で2032年200億円売上目標</h2>
+      <div class="art-lead">ホンダ発のディープテックが「砂」という豊富資源を建材に変える。アフリカのインフラ需要に独自技術で挑む。</div>
+      <div class="art-body">
+        <p>ホンダを起点とするスタートアップ「PathAhead（パスアヘッド）」が、インキュベイトファンドやホンダを引受先とする第三者割当増資で1億3600万円を調達した。砂漠の砂を原料とする建設材料をアフリカ地域で展開する技術を持ち、2032年に200億円の売上高を目指す。</p>
+        <p>アフリカでは急速な都市化に伴う建設需要が爆発的に増加する一方、建材の安定供給が大きな課題となっている。現地に豊富に存在する砂漠の砂を活用できれば輸送コストを大幅に削減でき、持続可能な社会インフラ整備にも寄与する。</p>
+      </div>
+      <div class="art-source"><a href="https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/" target="_blank">出典: 日本経済新聞「4月27日〜5月1日 スタートアップ資金調達まとめ読み」</a></div>
+      <div class="koike-take">社会課題解決型のビジネスモデルはPersonal OSやFP事業の「意味と収益の両立」という価値観と共鳴する。チャレンジャーへのビジネスモデル事例として紹介できる好事例。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">トグルホールディングスが33.4億円調達 ─ 不動産DXで海外VCからも資金獲得、国内屈指の大型ラウンドに</h2>
+      <div class="art-lead">シンガポール系VCのアクシオム・アジア等が参画。不動産×テックの成長市場に海外マネーが本格流入。</div>
+      <div class="art-body">
+        <p>不動産スタートアップのトグルホールディングスが、シンガポール系VCのアクシオム・アジア・プライベート・キャピタルなどを引受先とする第三者割当増資と借り入れで約33億4000万円を調達した。不動産業の業務フロー全体をデジタル化・自動化するプラットフォームで、海外資本の参入が今後の国際展開への足がかりとなる。</p>
+        <p>日本の不動産業界はDX化の遅れが顕著な業界の一つで、AI活用による物件評価・契約・管理の自動化には大きな市場余地がある。今回の大型調達は国内不動産DXセクターへの資本流入が本格化している証左だ。</p>
+      </div>
+      <div class="art-source"><a href="https://www.nikkei.com/article/DGXZQOUC309630Q6A430C2000000/" target="_blank">出典: 日本経済新聞「4月27日〜5月1日 スタートアップ資金調達まとめ読み」</a></div>
+      <div class="koike-take">不動産DXの大型調達は、はなひらくや薬局の施設管理・賃貸契約手続きのデジタル化にも間接的に影響しうる。Personal OSでの業務・資産管理効率化の観点からも注目すべきセクター。</div>
+    </div>
+  </section>
+
+  <!-- ⑪ 薬剤師関連 -->
+  <section class="section-wrap">
+    <div class="section-label">薬剤師・調剤業界</div>
+
+    <div class="article">
+      <h2 class="art-headline">2026年6月施行：門前薬局等立地依存減算（15点）が新設 ─ 都市部の処方箋依存型薬局に収益圧迫</h2>
+      <div class="art-lead">特定医療機関に依存する「門前」型立地の薬局に初の減算導入。地域完結型への業態転換を促す。</div>
+      <div class="art-body">
+        <p>令和8年度（2026年度）調剤報酬改定の6月施行分で「門前薬局等立地依存減算」（15点）が新設された。特定の医療機関（処方元）への依存度が高い薬局立地を明確に評価下げする報酬体系で、大病院や総合クリニックの目の前に構える「門前型」薬局にとっては年間数百万円規模の収益減につながりうる。</p>
+        <p>改定の狙いは「患者がかかりつけ薬局として日常的に使える地域密着型薬局の育成」にある。6月施行まで1ヶ月を切っており、立地判定の確認が急務となっている。</p>
+      </div>
+      <div class="art-source"><a href="https://pharmacist.m3.com/column/chouzaihoushu/6981" target="_blank">出典: m3.com薬剤師「わかりやすい！2026年調剤報酬改定まとめ」</a></div>
+      <div class="koike-take">PHC薬局の立地が「門前型」と判定されるかどうかを今すぐ確認する必要がある。判定基準の把握と必要に応じた患者フォロー体制の整備を6月前に完了させたい。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">調剤報酬改定でM&A加速か ─ アインHD・日本調剤の2強体制が確立、中小薬局の生き残り戦略が問われる</h2>
+      <div class="art-lead">改定による収益圧迫が中小薬局の統廃合を加速。規模の経済と地域特化の二極化が鮮明になっている。</div>
+      <div class="art-body">
+        <p>令和8年度調剤報酬改定の影響で、中小規模の薬局チェーンが単独経営の継続を断念し、大手への売却・統合（M&A）に動く動きが加速するとの観測が広がっている。すでにアインホールディングスと日本調剤の2社が調剤薬局業界の「2強体制」を確立しており、次の統廃合フェーズへの移行が見込まれる。</p>
+        <p>大手薬局は電子処方箋・AI処方チェック・24時間対応体制など、規模を活かした先行投資が可能だ。一方で地域に根ざした中小薬局は「かかりつけ性」と対人サービスの深さで差別化するか、M&Aで大手グループに入るかという経営判断を迫られている。</p>
+      </div>
+      <div class="art-source"><a href="https://chozai-ma.com/column/article?id=2" target="_blank">出典: 調剤M&A支援センターR「薬局M&A加速か？2026年調剤報酬改定が調剤薬局に及ぼす影響とは」</a></div>
+      <div class="koike-take">PHC薬局の中長期の経営戦略として「独立継続・M&A参加・大手傘下」の選択肢を明確にしておく必要がある。PharmaEightとしても薬局M&Aアドバイザリーをサービスラインに加える検討余地がある。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">日経ビジネス特集：「2026年度改定で薬局の収益構造が抜本的に変わる5本柱」を整理</h2>
+      <div class="art-lead">改定を網羅的に解説した業界メディアの特集が話題に。在宅・対人業務・医療DX・ベースアップ・選定療養が5本柱。</div>
+      <div class="art-body">
+        <p>業界メディアが改定の全体像を5本柱に整理した特集が調剤薬局経営者の間で注目されている。①在宅と対人業務の実績評価強化、②調剤基本料の見直しと門前減算、③地域支援体制加算と後発医薬品調剤体制加算の統合、④医療DX・電子的情報連携の再編、⑤ベースアップ評価料や選定療養への対応、という5つが今次改定の中核だ。</p>
+        <p>改定の方向性は「薬剤師が処方箋を受けるだけの調剤所から、地域の健康を守るかかりつけ機能拠点へ」という転換を促すもの。6月施行を前に、薬局ごとの対応優先度の見極めと体制整備が急がれている。</p>
+      </div>
+      <div class="art-source"><a href="https://medical.nikkeibp.co.jp/leaf/all/di/column/premium/202605/593067.html" target="_blank">出典: 日経ビジネス電子版「特集：イラスト解説 2026改定で薬局と薬剤師はこうなる」</a></div>
+      <div class="koike-take">PharmaEightとして改定5本柱の解説セミナーを今月中に設計すれば、6月施行前の最高のタイミングで薬局経営者への価値提供が可能。セミナータイトルはこの5本柱そのままでよい。</div>
+    </div>
+  </section>
+
+  <!-- ⑫ 障がい福祉 -->
+  <section class="section-wrap">
+    <div class="section-label">障がい福祉</div>
+
+    <div class="article">
+      <h2 class="art-headline">2026年6月から就労継続支援B型など4サービスの新規事業所で基本報酬を引き下げ ─ 費用急増への「臨時応急措置」</h2>
+      <div class="art-lead">新規開設のみ対象。既存事業所はこれまで通り。急増する新設需要を抑制し費用の持続可能性を確保する措置。</div>
+      <div class="art-body">
+        <p>厚生労働省は令和8年6月から、就労継続支援B型・共同生活援助（グループホーム）・児童発達支援・放課後等デイサービスの4サービスについて、新規事業所に限り基本報酬を引き下げる方針を固めた。既存事業所への影響はない「前例のない措置」で、急激な費用増加への「臨時応急措置」と位置づけられている。</p>
+        <p>就労継続支援B型だけでも、1年間で総費用額が約20%（1,000億円超）増加しており、財政的持続性への懸念が措置の背景にある。新規事業所への参入抑制効果があるとする声がある一方、必要なサービス展開を阻む過度な規制との批判も起きており、業界内では賛否が分かれている。</p>
+      </div>
+      <div class="art-source"><a href="https://fukushishimbun.com/series06/43812" target="_blank">出典: 福祉新聞Web「障害報酬、B型など4サービス減 新規事業所限定で〈厚労省方針〉」</a></div>
+      <div class="koike-take">はなひらく寿・塩尻は既存事業所なので直接の報酬引き下げは受けない。ただし地域での新規参入が抑制されれば利用者争奪の激化は一時的に緩和される。中長期の事業拡大計画には要注意。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">障害福祉費用の急増実態が浮き彫りに ─ B型だけで年間1,000億円超増加、持続可能性の議論が本格化</h2>
+      <div class="art-lead">「必ずしもニーズを反映していない急増」との厚労省見解。不正算定問題も含め業界全体の信頼性が問われる。</div>
+      <div class="art-body">
+        <p>厚生労働省の説明によると、就労継続支援B型の総費用額は1年間で約20%・1,000億円以上増加しており、「近年の事業所数の急増は、必ずしもニーズを反映したものではない可能性がある」と指摘している。障害者数の増加よりも事業所数・利用者数の伸びが突出しており、報酬目的の安易な新設が問題視されている。</p>
+        <p>一方、真に必要な支援の受け皿として機能してきた既存事業所にとっては、制度全体の信頼低下が利用者確保や補助行政との関係に悪影響を及ぼすリスクがある。適正運営の「見える化」と支援の質向上による差別化が、今後の事業継続の鍵を握る。</p>
+      </div>
+      <div class="art-source"><a href="https://ai-fukushi.net/reduction/" target="_blank">出典: パパゲーノAI福祉研究所「賛否両論！前例のない障害福祉報酬新規事業所引き下げが2026年6月から始まる理由」</a></div>
+      <div class="koike-take">はなひらくが適正かつ丁寧な支援を提供してきたことを数字・記録で示せる体制を整えることが信頼の根拠になる。支援実績の可視化ツール整備をPersonal OSの延長として検討したい。</div>
+    </div>
+  </section>
+
+  <!-- ⑬ エンタメ -->
+  <section class="section-wrap">
+    <div class="section-label">エンタメ</div>
+
+    <div class="article">
+      <h2 class="art-headline">高倉健主演「新幹線大爆破」4Kレストア版が第79回カンヌ国際映画祭クラシック部門に正式選出</h2>
+      <div class="art-lead">1975年の傑作パニック映画が50年の時を経て世界の舞台へ。日本映画の古典的傑作の価値が国際的に再評価。</div>
+      <div class="art-body">
+        <p>高倉健主演の映画「新幹線大爆破」（1975年・佐藤純弥監督）の4Kレストア版が、第79回カンヌ国際映画祭のカンヌ・クラシック部門に正式選出された。公開から50年を経て4K修復された本作は、新幹線を舞台にした緻密な犯罪サスペンスとして、日本のパニック映画の金字塔と評される作品だ。</p>
+        <p>カンヌ・クラシック部門は映画史上の傑作を4Kレストアなどで再評価する特別部門で、世界中の映画ファンが注目する。高倉健という存在と日本映画の技術・演技力が改めて国際的な文脈で評価されることは、日本のソフトパワー外交としても意義がある。</p>
+      </div>
+      <div class="art-source"><a href="https://www.cinra.net/article/202504-whn-shinkansen_edteam" target="_blank">出典: CINRA「高倉健主演、1975年の映画『新幹線大爆破』が2週間限定リバイバル上映」</a></div>
+      <div class="koike-take">「50年前の作品が世界から再評価される」という事実は、質の高いコンテンツが時を超えて価値を持つことの証明。PharmaEightのセミナーコンテンツも「一度作った質の高い資料が資産になる」設計を心がけたい。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">ゴダイゴが「SONGS」に19年ぶり出演 ─ 5/14放送、「ガンダーラ」「銀河鉄道999」を届ける</h2>
+      <div class="art-lead">昭和を席巻した伝説のバンドが約20年ぶりに復活登場。世代を超えた音楽の力が改めて問われる。</div>
+      <div class="art-body">
+        <p>NHK総合の音楽番組「SONGS」に、1970〜80年代を席巻した伝説のバンド「ゴダイゴ」が19年ぶりに出演する。5月14日（木）に放送予定で、代表曲「ガンダーラ」「銀河鉄道999」などを披露する見通しだ。</p>
+        <p>ゴダイゴはタケカワユキヒデを中心に日本語と英語を織り交ぜたポップスで時代を先取りし、NHKの大河ドラマ主題歌や映画主題歌でも数々の名曲を残している。ストリーミング全盛の現代においても「本物の音楽」への回帰需要は根強い。</p>
+      </div>
+      <div class="art-source"><a href="https://www.web.nhk/tv/pl/series-tep-JZKWV1KJX3/ep/LJJVNGPG8Y" target="_blank">出典: NHK「2026年5月9日のNHK番組情報」</a></div>
+      <div class="koike-take">「本物の価値が時代を超えて刺さる」というゴダイゴ復活の構図は、Personal OSの「質の高い行動管理が長期で資産になる」というメッセージと共鳴する。セミナー冒頭のアイスブレイクに使える話題だ。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">プラダを着た悪魔2（続編）が2026年5月に公開 ─ 20年ぶりの続編が興行収入ランキング上位に</h2>
+      <div class="art-lead">メリル・ストリープ不在も、アン・ハサウェイ続投で話題に。キャリア映画の金字塔が再び劇場を席巻。</div>
+      <div class="art-body">
+        <p>2006年の大ヒット作「プラダを着た悪魔」の続編が約20年ぶりに公開され、5月の映画興行収入上位に食い込んでいる。アン・ハサウェイが主人公アンドレアを再演し、ファッション業界でその後を生きるキャリアウーマンとしての葛藤を描く。</p>
+        <p>オリジナルへの強いノスタルジーと現代的なキャリア・ウェルネスの価値観が融合した内容で、特に30〜50代の女性を中心に話題を呼んでいる。GW明けの映画市場で洋画が存在感を示している。</p>
+      </div>
+      <div class="art-source"><a href="https://press.moviewalker.jp/list/coming/2026/05/" target="_blank">出典: 2026年5月公開予定の映画情報（MOVIE WALKER PRESS）</a></div>
+      <div class="koike-take">「続編・シリーズ化」による長期ファン維持はPharmaEightのセミナー連続開催モデルと通じる。一度好評を得たコンテンツをシリーズ展開することで顧客の継続参加を促す設計を参考にしたい。</div>
+    </div>
+  </section>
+
+  <!-- ⑭ 長野県関連 -->
+  <section class="section-wrap">
+    <div class="section-label">長野県関連</div>
+
+    <div class="article">
+      <h2 class="art-headline">JR中央本線・篠ノ井線に新型E131系が2026年秋から投入予定 ─ 防犯カメラ搭載・バリアフリー対応を強化</h2>
+      <div class="art-lead">長野県内の主要路線に新型車両が入る。地方交通の近代化と利便性向上が期待される。</div>
+      <div class="art-body">
+        <p>JR東日本は2026年秋頃を目標に、中央本線（松本〜長野方面）および篠ノ井線に新型車両「E131系」を投入する予定だ。E131系は車内防犯カメラの搭載、LCDディスプレイによる案内情報の充実、バリアフリー対応の向上が特徴で、現行の車両よりも乗客サービスが大幅に改善される。</p>
+        <p>長野県内の鉄道利用者は観光客から通勤・通学客まで幅広く、新型車両の導入は沿線地域の利便性向上に直接貢献する。松本・塩尻・長野市周辺の移動環境が改善することで、地域企業の採用力や観光誘客にも好影響が期待される。</p>
+      </div>
+      <div class="art-source"><a href="https://news.web.nhk/newsweb/area/200" target="_blank">出典: 長野県内メディア・鉄道情報サイト</a></div>
+      <div class="koike-take">はなひらく（塩尻・松本エリア）の利用者・スタッフの通勤環境が改善することで、採用競争力の向上や施設への交通アクセス改善にも寄与しうる。スタッフ募集の訴求ポイントに加えてもよい。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">岡谷ジャンクション（中央道・長野道）のリニューアル工事が来週再開 ─ 事故多発エリアで県警が安全呼びかけ</h2>
+      <div class="art-lead">長野県岡谷市の重要交通結節点の大規模工事。工事中の渋滞・安全管理が地域の課題に。</div>
+      <div class="art-body">
+        <p>中央自動車道と長野自動車道が交差する岡谷ジャンクション（長野県岡谷市）のリニューアル工事が来週から再開される。工事期間中は付近での事故が相次いでいることから、長野県警察とNEXCO中日本（中日本高速道路）が協力してドライバーへの安全注意の呼びかけを行っている。</p>
+        <p>岡谷ジャンクションは中部・関東と長野・北信越を結ぶ物流・観光の大動脈上の結節点で、工事中の通行制限は広域的な交通に影響する。特に塩尻・松本方面から長野方面への物流や、諏訪・上田方面への観光アクセスに一定の影響が出る見込みだ。</p>
+      </div>
+      <div class="art-source"><a href="https://www.nbs-tv.co.jp/news/" target="_blank">出典: NHK長野・NBS長野放送「長野県ニュース2026年5月」</a></div>
+      <div class="koike-take">はなひらく利用者の送迎や塩尻エリアの物流に影響が出る可能性がある。工事期間中の迂回ルートと所要時間の増加を送迎スタッフに周知しておきたい。</div>
+    </div>
+
+    <div class="article">
+      <h2 class="art-headline">長野市「ながの100年フードフェス」が5/3-5に初開催 ─ 「粉もの文化」が文化庁の100年フードに認定され開幕</h2>
+      <div class="art-lead">おやき・にらせんべいなど長野の食文化が国に正式認定。地域ブランドとしての発信力を高める機会に。</div>
+      <div class="art-body">
+        <p>長野市のセントラルスクゥエアで5月3日から5日にかけて「ながの100年フードフェス」が初開催された。長野市の「粉もの文化」が文化庁の「100年フード」（100年以上の歴史を持つ食文化）に認定されたことを記念し、おやき・にらせんべいの試食・体験ブースが並んだ。</p>
+        <p>「100年フード」への認定は地域食文化の持続・発展を国が後押しする制度で、長野市のブランド力向上と観光誘客への波及効果が期待される。GW期間中の開催で来場者数は好調だった模様で、今後の継続開催に向けた機運も高まっている。</p>
+      </div>
+      <div class="art-source"><a href="https://news.web.nhk/newsweb/area/200" target="_blank">出典: NHK長野「長野県の最新ニュース2026年5月」</a></div>
+      <div class="koike-take">長野市の食文化認定は地元ブランド強化の好機。はなひらくや地域イベントとのコラボ企画（利用者の料理体験×地元フード）としても活用できる創造的な地域資源だ。</div>
+    </div>
+  </section>
+
+</div><!-- /paper-columns -->
+
+<!-- ⑮ CALENDAR -->
+<section class="calendar-wrap page-full-width">
+  <div class="section-label">今週のカレンダー</div>
+  <div class="cal-items">
+    <div class="cal-item">
+      <div class="cal-date">5/9（土）</div>
+      <div class="cal-event">WTI原油$62.80で週を終了、日米金利差3%維持</div>
+      <div class="cal-take">週末にかけて市場は落ち着いているが、週明けからの外交ヤマ場を前に先週の動きを振り返っておくのが有効。</div>
+    </div>
+    <div class="cal-item">
+      <div class="cal-date">5/11（月）〜13</div>
+      <div class="cal-event">ベッセント米財務長官 訪日（高市首相・片山財務相・植田日銀総裁と会談）</div>
+      <div class="cal-take">円安是正と日銀追加利上げが議題の中心。為替・金利の動向に最も直接的に影響する会談で、外貨建て保険・ドル建て資産への影響を注視。</div>
+    </div>
+    <div class="cal-item">
+      <div class="cal-date">5/12（火）</div>
+      <div class="cal-event">米消費者物価指数（CPI）4月分 発表</div>
+      <div class="cal-take">FRBの利上げ・据え置き判断に直結する最重要指標。インフレ再燃なら円安・株安リスク、鈍化なら利下げ期待で円高・株高。FP顧客への事前説明が有効。</div>
+    </div>
+    <div class="cal-item">
+      <div class="cal-date">5/13（水）</div>
+      <div class="cal-event">日銀 4月の金融政策決定会合議事要旨 公表</div>
+      <div class="cal-take">植田総裁の追加利上げシグナルに要注目。変動金利ローンや外貨建て保険への影響を事前に顧客と確認しておきたい。</div>
+    </div>
+    <div class="cal-item">
+      <div class="cal-date">5/14〜15</div>
+      <div class="cal-event">トランプ米大統領 訪中・習近平主席と首脳会談（通商・関税協議が焦点）</div>
+      <div class="cal-take">対中関税80%発言の後の会談結果は株式・為替・原油相場を大きく動かす。薬局の原薬調達コストにも中期的に影響しうる最重要外交イベント。</div>
+    </div>
+    <div class="cal-item">
+      <div class="cal-date">6/1（月）</div>
+      <div class="cal-event">令和8年度調剤報酬改定の残り施行分（門前薬局等立地依存減算等）が正式施行</div>
+      <div class="cal-take">PHC薬局の立地判定と体制整備を5月中に完了させる必要がある。今月がラストチャンス。</div>
+    </div>
+    <div class="cal-item">
+      <div class="cal-date">6/1（月）</div>
+      <div class="cal-event">障害福祉報酬改定（新規事業所の基本報酬引き下げ）施行</div>
+      <div class="cal-take">はなひらくは既存事業所なので直接の影響は限定的だが、地域の新規参入動向の変化を把握しておきたい。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑯ POSTSCRIPT -->
+<section class="postscript page-full-width">
+  <div class="ps-label">編集後記</div>
+  <div class="ps-body">日経が最高値を更新した翌日の反落は、相場の呼吸を感じさせる一幕だった。トランプが「80%関税」と口にし、カンヌに高倉健が帰ってきて、ゴダイゴがテレビに19年ぶりに現れる──混沌と懐かしさが混在する2026年の5月9日。核融合が98億円を集め、不動産DXに海外マネーが流れ込む。事業の種はそこかしこに実っている。どんな地政学リスクの中でも、個人が自分の行動を設計し続けることが最強のリスクヘッジだ。今週も前進しよう。</div>
+</section>
+
+<!-- ⑰ GLOSSARY -->
+<section class="glossary-wrap page-full-width">
+  <div class="section-label">Glossary ― 用語解説</div>
+  <div class="gloss-grid">
+    <div class="gloss-item">
+      <div class="gloss-term">WTI原油</div>
+      <div class="gloss-def">ウエスト・テキサス・インターミディエート。米国テキサス州産の原油で、世界の原油価格の基準指標として使われる。1バレル（約159リットル）単位で価格が表示される。</div>
+    </div>
+    <div class="gloss-item">
+      <div class="gloss-term">301条（通商法第301条）</div>
+      <div class="gloss-def">米国の1974年通商法第301条。外国の不公正な貿易慣行に対して大統領が報復措置を取る権限を定めた法律。トランプ政権が中国への追加関税発動の根拠として使用している。</div>
+    </div>
+    <div class="gloss-item">
+      <div class="gloss-term">エージェンティックAI</div>
+      <div class="gloss-def">複数のタスクを自律的に計画・実行するAI。単純な質問応答ではなく、メール送信・検索・コード実行など複数の行動を連続してこなすことができる次世代のAI形態。</div>
+    </div>
+    <div class="gloss-item">
+      <div class="gloss-term">ハルシネーション</div>
+      <div class="gloss-def">AIが事実と異なる情報を自信満々に生成してしまう現象。医療・法律・金融など正確性が求められる分野での実用化を阻む最大の課題。</div>
+    </div>
+    <div class="gloss-item">
+      <div class="gloss-term">門前薬局等立地依存減算</div>
+      <div class="gloss-def">2026年6月施行の新設加算（マイナス評価）。特定の医療機関の前（門前）に立地し、その処方箋に過度に依存している薬局の報酬を15点分減算するもの。</div>
+    </div>
+    <div class="gloss-item">
+      <div class="gloss-term">M&A</div>
+      <div class="gloss-def">合併（Merger）と買収（Acquisition）の略称。企業が他の企業を買収したり、合併したりすること。調剤薬局業界では中小薬局が大手チェーンに経営権を売却するケースが増加中。</div>
+    </div>
+    <div class="gloss-item">
+      <div class="gloss-term">ヘリカル型核融合炉</div>
+      <div class="gloss-def">螺旋（ヘリカル）状の磁場コイルを使って超高温プラズマを閉じ込め、核融合反応を起こす方式の原子炉。日本の国立核融合科学研究所が独自に開発した技術で、Helical Fusionが商用化を目指す。</div>
+    </div>
+    <div class="gloss-item">
+      <div class="gloss-term">カンヌ・クラシック部門</div>
+      <div class="gloss-def">カンヌ国際映画祭の特別部門の一つ。映画史上の傑作や重要作品を4Kデジタル修復などで再評価・上映するセクション。入選すること自体が映画の歴史的価値の国際的認定を意味する。</div>
+    </div>
+    <div class="gloss-item">
+      <div class="gloss-term">USTR</div>
+      <div class="gloss-def">米国通商代表部（United States Trade Representative）。米国の通商政策を担当する政府機関。対中追加関税や各国との貿易協定交渉を主導する。</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  NewGo Timez 第147号 ― 2026年5月9日（土）発行 ／ 小池雄悟 Morning Intelligence ／ 無断転載禁止
+</footer>
+
+</body>
+</html>
