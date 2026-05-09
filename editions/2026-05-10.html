@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewGo Timez ─ 2026年5月10日（日）第148号</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0ebdb;
+    color: #0a0a0a;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px 64px;
+  }
+
+  /* ─── マストヘッド ─── */
+  .masthead {
+    border-top: 6px solid #0a0a0a;
+    border-bottom: 3px solid #0a0a0a;
+    text-align: center;
+    padding: 24px 0 16px;
+    margin-bottom: 4px;
+  }
+  .masthead-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: #0a0a0a;
+  }
+  .masthead-sub {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    margin-top: 8px;
+    color: #333;
+  }
+  .masthead-tagline {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    border-top: 1px solid #0a0a0a;
+    border-bottom: 1px solid #0a0a0a;
+    padding: 4px 0;
+    margin-top: 10px;
+    color: #444;
+  }
+
+  /* ─── 共通ブロック ─── */
+  .section {
+    border-top: 3px solid #0a0a0a;
+    padding-top: 20px;
+    margin-top: 32px;
+  }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    border-bottom: 1px solid #0a0a0a;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* ─── レイアウト ─── */
+  .page-full-width { width: 100%; }
+
+  .paper-columns {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .masthead-title { font-size: 96px; }
+    .paper-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .page-full-width { grid-column: 1 / -1; }
+  }
+
+  /* ─── マーケット ─── */
+  .market-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  @media (min-width: 768px) {
+    .market-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .market-card {
+    border: 1px solid #0a0a0a;
+    padding: 12px 14px;
+  }
+  .market-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  .market-value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  @media (min-width: 768px) {
+    .market-value { font-size: 30px; }
+  }
+  .market-change {
+    font-size: 13px;
+    margin-top: 2px;
+    color: #333;
+  }
+  .market-note {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    line-height: 1.6;
+    border-top: 1px solid #ccc;
+    padding-top: 6px;
+  }
+
+  /* ─── 一面トップ ─── */
+  .top-story {
+    margin-top: 12px;
+  }
+  .top-kicker {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  .top-headline {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.4;
+    border-bottom: 2px solid #0a0a0a;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  @media (min-width: 768px) {
+    .top-headline { font-size: 42px; }
+  }
+  .top-body p {
+    margin-bottom: 14px;
+  }
+  .top-source {
+    font-size: 13px;
+    color: #555;
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+  .top-source a { color: #555; }
+
+  /* ─── 今日の数字 ─── */
+  .number-value {
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 768px) {
+    .number-value { font-size: 120px; }
+  }
+  .number-caption {
+    font-size: 15px;
+    color: #444;
+    margin-top: 8px;
+    font-weight: 700;
+  }
+  .number-body {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  /* ─── ヘッドライン ─── */
+  .headline-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+  .headline-item {
+    border-bottom: 1px solid #ccc;
+    padding: 14px 0;
+  }
+  .headline-item:last-child { border-bottom: none; }
+  .headline-cat {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  .headline-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 6px;
+  }
+  .headline-body {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.7;
+  }
+  .headline-source {
+    font-size: 12px;
+    color: #777;
+    margin-top: 4px;
+  }
+
+  /* ─── 人物 ─── */
+  .person-name {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .person-role {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  .person-quote {
+    font-size: 18px;
+    font-weight: 700;
+    border-left: 4px solid #0a0a0a;
+    padding-left: 14px;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+
+  /* ─── セクション記事 ─── */
+  .article {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+  }
+  .article:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .article-headline {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 6px;
+  }
+  @media (max-width: 767px) {
+    .article-headline { font-size: 22px; }
+  }
+  .article-lead {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .article-body p {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  .article-source {
+    font-size: 12px;
+    color: #777;
+    margin-top: 6px;
+  }
+  .article-source a { color: #777; }
+
+  /* ─── 小池目線 ─── */
+  .koike-take {
+    background: rgba(10,10,10,0.05);
+    border-left: 3px solid #0a0a0a;
+    padding: 8px 12px;
+    font-size: 15px;
+    color: #333;
+    margin-top: 10px;
+    line-height: 1.65;
+  }
+  .koike-take::before {
+    content: "▶ 小池目線 ─ ";
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── カレンダー ─── */
+  .calendar-list { list-style: none; margin-top: 8px; }
+  .calendar-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    align-items: start;
+  }
+  .calendar-item:last-child { border-bottom: none; }
+  .calendar-date {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .calendar-event {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .calendar-take {
+    font-size: 13px;
+    color: #555;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+  @media (max-width: 767px) {
+    .calendar-item { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* ─── 編集後記 ─── */
+  .postscript-body {
+    font-size: 16px;
+    line-height: 1.8;
+    border-left: 4px solid #0a0a0a;
+    padding: 10px 16px;
+    margin-top: 12px;
+  }
+
+  /* ─── Glossary ─── */
+  .glossary-list { margin-top: 12px; }
+  .glossary-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  .glossary-item:last-child { border-bottom: none; }
+  .glossary-term {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .glossary-def {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.65;
+  }
+
+  /* ─── フッター ─── */
+  .footer {
+    border-top: 3px solid #0a0a0a;
+    margin-top: 48px;
+    padding-top: 12px;
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    letter-spacing: 0.1em;
+  }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+
+<!-- ① マストヘッド -->
+<header class="masthead page-full-width">
+  <div class="masthead-title">NewGo Timez</div>
+  <div class="masthead-sub">2026年5月10日（日）&nbsp;&nbsp;第148号&nbsp;&nbsp;発行: 小池雄悟</div>
+  <div class="masthead-tagline">すべての記事は当日公開。速く知り、速く動く。</div>
+</header>
+
+<!-- ② 朝のマーケット -->
+<section class="section page-full-width">
+  <div class="section-label">Morning Market / 朝のマーケット</div>
+  <div class="market-grid">
+
+    <div class="market-card">
+      <div class="market-label">日経平均（5/8終値）</div>
+      <div class="market-value">62,713円</div>
+      <div class="market-change">▼120（-0.19%）</div>
+      <div class="market-note">5/8（金）大引け。トヨタ決算失望と対中関税警戒が重なり利益確定売り優勢。今週はベッセント訪日・米中首脳会談を控え方向感が乏しく、当面は高値もみ合いの見通し。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">ドル円（NY終値）</div>
+      <div class="market-value">156円67銭</div>
+      <div class="market-change">▲0.41銭（+0.26%）</div>
+      <div class="market-note">NY市場（5/8 US）。米長期金利低下を受けドル売り・円買いが小幅先行。ベッセント訪日前の日米協議への警戒感も残り、介入ライン157〜158円が意識される。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">NYダウ（5/8終値）</div>
+      <div class="market-value">46,584ドル</div>
+      <div class="market-change">▼85（-0.18%）</div>
+      <div class="market-note">5/8（金）US大引け。米4月雇用統計が堅調でFRBの利下げ観測が後退し、ハイテク株を中心に軟調地合い。一方でロシア・ウクライナ停戦合意が下支えし下げは限定的。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">WTI原油（5/8終値）</div>
+      <div class="market-value">$95.42</div>
+      <div class="market-change">▲$0.61（+0.6%）</div>
+      <div class="market-note">5/8（金）US大引け。米軍のイラン石油船攻撃をめぐる緊張は続くが、ロシア・ウクライナ3日停戦合意が地政学リスクをやや緩和。原油は$96台を挟んで乱高下している。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">金（スポット）</div>
+      <div class="market-value">$4,720台/oz</div>
+      <div class="market-change">▲週間+2%超</div>
+      <div class="market-note">5/8（金）。米中対立・地政学リスクを背景に4週ぶり高値水準を更新。国内小売価格は1g=26,181円（5/7 9:30時点）。有事の金買いが根強い。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">日米金利差</div>
+      <div class="market-value">約3.5%</div>
+      <div class="market-change">米10年4.30% / 日10年0.80%</div>
+      <div class="market-note">米金利低下でドル円の上値を抑制。日本の長期金利はYCC撤廃後も低位安定。金利差縮小は円安圧力の緩和要因だが、依然として3%超の差がドル高・円安の構造的背景。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ③ 一面トップ -->
+<section class="section page-full-width">
+  <div class="section-label">Top Story / 一面トップ</div>
+  <div class="top-story">
+    <div class="top-kicker">本日のトップ ─ スポーツ</div>
+    <h1 class="top-headline">三笘薫、W杯代表発表5日前に左ハムストリング負傷交代<br>─ ブライトン監督「良い状態には見えない」、日本代表に衝撃</h1>
+    <div class="top-body">
+      <p>2026 FIFA W杯メンバー発表（5月15日）まで5日を切った10日、ブライトンの日本代表MF三笘薫（28）がプレミアリーグのウォルバーハンプトン戦に先発出場したが、後半55分に左太ももの裏（ハムストリング）を押さえて倒れ込み、途中交代を余儀なくされた。左足の肉離れが疑われており、ブライトンのファビアン・ヒュルゼラー監督は試合後「あまり良い状態には見えなかった」と語った。</p>
+      <p>三笘は今季プレミアリーグで12ゴール・9アシストを記録しており、日本代表にとって最重要の戦力のひとり。W杯本大会（6月11日〜7月19日）に向けた代表選考の直前のアクシデントに、SNS上では「嘘でしょ」「W杯には間に合ってほしい」と衝撃の声が相次いだ。</p>
+      <p>ハムストリングの肉離れは重症度によって回復まで2週間〜2カ月を要することがある。森保一監督が15日に発表する最終メンバー26人に三笘が名を連ねるかどうか、医師団の見立てと日本サッカー協会の判断が注目される。なお、ブライトンは今節3－0でウルブスに快勝しプレミア5位を維持した。</p>
+    </div>
+    <div class="top-source">出典: サッカーキング「三笘薫、W杯メンバー発表直前に悲劇」／日刊スポーツ「ブライトン三笘薫、左ハムストリング負傷で途中交代」　<a href="https://www.soccer-king.jp/news/world/eng/20260510/2157599.html" target="_blank">→ 記事リンク</a></div>
+    <div class="koike-take">スポーツ選手の故障は「直前リスク」の典型。PharmaEightのキャリア支援でも「体が資本」の当事者意識を伝える文脈で引用できる。Personal OSでも健康管理を目標設計の軸に組み込むヒントになる。</div>
+  </div>
+</section>
+
+<!-- ④ 今日の数字 -->
+<section class="section page-full-width">
+  <div class="section-label">Number of the Day / 今日の数字</div>
+  <div class="number-value">1,400議席</div>
+  <div class="number-caption">英統一地方選で与党・労働党が失った地方議席数</div>
+  <div class="number-body">5月7日の英統一地方選で、スターマー首相率いる労働党が約1,400議席を失い、新興右派「リフォームUK」に大敗。二大政党制の母国で多党制移行が加速した。</div>
+  <div class="koike-take">「大組織の慢心と新興勢力の台頭」はビジネスでも共通。PharmaEight∞の独立薬剤師支援モデルや、Personal OSの個人特化戦略が刺さる市場構造を示すアナロジーになる。</div>
+</section>
+
+<!-- ⑤ 今朝のヘッドライン -->
+<section class="section page-full-width">
+  <div class="section-label">Headlines / 今朝のヘッドライン</div>
+  <ul class="headline-list">
+
+    <li class="headline-item">
+      <div class="headline-cat">社会・事件</div>
+      <div class="headline-title">磐越道バス事故 続報：68歳運転手を過失運転致死傷で逮捕、「数か月で複数回事故」の疑い</div>
+      <div class="headline-body">5/6に21人が死傷した磐越道マイクロバス事故で、警察はバスを運転していた68歳男性を逮捕。事故前数か月で複数回事故を起こしていた疑いが浮上しており、安全管理の問題が問われる。</div>
+      <div class="headline-source">出典: NHK・FTV福島テレビ</div>
+      <div class="koike-take">高齢ドライバーの安全管理問題は、はなひらくの送迎業務にも直結。送迎スタッフの適性管理と事故リスク対策を改めて見直すきっかけにしたい。</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">生活・労働</div>
+      <div class="headline-title">「夜勤4回でやっと普通」── 現役看護師が明かす〝給与の中身〟、病院奨学金で「お礼奉公」の不条理</div>
+      <div class="headline-body">医療現場の看護師の給与は夜勤手当込みで「ようやく普通」の水準。病院奨学金の返済義務（お礼奉公）と組み合わさり、転職・離職が難しい構造が浮き彫りになった。</div>
+      <div class="headline-source">出典: 東洋経済オンライン</div>
+      <div class="koike-take">医療・介護人材の「夜勤依存給与」問題は、はなひらくスタッフの処遇設計にも示唆がある。日中事業所のメリット（夜勤なし）を採用で積極的に訴求できる。</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">国際・速報</div>
+      <div class="headline-title">ロシア・ウクライナ 停戦2日目、1,000人規模の捕虜交換が開始 ─ トランプ「私が要請した」</div>
+      <div class="headline-body">トランプ大統領がSNSで発表した3日間停戦（5/8〜11）の2日目。双方が1,000人ずつの捕虜交換を開始。ただしロシアとウクライナの停戦宣言期間にズレがあり、完全実施は流動的。</div>
+      <div class="headline-source">出典: 日本経済新聞</div>
+      <div class="koike-take">停戦と捕虜交換は地政学リスクを一時的に緩和し、原油・金相場に影響。FP顧客のポートフォリオ運用を説明する際の最新コンテキストとして活用できる。</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">政治</div>
+      <div class="headline-title">自民党「派閥禁止の落とし穴」── 必要悪が消えた後のガバナンス空白が浮上</div>
+      <div class="headline-body">自民党が派閥を事実上解散してから1年余り。調整機能を失った党内で意思決定が滞り始めており、「必要悪だった」とする声も。後継の政策グループ活動も実態は不明確なまま。</div>
+      <div class="headline-source">出典: 日本経済新聞</div>
+      <div class="koike-take">組織の「暗黙のルールを廃止した後の混乱」はPharmaEight∞のチームビルディング指導でも起きうる。制度変更後の移行期マネジメントの重要性を伝える実例として使える。</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">経済・生活</div>
+      <div class="headline-title">食品値上げ2026年、前年比6割減ペースも原材料高は長期化 ─ 包装資材費の上昇が新たな波</div>
+      <div class="headline-body">2026年5〜6月の食品値上げは単月1,000品目を下回り、2023年比で大幅鈍化。ただし原材料高の影響が値上げ理由の99.6%を占め、中東情勢悪化による包装資材費上昇が新局面を招く。</div>
+      <div class="headline-source">出典: TDB（帝国データバンク）・物流ニュース</div>
+      <div class="koike-take">はなひらく寿・塩尻の給食費・材料費が今後も上昇傾向。利用者向け食事提供コストの見直しと原材料費の固定化策（まとめ発注等）を早めに検討したい。</div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ⑥ 人物クローズアップ -->
+<section class="section page-full-width">
+  <div class="section-label">Person / 人物クローズアップ</div>
+  <div class="person-name">ナイジェル・ファラージ</div>
+  <div class="person-role">英リフォームUK（改革党）党首</div>
+  <div class="person-quote">「二大政党の支配は終わった。英国民は本物の変化を求めている」</div>
+  <p>5月7日の英統一地方選で、ファラージ率いる右派ポピュリスト政党リフォームUKが26%の支持率で首位に躍り出た。保守党（19%）・労働党（18%）をダブルスコアに近い形で引き離し、136自治体で計5,036議席が争われた選挙でBBCが「衝撃的な結果」と報じる大躍進。移民反対・緊縮財政批判を旗印に、スターマー労働党政権への失望票を一手に引き受けた形だ。英国の二大政党制は「発祥の地」で曲がり角を迎えている。</p>
+  <div class="koike-take">「既存大手への不満が新興勢力に流れる」構図はPharmaEight∞の市場参入戦略そのもの。大手調剤チェーン・大手FP会社への不満層を取り込む文脈で語れる強いアナロジー。</div>
+</section>
+
+<!-- ⑦〜⑭ 2段組セクション -->
+<div class="paper-columns" style="margin-top: 32px;">
+
+  <!-- ⑦ 政治・経済 -->
+  <section class="section">
+    <div class="section-label">Politics &amp; Economy / 政治・経済</div>
+
+    <article class="article">
+      <h2 class="article-headline">自民党「派閥禁止後のガバナンス」問題が表面化 ─ 調整機能の喪失、政策グループも形骸化</h2>
+      <div class="article-lead">「必要悪」とされた派閥を解散した自民党が、その代償を払い始めている。</div>
+      <div class="article-body">
+        <p>2024年末の政治資金問題を契機に派閥を事実上解散した自民党では、党内の調整機能が失われ、政策決定のスピードと一体感が低下しているという指摘が相次いでいる。</p>
+        <p>後継として設置された「政策グループ」は実態が曖昧で、派閥時代の資金・人事機能は引き継いでいない。党幹部の間では「制御装置がない状態」との懸念が広がっており、2026年度後半に向けた税制・社会保障議論に影響する可能性が高い。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞「自民党、派閥禁止の落とし穴」　<a href="https://www.nikkei.com/article/DGXZQOUA21CGV0R20C26A4000000/" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">「ルールを廃止した後の秩序」の問題は、はなひらくやPHC薬局の組織運営にも応用できる。明示的ルールがない状態での暗黙知の喪失リスクを認識しておきたい。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">診療所の「開業規制」がや骨抜き ─ 自治体が対象区域の指定に二の足を踏む</h2>
+      <div class="article-lead">2026年4月施行の診療所開業規制が、想定通りに機能していないことが明らかになった。</div>
+      <div class="article-body">
+        <p>医師偏在の是正を目的として2026年4月に施行された「特定区域」での診療所新設規制。しかし対象区域の指定権限を持つ都道府県・市区町村が、医師会の反発や手続きの煩雑さを理由に指定を回避する動きが相次ぎ、制度が機能不全に陥っている。</p>
+        <p>開業規制の「骨抜き」が進めば、都市部への診療所集中という現状が変わらず、地方の医師不足も解消されない。厚労省は自治体向けの運用ガイドライン強化を検討しているとされる。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞「診療所の『開業規制』はや骨抜き？」　<a href="https://www.nikkei.com/article/DGXZQOUA302K80Q6A430C2000000/" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">診療所規制と同様に、薬局の量的規制も「指定回避」が起きうる。PHC薬局にとっては既存立地の競合抑制策として機能するか否か、制度の実効性を注視したい。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">米4月雇用が11.5万人増、失業率横ばい ─ FRB利下げ観測が後退し株・債券に重荷</h2>
+      <div class="article-lead">米労働市場の底堅さが改めて確認され、FRBの早期利下げ期待が萎んだ。</div>
+      <div class="article-body">
+        <p>米労働省が8日発表した4月の雇用統計では、非農業部門雇用者数が11.5万人増と市場予想を上回り、失業率も前月と変わらず安定。好調な労働市場はFRBの金融緩和を急ぐ必要性を低下させる材料となる。</p>
+        <p>これを受けてNYダウは85ドル安で引け、米10年債利回りは一時4.35%台に上昇。為替市場ではドルが対円で156円台後半に底堅く推移し、日本の輸入コスト上昇圧力が続く見通しだ。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞・各社マーケット報道（5月8日）　<a href="https://www.nikkei.com/markets/worldidx/chart/nk225/" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">米利下げ観測後退＝円安継続リスク。FP顧客への外貨建て保険・海外資産のリスク説明で「円安は当面続く可能性が高い」という根拠として使えるデータ。</div>
+    </article>
+  </section>
+
+  <!-- ⑧ 世界の動き -->
+  <section class="section">
+    <div class="section-label">World / 世界の動き</div>
+
+    <article class="article">
+      <h2 class="article-headline">ロシア・ウクライナ「3日停戦」進行中 ─ トランプ仲介で1,000人規模の捕虜交換開始、完全停戦は依然不透明</h2>
+      <div class="article-lead">トランプ大統領の要請で実現した異例の3日間停戦が2日目を迎えた。</div>
+      <div class="article-body">
+        <p>トランプ米大統領がSNSで「私が直接要請した」と発表した5/8〜11の3日間停戦。双方が1,000人ずつの捕虜交換を開始し、一定の進展を見せた。ただしロシアは当初「5/8〜9」、ウクライナは「5/6から72時間」と宣言期間にズレがあり、停戦の完全実施は流動的な状況が続く。</p>
+        <p>米軍のイラン石油船2隻への攻撃や中東情勢の緊張も同時並行で進行しており、トランプ政権は複数の地政学リスクを抱えた綱渡りの外交を展開している。次の焦点は5/14〜15の米中首脳会談と、その前後での停戦維持の行方だ。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞「トランプ氏、ロシアとウクライナの3日間停戦発表」　<a href="https://www.nikkei.com/article/DGXZQOGN08BSL0Y6A500C2000000/" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">地政学リスクの高まりは金・原油価格を通じて国内物価に波及。はなひらくの光熱費・食材費への影響と、FP顧客のポートフォリオへの影響を同時に意識したい。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">英統一地方選でリフォームUKが大躍進 ─ 労働党が1,400議席喪失、二大政党制が転換点に</h2>
+      <div class="article-lead">二大政党制の母国・英国で、政党システムの根本的な変容が始まった。</div>
+      <div class="article-body">
+        <p>5月7日の英統一地方選（136自治体・5,036議席）で、ナイジェル・ファラージ率いる新興右派「リフォームUK」が支持率26%で首位に躍り出た。与党・労働党（18%）は約1,400議席を失い、保守党（19%）も大幅後退。BBCは「衝撃的な結果」と報じた。</p>
+        <p>スターマー首相への退陣圧力が労働党内で高まる一方、リフォームUKは移民反対・既存政治批判を旗印に農村部・地方都市で支持を急拡大した。2029年の次回総選挙での政権交代シナリオが現実味を帯びてきており、英EU関係や移民政策の大きな転換を示唆する可能性がある。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞「イギリス統一地方選、与党議席が大幅減」／ジェトロ・ビジネス短信　<a href="https://www.nikkei.com/article/DGXZQOGR0879E0Y6A500C2000000/" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">「既存大手への不満票が新興勢力に流れる」英政治の構図は、PharmaEight∞の市場参入戦略と同型。大手チェーン薬局・大手FPへの不満層を独立系が取り込む文脈で語れる。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">世界食料価格が3年超ぶり高水準 ─ 中東緊張で植物油上昇、途上国の食料安全保障に打撃</h2>
+      <div class="article-lead">食料価格の高騰が再び世界的な課題として浮上している。</div>
+      <div class="article-body">
+        <p>国連食糧農業機関（FAO）によると、世界の食料価格指数が3年超ぶりの高水準に達した。特に中東情勢の悪化を受けた植物油（パーム油・大豆油）の上昇が指数全体を押し上げており、途上国の食料輸入コストが急増している。</p>
+        <p>日本国内でも2026年の食品値上げは原材料高が99.6%の要因を占め、包装資材費の上昇という新たな波が加わりつつある。食品値上げペースは前年比6割減に鈍化しているものの、コスト上昇は構造的に続いており、家庭・事業所双方の食費管理が引き続き課題となる。</p>
+      </div>
+      <div class="article-source">出典: 各社報道・帝国データバンク食品価格調査（2026年5月）　<a href="https://www.lnews.jp/2026/05/s0507707.html" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">はなひらく寿・塩尻の食材費増加に直結。利用者給食費の見直しと、仕入れ先の複数化・まとめ発注によるコスト固定化を早急に検討したい。</div>
+    </article>
+  </section>
+
+  <!-- ⑨ AI・テック -->
+  <section class="section">
+    <div class="section-label">AI &amp; Tech / AI・テック</div>
+
+    <article class="article">
+      <h2 class="article-headline">AWS Bedrock AgentCore Browser ─ AIエージェントが印刷ダイアログ・認証プロンプト等のOS操作を自動化</h2>
+      <div class="article-lead">AIエージェントの「できないこと」がまた一つ消えた。</div>
+      <div class="article-body">
+        <p>AWSが発表したBedrock AgentCore Browserは、従来のDOM操作では対応できなかった印刷ダイアログ、セキュリティプロンプト、二要素認証ポップアップなどOSレベルの操作をAIエージェントが自動化できるようにする新機能。</p>
+        <p>これにより、請求書の印刷・PDF出力・ログイン認証フローを人手なしで完結させるエージェントの実装が可能になる。医療・調剤・福祉の業務自動化（レセプト出力、処方箋管理等）への応用が現実的な段階に入ってきた。</p>
+      </div>
+      <div class="article-source">出典: note「話題のAI新製品・新機能ニュース（2026/5/7号）」　<a href="https://note.com/yasuhitoo/n/n7f666df85004" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">はなひらく給付費請求PDFの集計・出力フローにAgentCore Browserを組み合わせると、Claude Codeによる完全無人実行が近づく。次フェーズの自動化構想として押さえておきたい。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">IBM watsonx Orchestrate ─ 複数AIエージェントを一元管理する企業向け制御基盤を発表</h2>
+      <div class="article-lead">エージェントの「乱立」を制御するレイヤーが市場に登場した。</div>
+      <div class="article-body">
+        <p>IBMがwatsonx Orchestrateで発表した複数AIエージェント管理基盤は、監視・認証・監査ログ・ガードレール機能を統合。部門ごとにバラバラに導入されがちなAIエージェントを一元管理し、セキュリティと説明責任を確保するエンタープライズ向けソリューション。</p>
+        <p>AI活用が「実験フェーズ」から「本番運用フェーズ」に移行する中、エージェントのガバナンス問題が急浮上している。中規模事業者でも複数エージェントを使い分ける時代が来ており、管理コストの増大が新たな課題になりつつある。</p>
+      </div>
+      <div class="article-source">出典: note「話題のAI新製品・新機能ニュース（2026/5/7号）」　<a href="https://note.com/yasuhitoo/n/n7f666df85004" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">PharmaEight∞・はなひらく・FP事業でそれぞれ異なるClaude Codeスキルを運用しているが、複数エージェント管理の重要性は同じ。スキル間の整合性チェック体制を整えるヒントになる。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">Google Gemini API File Search拡張 ─ マルチモーダル対応・ページ単位引用機能を追加</h2>
+      <div class="article-lead">文書検索AIが「画像込み・ページ特定引用」に対応し、法的・医療的活用が広がる。</div>
+      <div class="article-body">
+        <p>GoogleがGemini APIのFile Search機能を拡張し、画像とテキストを統合したマルチモーダル処理、メタデータフィルタリング、ページレベルの引用機能を追加した。PDFの特定ページから根拠を引用して回答する機能は、契約書・診断書・処方箋などの文書処理精度を大幅に向上させる。</p>
+        <p>医療・薬局・福祉分野では大量の紙文書が残存しており、スキャンPDFから正確に情報を引き出すニーズが高い。マルチモーダルRAG（検索拡張生成）の実用化が一段と加速しそうだ。</p>
+      </div>
+      <div class="article-source">出典: note「話題のAI新製品・新機能ニュース（2026/5/7号）」　<a href="https://note.com/yasuhitoo/n/n7f666df85004" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">はなひらくの給付費請求PDF集計や、ソニー生命の保険証券スキャンを活用する現行スキルの精度向上に直結する。Gemini APIとの連携を比較検討する価値がある。</div>
+    </article>
+  </section>
+
+  <!-- ⑩ スタートアップ -->
+  <section class="section">
+    <div class="section-label">Startups / スタートアップ</div>
+
+    <article class="article">
+      <h2 class="article-headline">Qubitcore（量子コンピューター）が15.3億円調達 ─ 量子誤り訂正技術を商用化へ、2026年初の大型量子案件</h2>
+      <div class="article-lead">量子コンピューターの「商用化の壁」を突破する技術開発に資金が集まっている。</div>
+      <div class="article-body">
+        <p>量子コンピューター技術を開発するQubitcoreが15億3,000万円の資金調達を実施した。同社は量子誤り訂正（Quantum Error Correction）を独自アーキテクチャで実装しており、計算の実用精度を大幅に高める技術を持つ。今回の資金は実証システムの構築と量子ソフトウェア開発チームの採用に充てる。</p>
+        <p>2026年の国内量子スタートアップの調達は1〜3月期だけで過去最高水準に達しており、政府の量子技術推進戦略と民間投資の相乗効果が鮮明になっている。製薬・創薬分野での分子シミュレーション活用が最初の実用化ターゲットとして注目される。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞「スタートアップの1〜3月期、資金調達は過去最高も上位勢に集中」　<a href="https://www.nikkei.com/article/DGXZQOUC211X60R20C26A4000000/" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">量子コンピューターの製薬分野応用（創薬加速）はPharmaEight∞の長期的事業環境を変える可能性がある。今は遠い話でも「量子×創薬」のトレンドをセミナー登壇で触れると先進性が演出できる。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">2026年1〜3月期のスタートアップ資金調達が過去最高 ─ ただし上位勢集中で「二極化」が鮮明に</h2>
+      <div class="article-lead">市場全体は活況も、資金の偏在が中小スタートアップの生存競争を激化させている。</div>
+      <div class="article-body">
+        <p>日本経済新聞によると、2026年1〜3月期の国内スタートアップによる資金調達額は過去最高を更新した。一方で大型調達が上位10社前後に集中しており、シード・アーリー段階の中小スタートアップは資金確保に苦しむ「二極化」が進んでいる。</p>
+        <p>2026年のスタートアップ環境は「実績ある事業モデル」と「革新的だが未実績のアイデア」の格差が拡大する局面。投資家の目利き力が問われる年となっており、事業の早期マネタイズと数字での実証が資金調達の必須条件になりつつある。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞「スタートアップの1〜3月期、資金調達は過去最高も上位勢に集中」　<a href="https://www.nikkei.com/article/DGXZQOUC211X60R20C26A4000000/" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">Personal OSやPharmaEight∞の事業設計でも「実績の数値化」が投資家・顧客への訴求の肝になる。チャレンジャーへのコーチングでも「実績ベースでの自己PR」を意識させたい。</div>
+    </article>
+  </section>
+
+  <!-- ⑪ 薬剤師関連 -->
+  <section class="section">
+    <div class="section-label">Pharmacy / 薬剤師関連</div>
+
+    <article class="article">
+      <h2 class="article-headline">財務省 薬局量的規制の導入を提言 ─ 都市部の小規模乱立是正へ、参入規制の新枠組みを提示</h2>
+      <div class="article-lead">薬局業界にとって大きな転換点となりうる提言が財務省から出た。</div>
+      <div class="article-body">
+        <p>財務省財政制度等審議会が、都市部を中心とした調剤薬局の過剰参入を是正するため、量的規制の導入を提言した。医療機関の近隣に薬局が乱立し、過当競争による経営悪化と薬剤師の分散が問題になっていたことへの対応策として提示された。</p>
+        <p>具体的な規制手法（地域ごとの開設許可制、人口対比の参入基準等）はまだ確定していないが、厚労省・都道府県との協議が本格化する見通し。既存薬局には参入障壁の上昇というプラス要因となる一方、新規開業をめざす薬剤師には制限となる可能性がある。</p>
+      </div>
+      <div class="article-source">出典: 薬事日報「【財務省】薬局量的規制の導入を‐都市部小規模乱立是正で」　<a href="https://www.yakuji.co.jp/entry133592.html" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">PHC薬局は既存店舗を持つ立場として、量的規制は競合新規参入の抑制になりうる。PharmaEight∞の独立薬剤師支援でも「開設要件強化後の参入戦略」を早めに議論しておきたい。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">調剤薬局の倒産が2年連続で過去最多38件 ─ 小規模店の76%が負債1億円未満、販売不振が主因</h2>
+      <div class="article-lead">調剤業界の淘汰が加速している。生き残るための戦略が問われる転換点だ。</div>
+      <div class="article-body">
+        <p>東京商工リサーチによると、2025年に倒産した調剤薬局は38件（前年比35.7%増）で過去最多を2年連続で更新した。倒産企業の76.3%が負債1億円未満の小規模薬局で、「販売不振」が倒産理由の65.7%を占める。</p>
+        <p>大手チェーンのスケールメリットと薬剤師囲い込みが進む一方、処方箋集中度が低下した門前型小規模薬局が経営維持できなくなるケースが増加。2026年6月の調剤報酬改定（かかりつけ薬剤師指導料廃止・立地依存減算新設）がさらなる経営圧迫要因となる見通しだ。</p>
+      </div>
+      <div class="article-source">出典: 東京商工リサーチ「調剤薬局の倒産動向」／Yahoo!ニュース　<a href="https://www.tsr-net.co.jp/data/detail/1202286_1527.html" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">PHC薬局がこの環境で生き残るには「地域密着・かかりつけ機能の強化」が最優先。PharmaEight∞での独立薬剤師支援も「倒産リスクのある小規模薬局の再生支援」として訴求できる。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">厚労省 健康支援薬局の認定基準案を提示 ─ 1年以上勤務の薬剤師「半数以上」要件、専門性を重視</h2>
+      <div class="article-lead">薬局の機能分化がさらに進む。健康支援薬局の認定が差別化の軸になる。</div>
+      <div class="article-body">
+        <p>厚生労働省の検討部会が、健康支援薬局の新たな認定基準案を示した。同一薬局に1年以上継続勤務する薬剤師が「半数以上」であることを要件の一つとし、患者との継続的な関係構築を重視する方向性を打ち出した。</p>
+        <p>健康支援薬局は一般医薬品・健康食品・在宅医療への対応を想定した新類型。認定薬局は報酬上の加算が期待でき、地域包括ケアの担い手としての位置づけが明確化される。慢性的な薬剤師不足の中、長期雇用の確保が経営の鍵を握る。</p>
+      </div>
+      <div class="article-source">出典: 薬事日報「【厚労省】健康支援薬局で認定基準案‐1年以上勤務『半数以上』」　<a href="https://www.yakuji.co.jp/entry133590.html" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">PHC薬局が健康支援薬局の認定を目指すなら、薬剤師の長期定着が最重要課題。採用・定着支援はPharmaEight∞のコアサービスとして設計できる機会がある。</div>
+    </article>
+  </section>
+
+  <!-- ⑫ 障がい福祉関連 -->
+  <section class="section">
+    <div class="section-label">Welfare / 障がい福祉関連</div>
+
+    <article class="article">
+      <h2 class="article-headline">児童養護施設を「地域の子育てコンビニ」に ─ 熊本・光明童園が多機能化で地域拠点モデルを構築</h2>
+      <div class="article-lead">施設の枠を超えた地域支援の先進事例が注目される。</div>
+      <div class="article-body">
+        <p>熊本の児童養護施設・光明童園は、施設機能を核としながら子育て支援・一時預かり・相談窓口など多機能化を進め、地域住民が気軽に立ち寄れる「コンビニ型」支援拠点としての役割を担い始めている。</p>
+        <p>2024年の児童福祉法改正により、児童養護施設への「社会的養育」の要件が強化され、施設の地域開放と多機能化が全国的な方向性となっている。はなひらくが展開する日中活動支援事業も、地域包括支援の拠点として機能強化を図る好機が生まれている。</p>
+      </div>
+      <div class="article-source">出典: 福祉新聞「児童養護施設を核に多機能化　子育て支援でコンビニのような存在に」　<a href="https://fukushishimbun.com/yoiku/45277" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">はなひらく寿・塩尻が「地域の福祉コンビニ」として機能拡張するモデルとして直結する事例。B型事業所の枠を超えた地域拠点化という方向性をチームMTGで共有したい。</div>
+    </article>
+  </section>
+
+  <!-- ⑬ エンタメ -->
+  <section class="section">
+    <div class="section-label">Entertainment / エンタメ</div>
+
+    <article class="article">
+      <h2 class="article-headline">石井竜也（米米CLUB）がバンコク公演でタイ語版「君がいるだけで」を披露 ─ 現地で大反響</h2>
+      <div class="article-lead">日本のバブル期ヒットが、タイでリバイバルする。</div>
+      <div class="article-body">
+        <p>米米CLUBのボーカル・石井竜也がタイ・バンコクでの公演において、1992年のミリオンヒット「君がいるだけで」のタイ語バージョンを披露した。タイ語に翻訳された歌詞とともに熱唱する様子が現地SNSで拡散し、会場は大歓声に包まれた。</p>
+        <p>石井竜也は近年東南アジアでの音楽活動を積極化しており、日本のポップスがタイ・ベトナム・インドネシアで再評価される「昭和・平成J-POPリバイバル」の流れに乗った活動として注目されている。</p>
+      </div>
+      <div class="article-source">出典: Yahoo!ニュース「石井竜也 米米名曲のタイ語版披露」　<a href="https://news.yahoo.co.jp/pickup/6579440" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">「既存コンテンツのローカライズ」による海外展開モデルは、PharmaEight∞のコンテンツビジネスにも応用できる。国内で磨いたコーチング・FPコンテンツをアジア展開する際の参考になる。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">映画「グランド・イリュージョン/ダイヤモンド・ミッション」が全国公開 ─ マジシャン4人組の新シリーズが帰還</h2>
+      <div class="article-lead">人気シリーズの最新作が週末の映画館を賑わせている。</div>
+      <div class="article-body">
+        <p>5月8日に全国公開となった「グランド・イリュージョン/ダイヤモンド・ミッション」。マジシャンチームが巨大犯罪組織と戦う人気シリーズの最新作で、前作から待望の帰還。初週末の興行は好調スタートを切っており、今春の話題作として映画ファンを集めている。</p>
+        <p>また同時期には韓国・欧米の作品も複数公開されており、GW明けの5月は例年以上の映画館賑わいを見せている。</p>
+      </div>
+      <div class="article-source">出典: 映画.com「公開予定スケジュール 2026年5月」　<a href="https://eiga.com/coming/" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">映画・エンタメは顧客接点・コーチングネタとして使える。FP顧客との雑談でも「映画で見た話ですが」と時事ネタを挟むと会話が弾みやすく、信頼関係構築に役立てたい。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">熊川哲也（54歳）の「最新姿」に驚きの声 ─ 「風貌が随分変わった」「別人みたい」とSNSで話題</h2>
+      <div class="article-lead">日本バレエ界の第一人者が、54歳で見せる変化が話題になっている。</div>
+      <div class="article-body">
+        <p>バレエダンサー・熊川哲也の最近の公の場での姿が写真・映像で広まり、「久しぶりに見た」「随分変わった」「別人みたいにびっくりした」などの反響がSNS上で広がっている。54歳でなお現役を続ける日本バレエ界のレジェンドへの関心は依然として高い。</p>
+        <p>熊川は1998年にKバレエ カンパニーを設立し、芸術監督として日本バレエの国際的な発信に努めてきた。近年は舞台よりも演出・指導に比重を移しており、次世代育成に力を注いでいる。</p>
+      </div>
+      <div class="article-source">出典: 西スポWEB OTTO!「54歳・熊川哲也〝最新姿〟に驚きの声」　<a href="https://news.yahoo.co.jp/articles/0676b515ea51dc3915306ad40903a5c7f752fb3e" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">「54歳で第一線を退き次世代育成へ移行」する熊川哲也の姿は、キャリアコーチングの文脈で「プレーヤーからコーチへの転換」を語る際の好例として引用できる。</div>
+    </article>
+  </section>
+
+  <!-- ⑭ 長野県関連 -->
+  <section class="section">
+    <div class="section-label">Nagano / 長野県関連</div>
+
+    <article class="article">
+      <h2 class="article-headline">長野大学が理系学部新設に挑む ─ 産学連携「共創の好循環」で地方大学の生き残りを模索</h2>
+      <div class="article-lead">地方私立大学が生き残りを賭けて理系に舵を切る。</div>
+      <div class="article-body">
+        <p>長野大学が理系学部の新設を計画し、地域企業との産学連携「共創の好循環」を柱とした事業構想を推進していることが信濃毎日新聞の報道で明らかになった。少子化による入学者減少が続く地方私大にとって、理系・工学系への転換は生き残りの有力な手段として注目されている。</p>
+        <p>長野県内では製造業・精密機器産業の集積があり、地域ニーズに合った人材育成が産業界から強く求められている。大学と企業が共同でカリキュラムを設計し、インターンシップや共同研究を通じて即戦力を育てるモデルが全国の地方大学で広がりつつある。</p>
+      </div>
+      <div class="article-source">出典: 信濃毎日新聞「理系学部新設、生き残りの一手になるか」（2026年5月10日）　<a href="https://www.shinmai.co.jp/news/article/gf01d7ve5nj0a7t8vjk00pr0" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">長野大学の産学連携モデルはPharmaEight∞の「薬剤師×地域企業」協働モデルと発想が近い。長野県内の大学・専門学校との連携を視野に入れた採用・教育プログラムを検討する価値がある。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">安曇野舞台のドラマが6月放送、主演・福本莉子「自然の中で心が解放された」</h2>
+      <div class="article-lead">安曇野の雄大な自然が、再びドラマで全国に発信される。</div>
+      <div class="article-body">
+        <p>長野・安曇野地域を舞台にしたドラマの放送が6月に予定されており、主演の福本莉子さんが撮影時の感想を語った。「安曇野の自然の中で、心が解放されるような感覚があった。このドラマを通じて安曇野の魅力が伝わればうれしい」とコメント。共演の菅生新樹さんも「雄大な景色の中で演じることで、役への没入感が増した」と話す。</p>
+        <p>安曇野は北アルプスを望む絶景と豊かな水を誇る観光地として知られ、ドラマ放映による観光誘客効果が地域から期待されている。</p>
+      </div>
+      <div class="article-source">出典: 信濃毎日新聞「安曇野地域が舞台のドラマ6月放送」（2026年5月10日）　<a href="https://www.shinmai.co.jp/news/article/gf01d7vgt7qtdgtj8ah0ddmg" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">長野の観光プロモーションはPHC薬局や福祉事業の採用広報にも間接的に効く。「長野に住む魅力」を発信するコンテンツ制作の際に安曇野・自然環境を前面に出す戦略が有効だ。</div>
+    </article>
+
+    <article class="article">
+      <h2 class="article-headline">長野県内の外国人増加、多文化共生は「道半ば」 ─ 県が環境整備を進め国に対応強化を要請</h2>
+      <div class="article-lead">長野県でも外国人住民の増加が進み、共生に向けた制度整備が急務になっている。</div>
+      <div class="article-body">
+        <p>長野県内で在住外国人数が増加傾向にある中、多文化共生の定着には課題が多く残っていることが明らかになった。日本語教育の機会確保、医療・行政サービスへのアクセス、子どもの就学支援などで対応が追いついていない現状を、県が国に対して制度的な支援強化を要請した。</p>
+        <p>製造業・農業・介護の現場では外国人労働者の受け入れが進んでいるが、生活・文化面での支援体制の整備が後れを取っている。塩尻・松本エリアでも同様の課題があり、はなひらくが関わる就労支援の現場でも外国籍利用者への対応が今後増える可能性がある。</p>
+      </div>
+      <div class="article-source">出典: 信濃毎日新聞「増える外国人、多文化共生の定着は道半ば」（2026年5月10日）　<a href="https://www.shinmai.co.jp/news/article/gf01d7ve5gqtdgtj8ah0cs70" target="_blank">→ 記事リンク</a></div>
+      <div class="koike-take">はなひらくの利用者・スタッフに外国籍の方が増える可能性がある。支援マニュアルの多言語化や外国籍スタッフの採用計画を先手で検討し、地域の多文化共生の担い手としてのポジションを確立したい。</div>
+    </article>
+  </section>
+
+</div><!-- /paper-columns -->
+
+<!-- ⑮ 今週のカレンダー -->
+<section class="section page-full-width">
+  <div class="section-label">Calendar / 今週のカレンダー</div>
+  <ul class="calendar-list">
+
+    <li class="calendar-item">
+      <div class="calendar-date">5/11（月）〜13（水）</div>
+      <div>
+        <div class="calendar-event">ベッセント米財務長官 訪日 ─ 高市首相・植田日銀総裁と会談予定</div>
+        <div class="calendar-take">日米関税交渉・為替政策の行方に直結。FP顧客へのドル資産・外貨建て保険の影響説明を事前に整理しておきたい。</div>
+      </div>
+    </li>
+
+    <li class="calendar-item">
+      <div class="calendar-date">5/13（水）</div>
+      <div>
+        <div class="calendar-event">米4月CPI（消費者物価指数）発表</div>
+        <div class="calendar-take">インフレ動向がFRBの利下げ判断に直結。円相場・輸入物価への影響をFP顧客に即座に説明できる準備を。</div>
+      </div>
+    </li>
+
+    <li class="calendar-item">
+      <div class="calendar-date">5/14（木）〜15（金）</div>
+      <div>
+        <div class="calendar-event">トランプ大統領 中国訪問・米中首脳会談（習近平との首脳会談）</div>
+        <div class="calendar-take">関税・半導体規制の行方が世界市場を左右する。PHC薬局が扱う医薬品の一部は中国系原材料を含むため影響を注視。</div>
+      </div>
+    </li>
+
+    <li class="calendar-item">
+      <div class="calendar-date">5/15（金）</div>
+      <div>
+        <div class="calendar-event">サッカー日本代表 FIFA W杯2026 最終メンバー26人発表（三笘薫の状態が最大焦点）</div>
+        <div class="calendar-take">三笘薫の負傷で代表選考が注目の的に。チームMTGやクライアントとの雑談で話題として活用できる。</div>
+      </div>
+    </li>
+
+    <li class="calendar-item">
+      <div class="calendar-date">5/16（土）〜17（日）</div>
+      <div>
+        <div class="calendar-event">よこすかカレーフェスティバル2026（横須賀市ヴェルニー公園）</div>
+        <div class="calendar-take">全国規模の食イベントで観光需要が喚起される。地域活性化モデルとしてはなひらくの農業的活動と絡めて情報収集したい。</div>
+      </div>
+    </li>
+
+    <li class="calendar-item">
+      <div class="calendar-date">6/1（月）</div>
+      <div>
+        <div class="calendar-event">2026年度調剤報酬改定が本格施行 ─ 立地依存減算・かかりつけ薬剤師制度再編等が始動</div>
+        <div class="calendar-take">PHC薬局の経営に直接影響。改定内容の最終確認と患者・処方医へのコミュニケーション準備を今週中に完了させたい。</div>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ⑯ 編集後記 -->
+<section class="section page-full-width">
+  <div class="section-label">Editor's Note / 編集後記</div>
+  <div class="postscript-body">今号は「変化の予兆」が多い一日だった。三笘薫の負傷が示す「一瞬で状況が変わるリスク」。英リフォームUKの躍進が告げる「既存秩序の終焉」。調剤薬局38件倒産が象徴する「変化に乗れない者の退場」。激動の時代に問われるのは、リスクを織り込んだ上で行動し続ける意志だ。ベッセント訪日・米中首脳会談と今週もビッグイベントが続く。目を離さず、速く動く。</div>
+</section>
+
+<!-- ⑰ Glossary -->
+<section class="section page-full-width">
+  <div class="section-label">Glossary / 用語解説</div>
+  <div class="glossary-list">
+
+    <div class="glossary-item">
+      <div class="glossary-term">リフォームUK（Reform UK）</div>
+      <div class="glossary-def">英国の新興右派政党。移民反対・既存政治批判を主張するナイジェル・ファラージ党首率いるポピュリスト政党。2026年地方選で支持率26%を獲得し、労働党・保守党を上回る第一勢力に躍り出た。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">ハムストリング</div>
+      <div class="glossary-def">太ももの裏側にある大腿二頭筋・半腱様筋・半膜様筋の総称。スプリント系の動作で肉離れが起きやすく、重症度によって回復まで2週間〜2カ月以上を要する。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">捕虜交換（POW Exchange）</div>
+      <div class="glossary-def">戦争当事者が相互に拘束している兵士・民間人を返還する合意。今回のロシア・ウクライナ停戦では双方1,000人ずつの交換が予定された。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">AgentCore Browser</div>
+      <div class="glossary-def">AWSが発表したAIエージェント向け機能。従来のブラウザ操作（DOM操作）では対応できなかった印刷ダイアログや認証プロンプトなどOSレベルの操作を自動化できる。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">量子誤り訂正（Quantum Error Correction）</div>
+      <div class="glossary-def">量子コンピューターが計算中に発生する誤りを自動検出・修正する技術。実用的な量子計算のための最重要課題のひとつで、商用化への最大の壁とされる。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">健康支援薬局</div>
+      <div class="glossary-def">一般医薬品・健康食品・在宅医療に総合的に対応する薬局の新類型。厚労省が認定基準を整備中で、認定薬局は報酬上の加算が期待できる。地域包括ケアの担い手として位置づけられる。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">かかりつけ薬剤師</div>
+      <div class="glossary-def">患者に継続的な薬学管理を行う専任薬剤師制度。かかりつけ薬剤師指導料・包括管理料は2026年度改定で廃止・再編され、実績重視の評価体系に転換される。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">多文化共生</div>
+      <div class="glossary-def">異なる文化的・民族的背景を持つ人々が相互に理解・尊重しながら共に暮らす社会の実現を目指す考え方。長野県でも外国人住民増加に伴い政策的な対応が急がれている。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">世界食料価格指数（FAO食料価格指数）</div>
+      <div class="glossary-def">国連食糧農業機関（FAO）が毎月発表する世界の食料価格動向指標。穀物・油脂・肉・乳製品・砂糖の5品目グループで構成される。3年超ぶりの高水準は輸入食料への依存度が高い途上国に打撃を与える。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">ベッセント財務長官</div>
+      <div class="glossary-def">スコット・ベッセント米財務長官。ヘッジファンド出身の金融実務家で、対日関税・為替政策の実務的交渉を担う。5/11〜13の訪日で高市首相・植田日銀総裁と会談予定。</div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p>NewGo Timez ─ 第148号 ─ 2026年5月10日（日）</p>
+  <p>発行: 小池雄悟 ／ すべての記事は当日公開情報に基づく</p>
+</footer>
+
+</body>
+</html>
