@@ -62,7 +62,7 @@
   }
 
   .stage {
-    max-width: 800px; margin: 0 auto; padding: 16px 12px 80px;
+    max-width: 1200px; margin: 0 auto; padding: 16px 12px 80px;
   }
   .edition-card {
     background: var(--paper); border: 1px solid var(--line-strong);
@@ -73,9 +73,9 @@
     .stage { padding: 12px 8px 60px; }
   }
 
-  .edition-image {
-    display: block; width: 100%; height: auto;
-    background: #fff;
+  .edition-iframe {
+    display: block; width: 100%; height: 4000px;
+    border: none; background: #f0ebdb;
   }
   .empty {
     color: #f5efe0; text-align: center; padding: 80px 20px;
@@ -143,14 +143,24 @@ function render(idx) {
     return;
   }
   const e = EDITIONS[idx];
-  container.innerHTML = `
-    <div class="edition-card">
-      <img class="edition-image" src="pngs/${e.date}.png" alt="${e.date} NewGo Timez" loading="lazy">
-    </div>
-  `;
+  const card = document.createElement('div');
+  card.className = 'edition-card';
+  const iframe = document.createElement('iframe');
+  iframe.className = 'edition-iframe';
+  iframe.src = `editions/${e.date}.html`;
+  iframe.title = `${e.date} NewGo Timez`;
+  iframe.onload = function() {
+    try {
+      const h = iframe.contentDocument.documentElement.scrollHeight;
+      if (h > 200) iframe.style.height = h + 'px';
+    } catch(err) {}
+  };
+  card.appendChild(iframe);
+  container.innerHTML = '';
+  container.appendChild(card);
   countLabel.textContent = `${idx+1} / ${EDITIONS.length} 号`;
-  prevBtn.disabled = idx >= EDITIONS.length - 1;  // 古い側
-  nextBtn.disabled = idx <= 0;                    // 新しい側
+  prevBtn.disabled = idx >= EDITIONS.length - 1;
+  nextBtn.disabled = idx <= 0;
 }
 
 EDITIONS.forEach((e, i) => {
