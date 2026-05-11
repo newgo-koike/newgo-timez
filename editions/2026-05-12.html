@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewGo Timez ─ 第150号 2026年5月12日（火）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#f0ebdb;
+    --ink:#0a0a0a;
+    --rule:#b0a88a;
+    --soft:#e8e2cf;
+    --muted:#5a5040;
+    --accent:#2a1a00;
+  }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Noto Serif JP',serif;
+    font-size:17px;
+    line-height:1.8;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 16px 60px;
+  }
+
+  /* ─── MASTHEAD ─── */
+  .masthead{
+    border-top:4px solid var(--ink);
+    border-bottom:4px solid var(--ink);
+    padding:20px 0 12px;
+    text-align:center;
+    margin-bottom:32px;
+  }
+  .masthead-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(48px,8vw,90px);
+    font-weight:900;
+    letter-spacing:0.03em;
+    line-height:1;
+  }
+  .masthead-sub{
+    display:flex;
+    justify-content:center;
+    gap:32px;
+    margin-top:8px;
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:0.05em;
+  }
+  .masthead-rule{
+    border:none;
+    border-top:1px solid var(--rule);
+    margin:10px 0 6px;
+  }
+  .masthead-tagline{
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:0.1em;
+  }
+  .masthead-kiri{
+    display:inline-block;
+    margin-top:8px;
+    padding:3px 14px;
+    border:1px solid var(--ink);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    color:var(--ink);
+  }
+
+  /* ─── SECTION COMMON ─── */
+  .section{
+    margin-bottom:40px;
+  }
+  .section-title{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+    border-bottom:2px solid var(--ink);
+    padding-bottom:4px;
+    margin-bottom:16px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .page-full-width{ width:100%; }
+  .paper-columns{
+    display:grid;
+    gap:32px;
+    align-items:start;
+  }
+  @media(min-width:768px){
+    .paper-columns{ grid-template-columns:1fr 1fr; }
+    .market-grid{ grid-template-columns:repeat(3,1fr); }
+  }
+  @media(max-width:767px){
+    .paper-columns{ display:block; }
+    .paper-columns > *{ margin-bottom:32px; }
+    .market-grid{ grid-template-columns:1fr 1fr; }
+  }
+
+  /* ─── MARKET ─── */
+  .market-grid{
+    display:grid;
+    gap:12px;
+  }
+  .market-card{
+    background:var(--soft);
+    border:1px solid var(--rule);
+    padding:14px 16px;
+    border-radius:2px;
+  }
+  .market-label{
+    font-size:11px;
+    letter-spacing:0.12em;
+    color:var(--muted);
+    font-weight:700;
+    margin-bottom:4px;
+  }
+  .market-value{
+    font-size:clamp(24px,3vw,30px);
+    font-weight:900;
+    line-height:1.1;
+  }
+  .market-change{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  .market-note{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:8px;
+    line-height:1.6;
+    border-top:1px solid var(--rule);
+    padding-top:8px;
+  }
+
+  /* ─── TOP STORY ─── */
+  .top-story{
+    border-top:6px double var(--ink);
+    padding-top:20px;
+  }
+  .kicker{
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--muted);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .top-headline{
+    font-size:clamp(28px,4vw,42px);
+    font-weight:900;
+    line-height:1.25;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:16px;
+  }
+  .top-body p{
+    margin-bottom:14px;
+  }
+  .source-link{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:12px;
+    word-break:break-all;
+  }
+  .source-link a{
+    color:var(--muted);
+  }
+
+  /* ─── KOIKE TAKE ─── */
+  .koike-take{
+    background:var(--soft);
+    border-left:3px solid var(--ink);
+    padding:8px 12px;
+    font-size:15px;
+    line-height:1.7;
+    margin-top:12px;
+    color:var(--accent);
+  }
+  .koike-take::before{
+    content:"▶ 小池目線 ";
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.08em;
+  }
+
+  /* ─── NUMBER OF DAY ─── */
+  .number-wrap{
+    text-align:center;
+    padding:24px 16px;
+    border:2px solid var(--ink);
+    background:var(--soft);
+  }
+  .number-big{
+    font-size:clamp(80px,12vw,120px);
+    font-weight:900;
+    line-height:1;
+    font-family:'Playfair Display',serif;
+    letter-spacing:-0.02em;
+  }
+  .number-caption{
+    font-size:18px;
+    font-weight:700;
+    margin:8px 0 12px;
+  }
+  .number-body{
+    font-size:16px;
+    color:var(--muted);
+    max-width:600px;
+    margin:0 auto;
+    line-height:1.7;
+  }
+
+  /* ─── HEADLINES ─── */
+  .headline-list{
+    list-style:none;
+  }
+  .headline-item{
+    padding:14px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .headline-item:last-child{
+    border-bottom:none;
+  }
+  .headline-cat{
+    font-size:11px;
+    letter-spacing:0.12em;
+    font-weight:700;
+    color:var(--muted);
+    margin-bottom:4px;
+  }
+  .headline-title{
+    font-size:clamp(18px,2.2vw,22px);
+    font-weight:700;
+    line-height:1.35;
+    margin-bottom:6px;
+  }
+  .headline-body{
+    font-size:15px;
+    color:var(--muted);
+    line-height:1.65;
+  }
+
+  /* ─── PERSON ─── */
+  .person-wrap{
+    border:2px solid var(--ink);
+    padding:24px;
+    background:var(--soft);
+  }
+  .person-name{
+    font-size:clamp(22px,3vw,30px);
+    font-weight:900;
+    line-height:1.2;
+    margin-bottom:4px;
+  }
+  .person-role{
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:0.05em;
+    margin-bottom:16px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--rule);
+  }
+  .person-quote{
+    font-size:20px;
+    font-style:italic;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:16px;
+    padding-left:16px;
+    border-left:4px solid var(--ink);
+  }
+  .person-body{
+    font-size:16px;
+    line-height:1.8;
+  }
+
+  /* ─── ARTICLE CARD ─── */
+  .article-card{
+    padding-bottom:20px;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--rule);
+  }
+  .article-card:last-child{
+    border-bottom:none;
+    margin-bottom:0;
+    padding-bottom:0;
+  }
+  .article-headline{
+    font-size:clamp(18px,2.2vw,24px);
+    font-weight:700;
+    line-height:1.3;
+    margin-bottom:6px;
+  }
+  .article-lead{
+    font-size:14px;
+    color:var(--muted);
+    font-weight:600;
+    margin-bottom:8px;
+    letter-spacing:0.02em;
+  }
+  .article-body p{
+    margin-bottom:12px;
+    font-size:16px;
+    line-height:1.8;
+  }
+  .article-source{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:8px;
+    word-break:break-all;
+  }
+  .article-source a{
+    color:var(--muted);
+  }
+
+  /* ─── CALENDAR ─── */
+  .calendar-table{
+    width:100%;
+    border-collapse:collapse;
+  }
+  .calendar-table tr{
+    border-bottom:1px solid var(--rule);
+  }
+  .calendar-table tr:last-child{
+    border-bottom:none;
+  }
+  .cal-date{
+    padding:12px 16px 12px 0;
+    font-weight:700;
+    font-size:14px;
+    white-space:nowrap;
+    vertical-align:top;
+    width:120px;
+  }
+  .cal-event{
+    padding:12px 0;
+    font-size:15px;
+    vertical-align:top;
+  }
+  .cal-take{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:4px;
+    line-height:1.6;
+  }
+
+  /* ─── POSTSCRIPT ─── */
+  .postscript{
+    background:var(--ink);
+    color:var(--bg);
+    padding:24px 28px;
+    font-size:16px;
+    line-height:1.9;
+  }
+  .postscript-title{
+    font-size:11px;
+    letter-spacing:0.2em;
+    font-weight:700;
+    margin-bottom:12px;
+    opacity:0.7;
+  }
+
+  /* ─── GLOSSARY ─── */
+  .glossary-grid{
+    display:grid;
+    gap:16px;
+  }
+  @media(min-width:768px){
+    .glossary-grid{ grid-template-columns:1fr 1fr; }
+  }
+  .glossary-item{
+    background:var(--soft);
+    border:1px solid var(--rule);
+    padding:14px 16px;
+    border-radius:2px;
+  }
+  .glossary-term{
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .glossary-def{
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+
+  /* ─── FOOTER ─── */
+  .paper-footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:48px;
+    padding-top:16px;
+    border-top:2px solid var(--ink);
+    letter-spacing:0.08em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── MASTHEAD ─── -->
+<header class="masthead page-full-width">
+  <div class="masthead-title">NewGo Timez</div>
+  <hr class="masthead-rule">
+  <div class="masthead-sub">
+    <span>第150号</span>
+    <span>2026年5月12日（火）</span>
+    <span>発行：小池雄悟</span>
+  </div>
+  <div style="text-align:center;margin-top:6px;"><span class="masthead-kiri">✦ 創刊150号記念 ✦</span></div>
+  <div class="masthead-tagline" style="margin-top:8px;">Personal OS × 長野 × PHC × PharmaEight∞ — 世界を、事業目線で読む</div>
+</header>
+
+<!-- ─── 朝のマーケット ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">朝のマーケット</h2>
+  <div class="market-grid">
+
+    <div class="market-card">
+      <div class="market-label">日経平均</div>
+      <div class="market-value">62,417円</div>
+      <div class="market-change">▼395（-0.63%）</div>
+      <div class="market-note">5/11終値。ベッセント財務長官訪日中の円高警戒感と米中首脳会談前の様子見で反落。半導体・銀行株が下支えも外需株が売られ弱含み。本日の閣僚懇談会（サイバー対策）とベッセント帰国後の発言が市場の焦点に。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">ドル円</div>
+      <div class="market-value">157円43銭</div>
+      <div class="market-change">▲0.76銭（+0.48%）</div>
+      <div class="market-note">5/11 NY終値。ベッセント財務長官との会談で円安是正への明確な圧力は確認されず、ドル高継続。米中首脳会談（14〜15日）の行方次第で155〜159円のレンジで変動する可能性がある。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">NYダウ</div>
+      <div class="market-value">46,679ドル</div>
+      <div class="market-change">▲95（+0.20%）</div>
+      <div class="market-note">5/11 US終値。エヌビディア・AMD・TSMCなど半導体株がけん引し3連騰。AI向けデータセンター投資への期待が根強く続伸。米中首脳会談前の様子見が上値を抑え上げ幅は限定的。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">WTI原油</div>
+      <div class="market-value">$98.07</div>
+      <div class="market-change">▲$2.65（+2.8%）</div>
+      <div class="market-note">5/11 US終値。ロシア・ウクライナ停戦崩壊と米・イラン核交渉の行き詰まりで地政学リスク高止まり。$100台回復が視野に入り始め、エネルギー輸入依存の日本の輸入物価押し上げ要因が続く。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">金（ゴールド）</div>
+      <div class="market-value">$4,720台/oz</div>
+      <div class="market-change">▲高止まり継続</div>
+      <div class="market-note">5/11。米中会談・中東・ウクライナと地政学リスクが重なり有事の金買いが続く。国内小売価格1g=26,000円台が定着。外貨建て保険のリターン計算にも影響が出始めている。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">日米金利差</div>
+      <div class="market-value">約3.5%</div>
+      <div class="market-change">米10年4.28% / 日10年0.82%</div>
+      <div class="market-note">ベッセント訪日後も金利差は変わらず。5/20の日銀金融政策決定会合が次の焦点。利上げ観測が強まれば金利差縮小→円高方向に動く。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── 一面トップ ─── -->
+<section class="section page-full-width top-story">
+  <h2 class="section-title">一面トップ</h2>
+  <div class="kicker">本日のトップ ─ テクノロジー×安全保障</div>
+  <h1 class="top-headline">高市首相、AI「Mythos」念頭にサイバー対策を緊急指示 ─ 本日閣僚懇談会で具体化、7週間で2,000件超の脆弱性を自動検出する超強力AIが日本の重要インフラを脅かす</h1>
+  <div class="top-body">
+    <p>高市早苗首相は5月11日夜、Anthropicが開発した超強力AI「Claude Mythos（マイトス）」を念頭に、重要インフラ事業者のサイバー対策を緊急強化するよう松本尚サイバー安全保障相・赤沢亮正経産相・片山さつき金融相に指示した。12日の閣僚懇談会で対応を具体化し、近く経産省・金融庁・総務省が合同会議を開く。</p>
+    <p>Mythosは2026年4月にAnthropicが限定公開した次世代AIモデルで、ソフトウェアの未知の脆弱性を自動で発見し実用的な攻撃コードを構築する能力を持つ。米国立標準技術研究所（NIST）は7週間で2,000件超の脆弱性を検出したMythosの能力を評価しきれず分析を断念。現在は米国の約50の企業・組織のみに限定提供されている。</p>
+    <p>日本のサイバー防衛体制は米英と比較して「1〜2年の遅れがある」（政府関係者）とされており、自民党のサイバー安全保障戦略本部は4月に政府への緊急提言をまとめていた。Anthropic CEOのダリオ・アモデイ氏は「防御側に残された猶予は6ヵ月」と警告するとともに、中国のAIが半年〜1年以内にMythos級の能力を獲得するとの見方を示している。</p>
+  </div>
+  <p class="source-link">出典: 日本経済新聞「首相、重要インフラのサイバー対策指示へ AI『Mythos』念頭」（2026年5月11日）<br><a href="https://www.nikkei.com/article/DGXZQOUA116AE0R10C26A5000000/" target="_blank">https://www.nikkei.com/article/DGXZQOUA116AE0R10C26A5000000/</a></p>
+  <div class="koike-take">PHC薬局・はなひらくの基幹システム（レセコン・Supabase・Claude Code）はサイバー攻撃のターゲットになりうる。今こそ「AIサイバーリスクへの備え」をPharmaEight∞のセミナーテーマとして先取りすると同時に、APIキー・パスワードの全点検を今週中に実施したい。</div>
+</section>
+
+<!-- ─── 今日の数字 ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">今日の数字</h2>
+  <div class="number-wrap">
+    <div class="number-big">25兆円</div>
+    <div class="number-caption">キオクシアHD時価総額 ─ 東京エレクトロンを抜き電機セクター首位</div>
+    <div class="number-body">5月11日の東京株式市場でキオクシアホールディングス（285A）の時価総額が25兆円台を突破し、東京エレクトロンを上回り東証プライム電気機器セクター首位に立った。2024年12月上場からわずか1年5カ月での快挙。AI向けNAND型フラッシュメモリーの需要急増が背景。</div>
+    <div class="koike-take" style="margin-top:16px;text-align:left;">「半導体がトヨタを超える」時代が来た。PharmaEight∞の事業説明でも「AI×メモリー→薬剤師業務の自動化」という産業構造の大転換を語る最強の市場根拠になる。</div>
+  </div>
+</section>
+
+<!-- ─── 今朝のヘッドライン ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">今朝のヘッドライン</h2>
+  <ul class="headline-list">
+
+    <li class="headline-item">
+      <div class="headline-cat">消費・産業</div>
+      <div class="headline-title">カルビー、ポテチ14品目の袋を白黒2色に変更 中東情勢でナフサ不足・インク品薄 5月下旬から順次</div>
+      <div class="headline-body">カルビーが「うすしお味」「コンソメパンチ」など主力14品目のパッケージを白黒2色に変更と発表。中東情勢悪化によるナフサ不足が印刷インクの調達を困難にした。伊藤ハムも検討中。出典: 読売新聞・共同通信</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">経済・雇用</div>
+      <div class="headline-title">2025年度就業者36万人増 医療・介護が半数を占める ─「ケア産業」が日本経済の主役に</div>
+      <div class="headline-body">厚労省発表の2025年度就業動向調査で全就業者数が前年度比36万人増。増加分の約半数が医療・介護分野に集中。製造業・小売業の縮小と対照的に「ケア労働者」が主力産業に躍り出た。出典: 日本経済新聞</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">マーケット</div>
+      <div class="headline-title">日本株の主役、車から半導体・銀行へ ─ 時価総額10兆円クラス30社に成長</div>
+      <div class="headline-body">日本株の時価総額上位の顔ぶれが変わった。トヨタが独占してきたトップ争いに半導体（キオクシア・東京エレクトロン）・銀行（三菱UFJ）が加わり、10兆円超が30社規模に膨らんだ。出典: 日本経済新聞</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">芸能</div>
+      <div class="headline-title">稲垣吾郎、SMAP解散10年ぶりの舞台出演に驚きの声 ─「別人みたい」とSNSでトレンド入り</div>
+      <div class="headline-body">SMAPの解散から10年の節目に稲垣吾郎の最新舞台出演姿がSNSで拡散。「随分変わった」「別人みたいでびっくりした」という声が相次ぎ、5月12日のYahoo!ニュース芸能ランキング首位に。出典: Yahoo!ニュース芸能</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">生活・気象</div>
+      <div class="headline-title">全国で広く晴れ初夏の陽気 午後から関東で35度予報 ─ 熱中症警戒アラート発令見通し</div>
+      <div class="headline-body">5月12日は高気圧に覆われて全国的に晴れ、各地で気温が上昇。関東では最高気温35度の猛暑日が予報されており、気象庁は熱中症警戒アラートを発令する見通し。出典: NHKニュース・気象庁</div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ─── 人物クローズアップ ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">人物クローズアップ</h2>
+  <div class="person-wrap">
+    <div class="person-name">ダリオ・アモデイ</div>
+    <div class="person-role">Anthropic CEO / AI安全研究者（42歳）</div>
+    <div class="person-quote">「防御側に残された猶予は6ヵ月だ。今は危険な状況にある。中国のAIは半年〜1年以内にMythos級の能力を獲得するだろう」</div>
+    <div class="person-body">Anthropicを率いるダリオ・アモデイは、最新AIモデル「Claude Mythos」を巡り世界のサイバーセキュリティ関係者から注目を集めている。Mythosが7週間で2,000件超のソフトウェア脆弱性を自動検出し、NISTが分析を断念するほどの能力を示したことで「AIが攻撃側の武器になる日」が現実として迫っている。元OpenAI研究員として安全性の担保を優先してきた同氏が「それでも世に出した」という事実の重さは、AI開発の現在地を物語っている。ECB総裁やIMFも同AIの脅威について警告を発しており、AI安全の議論は一研究者の懸念から国際社会全体の課題へと格上げされた。</div>
+    <div class="koike-take">アモデイ氏の「6ヵ月の猶予」発言は、PHC・はなひらく・Personal OSのシステム管理者（つまり自分）への直接のメッセージ。今すぐAPIキー・パスワード・外部API連携の全点検を始めたい。</div>
+  </div>
+</section>
+
+<!-- ─── 2カラムゾーン開始 ─── -->
+<div class="paper-columns">
+
+<!-- ─── 政治・経済 ─── -->
+<section class="section">
+  <h2 class="section-title">政治・経済</h2>
+
+  <div class="article-card">
+    <div class="article-headline">高市首相、AI「Mythos」念頭にサイバー対策緊急指示 ─ 本日閣僚懇談会で経産省・金融庁・総務省が合同対応へ</div>
+    <div class="article-lead">超強力AIを念頭に置いた日本のサイバー防衛体制の本格強化がきょう動き出す。</div>
+    <div class="article-body">
+      <p>5月11日夜、高市首相が松本尚サイバー安全保障相・赤沢亮正経産相・片山さつき金融相に緊急のサイバー対策強化を指示した。本日（12日）の閣僚懇談会でその内容を具体化し、経産省・金融庁・総務省による合同会議を近く設置する方針だ。自民党のサイバー安全保障戦略本部は「AIが攻撃側に使われれば、金融インフラが壊滅的な被害を受ける恐れがある」と政府に緊急提言していた。</p>
+      <p>対応の引き金となったのはAnthropicのAI「Mythos」だ。電力・金融・通信などの重要インフラに組み込まれたソフトウェアの未知の脆弱性を人間よりはるかに速いスピードで発見・悪用できる能力を持つ。日本は米英と比較してサイバー防衛体制が「1〜2年遅れている」とされており、Mythosに対応した防御体制の整備が急務となっている。</p>
+    </div>
+    <p class="article-source">出典: 日本経済新聞「首相、重要インフラのサイバー対策指示へ AI『Mythos』念頭」（2026年5月11日）<br><a href="https://www.nikkei.com/article/DGXZQOUA116AE0R10C26A5000000/" target="_blank">https://www.nikkei.com/article/DGXZQOUA116AE0R10C26A5000000/</a></p>
+    <div class="koike-take">Mythosが悪用されれば医療機器・調剤システムも標的になりうる。PHC薬局のIT管理体制の点検とパスワード・外部API連携の見直しを今週中に始めたい。PharmaEight∞のセミナーテーマとしても先取りできる。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">2025年度就業者36万人増、医療・介護が半数 ─ 製造業・小売業の縮小と対照的に「ケア産業」が日本最大の産業へ</div>
+    <div class="article-lead">人口動態が労働市場の地図を塗り替えた。高齢化の加速がケア労働者を日本最大の産業に変えつつある。</div>
+    <div class="article-body">
+      <p>厚生労働省が12日発表した2025年度の就業動向調査によると、全就業者数は前年度比36万人増加した。増加分のうち約18万人が医療・介護分野に集中しており、製造業での7万人減・小売業での5万人減と対照的な構図となっている。</p>
+      <p>高齢者の急増により訪問介護・通所介護・病院・薬局での人材需要が拡大する一方、DX・AI化で製造業・小売業の雇用が縮小している。社会保障費の増大という財政的なプレッシャーと「人が集まる産業への移行」という労働市場の構造変化が同時に進行している。</p>
+    </div>
+    <p class="article-source">出典: 日本経済新聞（2026年5月12日付け）<br><a href="https://www.nikkei.com/" target="_blank">https://www.nikkei.com/</a></p>
+    <div class="koike-take">はなひらく・PHC薬局の採用はこのトレンドの恩恵を受けているが、同時に競合も激化する。「障害福祉×ケア産業の最前線」というポジションを採用広報で前面に打ち出したい。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">キオクシア時価総額25兆円台、東京エレクトロン抜き電機首位 ─ 上場1年5カ月で日本の半導体株が世界の舞台に</div>
+    <div class="article-lead">AI時代の「記憶を制する企業」が、日本株の頂点に立った。</div>
+    <div class="article-body">
+      <p>5月11日の東京株式市場で、半導体メモリー大手キオクシアホールディングス（285A）の時価総額が終値ベースで25兆円台に乗せ、東京エレクトロンを上回り東証プライム電気機器セクターの首位に立った。2024年12月の上場からわずか1年5カ月での快挙だ。</p>
+      <p>AI向けNAND型フラッシュメモリーの需要急増が株価を押し上げており、一時26兆円超を記録した。日経平均の「主役交代」（車→半導体・銀行）を体現する銘柄として国内外の機関投資家から買いが集中。米半導体株の熱狂は「バブルではなくブーム」との分析も広がり、1〜2年は続くとの見方が優勢だ。</p>
+    </div>
+    <p class="article-source">出典: 日本経済新聞「キオクシア、時価総額25兆円台 東京エレクトロン抜き電機首位に」<br><a href="https://www.nikkei.com/article/DGXZQOFL083RRTY6A500C2000000/" target="_blank">https://www.nikkei.com/article/DGXZQOFL083RRTY6A500C2000000/</a></p>
+    <div class="koike-take">半導体業界の急成長はPharmaEight∞の「AI×薬剤師」モデルが乗っている産業波と同じ。チャレンジャーへのセミナーで「なぜ今AI×薬剤師なのか」を語る際の最強の市場根拠になる。</div>
+  </div>
+
+</section>
+
+<!-- ─── 世界の動き ─── -->
+<section class="section">
+  <h2 class="section-title">世界の動き</h2>
+
+  <div class="article-card">
+    <div class="article-headline">米中首脳会談 前夜の北京 ─ トランプ氏が明日訪中、台湾への武器供与・イラン・関税・AIが最大議題</div>
+    <div class="article-lead">世界の命運を左右する会談まであと24時間。各国の市場が固唾を飲んで見守っている。</div>
+    <div class="article-body">
+      <p>トランプ米大統領は5月13日から国賓として中国を訪問し、北京で習近平国家主席と2日間の首脳会談に臨む。最大議題とされるのは①台湾への武器供与問題②イランへの圧力と中国の協力③対中関税の部分的緩和④AI・半導体輸出規制の見直しの4本柱だ。</p>
+      <p>ルビオ米国務長官は12日「台湾政策は変更しない」と明言。中国は台湾への武器売却を「中核的利益への侵害」として強く拒否しており、この点での合意形成は困難との見方が強い。一方でイラン問題での中国の協力と引き換えに関税の部分緩和が実現すれば、マーケットにはポジティブなサプライズとなりうる。</p>
+    </div>
+    <p class="article-source">出典: 日本経済新聞・Bloomberg「トランプ氏と習近平氏、14日に北京で首脳会談」<br><a href="https://www.nikkei.com/article/DGXZQOGN1002W0Q6A510C2000000/" target="_blank">https://www.nikkei.com/article/DGXZQOGN1002W0Q6A510C2000000/</a></p>
+    <div class="koike-take">米中会談の結果は円相場・原油・半導体関連株に直結。FP顧客のポートフォリオへの影響を即座に説明できるよう、週末前に会談結果のまとめを用意しておきたい。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">ロシア・ウクライナ「3日間停戦」事実上崩壊 ─ 攻撃の応酬が続き停戦終了、次の外交局面へ</div>
+    <div class="article-lead">トランプ仲介の停戦は、砲声の中で幕を閉じた。次の舞台は米中首脳会談か。</div>
+    <div class="article-body">
+      <p>5月8〜11日の3日間停戦は、ロシア・ウクライナ双方が攻撃を継続したことで事実上崩壊した。ロシア国防省は停戦開始直後から264機のドローンを撃墜したと発表。ウクライナも「停戦を破ったのはロシア」と批判し、捕虜交換は一定数が実施されたものの完全な停戦状態は実現しなかった。</p>
+      <p>12日、停戦期間が終了した後も戦闘は継続している。ロシアのペスコフ報道官は「ドンバスからの完全撤退なくして停戦なし」と延長を拒否した。5/14〜15の米中首脳会談でトランプ氏が習近平氏を通じた停戦交渉を試みるとの観測もあるが、実現の見通しは立っていない。</p>
+    </div>
+    <p class="article-source">出典: NHKニュース・AFPBB News「ロシア宣言の停戦開始、両国が大規模攻撃の応酬」<br><a href="https://www.afpbb.com/articles/-/3634376" target="_blank">https://www.afpbb.com/articles/-/3634376</a></p>
+    <div class="koike-take">停戦崩壊で地政学リスクが再燃し原油高・金高継続が確認された。WTI$98台のまま米中会談に突入することで、週末にかけてさらなる原油高シナリオを意識しておきたい。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">英仏でなく「スペインなら買える」─ 欧州国債市場に異変、政治不安が安全資産の地図を塗り替える</div>
+    <div class="article-lead">かつて危機国だったスペインが、欧州の安全資産として浮上している。</div>
+    <div class="article-body">
+      <p>日本経済新聞によると、欧州の国債市場で英国・フランスの国債リスクが高まる一方、スペイン国債への評価が向上し「欧州で最も安心して買える国債」との見方が広がっている。英国では新興右派の台頭と財政赤字問題、フランスではマクロン政権の求心力低下が市場に不安感を与えている。</p>
+      <p>スペインは左派連立政権が財政規律を維持しつつ景気回復を達成しており、国債の信用力が相対的に向上。欧州国債の「安全資産」の定義が変わりつつある現象として国際投資家の注目を集めている。政治的安定と財政健全性こそが安全資産の本質だという原点回帰が起きている。</p>
+    </div>
+    <p class="article-source">出典: 日本経済新聞「英仏でなく『スペインなら買える』政治不安で国債リスクに異変」（2026年5月12日）<br><a href="https://www.nikkei.com/" target="_blank">https://www.nikkei.com/</a></p>
+    <div class="koike-take">「政治リスクが低い国の資産が安全」という新しい視点をFP顧客への外国債券投資説明に組み込む好機。スペイン国債ETFや欧州安定資産の比較を顧客に提案するきっかけにしたい。</div>
+  </div>
+
+</section>
+
+<!-- ─── AI・テック ─── -->
+<section class="section">
+  <h2 class="section-title">AI・テック</h2>
+
+  <div class="article-card">
+    <div class="article-headline">Anthropic「Mythos」─ NISTが分析断念した「AI脆弱性発見機」の衝撃 7週間2,000件超の欠陥を自動検出</div>
+    <div class="article-lead">AIが「デジタルの弱点ハンター」になった。守る側が追いつけない時代が来た。</div>
+    <div class="article-body">
+      <p>Anthropicの最新AIモデル「Claude Mythos」は、ソフトウェアの未知の脆弱性を人間では不可能な速度で自動発見し、実用的な攻撃コードまで生成できる。米国立標準技術研究所（NIST）は7週間での2,000件超という発見数の多さに「評価が追いつかない」として分析を断念した。</p>
+      <p>Anthropic CEOのアモデイ氏は「中国のAIが半年〜1年でMythos級の能力を獲得する」と警告。攻撃側（中国・ロシア・犯罪組織）がMythosと同等のAIを持つ前に、防御側が体制を整えられるかが世界的な課題だ。日本の自民党は4月に政府への緊急提言をまとめ、本日の閣僚懇談会でようやく本格対応が始まる。</p>
+    </div>
+    <p class="article-source">出典: 日経クロステック・FinTech Journal「AnthropicのAI『Mythos』が波紋、NISTが分析断念」<br><a href="https://xtech.nikkei.com/atcl/nxt/column/18/00001/11661/" target="_blank">https://xtech.nikkei.com/atcl/nxt/column/18/00001/11661/</a></p>
+    <div class="koike-take">Claude Codeユーザーの自分にとっても他人事ではない。APIキー・Supabaseトークン・GitHubアクセス権の管理を今週中に全点検し、不要なアクセス権は即座に削除したい。</div>
+  </div>
+
+</section>
+
+<!-- ─── スタートアップ ─── -->
+<section class="section">
+  <h2 class="section-title">スタートアップ</h2>
+
+  <div class="article-card">
+    <div class="article-headline">米半導体株の熱狂「1〜2年は続く」─ AIインフラ投資拡大でバブルでなくブームとの見方が市場の多数意見に</div>
+    <div class="article-lead">半導体株は過熱か、それとも本物の構造転換か。市場は「ブーム継続」に軍配を上げつつある。</div>
+    <div class="article-body">
+      <p>エヌビディア・AMD・TSMC・キオクシアなど半導体関連株の急騰について、「バブルではなくブームだ」との分析が市場関係者の多数意見になりつつある。AI向けデータセンターの建設ラッシュが2027〜2028年まで続くとの予測から、HBM（高帯域幅メモリー）やGPUへの需要増が構造的に続くという見方だ。</p>
+      <p>一方で「利益確定の波が来れば急落もある」との慎重論も根強い。テクノロジー産業の「本物のブーム」か「AIバブル」かの判断は2027年の設備投資実績が出るまで持ち越し。キオクシアが25兆円の時価総額を達成し日本の電機株首位に立った今、その問いはより切実になっている。</p>
+    </div>
+    <p class="article-source">出典: 日本経済新聞「米半導体株の熱狂『1〜2年は続く』 バブルではなくブームか」（2026年5月12日）<br><a href="https://www.nikkei.com/" target="_blank">https://www.nikkei.com/</a></p>
+    <div class="koike-take">PharmaEight∞の事業説明で「なぜ今AI×薬剤師なのか」を問われたとき、半導体業界の設備投資が2028年まで続くという構造的根拠を示すと説得力が増す。チャレンジャーへのコーチングでも活用したい。</div>
+  </div>
+
+</section>
+
+<!-- ─── 薬剤師関連 ─── -->
+<section class="section">
+  <h2 class="section-title">薬剤師関連</h2>
+
+  <div class="article-card">
+    <div class="article-headline">富士フイルム、膜貫通蛋白質の創薬スクリーニング手法を開発・提供開始 ─ 難攻不落の「創薬の壁」に突破口</div>
+    <div class="article-lead">新薬開発の最難関領域に、日本企業が新しい扉を開けた。</div>
+    <div class="article-body">
+      <p>富士フイルムは12日、これまで創薬標的としての評価が困難だった膜貫通蛋白質に対する化合物スクリーニング手法を開発し、製薬企業向けサービスを開始したと発表した。膜貫通蛋白質は多くの疾患に関与する重要な創薬標的だが、構造の複雑さから薬の候補化合物を探し出すスクリーニングが著しく難しかった。</p>
+      <p>新手法では独自の細胞膜類似環境を再現した評価系を用い、候補化合物が膜貫通蛋白質に作用するかどうかを高精度で判定できる。がん・神経疾患・代謝疾患など多くの難病領域で新薬開発が加速する可能性があり、薬剤師の調剤する薬のラインナップが近い将来大きく変わりうる。</p>
+    </div>
+    <p class="article-source">出典: 薬事日報（2026年5月12日）「富士フイルム、新スクリーニング手法開発・提供開始」<br><a href="https://www.yakuji.co.jp/" target="_blank">https://www.yakuji.co.jp/</a></p>
+    <div class="koike-take">新薬候補の発見が加速すれば、PHC薬局の調剤品目も増え複雑化する。PharmaEight∞の「高付加価値薬剤師育成」が的中する政策環境が整ってきた。新薬対応を強みにするポジショニングを今から打ち出したい。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">厚労省「医療職の柔軟な働き方で人材確保を」検討会が初会合 ─ 薬剤師の複数施設勤務・テレワーク薬学管理を本格議論へ</div>
+    <div class="article-lead">薬剤師の働き方が大きく変わる可能性がある。制度の「常識」が問い直される局面だ。</div>
+    <div class="article-body">
+      <p>厚生労働省は12日、医療職種の人材確保を目的とした「医療職種養成・就業環境に関する検討会」の初会合を開いた。主要テーマとして①薬剤師・看護師の複数施設兼務解禁②在宅・テレワークによる薬学管理（オンライン服薬指導の拡大）③育児・介護と両立しやすい変形労働制の整備──の3点が挙げられた。</p>
+      <p>現行制度では薬剤師は原則として1施設の管理薬剤師として専従することが求められているが、地方の薬剤師不足が深刻なことから複数施設の掛け持ちを可能にする方向で検討が進む。厚労省は2027年度の法改正を目指しており、PharmaEight∞が支援する独立薬剤師にとって新たなビジネスモデルの可能性が広がる。</p>
+    </div>
+    <p class="article-source">出典: 薬事日報（2026年5月12日）「医療職種養成で検討会 柔軟な働き方で人材確保を」<br><a href="https://www.yakuji.co.jp/" target="_blank">https://www.yakuji.co.jp/</a></p>
+    <div class="koike-take">「薬剤師が複数施設で働ける」時代が来れば、PHCの掛け持ち薬剤師活用モデルや、PharmaEight∞の独立薬剤師支援事業の市場が一気に広がる。制度変更後のモデルケースを今から設計しておきたい。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">6月1日施行「ベースアップ評価料」─ 40歳未満薬剤師に月7,000〜15,000円増給、届け出は今週中が急務</div>
+    <div class="article-lead">6月1日の調剤報酬改定施行まで3週間を切った。手続きは万全か。</div>
+    <div class="article-body">
+      <p>2026年6月1日施行の調剤報酬改定では、40歳未満の薬局薬剤師を対象とした「ベースアップ評価料」が新設される。対象薬剤師に月額7,000〜15,000円程度の賃金引き上げを薬局が行った場合に報酬加算が得られる仕組みで、若手薬剤師の定着促進を狙った政策だ。</p>
+      <p>薬局側は①対象薬剤師の特定②ベースアップ計画書の作成③地方厚生局への届け出──という手続きを施行前に完了させる必要がある。届け出が施行日以降になると評価料の算定が遅れるため、今週中の書類整備が急務となっている。</p>
+    </div>
+    <p class="article-source">出典: 調剤報酬改定実務解説・各社<br><a href="https://kanri.nkdesk.com/houshu/r8.php" target="_blank">https://kanri.nkdesk.com/houshu/r8.php</a></p>
+    <div class="koike-take">PHC薬局のベースアップ評価料の届け出状況を今週中に最終確認。手続きが完了していなければ至急対応が必要だ。PharmaEight∞でも「6月改定直前の実務チェックリスト」をセミナーコンテンツとして提供できる。</div>
+  </div>
+
+</section>
+
+<!-- ─── 障がい福祉関連 ─── -->
+<section class="section">
+  <h2 class="section-title">障がい福祉関連</h2>
+
+  <div class="article-card">
+    <div class="article-headline">障害者法定雇用率、7月から2.7%に引き上げ ─ 100人超企業で未達なら年間60万円の納付金リスク</div>
+    <div class="article-lead">来月7月から変わる雇用ルール。企業の「障害者採用本気度」が問われる夏が来る。</div>
+    <div class="article-body">
+      <p>2026年7月から、民間企業の障害者雇用の法定雇用率が現行の2.5%から2.7%に引き上げられる。同時に雇用義務が生じる企業規模が従業員37.5人以上（現行40人以上）に拡大し、これまで義務の対象外だった小規模企業も雇用義務を負う形になる。</p>
+      <p>100人超の企業で法定雇用率を達成できない場合、不足1人あたり月額5万円（年間60万円）の障害者雇用納付金が課せられる。6月末の達成状況確認に向けて各社が採用活動を加速しており、就労継続支援B型事業所を運営するはなひらくにとっても利用者の一般就労・特例子会社への移行を支援する好機だ。</p>
+    </div>
+    <p class="article-source">出典: 厚生労働省・各社報道（2026年障害者雇用促進法改正）<br><a href="https://www.dodadsj.com/content/241029_amendment/" target="_blank">https://www.dodadsj.com/content/241029_amendment/</a></p>
+    <div class="koike-take">はなひらく（B型）から一般就労への移行支援は、この雇用率引き上げを追い風にできる。7月に雇用率が足りない松本市内の中小企業に「はなひらく利用者を特例子会社・グループ採用で」という提案を積極的に行う機会がある。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">「栄養剤の食事やたん吸引が欠かせない娘を手放せない」飯田市71歳母の現実 ─ 在宅介護の限界と受け皿不足</div>
+    <div class="article-lead">「施設に入れたい」と思いつつも「手放せない」という介護家族の葛藤が、長野県から報告された。</div>
+    <div class="article-body">
+      <p>長野県飯田市に住む71歳の母親が、栄養剤の経管投与と痰吸引が毎日欠かせない重度障害のある娘を自宅で介護している実態を信濃毎日新聞が取材した。施設への入所を考えながらも「手放したら娘は生きていけないのでは」という不安から踏み切れないでいる。</p>
+      <p>重症心身障害者の家族介護者は高齢化が進んでいる。医療的ケアが必要な利用者への対応は依然として限られており、長野県はグループホームの整備を進めているが追いついていない。地域の介護人材不足と施設整備の遅れが、家族介護者を孤立させている構造的な問題だ。</p>
+    </div>
+    <p class="article-source">出典: 信濃毎日新聞「栄養剤の食事やたん吸引が欠かせない娘を『手放せない』」（2026年5月12日）<br><a href="https://www.shinmai.co.jp/" target="_blank">https://www.shinmai.co.jp/</a></p>
+    <div class="koike-take">はなひらくが将来的に重症心身障害者向けサービス（生活介護）を拡充するなら、このような家族の受け皿として機能できる。地域のニーズを把握する上でも、飯田市の支援機関との情報交換を検討したい。</div>
+  </div>
+
+</section>
+
+<!-- ─── エンタメ ─── -->
+<section class="section">
+  <h2 class="section-title">エンタメ</h2>
+
+  <div class="article-card">
+    <div class="article-headline">稲垣吾郎、SMAP解散10年ぶりの舞台出演に驚きの声 ─「別人みたい」とSNSでトレンド入り</div>
+    <div class="article-lead">解散から10年、稲垣吾郎が新たな舞台に立つ姿に時の流れを感じた。</div>
+    <div class="article-body">
+      <p>SMAPの解散から10年の節目を迎えた2026年、稲垣吾郎が新作舞台への出演が明らかとなった。公の場での最新の姿がSNSで拡散し、「随分変わった」「別人みたいでびっくりした」という声が相次ぎ、5月12日のYahoo!ニュース芸能ランキング首位に。</p>
+      <p>解散当時40代前半だった稲垣は現在50歳を超え、「第二の人生」として俳優・アーティスト活動を精力的に続けている。SMAP4人はそれぞれの道を歩んでいるが、ファンの関心は10年経った今も衰えていない。</p>
+    </div>
+    <p class="article-source">出典: Yahoo!ニュース芸能ランキング（2026年5月12日）<br><a href="https://news.yahoo.co.jp/ranking/access/news/entertainment" target="_blank">https://news.yahoo.co.jp/ranking/access/news/entertainment</a></p>
+    <div class="koike-take">「10年かけて変わり続けるキャリア」のモデルとして、Personal OSのコンテンツで稲垣吾郎の事例を引用できる。「解散という挫折からの再起」を語る実例として強い。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">山田涼介、映画「一次元の挿し木」主演 ─ 6月公開・異色のSFサスペンスでアイドルの枠を超えた演技に挑戦</div>
+    <div class="article-lead">人気アイドルが今年最も話題のSF映画で主演を張る。</div>
+    <div class="article-body">
+      <p>Hey! Say! JUMPの山田涼介（33）が、6月公開予定のSFサスペンス映画「一次元の挿し木」で主演を務めることが明らかになった。次元を超えた記憶の操作をテーマにした異色の作品で、アイドルとしての枠を超えた演技に挑戦する。</p>
+      <p>山田は「全く新しいジャンルへの挑戦で、撮影中は役に没入しすぎてしまった」とコメント。Yahoo!ニュースでトレンド入りしており、今年の夏映画シーズンの注目作として期待が高まっている。</p>
+    </div>
+    <p class="article-source">出典: Yahoo!ニュース（2026年5月12日）<br><a href="https://news.yahoo.co.jp/" target="_blank">https://news.yahoo.co.jp/</a></p>
+    <div class="koike-take">「枠を超えた挑戦」というテーマはPharmaEight∞のセミナーで使えるネタ。アイドルが本格俳優へシフトするように、薬剤師も「調剤師」から「健康アドバイザー」へシフトする時代が来ているという文脈で。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">28歳俳優、突然の芸能界引退宣言 ─「全ての方々に感謝しかありません」理由は明かさず</div>
+    <div class="article-lead">突然の引退に「まだ若いのに」「何があった？」とファンから驚きの声が上がった。</div>
+    <div class="article-body">
+      <p>5月12日、28歳の俳優がSNSで突然の芸能界引退を発表した。「全ての方々に感謝しかありません。皆さんの温かいご支援のおかげでここまで続けてこられました」という簡潔なメッセージのみで引退理由については一切触れず、ファンから驚きと惜別の声が相次いだ。</p>
+      <p>芸能界では近年20代〜30代での早期引退が増えており、SNSでの誹謗中傷や芸能界特有のプレッシャーとの関連を指摘する声もある。本人の意思決定を尊重しつつも、芸能人のメンタルヘルス支援体制の必要性が改めて問われる出来事となった。</p>
+    </div>
+    <p class="article-source">出典: Yahoo!ニュース芸能ランキング（2026年5月12日）<br><a href="https://news.yahoo.co.jp/ranking/access/news/entertainment" target="_blank">https://news.yahoo.co.jp/ranking/access/news/entertainment</a></p>
+    <div class="koike-take">28歳での突然の引退は「キャリアの撤退基準をあらかじめ設計する」ことの重要性を伝える事例。Personal OSのコーチングで「やめる基準」を明文化するモジュールの素材として活用できる。</div>
+  </div>
+
+</section>
+
+<!-- ─── 長野県関連 ─── -->
+<section class="section">
+  <h2 class="section-title">長野県関連</h2>
+
+  <div class="article-card">
+    <div class="article-headline">茅野市バスケ協会、東海大諏訪高校と連携 ─ 強豪校のコートで中学生が合同練習 部活地域移行の先行モデルに</div>
+    <div class="article-lead">バスケの強豪高校が地域の中学生の受け皿になる新モデルが長野で動き出した。</div>
+    <div class="article-body">
+      <p>長野県茅野市バスケットボール協会が地域クラブを立ち上げ、県内有数のバスケ強豪校・東海大諏訪高校が協力して中学生向けの合同練習環境を整備していることが分かった。中学校の部活動が地域クラブへ移行する「部活動改革」の流れを受けた取り組みだ。</p>
+      <p>2026年度から全国の中学校で部活動の地域移行が段階的に本格化しており、強豪高校・大学が地域クラブのハブとして機能する事例が増えている。茅野市の取り組みは農村部での部活動改革のモデルケースとして注目される。</p>
+    </div>
+    <p class="article-source">出典: 信濃毎日新聞「バスケの強豪高校で中学生が合同練習へ」（2026年5月12日）<br><a href="https://www.shinmai.co.jp/" target="_blank">https://www.shinmai.co.jp/</a></p>
+    <div class="koike-take">「強豪の施設・指導力を地域で共有する」発想は、はなひらくが薬局・医療機関と連携して就労訓練の場を提供するモデルと同型。地域連携のロジックを福祉事業の新プログラム設計に活かしたい。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">喬木村の2万株クリンソウ群生地、生育不良で恒例まつり中止 ─「まるで砂漠のよう」気候変動の影響か</div>
+    <div class="article-lead">長野の初夏を彩る風物詩が、今年は咲かない。</div>
+    <div class="article-body">
+      <p>長野県喬木村に広がる約2万株のクリンソウ群生地が深刻な生育不良に陥っており、毎年恒例の「クリンソウまつり」の中止が決定した。例年この時期は赤やピンクの花が一面に咲き誇るが、今年は芽吹きが極端に少なく保存会員が「まるで砂漠のよう」と語っている。</p>
+      <p>気温の変動や降水量の変化が植物の生育に影響を与えているとみられ、保存会と村が原因調査に乗り出した。クリンソウは湿地性の多年草で気候・土壌環境の変化に敏感。長野の里山の生態系に対する気候変動の影響が改めて問われている。</p>
+    </div>
+    <p class="article-source">出典: 信濃毎日新聞「2万株のクリンソウ群生地、生育不良で恒例のまつり中止に」（2026年5月12日）<br><a href="https://www.shinmai.co.jp/" target="_blank">https://www.shinmai.co.jp/</a></p>
+    <div class="koike-take">地域の自然環境の変化は観光・農業にも影響する。長野を活動拠点とする小池さんにとって、気候変動の影響を「地元目線」で語るコンテンツはSNS・セミナーで共感を呼びやすい。</div>
+  </div>
+
+  <div class="article-card">
+    <div class="article-headline">長野県「経済重視の地域未来戦略」お手本なし ─ 阿部知事と市町村長が多様な産業振興策を議論</div>
+    <div class="article-lead">「正解のない問いに向き合う」長野県の地域経済戦略が始動した。</div>
+    <div class="article-body">
+      <p>長野県が策定を進める「地域未来戦略」について、阿部守一知事と県内市町村長が意見交換した。精密機器・農業・観光・福祉など多様な産業が混在する長野県の特性を踏まえ、「経済重視で考えるとお手本となる他県がない」という状況で独自の戦略を模索している。</p>
+      <p>製造業の自動化・観光DX・農業スマート化・外国人材の活用など各市長から提案が相次いだ。松本市・飯田市など規模・産業特性の異なる自治体が一体で動けるかが鍵となる。</p>
+    </div>
+    <p class="article-source">出典: 信濃毎日新聞「経済重視の地域未来戦略に『お手本なし』」（2026年5月12日）<br><a href="https://www.shinmai.co.jp/" target="_blank">https://www.shinmai.co.jp/</a></p>
+    <div class="koike-take">「長野に正解がない」状況はPHC薬局・はなひらくが先駆けてモデルを作るチャンス。地域未来戦略の議論に薬局・福祉事業者として参画できる機会があれば積極的に手を挙げたい。</div>
+  </div>
+
+</section>
+
+</div><!-- /.paper-columns -->
+
+<!-- ─── 今週のカレンダー ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">今週のカレンダー</h2>
+  <table class="calendar-table">
+    <tbody>
+      <tr>
+        <td class="cal-date">5/12（火）</td>
+        <td class="cal-event">
+          ベッセント米財務長官 訪日最終日・帰国（閣僚懇談会でサイバー対策具体化）
+          <div class="cal-take">帰国後の発言・声明内容が為替動向を左右する。円安是正圧力の強度を確認したい。</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/13（水）</td>
+        <td class="cal-event">
+          米4月CPI（消費者物価指数）発表 ─ FRBの利下げ判断に直結
+          <div class="cal-take">インフレ鈍化確認できれば円高方向。FP顧客の外貨建て資産の見直しタイミングを検討したい。</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/14（木）〜15（金）</td>
+        <td class="cal-event">
+          トランプ大統領 中国訪問・習近平との米中首脳会談（北京）
+          <div class="cal-take">関税・台湾・半導体・イランの行方でマーケットが乱高下する可能性。週末前の動向を注視。</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/15（金）</td>
+        <td class="cal-event">
+          サッカー日本代表 FIFA W杯2026 最終メンバー26人発表
+          <div class="cal-take">チームMTGや顧客との話題として活用できる。選手の顔ぶれが明らかになる日。</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="cal-date">5/20（水）</td>
+        <td class="cal-event">
+          日銀金融政策決定会合 ─ 追加利上げ観測の有無が焦点
+          <div class="cal-take">円高方向に動くかどうかの最大の分岐点。FP顧客の外貨建て資産の比率見直し相談に備えたい。</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="cal-date">6/1（月）</td>
+        <td class="cal-event">
+          2026年度調剤報酬改定 本格施行 ─ ベースアップ評価料・立地依存減算が始動
+          <div class="cal-take">PHC薬局の届け出状況を今週中に最終確認。手続き漏れがあれば今すぐ対応が必要。</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="cal-date">6/11（木）</td>
+        <td class="cal-event">
+          FIFA W杯2026 本大会開幕（メキシコ・カナダ・アメリカ共催）
+          <div class="cal-take">日本代表の活躍は社会全体のムードを引き上げる。W杯期間中の集客・SNSコンテンツ企画を今から準備したい。</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ─── 編集後記 ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">編集後記</h2>
+  <div class="postscript">
+    <div class="postscript-title">EDITOR'S NOTE ─ 第150号</div>
+    Anthropicの超強力AI「Mythos」が日本の重要インフラを揺るがし、本日首相がついに緊急指示を出した。ソフトウェアの脆弱性を7週間で2,000件自動検出するAIは、守る側にも攻める側にも使われうる両刃の剣だ。半導体ではキオクシアが25兆円で電機首位に立ち、カルビーのポテチ袋は白黒になる。米中首脳会談前夜の世界は、あらゆる場所で静かに、しかし確実に変わっている。本日はめでたく創刊150号。明日もまた、世界を事業目線で読んでいく。
+  </div>
+</section>
+
+<!-- ─── Glossary ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">Glossary ─ 今号の用語解説</h2>
+  <div class="glossary-grid">
+
+    <div class="glossary-item">
+      <div class="glossary-term">Claude Mythos（マイトス）</div>
+      <div class="glossary-def">Anthropicが2026年4月に限定公開した最新AIモデル。ソフトウェアの未知の脆弱性を自動発見し攻撃コードを生成できる能力を持つ。7週間で2,000件超の欠陥を検出。現在は米国の約50組織のみに提供。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">脆弱性（ぜいじゃくせい）</div>
+      <div class="glossary-def">コンピューターのソフトウェアに存在するセキュリティ上の欠陥や弱点。攻撃者に悪用されるとシステムへの不正侵入やデータ窃取につながる。発見・修正（パッチ適用）が防御の基本。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">NIST（米国立標準技術研究所）</div>
+      <div class="glossary-def">米国商務省傘下の研究機関。サイバーセキュリティのガイドライン策定や脆弱性データベースの管理を担う。今回はMythosの能力が高すぎて分析を断念したことで話題に。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">ナフサ</div>
+      <div class="glossary-def">石油精製で得られる揮発性の液体で、プラスチック・合成繊維・印刷インクなどの原料となる。中東情勢悪化による原油高がナフサ不足を引き起こし、カルビーのパッケージ変更の直接原因となった。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">ベースアップ評価料</div>
+      <div class="glossary-def">2026年度調剤報酬改定で新設される加算。40歳未満の薬局薬剤師の賃金を月7,000〜15,000円引き上げた薬局に支払われる報酬。若手薬剤師の定着促進が狙い。6月1日施行。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">膜貫通蛋白質</div>
+      <div class="glossary-def">細胞膜を貫通するタンパク質の総称。多くの疾患に関与する重要な創薬標的だが、構造の複雑さからスクリーニングが難しかった。富士フイルムが新たな評価手法を開発。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">法定雇用率</div>
+      <div class="glossary-def">企業が一定割合の障害者を雇用するよう法律で定めた割合。2026年7月から民間企業では2.5%→2.7%に引き上げ。未達企業は不足1人あたり月5万円の納付金を負担する。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">HBM（高帯域幅メモリー）</div>
+      <div class="glossary-def">AI学習・推論用GPUに搭載される高速・大容量メモリー。エヌビディアのGPUと一体化しており、AIデータセンター投資の急増でキオクシア・SKハイニックスへの需要が爆発的に増加している。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">クリンソウ（九輪草）</div>
+      <div class="glossary-def">サクラソウ科の多年草。輪状に花を重ねてつける姿が仏塔の九輪（くりん）に似ることから命名。5〜6月に赤・ピンク・紫の花を咲かせる。湿地性で気候変動の影響を受けやすい。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">膜貫通蛋白質スクリーニング</div>
+      <div class="glossary-def">新薬候補化合物が膜貫通蛋白質に作用するかを評価する工程。細胞膜の脂質二重層に埋め込まれた複雑な構造のため従来は評価困難だったが、富士フイルムの新手法で障壁が下がった。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="paper-footer">
+  NewGo Timez 第150号 ─ 2026年5月12日発行 ─ 発行人: 小池雄悟<br>
+  © 2026 NewGo Timez. All rights reserved.
+</footer>
+
+</body>
+</html>
