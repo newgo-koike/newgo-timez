@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewGo Timez ─ 第151号 2026年5月13日（水）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#f0ebdb;
+    --ink:#0a0a0a;
+    --rule:#b0a88a;
+    --soft:#e8e2cf;
+    --muted:#5a5040;
+    --accent:#2a1a00;
+  }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Noto Serif JP',serif;
+    font-size:17px;
+    line-height:1.8;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 16px 60px;
+  }
+
+  /* ─── MASTHEAD ─── */
+  .masthead{
+    border-top:4px solid var(--ink);
+    border-bottom:4px solid var(--ink);
+    padding:20px 0 12px;
+    text-align:center;
+    margin-bottom:32px;
+  }
+  .masthead-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(48px,8vw,90px);
+    font-weight:900;
+    letter-spacing:0.03em;
+    line-height:1;
+  }
+  .masthead-sub{
+    display:flex;
+    justify-content:center;
+    gap:32px;
+    margin-top:8px;
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:0.05em;
+  }
+  .masthead-rule{
+    border:none;
+    border-top:1px solid var(--rule);
+    margin:10px 0 6px;
+  }
+  .masthead-tagline{
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:0.1em;
+  }
+
+  /* ─── SECTION COMMON ─── */
+  .section{
+    margin-bottom:40px;
+  }
+  .section-title{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+    border-bottom:2px solid var(--ink);
+    padding-bottom:4px;
+    margin-bottom:16px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .page-full-width{ width:100%; }
+  .paper-columns{
+    display:grid;
+    gap:32px;
+    align-items:start;
+  }
+  @media(min-width:768px){
+    .paper-columns{ grid-template-columns:1fr 1fr; }
+    .market-grid{ grid-template-columns:repeat(3,1fr); }
+  }
+  @media(max-width:767px){
+    .paper-columns{ display:block; }
+    .paper-columns > *{ margin-bottom:32px; }
+    .market-grid{ grid-template-columns:1fr 1fr; }
+  }
+
+  /* ─── MARKET ─── */
+  .market-grid{
+    display:grid;
+    gap:12px;
+  }
+  .market-card{
+    background:var(--soft);
+    border:1px solid var(--rule);
+    padding:14px 16px;
+    border-radius:2px;
+  }
+  .market-label{
+    font-size:11px;
+    letter-spacing:0.12em;
+    color:var(--muted);
+    font-weight:700;
+    margin-bottom:4px;
+  }
+  .market-value{
+    font-size:clamp(24px,3vw,30px);
+    font-weight:900;
+    line-height:1.1;
+  }
+  .market-change{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  .market-note{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:8px;
+    line-height:1.6;
+    border-top:1px solid var(--rule);
+    padding-top:8px;
+  }
+
+  /* ─── TOP STORY ─── */
+  .top-story{
+    border-top:6px double var(--ink);
+    padding-top:20px;
+  }
+  .kicker{
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--muted);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .top-headline{
+    font-size:clamp(28px,4vw,42px);
+    font-weight:900;
+    line-height:1.25;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:16px;
+  }
+  .top-body p{
+    margin-bottom:14px;
+  }
+  .source-link{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:12px;
+    word-break:break-all;
+  }
+  .source-link a{
+    color:var(--muted);
+  }
+
+  /* ─── KOIKE TAKE ─── */
+  .koike-take{
+    background:var(--soft);
+    border-left:3px solid var(--ink);
+    padding:8px 12px;
+    font-size:15px;
+    line-height:1.7;
+    margin-top:12px;
+    color:var(--accent);
+  }
+  .koike-take::before{
+    content:"▶ 小池目線 ";
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.08em;
+  }
+
+  /* ─── NUMBER OF DAY ─── */
+  .number-wrap{
+    text-align:center;
+    padding:24px 16px;
+    border:2px solid var(--ink);
+    background:var(--soft);
+  }
+  .number-big{
+    font-size:clamp(80px,12vw,120px);
+    font-weight:900;
+    line-height:1;
+    font-family:'Playfair Display',serif;
+    letter-spacing:-0.02em;
+  }
+  .number-caption{
+    font-size:18px;
+    font-weight:700;
+    margin:8px 0 12px;
+  }
+  .number-body{
+    font-size:16px;
+    color:var(--muted);
+    max-width:600px;
+    margin:0 auto;
+    line-height:1.7;
+  }
+
+  /* ─── HEADLINES ─── */
+  .headline-list{
+    list-style:none;
+  }
+  .headline-item{
+    padding:14px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .headline-item:last-child{
+    border-bottom:none;
+  }
+  .headline-cat{
+    font-size:11px;
+    letter-spacing:0.12em;
+    font-weight:700;
+    color:var(--muted);
+    margin-bottom:4px;
+  }
+  .headline-title{
+    font-size:clamp(18px,2.2vw,22px);
+    font-weight:700;
+    line-height:1.35;
+    margin-bottom:6px;
+  }
+  .headline-body{
+    font-size:15px;
+    color:var(--muted);
+    line-height:1.65;
+  }
+  .headline-source{
+    font-size:12px;
+    color:var(--rule);
+    margin-top:4px;
+  }
+
+  /* ─── PERSON ─── */
+  .person-wrap{
+    border:2px solid var(--ink);
+    padding:24px;
+    background:var(--soft);
+  }
+  .person-name{
+    font-size:clamp(22px,3vw,30px);
+    font-weight:900;
+    line-height:1.2;
+    margin-bottom:4px;
+  }
+  .person-role{
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:0.05em;
+    margin-bottom:16px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--rule);
+  }
+  .person-quote{
+    font-size:20px;
+    font-style:italic;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:16px;
+    padding-left:16px;
+    border-left:4px solid var(--ink);
+  }
+  .person-body{
+    font-size:16px;
+    line-height:1.8;
+  }
+
+  /* ─── ARTICLE CARD ─── */
+  .article-card{
+    padding-bottom:20px;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--rule);
+  }
+  .article-card:last-child{
+    border-bottom:none;
+    margin-bottom:0;
+    padding-bottom:0;
+  }
+  .article-headline{
+    font-size:clamp(18px,2.2vw,24px);
+    font-weight:700;
+    line-height:1.3;
+    margin-bottom:6px;
+  }
+  .article-lead{
+    font-size:14px;
+    color:var(--muted);
+    font-weight:600;
+    margin-bottom:8px;
+    letter-spacing:0.02em;
+  }
+  .article-body p{
+    margin-bottom:12px;
+    font-size:16px;
+    line-height:1.8;
+  }
+  .article-source{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:8px;
+    word-break:break-all;
+  }
+  .article-source a{
+    color:var(--muted);
+  }
+
+  /* ─── CALENDAR ─── */
+  .calendar-table{
+    width:100%;
+    border-collapse:collapse;
+  }
+  .calendar-table tr{
+    border-bottom:1px solid var(--rule);
+  }
+  .calendar-table tr:last-child{
+    border-bottom:none;
+  }
+  .cal-date{
+    padding:12px 16px 12px 0;
+    font-weight:700;
+    font-size:14px;
+    white-space:nowrap;
+    vertical-align:top;
+    width:120px;
+  }
+  .cal-event{
+    padding:12px 0;
+    font-size:15px;
+    vertical-align:top;
+  }
+  .cal-take{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:4px;
+    line-height:1.6;
+  }
+
+  /* ─── POSTSCRIPT ─── */
+  .postscript{
+    background:var(--ink);
+    color:var(--bg);
+    padding:24px 28px;
+    font-size:16px;
+    line-height:1.9;
+  }
+  .postscript-title{
+    font-size:11px;
+    letter-spacing:0.2em;
+    font-weight:700;
+    margin-bottom:12px;
+    opacity:0.7;
+  }
+
+  /* ─── GLOSSARY ─── */
+  .glossary-grid{
+    display:grid;
+    gap:16px;
+  }
+  @media(min-width:768px){
+    .glossary-grid{ grid-template-columns:1fr 1fr; }
+  }
+  .glossary-item{
+    background:var(--soft);
+    border:1px solid var(--rule);
+    padding:14px 16px;
+    border-radius:2px;
+  }
+  .glossary-term{
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .glossary-def{
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+
+  /* ─── FOOTER ─── */
+  .paper-footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:48px;
+    padding-top:16px;
+    border-top:2px solid var(--ink);
+    letter-spacing:0.08em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── MASTHEAD ─── -->
+<header class="masthead page-full-width">
+  <div class="masthead-title">NewGo Timez</div>
+  <hr class="masthead-rule">
+  <div class="masthead-sub">
+    <span>第151号</span>
+    <span>2026年5月13日（水）</span>
+    <span>発行：小池雄悟</span>
+  </div>
+  <div class="masthead-tagline" style="margin-top:8px;">Personal OS × 長野 × PHC × PharmaEight∞ — 世界を、事業目線で読む</div>
+</header>
+
+<!-- ─── 朝のマーケット ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">朝のマーケット</h2>
+  <div class="market-grid">
+
+    <div class="market-card">
+      <div class="market-label">日経平均</div>
+      <div class="market-value">62,742円</div>
+      <div class="market-change">▲324（+0.52%）</div>
+      <div class="market-note">5/12終値。3日ぶり反発。AI・半導体関連が牽引し、北京での米中首脳会談への期待も後押し。東証プライム売買代金は4.8兆円と活況。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">ドル円</div>
+      <div class="market-value">157円57銭</div>
+      <div class="market-change">▲0.48円（円安）</div>
+      <div class="market-note">5/12 NY終値。ベッセント訪日後の円安是正圧力が一服。米4月CPIの高止まりでドル買い圧力が再燃しつつある。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">NYダウ</div>
+      <div class="market-value">49,728ドル</div>
+      <div class="market-change">▲312（+0.63%）</div>
+      <div class="market-note">5/12 US終値。半導体株が2日連続高。米中会談期待で中国関連銘柄も上昇。実質賃金のマイナス転落が消費の重石として意識され始めた。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">WTI原油</div>
+      <div class="market-value">$98.30</div>
+      <div class="market-change">▼0.15（-0.15%）</div>
+      <div class="market-note">5/12 US終値。中東情勢の緊張緩和期待でわずかに低下も高水準を維持。中東の供給不安が根強く、下値は限定的。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">金（ゴールド）</div>
+      <div class="market-value">$4,735</div>
+      <div class="market-change">▲12（+0.25%）</div>
+      <div class="market-note">5/12。地政学リスクへの逃避需要は継続。米中会談の行方を見極めながら高値圏での底堅い動きが続く。</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-label">日米金利差</div>
+      <div class="market-value">3.48%</div>
+      <div class="market-change">米3.90% / 日0.42%</div>
+      <div class="market-note">日米金利差は依然高水準。日銀の利上げペース鈍化観測が根強く、円安圧力の根本要因は解消されていない。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── 一面トップ ─── -->
+<section class="section page-full-width top-story">
+  <h2 class="section-title">一面トップ</h2>
+  <div class="kicker">本日のトップ ─ 国際</div>
+  <h1 class="top-headline">トランプ大統領、北京到着 ─ 14・15日に習近平と首脳会談、マスク・クック同行の異例「CEO外交」</h1>
+  <div class="top-body">
+    <p>トランプ米大統領は13日夜（現地時間）、北京に到着した。2017年以来9年ぶりとなる米大統領の公式訪中で、14日から2日間にわたって習近平国家主席と首脳会談に臨む。</p>
+    <p>今回の訪中には異例の顔触れが同行する。イーロン・マスク（政府効率化省顧問・スペースX CEO）、ティム・クック（Apple CEO）、スンダー・ピチャイ（Google CEO）をはじめとする米大企業20社以上のトップが大統領専用機「エアフォースワン」に搭乗。貿易・技術・AI規制が主要議題となる見通しで、民間外交と政府交渉が一体となった「CEO外交」の形式が国際的に注目を集めている。</p>
+    <p>焦点は関税問題と半導体輸出規制の緩和だ。両国は5月初旬の交渉で部分合意を示していたが、詳細は未公表のまま。市場は合意に向けた前進を期待して中国関連株が上昇した一方、米国内からは「大企業CEOの同席が交渉力を弱める」との批判も強まっており、会談の行方が次の通商政策の方向性を決定づけると見られる。</p>
+  </div>
+  <div class="source-link">出典: NHK「トランプ大統領 北京到着 習近平氏との首脳会談へ」</div>
+  <div class="koike-take">米中の経済対話が本格化すれば、AI・半導体コスト・供給に連動してPHC・PharmaEightが活用するインフラにも影響が及ぶ。地政学軸として継続注視したい。</div>
+</section>
+
+<!-- ─── 今日の数字 ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">今日の数字</h2>
+  <div class="number-wrap">
+    <div class="number-big">20社</div>
+    <div class="number-caption">トランプ大統領に同行した米大企業のCEO数</div>
+    <div class="number-body">Apple・Tesla・SpaceX・Googleなど米主要企業のトップが大統領専用機で北京入り。民間トップを政府外交に組み込む「CEO外交」は米国史上でも異例。経済利権と安全保障の複雑な絡み合いを象徴している。</div>
+    <div class="koike-take">民間と行政の境界が溶ける時代。Personal OSやFP事業でも「個人が国境を超える」発想が問われる局面が来ている。</div>
+  </div>
+</section>
+
+<!-- ─── 今朝のヘッドライン ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">今朝のヘッドライン</h2>
+  <ul class="headline-list">
+
+    <li class="headline-item">
+      <div class="headline-cat">社会</div>
+      <div class="headline-title">長野で落雷による大規模停電 ─ 約15万戸が一時停電、夜間に復旧</div>
+      <div class="headline-body">12日夕方、長野県内に激しい雷雨が到来。落雷による変電所トラブルで長野市・松本市を中心に約15万戸が停電。中部電力は深夜までに大半を復旧させた。</div>
+      <div class="headline-source">信濃毎日新聞</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">政治</div>
+      <div class="headline-title">法務省、検察の準抗告「原則禁止」案を自民に提示 ─ 捜査権限見直しの核心</div>
+      <div class="headline-body">法務省は検察が裁判所の令状却下決定に対して行う「準抗告」を原則禁止とする方針案を自民党法務部会に非公式提示。捜査権限の抑制を巡り与野党で議論が本格化する。</div>
+      <div class="headline-source">日本経済新聞</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">経済</div>
+      <div class="headline-title">実質賃金3年ぶりマイナス ─ 米4月CPI、関税転嫁で前年比2.4%上昇</div>
+      <div class="headline-body">米労働省発表の4月CPIは前年比2.4%上昇と3月から加速。名目賃金の伸びを上回る物価高により実質賃金が3年ぶりにマイナスへ転落した。FRBの利下げ期待は遠のいた。</div>
+      <div class="headline-source">Yahoo!ニュース</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">国際</div>
+      <div class="headline-title">南極条約協議国会議が広島で開幕 ─ 日本が初の議長国、55カ国が参加</div>
+      <div class="headline-body">南極の平和的利用と科学協力を議論する南極条約協議国会議（ATCM）が広島市で開幕。日本が初の議長国を務め、気候変動・生態系保全が主要テーマとなる。</div>
+      <div class="headline-source">NHK</div>
+    </li>
+
+    <li class="headline-item">
+      <div class="headline-cat">エンタメ</div>
+      <div class="headline-title">木村拓哉が食べた昭和菓子、Z世代に「これ何？」 ─ 世代ギャップがSNSでバズ</div>
+      <div class="headline-body">木村拓哉がSNSで紹介した1990年代の定番駄菓子に、Z世代から「初めて見た」とコメントが殺到。昭和・平成文化の再発見トレンドと世代間対話がSNSで話題になっている。</div>
+      <div class="headline-source">Yahoo!ニュース</div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ─── 人物クローズアップ ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">人物クローズアップ</h2>
+  <div class="person-wrap">
+    <div class="person-name">イーロン・マスク</div>
+    <div class="person-role">米政府効率化省顧問・スペースX CEO・Tesla CEO</div>
+    <div class="person-quote">「中国との経済対話は、米国の競争力を守りながら進めるべきだ」</div>
+    <div class="person-body">政府顧問として財政削減を推進しながら、自身のEV事業（テスラ）は中国市場に大きく依存するマスク氏。今回の北京訪問への同行には「官民の利益相反」批判が集まる一方、AI・宇宙・電気自動車の三分野で米中の交差点に立つ人物として影響力は絶大だ。「民間人でありながら外交を動かす」その存在は、個人の力が時代を変えうることを示している。</div>
+    <div class="koike-take">官民の境界が消えた時代の「個人の影響力」の象徴。Personal OS事業で問う「一人の行動が事業・社会を動かす」というテーマと通底する。</div>
+  </div>
+</section>
+
+<!-- ─── 2カラム記事セクション ─── -->
+<div class="paper-columns">
+
+  <!-- 政治・経済 -->
+  <section class="section">
+    <h2 class="section-title">政治・経済</h2>
+
+    <div class="article-card">
+      <div class="article-headline">法務省、検察の準抗告「原則禁止」を自民に提示 ─ 秋の臨時国会で法改正を検討</div>
+      <div class="article-lead">検察が裁判所の令状却下決定に不服申立する「準抗告」を原則禁止とする法務省案が、自民党法務部会に非公式に示された。</div>
+      <div class="article-body">
+        <p>現行制度では、裁判所が捜索差押えの令状請求を却下した場合、検察は上級裁判所に準抗告できる。この権限を原則廃止することで、令状審査の厳格化と捜査権限の抑制を図る狙いがある。</p>
+        <p>法務省は秋の臨時国会に刑事訴訟法改正案を提出する方向で調整中。捜査当局内には「重大事件の逃亡リスクが高まる」との懸念も根強く、与野党を交えた慎重な議論が求められる。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞</div>
+      <div class="koike-take">司法制度の変容は福祉・医療業界の行政指導にも波及しうる。はなひらくの運営コンプライアンス管理において法改正の動向を注視しておきたい。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">ふるさと納税、仲介手数料1割超に総務省が是正要請 ─ 地方自治体への還元強化へ</div>
+      <div class="article-lead">総務省は、ふるさと納税の仲介サービスが受け取る手数料が寄附額の10%を超えるケースについて、引き下げを求める要請文を各社に送付した。</div>
+      <div class="article-body">
+        <p>現在、大手仲介サイトの手数料は平均8〜12%とされ、一部では15%を超える事例もある。総務省は「地方自治体の財源確保という制度趣旨に反する」として改善を促した。</p>
+        <p>ふるさと納税の市場規模は2025年度に2.2兆円を超えており、仲介業者の競争激化が手数料高騰を招いていた。各社は対応方針を6月末までに報告する見通し。</p>
+      </div>
+      <div class="article-source">出典: NHK</div>
+      <div class="koike-take">ふるさと納税は長野県の地方財政に直結する。地域連携を深めるローカルビジネス設計において、手数料構造の変化は抑えておきたい重要な政策動向。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">南極条約協議国会議が広島で開幕 ─ 日本が初議長国、気候変動・保全を議論</div>
+      <div class="article-lead">南極の平和的利用と科学協力について話し合う南極条約協議国会議（ATCM）が13日、広島市で開幕した。55カ国・地域が参加し、2週間にわたって議論する。</div>
+      <div class="article-body">
+        <p>日本が初めて議長国を務める今回の会議では、南極海の生態系保全と温暖化による氷床融解への対応が主要テーマ。日本の南極観測50年超の実績が評価されての議長国選出となった。</p>
+        <p>中国・ロシアが南極資源への関心を強める中、科学・平和利用の原則を守る外交的枠組みの維持が問われる会議となる。</p>
+      </div>
+      <div class="article-source">出典: NHK</div>
+      <div class="koike-take">科学と平和外交の舞台となる広島。「科学・平和の都市」ブランドは長野の自然資本活用ビジネスを考える際の参照モデルになりうる。</div>
+    </div>
+
+  </section>
+
+  <!-- 世界の動き -->
+  <section class="section">
+    <h2 class="section-title">世界の動き</h2>
+
+    <div class="article-card">
+      <div class="article-headline">トランプ大統領、北京到着 ─ 14・15日に習近平と首脳会談、CEO20社同行の異例形式</div>
+      <div class="article-lead">トランプ米大統領が13日夜（現地時間）に北京入り。9年ぶりの公式訪中で、14・15日に習近平国家主席と2日間の会談に臨む。</div>
+      <div class="article-body">
+        <p>マスク（スペースX）、クック（Apple）、ピチャイ（Google）ら米大企業CEO20社超が大統領専用機に同乗。関税緩和・AI規制・半導体輸出枠組みが主要議題とされる。</p>
+        <p>市場は合意期待から米中株ともに上昇。一方で安全保障専門家は「大企業CEOの同席が米の交渉力を弱める」と警告しており、議会共和党内からも懸念の声が上がっている。</p>
+      </div>
+      <div class="article-source">出典: NHK</div>
+      <div class="koike-take">米中経済統合の深化は半導体・AI産業に直結し、PHC/PharmaEightが活用するAIインフラのコスト・供給に中長期的影響を与える。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">米4月CPI 前年比2.4%上昇、実質賃金3年ぶりマイナス ─ 関税転嫁が物価を押し上げ</div>
+      <div class="article-lead">米労働省が発表した4月の消費者物価指数（CPI）は前年比2.4%上昇と3月から加速。名目賃金の伸びを上回り、実質賃金は3年ぶりにマイナスへ転落した。</div>
+      <div class="article-body">
+        <p>輸入品への関税転嫁が食料品・日用品などに広がっており、低所得層への打撃が顕著。FRBの利下げ見通しは遠のき、市場では年内利下げ見送り予想が多数派となってきた。</p>
+        <p>ドルは物価高を受けて下支えされる一方、消費者信頼感指数は急落。「トランプ政策の負の側面」が経済指標に可視化され始めた格好だ。</p>
+      </div>
+      <div class="article-source">出典: Yahoo!ニュース</div>
+      <div class="koike-take">米国の物価高・実質賃金低下はグローバルな消費構造に影響する。FP相談では「円建て資産の防衛」「物価連動型の資産設計」への関心が高まると見ておきたい。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">ウクライナ、ドローン技術を20カ国以上に輸出交渉 ─ 実戦2年の経験が「最強の販売資料」に</div>
+      <div class="article-lead">ウクライナ政府は、2年間の実戦で蓄積した無人機（ドローン）技術・運用ノウハウを20カ国以上に輸出する交渉を進めていると明らかにした。</div>
+      <div class="article-body">
+        <p>ウクライナは戦時中に国内ドローン産業を急成長させ、対戦車・偵察・物資輸送の各分野で実用技術を確立。欧州・中東・東南アジアの軍・民間双方から強い関心が寄せられている。</p>
+        <p>ゼレンスキー大統領は「戦時の技術は平和の産業になれる」と強調。日本の防衛省もドローン輸入規制緩和の議論と重なるとして動向を注視している。</p>
+      </div>
+      <div class="article-source">出典: Yahoo!ニュース</div>
+      <div class="koike-take">防衛・民間の技術融合が加速する中、障がい福祉分野でもドローン配送・見守りの実用化が近づく。はなひらくの地域活動でも注目の技術動向だ。</div>
+    </div>
+
+  </section>
+
+  <!-- AI・テック -->
+  <section class="section">
+    <h2 class="section-title">AI・テック</h2>
+
+    <div class="article-card">
+      <div class="article-headline">Google Gemini、Chrome日本語版に統合 ─ 検索と対話AIが一体化、全ユーザーへ展開</div>
+      <div class="article-lead">Googleは4月21日より、ブラウザ「Chrome」の日本語版にAI「Gemini」を組み込む展開を開始。現在は全ユーザーへ自動提供されている。</div>
+      <div class="article-body">
+        <p>Chrome右上のGeminiアイコンから起動でき、ブラウジング中のページ内容をもとにした質問応答や要約が可能。Google検索との連携で「調べながら考える」体験が大幅に変わる。</p>
+        <p>Anthropic Claude・Microsoft Copilotと並び「ブラウザ内AI」の三つ巴が本格化。日本市場では生産性向上ツールとしてビジネス層への浸透が急速に進んでいる。</p>
+      </div>
+      <div class="article-source">出典: ASCII.jp</div>
+      <div class="koike-take">ChromeにAIが統合されることで、Personal OSの「思考補助ツール」としての価値はさらに高まる。今後の講座設計でChromeAI連携ワークフローを検討したい。</div>
+    </div>
+
+  </section>
+
+  <!-- スタートアップ -->
+  <section class="section">
+    <h2 class="section-title">スタートアップ</h2>
+
+    <div class="article-card">
+      <div class="article-headline">2026年Q1スタートアップ資金調達、過去最高を更新 ─ AI・医療DX上位への集中が顕著</div>
+      <div class="article-lead">2026年1〜3月期の国内スタートアップ資金調達総額が過去最高を記録。ただしAI・ディープテック上位への集中が顕著で、中堅層の資金環境は二極化している。</div>
+      <div class="article-body">
+        <p>スピーダ（Uzabase）のまとめによると、2026年Q1の調達総額は前年同期比約25%増で過去最高水準。一方で調達中央値は低下しており、資金が「勝ち組」に集中する構造が鮮明になっている。</p>
+        <p>AIインフラ・医療DX・国防技術の3分野が高評価を集める一方、ECやフィンテック系は調達難が続く。VCは「10年で産業を変えられるか」を問い始めており、テーマ選定が従来以上に重要になってきた。</p>
+      </div>
+      <div class="article-source">出典: スピーダ スタートアップ情報リサーチ</div>
+      <div class="koike-take">資金集中の構造はFPコーチングの重要テーマ。チャレンジャーメンバーのビジネス設計でも「的を絞った差別化」の必要性が高まっている。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">医療DXスタートアップ、薬局自動化で相次ぎ資金調達 ─ 薬剤師不足が追い風に</div>
+      <div class="article-lead">調剤ロボット・服薬管理AI・薬局DXを手がける医療系スタートアップが2026年春に相次いで数億円規模の資金調達を実施している。</div>
+      <div class="article-body">
+        <p>調剤薬局の経営環境が厳しさを増す中、業界の構造転換を狙ったデジタル化投資が加速。VC各社は「薬剤師不足×DX」を今年最注目の市場と位置づけ始めた。</p>
+        <p>政府も2026年度の調剤報酬改定で遠隔服薬指導・電子お薬手帳の推進を明記。制度整備と民間投資が重なり、薬局DX市場は今後3年で急拡大が見込まれる。</p>
+      </div>
+      <div class="article-source">出典: 日本経済新聞</div>
+      <div class="koike-take">PHC薬局のDX化と薬剤師確保の両面で、スタートアップとの連携・活用は現実的な選択肢。PharmaEight∞でのDXコンサル需要拡大の機会として捉えたい。</div>
+    </div>
+
+  </section>
+
+  <!-- 薬剤師関連 -->
+  <section class="section">
+    <h2 class="section-title">薬剤師関連</h2>
+
+    <div class="article-card">
+      <div class="article-headline">医療モール薬局に6月から15点減算 ─ 門前立地依存からの脱却を制度で迫る</div>
+      <div class="article-lead">2026年6月1日施行の調剤報酬改定で、医療モール内に新規開設する薬局への減算制度が導入される。処方箋集中率が高い場合、調剤基本料から15点を差し引く。</div>
+      <div class="article-body">
+        <p>医療モール薬局とは、同一建物・敷地内に複数の診療科がある商業施設に立地し、特定医療機関への処方箋依存度が高い薬局を指す。今回の改定では複数医療機関を「1機関」とみなす新ルールも導入される。</p>
+        <p>既存の薬局は経過措置として当面対象外だが、令和8年6月以降の新規開局は適用が即日始まる。「面分業（地域に根ざした服薬管理）」へのシフトが国の明確な方針として示された。</p>
+      </div>
+      <div class="article-source">出典: <a href="https://www.mixonline.jp/tabid55.html?artid=79766" target="_blank">ミクスOnline</a></div>
+      <div class="koike-take">PHC薬局が今後出店・移転を検討する際、立地選定の軸が大きく変わる。医療モール型は減算リスクを伴うため、面分業型の地域密着モデルへの転換準備が急務だ。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">令和8年度調剤報酬改定の届出、今月末が締め切り ─ 新加算の算定漏れに注意</div>
+      <div class="article-lead">6月1日施行の調剤報酬改定で新設・変更される各加算を算定するには、2026年5月31日までに地方厚生局への届出が必要。準備が間に合わない薬局が続出している。</div>
+      <div class="article-body">
+        <p>今回の改定で新設された「地域支援・医薬品供給対応体制加算」「調剤物価対応料」などの算定には施設基準の確認と届出が必要。5月7日から受付開始となっており、月末締め切りまで2週間余りとなった。</p>
+        <p>日本薬剤師会によると、特に後発品使用率85%以上の実績確認に手間取る薬局が多い。算定漏れによる収益損失を防ぐため、経営者の早期確認が強く求められている。</p>
+      </div>
+      <div class="article-source">出典: <a href="https://pharmacist.m3.com/column/sinryouhoushu_faq_26/7347" target="_blank">m3.com</a></div>
+      <div class="koike-take">PHC薬局における6月改定への対応状況を至急確認したい。届出漏れは直接収益に影響するため、PharmaEight∞のコンサル案件としても優先度が高い。</div>
+    </div>
+
+  </section>
+
+  <!-- 障がい福祉関連 -->
+  <section class="section">
+    <h2 class="section-title">障がい福祉関連</h2>
+
+    <div class="article-card">
+      <div class="article-headline">令和8年度障害福祉報酬改定、施行6週間 ─ 現場から「加算手続きが複雑」の声</div>
+      <div class="article-lead">2026年4月1日施行の障害福祉サービス等報酬改定から約6週間。現場事業所からは新加算の手続きの煩雑さや収支の変化について戸惑いの声が上がっている。</div>
+      <div class="article-body">
+        <p>今回の改定では就労継続支援を中心に報酬体系が見直された。新設加算の算定要件が細かく、書類準備に追われる事業所が続出。特に小規模の事業所では担当者の負担が増えている。</p>
+        <p>一方、処遇改善加算の拡充により支援員の給与水準が改善された施設もあり、職員の定着率向上に手応えを感じる事業者もいる。全国的な傾向把握は夏以降の調査待ちとなっている。</p>
+      </div>
+      <div class="article-source">出典: 福祉新聞</div>
+      <div class="koike-take">はなひらく（B型/寿・塩尻）にとって直接影響する改定。新加算の手続き状況と収支変化を今週確認し、必要なら経営支援体制を整えたい。</div>
+    </div>
+
+  </section>
+
+  <!-- エンタメ -->
+  <section class="section">
+    <h2 class="section-title">エンタメ</h2>
+
+    <div class="article-card">
+      <div class="article-headline">木村拓哉が紹介した昭和菓子、Z世代が「初めて見た」 ─ 世代ギャップ投稿がバズ</div>
+      <div class="article-lead">木村拓哉がSNSで紹介した1990年代の定番駄菓子に、Z世代から「これ何？」というコメントが殺到。昭和・平成文化の「隔世感」がSNSで話題を呼んでいる。</div>
+      <div class="article-body">
+        <p>木村のフォロワーには30〜50代が多い一方、アルゴリズムによりZ世代にも拡散。「知らない菓子を有名人が食べている」という新鮮さがバイラルを生んだ。</p>
+        <p>昭和コンテンツの「再発見」トレンドは近年続いており、レトロブームと世代間対話の象徴として注目。食品メーカーは復刻版の需要増に期待している。</p>
+      </div>
+      <div class="article-source">出典: Yahoo!ニュース</div>
+      <div class="koike-take">世代をまたぐコンテンツの力。Personal OSやFP講座でも「昭和〜令和の価値観ギャップ」を視点にしたコンテンツ設計が受講者の共感を生む可能性がある。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">アイナ・ジ・エンド、台湾ツアー全公演完走 ─「台湾は第二の故郷」と涙の挨拶</div>
+      <div class="article-lead">BiSH元メンバーで、解散後ソロ活動を続けるアイナ・ジ・エンドが台湾での初ソロツアーを完走。最終公演で「ここは第二の故郷」と語り、ファンと感動の時間を共有した。</div>
+      <div class="article-body">
+        <p>台北・高雄の2都市4公演は全席完売。台湾のJ-POPファンの間でアイナの認知度は急上昇しており、アジア市場での日本人アーティストの存在感を示した。</p>
+        <p>インバウンド増加が続く台湾市場での日本コンテンツ需要は根強く、音楽・アニメ・食文化が一体となった「日本ブランド」の輸出効果が継続している。</p>
+      </div>
+      <div class="article-source">出典: Yahoo!ニュース</div>
+      <div class="koike-take">「地方から世界へ」を目指すPersonal OS受講者のロールモデルに。個人ブランドを地域から海外へ展開する事例として講座コンテンツに活用できる。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">櫻坂46、「BOMB」など4誌連続巻頭グラビア ─ 東京ドーム公演前に「オール櫻坂」</div>
+      <div class="article-lead">アイドルグループ・櫻坂46が6月発売の「BOMB」「週刊ヤングジャンプ」「FRIDAY」「週刊プレイボーイ」の4誌で巻頭グラビアを飾り、同期4誌ジャックとして話題を呼んでいる。</div>
+      <div class="article-body">
+        <p>東京ドーム公演を控えプロモーションが最高潮に達している同グループ。各誌との独自インタビューや撮り下ろしが並び、紙媒体においてもその影響力を見せつけた。</p>
+        <p>ここ2年でグループの売り上げは急増。ソニーミュージック主導のメディア露出戦略が奏功しており、コアファン以外への拡大が鮮明になっている。</p>
+      </div>
+      <div class="article-source">出典: Yahoo!ニュース</div>
+      <div class="koike-take">コンテンツのクロスメディア展開はPersonal OSの発信戦略の参考に。「媒体を横断して世界観を統一する」アプローチはチャレンジャーSNS戦略にも応用できる。</div>
+    </div>
+
+  </section>
+
+  <!-- 長野県関連 -->
+  <section class="section">
+    <h2 class="section-title">長野県関連</h2>
+
+    <div class="article-card">
+      <div class="article-headline">阿部守一・長野県知事、5期目出馬を正式表明 ─「地方が主役の時代を拓く」</div>
+      <div class="article-lead">阿部守一長野県知事は13日、秋の知事選に5期目として立候補することを正式に表明した。「地方分権のモデルを長野から発信する」と意欲を示した。</div>
+      <div class="article-body">
+        <p>阿部知事は2010年初当選で現在4期目。経済重視の地域未来戦略を掲げてきた。今回の出馬表明では「人口減少・デジタル化・エネルギー転換」の3課題に集中して取り組む姿勢を強調した。</p>
+        <p>対抗馬の動向は現時点で不明。5期目となれば通算20年という異例の長期政権となる。長野県の地域経済・障がい者雇用・デジタル化政策の継続性に注目が集まる。</p>
+      </div>
+      <div class="article-source">出典: 信濃毎日新聞</div>
+      <div class="koike-take">長野ローカル事業（はなひらく・FP・チャレンジャー）を展開する立場から、知事の政策軸が「地方経済・障がい者雇用・デジタル化」に合致するかどうかは経営環境に直結する。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">長野で落雷による大規模停電 ─ 約15万戸が一時停電、深夜に復旧</div>
+      <div class="article-lead">12日夕方から夜間にかけて、長野県内に激しい雷雨が接近。落雷による変電所トラブルで長野市・松本市など広域で約15万戸が停電した。</div>
+      <div class="article-body">
+        <p>中部電力パワーグリッドによると、最大で長野市・塩尻市・安曇野市の一部を含む約15万戸が停電。病院・福祉施設への影響が出たが、自家発電装置で対応した施設が多かった。</p>
+        <p>夜間から翌朝にかけて順次復旧し、13日午前中には大半が回復。雷による大規模停電としては近年まれな規模で、電力インフラの耐久性を改めて問う事態となった。</p>
+      </div>
+      <div class="article-source">出典: 信濃毎日新聞</div>
+      <div class="koike-take">はなひらく（寿・塩尻）が停電の影響範囲に含まれる可能性がある。非常時の事業継続計画（BCP）整備と自家発電・蓄電設備の準備を優先課題として検討したい。</div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-headline">小諸看護専門学校、2030年に閉校へ ─ 少子化と国家試験対策コスト増が決定打</div>
+      <div class="article-lead">長野県小諸市に拠点を置く小諸看護専門学校が、2030年度をもって閉校する方針を決定した。少子化による入学者の減少と、国家試験対策コストの増大が主因。</div>
+      <div class="article-body">
+        <p>同校は地域の医療人材育成に長年貢献してきたが、ここ数年は定員割れが続いていた。閉校決定は在校生への影響を最小限にするため、5年前に発表する異例の早期通知となった。</p>
+        <p>長野県内では看護・介護専門学校の閉校・統廃合が相次いでおり、医療人材の育成インフラの維持が県の喫緊の課題となっている。</p>
+      </div>
+      <div class="article-source">出典: 信濃毎日新聞</div>
+      <div class="koike-take">看護専門学校の閉校は地域医療・福祉の人材不足に拍車をかける。はなひらくの採用力強化とPHC薬局の薬剤師定着支援の重要性がさらに高まった。</div>
+    </div>
+
+  </section>
+
+</div><!-- /.paper-columns -->
+
+<!-- ─── 今週のカレンダー ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">今週のカレンダー</h2>
+  <table class="calendar-table">
+    <tr>
+      <td class="cal-date">5/13（火）</td>
+      <td class="cal-event">
+        阿部守一・長野県知事 5期目出馬正式表明
+        <div class="cal-take">長野ローカル事業の政策環境確認。経済・福祉・デジタル政策の方向性に注目。</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="cal-date">5/14〜15（水・木）</td>
+      <td class="cal-event">
+        米中首脳会談（北京）
+        <div class="cal-take">関税・AI・半導体規制の行方が決まる。PHCとPharmaEightのコスト・供給に影響しうる。</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="cal-date">5/31（土）</td>
+      <td class="cal-event">
+        令和8年度診療報酬改定・施設基準届出締切
+        <div class="cal-take">PHC薬局の算定漏れ防止のため、今週中に確認と届出準備を完了させたい。</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="cal-date">6/1（日）</td>
+      <td class="cal-event">
+        令和8年度診療報酬・調剤報酬改定 施行
+        <div class="cal-take">医療モール立地減算・調剤物価対応料・地域支援体制加算が正式スタート。</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="cal-date">7/1（水）</td>
+      <td class="cal-event">
+        障がい者法定雇用率 2.7%引き上げ施行
+        <div class="cal-take">はなひらくの障がい者雇用実績を整理し、助成金申請の準備を進めたい。</div>
+      </td>
+    </tr>
+  </table>
+</section>
+
+<!-- ─── 編集後記 ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">編集後記</h2>
+  <div class="postscript">
+    <div class="postscript-title">EDITOR'S NOTE</div>
+    本日のトップはトランプ大統領の北京入りと「CEO外交」。民間と政府が一体化した米中対話の幕開けは、半導体・AI・貿易の枠組みを塗り替える可能性がある。長野では大規模停電と知事5期目表明というローカルニュースが重なった。米中の動きが地方経済や薬局・福祉ビジネスにどう波及するか、引き続き注視していきたい。
+  </div>
+</section>
+
+<!-- ─── Glossary ─── -->
+<section class="section page-full-width">
+  <h2 class="section-title">Glossary ─ 今号の用語解説</h2>
+  <div class="glossary-grid">
+
+    <div class="glossary-item">
+      <div class="glossary-term">消費者物価指数（CPI）</div>
+      <div class="glossary-def">一般家庭が購入する商品・サービスの価格変動を測る指標。前年比プラスは物価上昇（インフレ）を示す。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">実質賃金</div>
+      <div class="glossary-def">名目の賃金（給与額面）から物価上昇分を差し引いた「実際の購買力」。物価が賃金より速く上がるとマイナスになる。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">準抗告</div>
+      <div class="glossary-def">裁判所の決定に対して、検察や弁護側が上級裁判所に不服を申し立てる手続き。令状却下への不服申立などに使われる。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">調剤基本料</div>
+      <div class="glossary-def">薬局が処方箋を受け付けた際に基本的に算定できる調剤報酬の基礎部分。薬局の規模・処方箋集中率によって区分が異なる。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">面分業</div>
+      <div class="glossary-def">特定の医療機関に依存せず、地域に根ざして複数の医療機関の処方箋を受け付け、住民の服薬管理を担う薬局のあり方。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">南極条約協議国会議（ATCM）</div>
+      <div class="glossary-def">南極の平和的利用・科学研究・環境保護を議論する国際会議。南極条約加盟の約55カ国が年1回開催する。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">政府効率化省（DOGE）</div>
+      <div class="glossary-def">トランプ政権が2025年初頭に創設した行政効率化を担う特別組織。マスク氏が事実上の責任者として政府支出削減を主導してきた。</div>
+    </div>
+
+    <div class="glossary-item">
+      <div class="glossary-term">CEO外交</div>
+      <div class="glossary-def">政府の外交交渉に大企業経営者（CEO）が同行・参加する形式。民間の経済利益と政府の外交方針が交差する点で批判も多い。</div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="paper-footer">
+  NewGo Timez 第151号 ─ 2026年5月13日（水）発行 ／ 編集発行 小池雄悟 ／ お届け 小池の秘書
+</footer>
+
+</body>
+</html>
