@@ -3,760 +3,379 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NewGo Timez — 2026年5月14日号</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<title>NewGo Timez ― 2026年5月14日（木）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: #f0ebdb;
-    color: #0a0a0a;
-    font-family: 'Noto Serif JP', serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px 48px;
-  }
-
-  /* ─── マストヘッド ─── */
-  .masthead {
-    text-align: center;
-    border-top: 4px solid #0a0a0a;
-    border-bottom: 4px double #0a0a0a;
-    padding: 20px 0 16px;
-    margin-bottom: 24px;
-  }
-  .masthead-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    font-weight: 900;
-    letter-spacing: 4px;
-    line-height: 1;
-  }
-  .masthead-meta {
-    font-size: 13px;
-    margin-top: 8px;
-    letter-spacing: 2px;
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-
-  /* ─── セクション共通 ─── */
-  .section {
-    margin-bottom: 32px;
-    border-top: 2px solid #0a0a0a;
-    padding-top: 12px;
-  }
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    border-bottom: 1px solid #0a0a0a;
-    padding-bottom: 4px;
-  }
-
-  /* ─── レスポンシブ ─── */
-  .paper-columns {
-    display: block;
-  }
-  .page-full-width {
-    /* スマホはそのまま */
-  }
-
-  @media (min-width: 768px) {
-    .masthead-title { font-size: 72px; }
-    .paper-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: start;
-    }
-    .page-full-width { grid-column: 1 / -1; }
-  }
-
-  /* ─── マーケット ─── */
-  .market-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  @media (min-width: 768px) {
-    .market-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  .market-card {
-    border: 1px solid #0a0a0a;
-    padding: 12px;
-  }
-  .market-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 4px;
-  }
-  .market-value {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-  @media (min-width: 768px) {
-    .market-value { font-size: 30px; }
-  }
-  .market-change {
-    font-size: 13px;
-    margin-top: 2px;
-  }
-  .market-note {
-    font-size: 12px;
-    margin-top: 6px;
-    line-height: 1.6;
-    border-top: 1px dotted #888;
-    padding-top: 6px;
-  }
-
-  /* ─── 一面トップ ─── */
-  .top-story-kicker {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-  }
-  .top-story-headline {
-    font-size: 32px;
-    font-weight: 900;
-    line-height: 1.35;
-    margin-bottom: 16px;
-    border-bottom: 2px solid #0a0a0a;
-    padding-bottom: 12px;
-  }
-  @media (min-width: 768px) {
-    .top-story-headline { font-size: 42px; }
-  }
-  .top-story-body p {
-    font-size: 17px;
-    line-height: 1.9;
-    margin-bottom: 12px;
-  }
-  .article-source {
-    font-size: 12px;
-    margin-top: 8px;
-    color: #555;
-  }
-  .article-source a { color: #555; }
-
-  /* ─── 今日の数字 ─── */
-  .number-big {
-    font-size: 90px;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -2px;
-  }
-  @media (min-width: 768px) {
-    .number-big { font-size: 120px; }
-  }
-  .number-caption {
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: 4px;
-    margin-bottom: 8px;
-  }
-  .number-body {
-    font-size: 17px;
-    line-height: 1.8;
-  }
-
-  /* ─── ヘッドライン ─── */
-  .headlines-grid {
-    display: grid;
-    gap: 12px;
-  }
-  .hl-item {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-  }
-  .hl-cat {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    display: inline-block;
-    border: 1px solid #0a0a0a;
-    padding: 1px 6px;
-    margin-bottom: 4px;
-  }
-  .hl-title {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 4px;
-  }
-  @media (min-width: 768px) {
-    .hl-title { font-size: 22px; }
-  }
-  .hl-body {
-    font-size: 17px;
-    line-height: 1.8;
-  }
-  .hl-source {
-    font-size: 12px;
-    color: #555;
-    margin-top: 4px;
-  }
-
-  /* ─── 人物 ─── */
-  .person-name {
-    font-size: 28px;
-    font-weight: 900;
-    margin-bottom: 2px;
-  }
-  .person-role {
-    font-size: 13px;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-  }
-  .person-quote {
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 700;
-    border-left: 4px solid #0a0a0a;
-    padding-left: 12px;
-    margin-bottom: 12px;
-    line-height: 1.6;
-  }
-  .person-body {
-    font-size: 17px;
-    line-height: 1.9;
-  }
-
-  /* ─── 各セクション記事 ─── */
-  .article {
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px dotted #888;
-  }
-  .article:last-child { border-bottom: none; }
-  .article-headline {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 8px;
-  }
-  @media (min-width: 768px) {
-    .article-headline { font-size: 24px; }
-  }
-  .article-lead {
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.7;
-    margin-bottom: 8px;
-  }
-  .article-body p {
-    font-size: 17px;
-    line-height: 1.9;
-    margin-bottom: 8px;
-  }
-
-  /* ─── 小池目線 ─── */
-  .koike-take {
-    font-size: 15px;
-    line-height: 1.7;
-    background: #e8e0cc;
-    border-left: 3px solid #0a0a0a;
-    padding: 8px 12px;
-    margin-top: 10px;
-  }
-  .koike-take::before {
-    content: "📌 小池目線｜";
-    font-weight: 700;
-    font-size: 13px;
-  }
-
-  /* ─── カレンダー ─── */
-  .calendar-grid {
-    display: grid;
-    gap: 10px;
-  }
-  .cal-item {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 8px;
-    border-bottom: 1px dotted #888;
-    padding-bottom: 10px;
-    align-items: start;
-  }
-  .cal-date {
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  .cal-event {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.5;
-  }
-  .cal-take {
-    font-size: 13px;
-    line-height: 1.6;
-    margin-top: 4px;
-    color: #333;
-    grid-column: 2;
-  }
-
-  /* ─── 編集後記 ─── */
-  .postscript {
-    font-size: 17px;
-    line-height: 2;
-    font-style: italic;
-    border-top: 2px solid #0a0a0a;
-    border-bottom: 2px solid #0a0a0a;
-    padding: 16px 0;
-    margin-top: 32px;
-  }
-
-  /* ─── Glossary ─── */
-  .glossary-list { display: grid; gap: 10px; }
-  .glossary-item { padding-bottom: 10px; border-bottom: 1px dotted #888; }
-  .glossary-term { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-  .glossary-def { font-size: 15px; line-height: 1.7; }
-
-  /* ─── footer ─── */
-  footer {
-    text-align: center;
-    font-size: 12px;
-    padding: 24px 0;
-    color: #555;
-    border-top: 1px solid #0a0a0a;
-    margin-top: 32px;
-  }
+  :root { --paper:#fafafa; --paper-alt:#f2f2f0; --ink:#111111; --ink-sub:#444444; --ink-mute:#888888; --line:#111111; --line-light:#d0d0d0; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:14px;}
+  body{max-width:1080px;margin:0 auto;padding:32px 36px;}
+  .masthead{padding:20px 0 16px;border-bottom:2px solid var(--line);margin-bottom:0;}
+  .masthead-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;}
+  .masthead-left{display:flex;flex-direction:column;justify-content:flex-end;}
+  .masthead-label{font-family:"Playfair Display",serif;font-size:11px;letter-spacing:0.5em;color:var(--ink-mute);text-transform:uppercase;margin-bottom:2px;}
+  .masthead-title{font-family:"Playfair Display",serif;font-weight:900;font-size:68px;line-height:1;letter-spacing:-0.02em;color:var(--ink);}
+  .masthead-date-block{text-align:right;}
+  .masthead-date-small{font-size:11px;color:var(--ink-mute);letter-spacing:0.1em;margin-bottom:2px;text-align:right;}
+  .masthead-date-num{font-family:"Playfair Display",serif;font-weight:900;font-size:80px;line-height:1;color:var(--ink);letter-spacing:-0.03em;}
+  .masthead-date-year{font-size:11px;color:var(--ink-mute);letter-spacing:0.15em;text-align:right;}
+  .masthead-sub-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0 0;font-size:10px;color:var(--ink-mute);letter-spacing:0.15em;}
+  .ticker{display:flex;gap:0;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light);margin-bottom:24px;overflow:hidden;}
+  .ticker-item{flex:1;padding:8px 16px;border-right:1px solid var(--line-light);min-width:0;}
+  .ticker-item:last-child{border-right:none;}
+  .ticker-cat{font-size:9px;font-weight:700;letter-spacing:0.3em;color:var(--ink-mute);text-transform:uppercase;margin-bottom:3px;}
+  .ticker-title{font-size:11px;font-weight:700;color:var(--ink);line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .market{margin-bottom:24px;}
+  .market-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line-light);border:1px solid var(--line-light);}
+  .market-cell{background:var(--paper);padding:10px 12px;}
+  .market-label{font-size:9px;font-weight:700;letter-spacing:0.2em;color:var(--ink-mute);margin-bottom:4px;}
+  .market-val{font-size:16px;font-weight:900;color:var(--ink);line-height:1.2;}
+  .market-change{font-size:10px;color:var(--ink-mute);margin-top:2px;}
+  .lead{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:24px;}
+  .lead-kicker{font-size:10px;font-weight:700;letter-spacing:0.4em;color:var(--ink-mute);text-transform:uppercase;margin-bottom:10px;}
+  .lead-headline{font-size:48px;font-weight:900;line-height:1.2;margin-bottom:16px;letter-spacing:-0.01em;}
+  .lead-body{column-count:2;column-gap:32px;column-rule:1px solid var(--line-light);font-size:14px;line-height:1.9;text-align:justify;}
+  .lead-body p{margin-bottom:8px;text-indent:1em;}
+  .lead-source{font-size:10px;color:var(--ink-mute);margin-top:10px;font-style:italic;}
+  .big-number{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;margin-bottom:24px;display:flex;align-items:center;gap:32px;}
+  .big-number-val{font-family:"Playfair Display",serif;font-weight:900;font-size:100px;line-height:1;color:var(--ink);white-space:nowrap;letter-spacing:-0.04em;flex-shrink:0;}
+  .big-number-desc{flex:1;}
+  .big-number-caption{font-size:11px;font-weight:700;letter-spacing:0.2em;color:var(--ink-mute);margin-bottom:6px;}
+  .big-number-body{font-size:14px;line-height:1.8;}
+  .headlines-list{margin-bottom:24px;}
+  .headline-item{display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line-light);}
+  .headline-item:first-child{border-top:1px solid var(--line-light);}
+  .headline-cat{font-size:9px;font-weight:700;letter-spacing:0.2em;color:var(--ink-mute);white-space:nowrap;min-width:48px;}
+  .headline-title{font-size:13px;font-weight:700;flex:1;line-height:1.5;}
+  .headline-source{font-size:10px;color:var(--ink-mute);white-space:nowrap;}
+  .section-rule{display:flex;align-items:center;gap:12px;margin:28px 0 14px;}
+  .section-rule::before{content:"";flex:0 0 2px;width:2px;height:18px;background:var(--ink);}
+  .section-name{font-size:16px;font-weight:900;letter-spacing:0.1em;}
+  .section-name-en{font-family:"Playfair Display",serif;font-size:10px;color:var(--ink-mute);letter-spacing:0.3em;text-transform:uppercase;margin-left:8px;}
+  .section-line{flex:1;height:1px;background:var(--line-light);}
+  .paper-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px 40px;align-items:start;}
+  .articles-list{display:flex;flex-direction:column;gap:16px;}
+  .article{padding-bottom:16px;border-bottom:1px dotted var(--line-light);}
+  .article:last-child{border-bottom:none;padding-bottom:0;}
+  .article-headline{font-size:17px;font-weight:900;line-height:1.4;margin-bottom:4px;}
+  .article-body{font-size:13px;line-height:1.85;color:var(--ink-sub);text-align:justify;}
+  .article-body p{margin-bottom:4px;text-indent:1em;}
+  .article-source{font-size:10px;color:var(--ink-mute);margin-top:5px;font-style:italic;}
+  .koike-take{font-size:11px;color:var(--ink-sub);margin-top:6px;padding:6px 10px;background:var(--paper-alt);border-left:2px solid var(--ink-mute);line-height:1.65;}
+  .koike-take::before{content:"KOIKE'S TAKE  ";font-weight:700;font-size:9px;letter-spacing:0.2em;color:var(--ink-mute);}
+  .person-box{border:1px solid var(--line);padding:20px;margin-bottom:24px;}
+  .person-name{font-size:22px;font-weight:900;margin-bottom:2px;}
+  .person-role{font-size:11px;color:var(--ink-mute);margin-bottom:12px;letter-spacing:0.1em;}
+  .person-quote{font-size:16px;font-style:italic;font-weight:700;line-height:1.5;margin-bottom:10px;padding-left:12px;border-left:3px solid var(--ink);}
+  .person-body{font-size:13px;line-height:1.85;color:var(--ink-sub);}
+  .calendar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:24px;}
+  .calendar-item{padding:10px 12px;background:var(--paper-alt);border-left:2px solid var(--line);}
+  .calendar-date{font-size:11px;font-weight:700;color:var(--ink-mute);margin-bottom:2px;}
+  .calendar-event{font-size:13px;font-weight:700;line-height:1.4;}
+  .calendar-take{font-size:11px;color:var(--ink-mute);margin-top:4px;line-height:1.5;}
+  .postscript{border-top:2px solid var(--line);margin-top:32px;padding-top:16px;}
+  .postscript-label{font-size:10px;font-weight:700;letter-spacing:0.3em;color:var(--ink-mute);margin-bottom:8px;}
+  .postscript-body{font-size:13px;line-height:1.85;text-indent:1em;}
+  .glossary{margin-top:24px;}
+  .glossary-label{font-size:10px;font-weight:700;letter-spacing:0.3em;color:var(--ink-mute);margin-bottom:10px;border-bottom:1px solid var(--line-light);padding-bottom:4px;}
+  .glossary-list{display:flex;flex-direction:column;gap:6px;}
+  .glossary-item{font-size:12px;line-height:1.7;}
+  .glossary-term{font-weight:700;}
+  .colophon{margin-top:32px;padding-top:12px;border-top:1px solid var(--line);font-size:10px;color:var(--ink-mute);display:flex;justify-content:space-between;letter-spacing:0.1em;}
+  @media(max-width:767px){body{padding:16px;}.masthead-title{font-size:42px;}.masthead-date-num{font-size:56px;}.lead-headline{font-size:32px;}.lead-body{column-count:1;}.big-number-val{font-size:64px;}.big-number{flex-direction:column;gap:12px;}.market-grid{grid-template-columns:repeat(3,1fr);}.paper-columns{grid-template-columns:1fr;}.ticker{flex-direction:column;}.ticker-item{border-right:none;border-bottom:1px solid var(--line-light);}}
 </style>
 </head>
 <body>
 
-<!-- ① マストヘッド -->
-<header class="masthead page-full-width">
-  <div class="masthead-title">NewGo Timez</div>
-  <div class="masthead-meta">
-    <span>2026年5月14日（木）</span>
-    <span>第132号</span>
-    <span>発行: 小池雄悟</span>
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="masthead-left">
+      <div class="masthead-label">the daily edition</div>
+      <h1 class="masthead-title">NewGo Timez</h1>
+    </div>
+    <div class="masthead-date-block">
+      <div class="masthead-date-small">木曜日</div>
+      <div class="masthead-date-num">5/14</div>
+      <div class="masthead-date-year">2026年（令和8年）</div>
+    </div>
+  </div>
+  <div class="masthead-sub-row">
+    <span>第 11 号</span>
+    <span>FOR YUGO KOIKE</span>
     <span>newgo-koike.github.io/newgo-timez</span>
   </div>
 </header>
 
-<!-- ② 朝のマーケット -->
-<section class="section page-full-width">
-  <div class="section-label">朝のマーケット</div>
+<div class="ticker">
+  <div class="ticker-item"><div class="ticker-cat">国際</div><div class="ticker-title">トランプ×習、北京で本格会談</div></div>
+  <div class="ticker-item"><div class="ticker-cat">金融</div><div class="ticker-title">長期金利2.55%台・29年ぶり高水準</div></div>
+  <div class="ticker-item"><div class="ticker-cat">株式</div><div class="ticker-title">日経平均63,272円 最高値更新</div></div>
+  <div class="ticker-item"><div class="ticker-cat">AI・テック</div><div class="ticker-title">国産AI新会社 4社連合で設立</div></div>
+  <div class="ticker-item"><div class="ticker-cat">福祉</div><div class="ticker-title">就労支援在宅サービス適正化へ</div></div>
+</div>
+
+<div class="market">
   <div class="market-grid">
-    <div class="market-card">
-      <div class="market-label">日経平均</div>
-      <div class="market-value">63,272円</div>
-      <div class="market-change">▲529円(+0.84%)</div>
-      <div class="market-note">企業業績の堅調さと海外株高を追い風に続伸。63,000円台を固め、先高観が根強い展開となっている。</div>
-    </div>
-    <div class="market-card">
-      <div class="market-label">ドル/円</div>
-      <div class="market-value">157円82銭</div>
-      <div class="market-change">▼ 円安継続</div>
-      <div class="market-note">米CPIが前年比3.8%と市場予想を上回り、FRBの利下げ期待が後退。日米金利差が意識され円は157円台後半で軟調推移。</div>
-    </div>
-    <div class="market-card">
-      <div class="market-label">NYダウ</div>
-      <div class="market-value">49,817ドル台</div>
-      <div class="market-change">▲57ドル(+0.11%)</div>
-      <div class="market-note">インフレ指標の上振れで利下げ期待が後退するも、ディフェンシブ株が下支えし小幅続伸。</div>
-    </div>
-    <div class="market-card">
-      <div class="market-label">WTI原油</div>
-      <div class="market-value">$98.07</div>
-      <div class="market-change">▼ 反落</div>
-      <div class="market-note">中東情勢の緊張緩和期待や米中会談を控えた需要見通し慎重化で上値が重い。$100台回復には手がかり不足。</div>
-    </div>
-    <div class="market-card">
-      <div class="market-label">金（ゴールド）</div>
-      <div class="market-value">$4,687台</div>
-      <div class="market-change">▼ 小幅下落</div>
-      <div class="market-note">ドル高進行で金は軟調。リスクオン的な市場心理から安全資産需要が一服も、歴史的高水準は依然維持。</div>
-    </div>
-    <div class="market-card">
-      <div class="market-label">日米金利差</div>
-      <div class="market-value">3.45%</div>
-      <div class="market-change">米4.25% / 日0.80%</div>
-      <div class="market-note">CPI上振れで米長期金利が上昇し、日米金利差が拡大傾向。日銀の慎重な利上げスタンスと相まって円安の構造的要因に。</div>
-    </div>
+    <div class="market-cell"><div class="market-label">日経平均</div><div class="market-val">63,272円</div><div class="market-change">▲ +529（+0.84%）</div></div>
+    <div class="market-cell"><div class="market-label">ドル円</div><div class="market-val">157.93円</div><div class="market-change">▲ 横ばい圏</div></div>
+    <div class="market-cell"><div class="market-label">NYダウ</div><div class="market-val">49,522ドル台</div><div class="market-change">▼ 様子見で小幅安</div></div>
+    <div class="market-cell"><div class="market-label">WTI原油</div><div class="market-val">$62〜63台</div><div class="market-change">▼ 反落</div></div>
+    <div class="market-cell"><div class="market-label">金（Gold）</div><div class="market-val">$3,200台</div><div class="market-change">▼ 小幅安</div></div>
+    <div class="market-cell"><div class="market-label">日米金利差</div><div class="market-val">3.75%</div><div class="market-change">米4.45% / 日0.70%</div></div>
   </div>
-</section>
+</div>
 
-<!-- ③ 一面トップ -->
-<section class="section page-full-width">
-  <div class="section-label">一面トップ</div>
-  <div class="top-story-kicker">社会 ― 磐越道バス事故から1週間</div>
-  <h1 class="top-story-headline">高校生21人死傷の磐越道バス事故、蒲原鉄道OBが証言「顧問が"レンタカーにしよう"と判断主導」</h1>
-  <div class="top-story-body">
-    <p>新潟・福島を結ぶ磐越自動車道で5月7日に発生したバス事故から1週間が経過した。北越高校ソフトテニス部の高校生ら21人が死傷したこの事故で、バスを手配した蒲原鉄道（五泉市）の元社員が新たな証言を行った。元社員によると、同社顧問が「レンタカーにしよう」と判断を主導し、二種免許を持たない68歳の運転手が無免許でマイクロバスを運転していた疑いが強まっている。</p>
-    <p>北越高校側は「レンタカーは依頼していない」と改めて否定し、バス会社側との主張が真っ向から食い違う。福島県警は道路運送法違反（無許可営業）の疑いで蒲原鉄道を家宅捜索済み。事故では時速90〜100キロ（制限80キロ）で走行しガードレールに衝突したとされる。</p>
-    <p>1人の生徒が命を落とし、遺族は真実の開示を強く求めている。同社は会見で営業担当者のヘラヘラとした態度が批判を呼ぶなど、組織のガバナンスへの疑問も噴出。刑事手続きの行方とともに、地方の学校行事を支える交通安全体制の抜本的な見直しが急務となっている。</p>
+<section class="lead">
+  <div class="lead-kicker">本日のトップ ― 国際</div>
+  <h2 class="lead-headline">トランプ×習近平、北京で本格会談<br>9年ぶり国賓訪問で貿易・イラン・台湾・AIを協議</h2>
+  <div class="lead-body">
+    <p>トランプ米大統領は5月14日、北京の人民大会堂で習近平国家主席と首脳会談を行った。米大統領の中国国賓訪問は9年ぶり。貿易摩擦、イラン核問題、台湾情勢、AIガバナンスの4議題が主要テーマとなった。</p>
+    <p>トランプ氏は専用機から「卓越した指導者・習主席に市場開放をお願いする」とSNSに投稿。会談は15日も続き、2日間にわたる関係安定化の外交が展開される。天壇公園の共同視察や中南海での茶会も予定されている。</p>
+    <p>会談は当初3月に予定されていたが、ホルムズ海峡でのイラン問題を理由に延期されていた。中国投資家はこの会談を「緊張緩和の維持」と歓迎しており、関税引き下げや半導体規制緩和への期待が高まっている。世界市場は明日の共同声明を固唾をのんで待っている。</p>
   </div>
-  <div class="article-source">出典: 新潟日報「磐越道バス事故 蒲原鉄道OBが証言」</div>
-  <div class="koike-take">地方の学校行事に潜む交通安全の盲点。はなひらくの送迎でも運転者の資格・保険・運行記録を改めて点検すべきタイミングだ。</div>
+  <div class="lead-source">出典: 日本経済新聞「トランプ氏と習近平氏、14日に北京・天壇公園を共に視察 2日連続で会談」</div>
+  <div class="koike-take">米中関係が安定すれば薬価や医療機器の輸入コスト構造に影響。FP視点では対米・対中資産のリバランス機会として注目。</div>
 </section>
 
-<!-- ④ 今日の数字 -->
-<section class="section page-full-width">
-  <div class="section-label">今日の数字</div>
-  <div class="number-big">88万人</div>
-  <div class="number-caption">福祉施設職員等退職手当共済制度の加入者数</div>
-  <p class="number-body">全国の福祉施設で働く約88万人が加入する退職金共済制度（福退共）の準備金残高が大幅に減少していることが判明。厚労省は制度の抜本的な見直しに着手した。給付水準や掛け金に影響が出れば、福祉業界全体の経営と人材確保に直結する。</p>
-  <div class="koike-take">はなひらくのスタッフも加入対象。制度変更の内容次第では採用・定着戦略の見直しが必要になる。検討会の動向を今から追い始めたい。</div>
-</section>
-
-<!-- ⑤ 今朝のヘッドライン -->
-<section class="section page-full-width">
-  <div class="section-label">今朝のヘッドライン</div>
-  <div class="headlines-grid">
-    <div class="hl-item">
-      <span class="hl-cat">社会</span>
-      <div class="hl-title">岩手県で最大震度4の地震 津波の心配なし</div>
-      <div class="hl-body">14日早朝、岩手県で最大震度4の地震が発生。気象庁は津波の心配はないと発表し、インフラへの被害報告もなく、住民の安全が確認された。</div>
-      <div class="hl-source">NHKニュース</div>
-    </div>
-    <div class="hl-item">
-      <span class="hl-cat">社会</span>
-      <div class="hl-title">都内住宅地近くにクマ出没 専門家「都市部への常態化」と警鐘</div>
-      <div class="hl-body">東京都内の住宅地近くでクマの目撃情報が相次いでいる。専門家は「都市部への出没が常態化しつつある」と指摘し、自治体の対応強化を求めた。</div>
-      <div class="hl-source">Yahoo!ニュース</div>
-    </div>
-    <div class="hl-item">
-      <span class="hl-cat">政治</span>
-      <div class="hl-title">高市首相、G7前に英・伊訪問を調整 安保・AI規制が議題</div>
-      <div class="hl-body">高市早苗首相が6月のG7サミット（カナダ）前に英国・イタリアを訪問する方向で調整中。スターマー英首相・メローニ伊首相と安全保障やAI規制の国際枠組みを協議する見通し。</div>
-      <div class="hl-source">Yahoo!ニュース</div>
-    </div>
-    <div class="hl-item">
-      <span class="hl-cat">社会</span>
-      <div class="hl-title">再審見直し案に検察側が強く反発 証拠開示の範囲が焦点</div>
-      <div class="hl-body">法制審議会が検討中の再審制度改革案に対し、検察側が「証拠開示の範囲が広がりすぎる」と異議を唱えた。冤罪防止と捜査の実効性をめぐる議論が続いている。</div>
-      <div class="hl-source">Yahoo!ニュース</div>
-    </div>
-    <div class="hl-item">
-      <span class="hl-cat">スポーツ</span>
-      <div class="hl-title">巨人・坂本勇人、延長12回に通算300号サヨナラ3ラン 2夜連続劇的勝利</div>
-      <div class="hl-body">読売巨人軍の坂本勇人内野手が13日の試合で延長12回に通算300号のサヨナラ本塁打を放ち、チームは2夜連続の劇的勝利。東京ドームは大歓声に包まれた。</div>
-      <div class="hl-source">Yahoo!ニュース</div>
-    </div>
+<div class="big-number">
+  <div class="big-number-val">63,272</div>
+  <div class="big-number-desc">
+    <div class="big-number-caption">日経平均株価 5/13終値（円）― 史上初の6万3000円台突破</div>
+    <div class="big-number-body">5月13日の東京株式市場で日経平均株価が初めて6万3000円台を突破し最高値を更新した。米中首脳会談への期待と国内好業績銘柄への資金流入が重なり、前日比529円高の歴史的水準となった。年初来の上昇率は25%超に達している。</div>
+    <div class="koike-take">資産形成を支援するFP事業・チャレンジャー活動において、高水準の株価は顧客の投資リテラシー向上ニーズを喚起する絶好の機会だ。</div>
   </div>
-</section>
+</div>
 
-<!-- ⑥ 人物クローズアップ -->
-<section class="section page-full-width">
-  <div class="section-label">人物クローズアップ</div>
-  <div class="person-name">高市早苗</div>
-  <div class="person-role">内閣総理大臣</div>
-  <div class="person-quote">「G7の場で同志国との連携をさらに深め、自由で開かれた国際秩序の維持に貢献する。」</div>
-  <p class="person-body">高市早苗首相は6月のG7サミット（カナダ・カナナスキス）を前に、英国・イタリア訪問を精力的に調整している。国内では国家情報会議設置法案の参院審議、再審制度改革の議論など内政も多忙だが、外交日程を積み重ねて存在感を発揮する。AI・安全保障・経済の三本柱で日本の立ち位置を固める姿勢が鮮明だ。</p>
-  <div class="koike-take">高市首相のAI政策と国家情報会議設置はデータ取り扱い規制の変化につながりうる。PHC薬局・PharmaEightのシステム設計への影響を早めに把握しておきたい。</div>
-</section>
+<div class="section-rule">
+  <span class="section-name">今朝のヘッドライン</span>
+  <span class="section-name-en">HEADLINES</span>
+  <div class="section-line"></div>
+</div>
+<div class="headlines-list">
+  <div class="headline-item"><span class="headline-cat">社会</span><span class="headline-title">自転車「青切符」4月中に2147件 ― 施行1カ月で実態判明</span><span class="headline-source">Yahoo!ニュース</span></div>
+  <div class="headline-item"><span class="headline-cat">事件</span><span class="headline-title">施設で姉妹死亡 ― 逮捕の母が法廷で謝罪し涙</span><span class="headline-source">Yahoo!ニュース</span></div>
+  <div class="headline-item"><span class="headline-cat">スポーツ</span><span class="headline-title">大谷翔平の「打者休養」をドジャース監督が説明</span><span class="headline-source">Yahoo!ニュース</span></div>
+  <div class="headline-item"><span class="headline-cat">国際</span><span class="headline-title">FRB新議長にウォーシュ元理事 ― 米上院が承認</span><span class="headline-source">Bloomberg</span></div>
+  <div class="headline-item"><span class="headline-cat">金融</span><span class="headline-title">長期金利2.55%台 ― 1997年以来29年ぶりの高水準</span><span class="headline-source">日本経済新聞</span></div>
+</div>
 
-<!-- ⑦〜⑭ 2段組セクション -->
+<div class="section-rule">
+  <span class="section-name">人物クローズアップ</span>
+  <span class="section-name-en">PERSON</span>
+  <div class="section-line"></div>
+</div>
+<div class="person-box">
+  <div class="person-name">ケビン・ウォーシュ</div>
+  <div class="person-role">第17代FRB議長（就任予定）／元FRB理事・元スタンフォード大上席研究員</div>
+  <div class="person-quote">「物価安定と雇用最大化の二つの使命に誠実に向き合う」</div>
+  <div class="person-body">トランプ大統領が任命し米上院承認を経た次期FRB議長。利下げ派と目されるウォーシュ氏の起用により、2026年後半の金利政策が大きく転換する可能性がある。国際金融市場では既にドル安・金利低下を見込む動きも出ており、FRB議長交代は世界の資産配分に直結する重大人事だ。日本への資金流入やドル円への影響も注視が必要である。</div>
+  <div class="koike-take">FRB議長交代は米金利の方向性に直結。チャレンジャーのFP顧客への資産見直し提案において、この動向を先手で共有することがアドバンテージになる。</div>
+</div>
+
 <div class="paper-columns">
 
-  <!-- ⑦ 政治・経済 -->
-  <div class="section">
-    <div class="section-label">政治・経済</div>
-
-    <div class="article">
-      <h2 class="article-headline">高市首相、G7前に英・伊訪問を調整 AI規制・安保連携が焦点</h2>
-      <p class="article-lead">高市早苗首相が6月のG7サミット前に英国とイタリアを訪問する方向で調整中。AI規制の国際標準づくりと防衛協力が主な議題となる見通し。</p>
-      <div class="article-body">
-        <p>外務省によると、高市首相は6月中旬にスターマー英首相、下旬にメローニ伊首相との首脳会談を予定。G7議長国カナダとの事前調整も並行して進んでいる。</p>
-        <p>AI規制では、国家の安全保障に関わる生成AIのリスク管理枠組みをG7で統一する方向が固まりつつある。国内では国家情報会議設置法案の参院審議が続いており、外交と内政が連動した動きとなっている。</p>
-      </div>
-      <div class="article-source">出典: Yahoo!ニュース「高市氏 G7前の英と伊訪問を調整」</div>
-      <div class="koike-take">AI規制の国際標準化はPersonal OSやPharmaEightのサービス設計に影響。G7の議論を早めにキャッチアップしたい。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">国家情報会議設置法案、参院で審議続く プライバシー保護が論点</h2>
-      <p class="article-lead">政府・情報収集の司令塔となる国家情報会議を設置する法案が参院で審議中。野党はプライバシー保護と政治的中立性の確保を強く求めている。</p>
-      <div class="article-body">
-        <p>同法案は4月23日に衆院を通過し、5月8日から参院で審議入り。内閣情報調査室を「国家情報局」に格上げし、各省庁の情報を集約する権限を与える内容で、今国会での成立が見込まれる。</p>
-        <p>審議では収集情報の政治的利用を防ぐ仕組みの整備が中心議題。プライバシー配慮を盛り込んだ附帯決議で野党との合意を図る方向だ。医療・介護分野のデータ管理にも関連する可能性がある。</p>
-      </div>
-      <div class="article-source">出典: KSI政策ニュース「2026年5月の政治・政策カレンダー」</div>
-      <div class="koike-take">国家情報局設置は医療・介護データの取り扱いルールに波及しうる。はなひらくのデータ管理体制を今から整備しておく価値がある。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">再審見直し案に検察側が反発 「証拠開示が広がりすぎる」と異議</h2>
-      <p class="article-lead">法制審議会が検討中の再審制度改革案に対し、検察側関係者が強い反発を示した。証拠開示義務の拡大をめぐり、冤罪防止と捜査実効性の議論が続く。</p>
-      <div class="article-body">
-        <p>再審請求時の証拠開示義務拡大を柱とする見直し案について、検察は「捜査情報漏洩の恐れがある」と難色を示した。弁護士会や有識者は「被告人の権利を軽視している」と批判する。</p>
-        <p>法制審は今夏をめどに答申をまとめる方針で、再審制度改革の行方は刑事司法の信頼性に直結する。社会的関心が高く、議論の帰趨が注目される。</p>
-      </div>
-      <div class="article-source">出典: Yahoo!ニュース「再審見直し案 検察からは不満の声」</div>
-      <div class="koike-take">法制度の透明性向上は社会の信頼基盤。はなひらくでも内部通報制度など透明性の確保がコンプライアンス上の重要課題だ。</div>
+  <div>
+    <div class="section-rule"><span class="section-name">政治・経済</span><span class="section-name-en">POLITICS &amp; ECONOMY</span><div class="section-line"></div></div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">長期金利2.55%台に上昇 ― 1997年以来の高水準</h4>
+        <div class="article-body"><p>国内の長期金利が急上昇している。10年物国債利回りは一時2.55%台に達し、1997年6月以来約29年ぶりの高水準となった。原油価格の高止まりによるインフレ懸念と財政赤字拡大への市場不安が主因だ。</p><p>日本銀行の政策修正観測も重なり、住宅ローン金利や企業の資金調達コストへの波及が懸念されている。金融機関の国債評価損にも注目が集まる。</p></div>
+        <p class="article-source">出典: 日本経済新聞</p>
+        <div class="koike-take">金利上昇は生命保険の資産運用に有利な面もある。FP業務での変額保険・外貨建て商品の再評価ポイントとして活用できる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">政府、夏の電気・ガス料金補助を検討 ― 中東情勢受け</h4>
+        <div class="article-body"><p>政府は中東情勢を受けて夏の電気・ガス料金への補助措置の検討を始めた。原油価格の高止まりが家計やエネルギーコストを直撃するリスクに備え、昨年の補助スキームの再発動を視野に入れる。5月末をめどに方向性を固める方針。</p></div>
+        <p class="article-source">出典: Yahoo!ニュース・各紙</p>
+        <div class="koike-take">エネルギー補助の動向は家計ファイナンスに直結。FP相談でのキャッシュフロー試算に折り込む要素として頭に入れておきたい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">日経平均6万3272円 ― 史上初の6万3000円台で最高値更新</h4>
+        <div class="article-body"><p>5月13日の東京株式市場で日経平均株価は前日比529円高の6万3272円で引け、史上初めて6万3000円台を突破した。米中首脳会談への期待が先行し、外需系の大型株を中心に幅広く買いが入った。年初来の上昇率は25%超に達している。</p></div>
+        <p class="article-source">出典: 日本経済新聞</p>
+        <div class="koike-take">株高で顧客の資産評価は向上。チャレンジャーFP活動での資産運用相談の需要が高まっているタイミング。出口戦略の提案が刺さりやすい局面だ。</div>
+      </article>
     </div>
   </div>
 
-  <!-- ⑧ 世界の動き -->
-  <div class="section">
-    <div class="section-label">世界の動き</div>
-
-    <div class="article">
-      <h2 class="article-headline">インドで医学部入試問題が流出 230万人の受験生に影響</h2>
-      <p class="article-lead">インドの大学医学部共通入試「NEET」の問題が事前に流出したとして、230万人以上の受験生に影響が及んでいる。当局が複数の被疑者を逮捕し、再試験を求める声が高まっている。</p>
-      <div class="article-body">
-        <p>中央捜査局（CBI）は問題を不正入手・販売したとされる被疑者を逮捕。ビハール州を中心に複数州で組織的な流出があったとみられ、医学部志望者の間に怒りと混乱が広がっている。</p>
-        <p>インドでは毎年200万人超がNEETに挑む。問題流出は教育の公正性を根本から揺るがす事態であり、最高裁も政府に説明を求めた。試験の再実施と制度の抜本改革を求める声が高まっている。</p>
-      </div>
-      <div class="article-source">出典: NHK国際報道「インド 医学部入試問題流出」</div>
-      <div class="koike-take">教育の公正性と評価制度の信頼性は万国共通の課題。Personal OSでも「成果の可視化」と「公正な評価」を仕組みとして組み込むことが重要だ。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">韓国の出生率0.80、世界最低水準 急激な人口減少が社会直撃</h2>
-      <p class="article-lead">韓国の合計特殊出生率が2025年で0.80と世界最低水準に低迷。急速な人口減少が社会・経済全体に深刻な影響をもたらしていることが改めて浮き彫りになった。</p>
-      <div class="article-body">
-        <p>韓国の出生率は日本（約1.2）をさらに大きく下回り、主要国で断トツの最低水準。政府は数十兆ウォン規模の少子化対策を打ってきたが効果は限定的で、生産年齢人口の急減が経済成長を圧迫している。</p>
-        <p>日本の少子化問題と構造的に共通点が多く、韓国の政策の失敗と教訓が日本の対策立案の参考として注目されている。NHKは14日夜の国際報道でこの問題を特集する予定。</p>
-      </div>
-      <div class="article-source">出典: NHK国際報道 2026「韓国の深刻な少子化」</div>
-      <div class="koike-take">韓国の失敗から日本の少子化対策を逆照射できる。はなひらくのB型事業も障害者雇用を通じた人口・労働力の底上げに貢献している視点を持ちたい。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">天壇公園を共に視察しながら会談 貿易委員会設置と台湾・イランが焦点</h2>
-      <p class="article-lead">北京に滞在中の米大統領と中国国家主席が14日、天壇公園を共に視察しながら2日連続の会談を実施。貿易委員会の設置合意が視野に入り、台湾・イラン問題も主要議題となっている。</p>
-      <div class="article-body">
-        <p>両首脳は前日に続き14日も公式会談を継続。両国間の恒常的な協議枠組みとなる「貿易委員会」の設置について合意に向けた詰めの協議が行われているとされる。</p>
-        <p>中国の対イラン輸出入への圧力がかけられているとも報じられる一方、台湾問題について米側がどこまで譲歩するかが焦点。「経済の安定が最大の成果」との見方が多い。</p>
-      </div>
-      <div class="article-source">出典: 日本経済新聞「トランプ氏と習近平氏、14日に天壇公園を共に視察」</div>
-      <div class="koike-take">米中経済関係の安定は半導体・AI供給コストに直結する。PharmaEightのAIサービス利用コストへの影響を注視したい。</div>
+  <div>
+    <div class="section-rule"><span class="section-name">世界の動き</span><span class="section-name-en">WORLD</span><div class="section-line"></div></div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">トランプ×習近平 北京で首脳会談 ― 天壇視察・2日間の関係修復外交</h4>
+        <div class="article-body"><p>米中両首脳は14日、北京・天壇公園を共に視察した後、人民大会堂で首脳会談を実施した。貿易不均衡の是正、ホルムズ海峡をめぐるイラン問題、台湾海峡の安定、AIガバナンスの枠組みが主要議題だ。</p><p>トランプ氏は中国の市場開放を求めつつも関税引き下げの協議の扉を開いた。15日も会談が続く予定で、共同声明の内容が世界市場の焦点となっている。</p></div>
+        <p class="article-source">出典: 日本経済新聞・Bloomberg</p>
+        <div class="koike-take">米中関係の安定は日本の輸出企業にも好材料。PharmaEight∞の薬剤師顧客に多い医療機器・製薬業界の株価動向に注目。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">ネタニヤフ首相、秘密裏にUAEを訪問 ― イラン情勢で大統領と協議</h4>
+        <div class="article-body"><p>イスラエルのネタニヤフ首相がアラブ首長国連邦（UAE）を秘密裏に訪問し、ムハンマド大統領と会談したことが明らかになった。ホルムズ海峡情勢の緊張を受け、中東地域での安全保障協力を協議した模様だ。アブラハム合意の枠組みで積み上げられたイスラエル・UAE関係がイラン問題を軸に新たな展開を迎えている。</p></div>
+        <p class="article-source">出典: Yahoo!ニュース</p>
+        <div class="koike-take">中東情勢の複雑化は原油供給不安を通じ日本の医療機関・福祉施設のエネルギーコストにも波及。はなひらくの経営計画でも想定すべき変数だ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">キャサリン妃、イタリア公式訪問 ― 英王室外交を本格再開</h4>
+        <div class="article-body"><p>英国のキャサリン皇太子妃がイタリアを公式訪問した。昨年の療養期間を経て本格的な国際公務に復帰したキャサリン妃はローマでイタリア大統領と会見し英伊の親善を深めた。英国内では王室の安定を歓迎する声が多く、国際社会でのブランド外交として注目されている。</p></div>
+        <p class="article-source">出典: 国際各紙</p>
+        <div class="koike-take">海外資産を持つFP顧客への通貨リスク説明で欧州動向を参照する際の補足知識として。</div>
+      </article>
     </div>
   </div>
 
-  <!-- ⑩ 薬剤師関連 -->
-  <div class="section">
-    <div class="section-label">薬剤師関連</div>
-
-    <div class="article">
-      <h2 class="article-headline">薬局の服薬指導にAI導入 会話からSOAPを自動生成、記録業務を大幅削減</h2>
-      <p class="article-lead">調剤薬局における服薬指導の会話内容をAIがリアルタイム解析し、SOAPフォーマットの薬歴記録を自動生成するサービスが注目を集めている。薬剤師の事務負担削減と記録の質向上が期待される。</p>
-      <div class="article-body">
-        <p>SOAP（主観的情報・客観的情報・評価・計画）は医療現場で標準的な記録形式。薬剤師が患者との会話に集中するだけで、AIが内容を解析して薬歴記録の草案を自動作成する。誤記・漏記を減らしながら業務効率化を実現できると評価されている。</p>
-        <p>薬剤師不足が深刻な地方の調剤薬局での活用が特に期待されており、複数の大手調剤チェーンが試験導入を進めている。記録の標準化による医師・看護師との情報共有も容易になるとされる。</p>
-      </div>
-      <div class="article-source">出典: 薬事日報ウェブサイト</div>
-      <div class="koike-take">PHC薬局での服薬指導業務に直接応用できる技術。記録自動化で薬剤師が患者対話に集中できる環境を整えることで、調剤の質と患者満足度を同時に高められる。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">薬剤師国家試験、2029年度から9科目→5科目へ再編 実践力重視に転換</h2>
-      <p class="article-lead">厚生労働省は薬剤師国家試験について2029年度から現行9科目を5科目に大括り化する方針を示した。現場での実践・臨床能力を重視する抜本的な見直し。</p>
-      <div class="article-body">
-        <p>現行の薬剤師国試は物理・化学・生物・衛生・薬理・薬剤・病態・法規・実務の9科目で構成されているが、新方針では「薬学基礎」「薬学応用」「薬学実践」などに再編する方向で検討が進んでいる。</p>
-        <p>2025年の有識者会議答申を受けた改革で、即戦力となる薬剤師の育成が狙い。2029年度入学者から段階的に移行する見通しで、薬学部のカリキュラム改革も連動して求められる。</p>
-      </div>
-      <div class="article-source">出典: 薬剤師のエナジーチャージ 薬＋読「薬剤師国試 新方針」</div>
-      <div class="koike-take">PHC薬局の新卒採用に直結する変化。2029年以降の薬剤師の能力プロファイルが変わるため、OJT設計とメンター体制を今から見直す準備が必要だ。</div>
+  <div>
+    <div class="section-rule"><span class="section-name">AI・テック</span><span class="section-name-en">AI &amp; TECHNOLOGY</span><div class="section-line"></div></div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">NEC「AI Platform Service」5月末提供開始 ― 100以上の機能を一元集約</h4>
+        <div class="article-body"><p>NECは企業のAI活用を一元支援する「AI Platform Service」を5月末より順次提供開始すると発表した。NEC独自の40以上の機能とグローバルパートナーの技術を含む100以上のサービス機能をフルスタックで提供する。月額30万円（税別）から。AI as a Service版は7月より展開予定。</p></div>
+        <p class="article-source">出典: NEC プレスリリース</p>
+        <div class="koike-take">大手SIerのAIプラットフォーム化は中小企業へのAI導入コストを下げる可能性。はなひらく・PharmaEight∞の業務効率化への応用検討価値あり。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">ソフトバンク・NEC・ホンダ・ソニーが国産AI新会社設立 ― 米中に対抗</h4>
+        <div class="article-body"><p>ソフトバンク、NEC、ホンダ、ソニーの4社が共同で国産の大規模言語モデル（LLM）開発を手掛ける新会社「日本AI基盤モデル開発」を設立した。医療・製造・インフラなど国内産業向けの活用を想定し、政府のAI戦略とも連動した官民連携が期待される。</p></div>
+        <p class="article-source">出典: Ledge.ai</p>
+        <div class="koike-take">国産LLMの登場は日本語医療・福祉データへの対応精度向上を意味する。PharmaEight∞やはなひらくへのAI導入検討で必須情報だ。</div>
+      </article>
     </div>
   </div>
 
-  <!-- ⑪ 障がい福祉関連 -->
-  <div class="section">
-    <div class="section-label">障がい福祉関連</div>
-
-    <div class="article">
-      <h2 class="article-headline">2027年度障害報酬改定に向け厚労省が議論開始 費用急増への対応が焦点</h2>
-      <p class="article-lead">厚生労働省は2027年度障害福祉サービス等報酬改定に向けた検討チームの議論を開始した。2024年度に前年比12.1%増となった障害福祉費用への対応と、事業者の安定経営の両立が焦点となる。</p>
-      <div class="article-body">
-        <p>2024年度の障害福祉サービス費は約4.18兆円と前年度比12.1%増と急増。従来の5〜6%増から大幅に加速しており、制度の持続可能性が問われている。厚労省は費用増加の構造的要因を分析し、次期改定の方向性を議論する。</p>
-        <p>2026年度臨時改定で新規就労継続支援B型など4サービスの基本報酬を引き下げたばかり。2027年度に向けては費用増加への対応と事業者の安定経営の両立を図る必要があり、事業者団体は経営への配慮を強く求めている。</p>
-      </div>
-      <div class="article-source">出典: 福祉新聞Web「27年度障害報酬改定の議論開始」</div>
-      <div class="koike-take">はなひらくのB型・寿・塩尻は次期報酬改定の方向性に大きく左右される。今から議論の動向を追い、加算取得や質向上に向けた準備を前倒しで進めたい。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">福祉施設職員88万人の退職金共済制度、準備金残高大幅減で抜本見直しへ</h2>
-      <p class="article-lead">社会福祉施設職員等退職手当共済制度（福退共）の準備金残高が大幅に減少していることを受け、厚労省が制度の抜本的な見直しに向けた検討会を設置した。</p>
-      <div class="article-body">
-        <p>約88万人の福祉施設職員が加入する同制度の準備金残高が急減。高齢化による退職者増と積立金の運用低迷が主因。厚労省は給付水準の維持と制度の持続可能性を両立させる見直し策を検討する。</p>
-        <p>見直しの内容次第では、給付水準の引き下げや掛け金の引き上げなど、福祉施設の経営コストや職員の老後保障に直接影響する。事業者・職員双方にとって注目度の高い議題。</p>
-      </div>
-      <div class="article-source">出典: 福祉新聞Web「福祉施設職員88万人加入の退職金手当制度を抜本見直し」</div>
-      <div class="koike-take">はなひらくスタッフの退職金にも直結する制度変更。検討内容を早期に把握し、採用・定着戦略と退職給付設計への影響を事前に評価しておきたい。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">精神科病院従事者による障害者虐待を厚労省が分析 予防策の検討に着手</h2>
-      <p class="article-lead">精神科病院に勤務する従事者による障害者虐待の実態を厚生労働省が類型別に分析し、具体的な予防策の検討に着手した。研修義務化や第三者点検の制度化が検討される。</p>
-      <div class="article-body">
-        <p>身体拘束や心理的虐待などの事例を類型化した結果、閉鎖的な環境での権力関係やストレス過多が主な背景として浮かび上がった。厚労省は今後、研修の義務化や第三者機関による定期的な点検制度の創設を検討する。</p>
-        <p>障害者の権利保護を強化する取り組みとして注目されており、精神科病院にとどまらず福祉施設全般への展開も視野に入れられている。</p>
-      </div>
-      <div class="article-source">出典: 福祉新聞Web「精神科病院従事者の障害者虐待を分析」</div>
-      <div class="koike-take">はなひらくでも虐待防止委員会の運営と内部通報制度の整備は必須。今回の厚労省分析を参考にセルフチェックを実施し、第三者点検の受け入れ準備も進めたい。</div>
+  <div>
+    <div class="section-rule"><span class="section-name">スタートアップ</span><span class="section-name-en">STARTUPS</span><div class="section-line"></div></div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">ホンダ発PathAhead、1.36億円を調達 ― 次世代モビリティ領域に参入</h4>
+        <div class="article-body"><p>ホンダ発のスタートアップ・PathAhead（パスアヘッド）が1億3600万円の資金調達を完了した。次世代モビリティ・移動サービス領域での事業展開を目指す。大手メーカーからのスピンアウト型スタートアップは2026年のトレンドのひとつで、製造業の技術資産を活かしながら身軽に動くモデルとして注目されている。</p></div>
+        <p class="article-source">出典: 日本経済新聞</p>
+        <div class="koike-take">大手メーカー発スタートアップへの投資機会を顧客に共有することで、FP相談の付加価値向上につながる。VC投資・株式クラウドファンディングの文脈でも活用可能。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">バリノス、12.5億円調達 ― 不妊治療向けAIサービスを拡大</h4>
+        <div class="article-body"><p>不妊治療向けサービスを展開するバリノスが計12億5000万円の資金調達を完了した。AI技術を用いた不妊治療の効率化・成功率向上を目指し、産婦人科クリニックとの連携を拡大する。少子化対策が政策的急務となる中、生殖医療×AI分野への投資は今後も拡大が見込まれる。</p></div>
+        <p class="article-source">出典: 日本経済新聞</p>
+        <div class="koike-take">医療×AIの実用化加速は薬剤師・医療職のキャリアにも変化を生む。PharmaEight∞の受講生への新領域キャリア提案の素材になる。</div>
+      </article>
     </div>
   </div>
 
-  <!-- ⑫ エンタメ -->
-  <div class="section">
-    <div class="section-label">エンタメ</div>
-
-    <div class="article">
-      <h2 class="article-headline">「ルパン三世」作曲家・大野雄二さん、84歳で老衰死 生涯1200曲の巨匠</h2>
-      <p class="article-lead">アニメ「ルパン三世」シリーズの音楽で知られる作曲家・ジャズピアニストの大野雄二さんが5月4日、老衰のため84歳で亡くなった。13日に公式発表。就寝中に苦しむことなく安らかに旅立った。</p>
-      <div class="article-body">
-        <p>大野さんは1977年から「ルパン三世」シリーズの音楽を担当。「ルパン三世のテーマ」はじめ生涯で約1200曲を作曲し、日本のポップス・ジャズ史に鮮烈な足跡を残した。NHK「小さな旅」のテーマ曲も代表作のひとつとして長く愛されてきた。</p>
-        <p>5月30日に予定されているBillboard Live TOKYOのプロデュースライブ「Lupintic All Stars Produced by YUJI OHNO」は、故人が生前より準備を整えていたため予定通り開催される。音楽ファンから多くの追悼コメントが寄せられている。</p>
-      </div>
-      <div class="article-source">出典: NHKニュース「作曲家 大野雄二さん死去」</div>
-      <div class="koike-take">昭和・平成のポップカルチャーを彩った巨匠の逝去。「ルパン三世のテーマ」はPharmaEightやはなひらくのイベントBGMとしても使いやすい名曲だ。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">巨人・坂本勇人、通算300号のサヨナラ3ラン 2夜連続劇的勝利</h2>
-      <p class="article-lead">読売巨人軍の坂本勇人内野手が13日の試合で延長12回に通算300号となるサヨナラ3点本塁打を放ち、チームは2夜連続の劇的なサヨナラ勝利を収めた。東京ドームは大歓声に包まれた。</p>
-      <div class="article-body">
-        <p>「これぞ千両役者」と称える声がSNSに溢れ、節目の300号を最高の形で達成した。坂本は2夜連続でチームのピンチを救うサヨナラ打を放ち、今季の巨人を牽引する活躍を見せている。</p>
-        <p>チームとしても今季の優勝争いに向けた弾みとなる重要な2連勝。本人は「今はチームの勝利だけ考えている」と語った。</p>
-      </div>
-      <div class="article-source">出典: Yahoo!ニュース「巨人・坂本、延長12回サヨナラ300号」</div>
-      <div class="koike-take">「節目の達成をチームの勝利につなげる」プロの姿勢はビジネスにも通じる。チャレンジャーメンバーにも目標達成とチーム貢献の両立を伝えたい。</div>
-    </div>
-
-    <div class="article">
-      <h2 class="article-headline">フィギュアスケート・坂本花織が結婚発表 現役続行「競技と家庭を両立」</h2>
-      <p class="article-lead">フィギュアスケートの坂本花織選手が結婚を発表した。お相手は神戸学院大学時代の同期の一般男性で、現役を続けながら新生活をスタートする。</p>
-      <div class="article-body">
-        <p>世界選手権3連覇を誇る坂本選手はトップアスリートとして現役を継続しながらの結婚を決断。「競技も家庭も全力で取り組む」と意欲を語り、ファンから多くの祝福コメントが届いている。</p>
-        <p>女性アスリートの結婚が競技引退と結びつかない時代の象徴的な出来事として注目されており、スポーツ界全体で働き方の多様性を考えるきっかけとなっている。</p>
-      </div>
-      <div class="article-source">出典: オリコン「坂本花織 結婚発表」</div>
-      <div class="koike-take">競技と人生を両立するアスリートのロールモデル。PharmaEightのメンバーへの「仕事と人生の設計」コーチングに引用できる好事例だ。</div>
+  <div>
+    <div class="section-rule"><span class="section-name">薬剤師関連</span><span class="section-name-en">PHARMACY</span><div class="section-line"></div></div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">改正薬機法5月施行：18歳未満の濫用防止薬販売を厳格化</h4>
+        <div class="article-body"><p>改正薬機法に基づき、咳止め・睡眠改善薬などの指定濫用防止医薬品について、18歳未満への販売が1回の購入につき小容量1個に限定されることが5月から本格適用された。薬局窓口での年齢確認が必須となり、システム対応や従業員教育が急務となっている。対面販売の重要性が改めてクローズアップされる局面だ。</p></div>
+        <p class="article-source">出典: 各薬業メディア</p>
+        <div class="koike-take">地域薬局の対面機能を際立たせる機会でもある。PharmaEight∞の受講生への法規対応フォローにも活用できる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">6月改定：長期収載品の患者負担が差額の1/2に引き上げ</h4>
+        <div class="article-body"><p>2026年6月の調剤報酬改定では、先発医薬品を患者が希望する場合の選定療養費について、先発と後発の薬価差の「4分の1」から「2分の1」へ変更される。患者の窓口負担が増え、ジェネリック医薬品への切り替えをより強く促す仕組みとなる。薬剤師の服薬指導スキルが一層評価される改定でもある。</p></div>
+        <p class="article-source">出典: m3.com</p>
+        <div class="koike-take">後発医薬品推進の強化は薬局経営に直結。PharmaEight∞の薬局開業・経営支援コンテンツでこの改定を軸にした収益シミュレーション提案が有効だ。</div>
+      </article>
     </div>
   </div>
 
-  <!-- ⑬ 長野県関連 -->
-  <div class="section">
-    <div class="section-label">長野県関連</div>
-
-    <div class="article">
-      <h2 class="article-headline">養命酒製造が「くらすわ」事業を7月末に山田養蜂場へ売却 駒ヶ根市施設休止で65人雇用終了</h2>
-      <p class="article-lead">養命酒製造（駒ヶ根市）は13日、飲食・物販の「くらすわ」関連事業を山田養蜂場（岡山県鏡野町）に7月31日付で売却すると発表した。駒ヶ根市の複合施設「くらすわの森」は7月末で休止し、嘱託社員ら65人の雇用が終了する。</p>
-      <div class="article-body">
-        <p>養命酒製造はツムラ傘下に入っており、本業の薬酒事業への集中を経営方針として進めている。長野県内や東京で8店舗を展開するベーカリー・飲食・物販事業「くらすわ」を手放す判断をした。</p>
-        <p>売却先の山田養蜂場はロイヤルゼリーや蜂蜜を手がける健康食品メーカー。「くらすわ」の2026年3月期売上高は約6億円で、譲渡金額は非公開。地元「くらすわの森」の休止は駒ヶ根市の観光・雇用に影響を与える可能性がある。</p>
-      </div>
-      <div class="article-source">出典: 信濃毎日新聞「養命酒製造、くらすわ事業を山田養蜂場に譲渡」</div>
-      <div class="koike-take">駒ヶ根の代表的企業が地元施設を手放す決断。65人の雇用終了は地域の就労支援ニーズを増やす可能性があり、はなひらく塩尻・寿の機能拡充を考えるきっかけにもなる。</div>
+  <div>
+    <div class="section-rule"><span class="section-name">障がい福祉</span><span class="section-name-en">DISABILITY WELFARE</span><div class="section-line"></div></div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">就労支援の在宅支援、不適切ケース是正へ ― 厚労省がルール遵守を要請</h4>
+        <div class="article-body"><p>厚生労働省は就労継続支援（A型・B型）や就労移行支援における「在宅支援」の一部で、形式的な支援にとどまる不適切な事業運営が散見されるとして、全事業所に現行ルールの遵守を強く要請した。利用者が実質的な就労訓練を受けられないまま報酬を受給するケースへの是正が目的で、6月改定でも抑止策が盛り込まれる。</p></div>
+        <p class="article-source">出典: メディカルサポネット</p>
+        <div class="koike-take">はなひらくでも在宅支援の運営適正化は喫緊の課題。支援記録の整備と適切な訓練プログラムの再点検を進めることが事業継続上のリスク管理となる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">障害福祉従事者の処遇改善加算、拡大を厚労省が検討</h4>
+        <div class="article-body"><p>厚生労働省は障害福祉サービス従事者の処遇改善について、処遇改善加算の対象範囲拡大を検討していることを明らかにした。支援員の慢性的な人手不足が全国的な問題となっており、賃上げによる人材確保が急務となっている。「人員欠如減算」の見直しも論点に挙がっている。</p></div>
+        <p class="article-source">出典: 福祉新聞Web</p>
+        <div class="koike-take">処遇改善加算の拡大ははなひらくのスタッフ採用・定着に直結する好材料。加算取得の体制整備を先手で進めることで人材確保コストを抑えられる。</div>
+      </article>
     </div>
   </div>
 
-</div><!-- /.paper-columns -->
-
-<!-- ⑮ 今週のカレンダー -->
-<section class="section page-full-width">
-  <div class="section-label">今週のカレンダー</div>
-  <div class="calendar-grid">
-    <div class="cal-item">
-      <div class="cal-date">5/14（木）</div>
-      <div>
-        <div class="cal-event">天壇公園視察・米中2日目会談（北京）</div>
-        <div class="cal-take">貿易委員会設置が合意に向かうか注目。AI・半導体サプライチェーンへの影響を注視。</div>
-      </div>
-    </div>
-    <div class="cal-item">
-      <div class="cal-date">5/15（金）</div>
-      <div>
-        <div class="cal-event">4月の訪日外客数統計 発表（日本政府観光局）</div>
-        <div class="cal-take">インバウンド動向は長野観光にも直結。はなひらくの地域連携事業の参考データ。</div>
-      </div>
-    </div>
-    <div class="cal-item">
-      <div class="cal-date">5/16（土）</div>
-      <div>
-        <div class="cal-event">G7外相会合（カナダ・ニューファンドランド）</div>
-        <div class="cal-take">AI規制の国際枠組みが議題。Personal OSに絡むAI規制の方向性が明確になる。</div>
-      </div>
-    </div>
-    <div class="cal-item">
-      <div class="cal-date">5/19（火）</div>
-      <div>
-        <div class="cal-event">参院 国家情報会議設置法案 委員会審議</div>
-        <div class="cal-take">成立すれば医療・介護データの取り扱いルールにも波及する可能性がある。</div>
-      </div>
-    </div>
-    <div class="cal-item">
-      <div class="cal-date">5/30（金）</div>
-      <div>
-        <div class="cal-event">「Lupintic All Stars Produced by YUJI OHNO」Billboard Live TOKYO</div>
-        <div class="cal-take">故・大野雄二さんが生前準備した最後のライブ。ルパン三世の音楽で昭和〜令和を振り返る追悼公演。</div>
-      </div>
-    </div>
-    <div class="cal-item">
-      <div class="cal-date">6/1（月）</div>
-      <div>
-        <div class="cal-event">2026年度調剤報酬改定 施行（ベースアップ評価料など）</div>
-        <div class="cal-take">PHC薬局への影響が正式に始まる日。届出状況と算定準備の最終確認が必須。</div>
-      </div>
+  <div>
+    <div class="section-rule"><span class="section-name">エンタメ</span><span class="section-name-en">ENTERTAINMENT</span><div class="section-line"></div></div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">道枝駿佑（なにわ男子）、韓国スキンケアブランドのCMが全国放映開始</h4>
+        <div class="article-body"><p>なにわ男子の道枝駿佑が韓国スキンケアブランド「numbuzin（ナンバーズイン）」のブランドアンバサダーとして出演するTVCMが5月14日より全国放映を開始した。シートマスクの穴から覗き込む遊び心あふれる演出が話題を呼んでいる。</p></div>
+        <p class="article-source">出典: 各エンタメメディア</p>
+        <div class="koike-take">コラボによるブランド認知拡大の手法はPharmaEight∞のSNS戦略を考える上でのヒントになる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">坂本花織が結婚発表 ― フィギュア世界女王が新たな門出</h4>
+        <div class="article-body"><p>フィギュアスケートの坂本花織選手が結婚を発表した。世界女王としての地位を確立しながら迎えた人生の新章として、ファンから祝福の声が殺到している。現役選手としての活動継続も明らかにし、競技と私生活の両立への意欲を示した。</p></div>
+        <p class="article-source">出典: 各スポーツメディア</p>
+        <div class="koike-take">「人生の転機」と資産設計の組み合わせを提案する際の事例として共有しやすい話題だ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">浜崎あゆみ、SNSへそ出し投稿 ― ファンから反響続出</h4>
+        <div class="article-body"><p>歌手の浜崎あゆみさんがSNSにへそ出し姿を投稿し、大きな反響を呼んでいる。40代のプロフェッショナルな体型維持へのストイックさが改めてクローズアップされ、世代を超えたファンからの支持を集めトレンド入りした。</p></div>
+        <p class="article-source">出典: Yahoo!ニュース</p>
+        <div class="koike-take">顧客・チームとの雑談のアイスブレイクに活用できる話題。コミュニケーションの引き出しとして。</div>
+      </article>
     </div>
   </div>
-</section>
 
-<!-- ⑯ 編集後記 -->
-<section class="section page-full-width">
-  <div class="section-label">編集後記</div>
-  <p class="postscript">本日の紙面で際立つのは、磐越道バス事故の「1週間」という節目だ。二種免許を持たない運転手、無許可営業——惨事は人災であり、その構造はあまりにも危うい。同時に、大野雄二さんの訃報が届いた。「ルパン三世のテーマ」を鼻歌で口ずさんだことのない日本人はいないだろう。昭和の情感を宿した音楽が令和の今も色褪せないのは、本物の仕事が時代を超えるからだ。日常の安全と文化の継承、両方を大切にする社会でありたい。</p>
-</section>
+  <div>
+    <div class="section-rule"><span class="section-name">長野県</span><span class="section-name-en">NAGANO LOCAL</span><div class="section-line"></div></div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">大町市の県道で乗用車が衝突 ― 女性1名重体・男性1名重傷</h4>
+        <div class="article-body"><p>長野県大町市内の県道において乗用車がガードレールに衝突する事故が発生し、車内にいた女性1名が重体、男性1名が重傷を負った。警察が原因を調査中だ。山岳地帯を走る県道では急カーブや視界不良区間が多く、春の行楽シーズンに向けた安全運転の周知が求められている。</p></div>
+        <p class="article-source">出典: 長野県内各局ニュース</p>
+        <div class="koike-take">はなひらくの送迎業務や通勤ルートにも関係する可能性があり、スタッフへの安全運転喚起のきっかけになる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">豊丘村でたけのこ狩り本格化 ― 県内外から来訪者が春の味覚を楽しむ</h4>
+        <div class="article-body"><p>長野県南信州地方の豊丘村でたけのこ狩りが本格化し、県内外からの来訪者が春の味覚を楽しんでいる。農家との交流体験型観光として人気が高く、食と農への関心が高まる2026年の消費トレンドにもマッチしている。グリーンツーリズムの好事例だ。</p></div>
+        <p class="article-source">出典: 伊那谷ねっと</p>
+        <div class="koike-take">はなひらくの農業関連就労プログラムとの連携可能性も面白いテーマ。長野の農村体験観光の活性化は地域経済の多様化につながる。</div>
+      </article>
+    </div>
+  </div>
 
-<!-- ⑰ Glossary -->
-<section class="section page-full-width">
-  <div class="section-label">Glossary — 用語解説</div>
+</div>
+
+<div class="section-rule">
+  <span class="section-name">今週のカレンダー</span>
+  <span class="section-name-en">THIS WEEK</span>
+  <div class="section-line"></div>
+</div>
+<div class="calendar-grid">
+  <div class="calendar-item"><div class="calendar-date">5/14（木）</div><div class="calendar-event">米中首脳会談1日目（北京・人民大会堂）</div><div class="calendar-take">会談の結果が翌日の市場を動かす。為替・株式の動向に要注目。</div></div>
+  <div class="calendar-item"><div class="calendar-date">5/15（金）</div><div class="calendar-event">米中首脳会談2日目・共同声明発表予定</div><div class="calendar-take">共同声明の内容次第でドル円・株価に大きな変動が生じる可能性あり。</div></div>
+  <div class="calendar-item"><div class="calendar-date">5/18（月）</div><div class="calendar-event">日本銀行 金融政策決定会合（予定）</div><div class="calendar-take">長期金利上昇局面での日銀の姿勢が注目。政策修正あれば住宅ローン・運用に影響大。</div></div>
+  <div class="calendar-item"><div class="calendar-date">5/31（日）</div><div class="calendar-event">令和8年度調剤報酬改定 届出締切</div><div class="calendar-take">ベースアップ評価料や地域支援体制加算の届出を忘れずに。</div></div>
+  <div class="calendar-item"><div class="calendar-date">6/1（月）</div><div class="calendar-event">令和8年度調剤報酬改定 施行</div><div class="calendar-take">PharmaEight∞の受講生薬剤師に実務影響が直接出る日。対応状況を先手でフォローしたい。</div></div>
+  <div class="calendar-item"><div class="calendar-date">6/1（月）</div><div class="calendar-event">就労継続支援B型 新規事業所報酬見直し施行</div><div class="calendar-take">はなひらくは既存事業所のため直接影響はないが、競合環境の変化に注意。</div></div>
+</div>
+
+<div class="postscript">
+  <div class="postscript-label">EDITORIAL NOTE ／ 編集後記</div>
+  <div class="postscript-body">本日の最大トピックはトランプ×習近平の北京会談だ。貿易・イラン・台湾・AI ― この4つが同時に俎上に乗る歴史的交渉が進んでいる。日本にいながら世界の地殻変動をリアルタイムで把握し、事業判断に活かせるか。それが今のビジネスパーソンに求められる情報リテラシーの核心だと感じる。株価は最高値を更新し、金利は29年ぶりの高水準 ― 資産と負債の両面で変化が同時進行する局面を、明日への力に変えていこう。</div>
+</div>
+
+<div class="glossary">
+  <div class="glossary-label">GLOSSARY ／ 用語解説</div>
   <div class="glossary-list">
-    <div class="glossary-item">
-      <div class="glossary-term">SOAP記録</div>
-      <div class="glossary-def">医療・薬歴の記録形式。S（主観的情報）O（客観的情報）A（評価）P（計画）の4要素で患者状態と対応方針を構造化して記録する。服薬指導AIが自動生成する対象。</div>
-    </div>
-    <div class="glossary-item">
-      <div class="glossary-term">福退共（退職手当共済制度）</div>
-      <div class="glossary-def">社会福祉施設職員等退職手当共済制度の略称。福祉施設が掛け金を積み立て、退職職員に退職金を支給する仕組み。約88万人が加入。</div>
-    </div>
-    <div class="glossary-item">
-      <div class="glossary-term">再審</div>
-      <div class="glossary-def">一度確定した有罪判決に対し、新たな証拠や事情を理由に裁判をやり直す手続き。冤罪救済の最後の手段とされる。証拠開示の範囲が改革の焦点。</div>
-    </div>
-    <div class="glossary-item">
-      <div class="glossary-term">NEET（インド共通医学部入試）</div>
-      <div class="glossary-def">National Eligibility cum Entrance Test。インドの医学部進学のための全国共通試験。毎年230万人超が受験する大規模試験。</div>
-    </div>
-    <div class="glossary-item">
-      <div class="glossary-term">合計特殊出生率</div>
-      <div class="glossary-def">1人の女性が一生の間に産むと見込まれる子どもの数。2.07程度が人口維持水準。韓国の0.80は世界最低水準で、日本の約1.2を大幅に下回る。</div>
-    </div>
-    <div class="glossary-item">
-      <div class="glossary-term">日米金利差</div>
-      <div class="glossary-def">米国と日本の長期金利の差。金利の高いドルが買われ、金利の低い円が売られやすいため、円安の構造的な主要因となっている。現在は約3.45%。</div>
-    </div>
-    <div class="glossary-item">
-      <div class="glossary-term">WTI（ウェスト・テキサス・インターミディエート）</div>
-      <div class="glossary-def">アメリカのテキサス州産の軽質原油。国際原油価格の代表的な指標として使われる先物価格。現在は1バレル約98ドル。</div>
-    </div>
-    <div class="glossary-item">
-      <div class="glossary-term">国家情報会議</div>
-      <div class="glossary-def">政府が設置を目指す情報収集・分析の司令塔組織。内閣情報調査室を「国家情報局」に格上げし、首相を議長として各省庁の情報を集約する権限を持つ。</div>
-    </div>
+    <div class="glossary-item"><span class="glossary-term">国賓訪問: </span>外国の元首・首脳を最高の礼遇で迎える公式訪問形式。通常の公式訪問よりも格式が高く、歓迎式典・晩餐会などが行われる。</div>
+    <div class="glossary-item"><span class="glossary-term">選定療養費: </span>患者が特定の医療サービスや薬品（先発医薬品など）を自ら選んだ際に追加で負担する費用。保険外負担の一種。</div>
+    <div class="glossary-item"><span class="glossary-term">長期収載品: </span>後発医薬品（ジェネリック）が市場に出た後も販売され続ける先発医薬品のこと。薬価が高く、医療費抑制の観点から後発品への切り替えが推進されている。</div>
+    <div class="glossary-item"><span class="glossary-term">指定濫用防止医薬品: </span>乱用や依存のリスクが高い市販薬のうち、厚生労働省が指定した医薬品。販売個数制限や年齢確認が義務付けられている。</div>
+    <div class="glossary-item"><span class="glossary-term">就労継続支援B型: </span>一般企業への就労が難しい障害者が、工賃を得ながら生産活動を行う障害福祉サービス。雇用契約を結ばない非雇用型の就労支援。</div>
+    <div class="glossary-item"><span class="glossary-term">処遇改善加算: </span>介護・障害福祉サービス従事者の賃金水準を引き上げるために、事業所に上乗せして支払われる報酬加算。</div>
+    <div class="glossary-item"><span class="glossary-term">FRB（連邦準備制度理事会）: </span>米国の中央銀行機能を担う独立機関。金利政策や通貨供給量の管理を行い、世界の金融市場に大きな影響を与える。</div>
+    <div class="glossary-item"><span class="glossary-term">LLM（大規模言語モデル）: </span>大量のテキストデータで学習させたAIモデル。ChatGPTやClaudeなどの生成AIの基盤技術。</div>
+    <div class="glossary-item"><span class="glossary-term">グリーンツーリズム: </span>農山漁村に滞在して農業・自然体験などを楽しむ観光の形態。都市住民の農村交流促進と地域活性化を目的としている。</div>
   </div>
-</section>
+</div>
 
-<footer>
-  NewGo Timez — 第132号 | 2026年5月14日発行 | 発行: 小池雄悟<br>
-  © 2026 NewGo Timez. All rights reserved.
+<footer class="colophon">
+  <span>NewGo Timez 第 11 号</span>
+  <span>2026-05-14</span>
+  <span>編集発行 NewGo Editorial</span>
 </footer>
 
 </body>
