@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewGo Timez ― 2026年5月16日</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Shippori+Mincho+B1:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdf8f2;
+    --bg-alt: #f5ede0;
+    --ink: #1a1208;
+    --ink-sub: #4a3c28;
+    --ink-mute: #9a8a72;
+    --red: #8b1a1a;
+    --red-light: #f5e8e0;
+    --line: #ddd0be;
+    --line-strong: #1a1208;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.85;
+    font-size: 14px;
+  }
+
+  /* ── マストヘッド ── */
+  .masthead { border-bottom: 3px double var(--line-strong); }
+  .masthead-top-bar {
+    background: var(--red);
+    padding: 6px 36px;
+    font-size: 10px; color: rgba(255,255,255,0.7); letter-spacing: 0.2em;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .masthead-top-bar strong { color: #fff; }
+  .masthead-main {
+    max-width: 1080px; margin: 0 auto; padding: 24px 36px 0;
+    display: flex; align-items: flex-end; justify-content: space-between;
+  }
+  .masthead-label {
+    font-size: 10px; letter-spacing: 0.5em; color: var(--red);
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .masthead-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 80px; line-height: 0.95;
+    letter-spacing: -0.02em; color: var(--ink);
+  }
+  .masthead-title em { font-style: italic; color: var(--red); }
+  .masthead-date-block { text-align: right; padding-bottom: 8px; }
+  .masthead-date-small {
+    font-size: 11px; color: var(--ink-mute); letter-spacing: 0.15em;
+    margin-bottom: 2px; text-align: right;
+  }
+  .masthead-date-num {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 72px; line-height: 1;
+    color: var(--ink); letter-spacing: -0.03em;
+  }
+  .masthead-date-year {
+    font-size: 11px; color: var(--ink-mute); letter-spacing: 0.15em; text-align: right;
+  }
+  .masthead-sub-row {
+    max-width: 1080px; margin: 0 auto;
+    padding: 6px 36px; display: flex; justify-content: space-between;
+    font-size: 10px; color: var(--ink-mute); letter-spacing: 0.12em;
+    border-top: 1px solid var(--line); margin-top: 8px;
+  }
+  .masthead-red-line { height: 5px; background: var(--red); }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 36px 48px; }
+
+  /* ── ティッカー ── */
+  .ticker {
+    display: flex; gap: 0;
+    background: var(--bg-alt);
+    border-bottom: 2px solid var(--red);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .ticker-item {
+    flex: 1; padding: 10px 18px;
+    border-right: 1px solid var(--line);
+    min-width: 0;
+  }
+  .ticker-item:last-child { border-right: none; }
+  .ticker-cat {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); text-transform: uppercase; margin-bottom: 3px;
+  }
+  .ticker-title {
+    font-size: 11px; font-weight: 700; color: var(--ink); line-height: 1.4;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  /* ── マーケット ── */
+  .market { margin-bottom: 28px; }
+  .market-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 0;
+    border: 1px solid var(--line);
+  }
+  .market-cell { padding: 12px 14px; border-right: 1px solid var(--line); }
+  .market-cell:last-child { border-right: none; }
+  .market-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.25em;
+    color: var(--ink-mute); margin-bottom: 6px; text-transform: uppercase;
+  }
+  .market-val { font-size: 17px; font-weight: 800; line-height: 1.2; }
+  .market-change { font-size: 10px; color: var(--ink-mute); margin-top: 3px; }
+  .market-note { font-size: 10px; color: var(--ink-mute); margin-top: 4px; line-height: 1.4; }
+  .up { color: #2d6a4f; }
+  .down { color: var(--red); }
+
+  /* ── 一面トップ ── */
+  .lead {
+    border-top: 4px solid var(--red);
+    padding: 28px 0;
+    margin-bottom: 8px;
+  }
+  .lead-inner { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; }
+  .lead-kicker {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .lead-headline {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 44px; font-weight: 800; line-height: 1.2;
+    letter-spacing: 0.01em; margin-bottom: 16px;
+    border-bottom: 2px solid var(--line); padding-bottom: 16px;
+  }
+  .lead-body {
+    font-size: 14px; line-height: 1.95; text-align: justify;
+  }
+  .lead-body p { margin-bottom: 10px; text-indent: 1em; }
+  .lead-source { font-size: 10px; color: var(--ink-mute); font-style: italic; margin-top: 10px; }
+  .lead-sidebar {}
+  .lead-sidebar-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.4em; color: var(--red);
+    text-transform: uppercase; border-bottom: 1px solid var(--red); padding-bottom: 6px; margin-bottom: 12px;
+  }
+  .lead-pull-quote {
+    font-size: 20px; font-style: italic; font-weight: 700;
+    line-height: 1.5; color: var(--red); margin-bottom: 16px;
+  }
+
+  /* ── 小池目線 ── */
+  .koike-take {
+    padding: 12px 14px; background: var(--red-light);
+    border-left: 4px solid var(--red);
+    font-size: 11px; line-height: 1.7; color: var(--ink-sub);
+    margin-top: 8px;
+  }
+  .koike-take::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em;
+    color: var(--red); display: block; margin-bottom: 4px;
+  }
+
+  /* ── 今日の数字 ── */
+  .big-number {
+    background: var(--red); color: #fff;
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 32px;
+  }
+  .big-number-val {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 100px; line-height: 1;
+    white-space: nowrap; letter-spacing: -0.04em;
+    flex-shrink: 0; padding: 28px 36px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .big-number-desc { flex: 1; padding: 24px 32px; }
+  .big-number-caption {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6); margin-bottom: 8px;
+  }
+  .big-number-body { font-size: 15px; line-height: 1.8; }
+  .big-number .koike-take {
+    background: rgba(255,255,255,0.15); border-left-color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.85); margin-top: 12px;
+  }
+  .big-number .koike-take::before { color: rgba(255,255,255,0.6); }
+
+  /* ── ヘッドライン一覧 ── */
+  .headlines-list { margin-bottom: 28px; }
+  .headline-item {
+    display: flex; gap: 16px; align-items: baseline;
+    padding: 9px 0; border-bottom: 1px solid var(--line);
+  }
+  .headline-item:first-child { border-top: 1px solid var(--line); }
+  .headline-cat {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.2em;
+    color: var(--red); white-space: nowrap; min-width: 42px;
+  }
+  .headline-title {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 14px; font-weight: 700; flex: 1; line-height: 1.6;
+  }
+  .headline-source { font-size: 10px; color: var(--ink-mute); white-space: nowrap; }
+
+  /* ── セクション区切り ── */
+  .section-rule {
+    display: flex; align-items: center; gap: 12px;
+    margin: 28px 0 14px;
+  }
+  .section-rule::before {
+    content: ""; flex: 0 0 3px; width: 3px; height: 18px;
+    background: var(--red);
+  }
+  .section-name {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 16px; font-weight: 800; letter-spacing: 0.1em;
+  }
+  .section-name-en {
+    font-family: "Playfair Display", serif;
+    font-size: 10px; color: var(--ink-mute); letter-spacing: 0.3em;
+    text-transform: uppercase; margin-left: 8px;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--line); }
+
+  /* ── カテゴリ2段組 ── */
+  .paper-columns {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px;
+    align-items: start;
+  }
+  .page-full { grid-column: 1 / -1; }
+
+  /* ── 記事 ── */
+  .articles-list { display: flex; flex-direction: column; gap: 20px; }
+  .article {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .article:last-child { border-bottom: none; padding-bottom: 0; }
+  .article-headline {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 17px; font-weight: 800; line-height: 1.45;
+    margin-bottom: 6px; letter-spacing: 0.02em;
+  }
+  .article-body {
+    font-size: 13px; line-height: 1.85;
+    color: var(--ink-sub); text-align: justify;
+  }
+  .article-body p { margin-bottom: 4px; text-indent: 1em; }
+  .article-source {
+    font-size: 10px; color: var(--ink-mute); margin-top: 5px;
+    font-style: italic;
+  }
+  .article-koike {
+    margin-top: 8px; padding: 8px 12px;
+    border-left: 3px solid var(--red); background: var(--red-light);
+    font-size: 11px; color: var(--ink-sub); line-height: 1.6;
+  }
+  .article-koike::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em; color: var(--red);
+  }
+
+  /* ── 人物クローズアップ ── */
+  .person-box {
+    border: 2px solid var(--line-strong);
+    margin-bottom: 32px; display: grid; grid-template-columns: 200px 1fr;
+  }
+  .person-sidebar {
+    background: var(--ink); color: #fff;
+    padding: 24px 20px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .person-label {
+    font-size: 8px; letter-spacing: 0.5em; color: rgba(255,255,255,0.5);
+    margin-bottom: 40px; text-transform: uppercase;
+  }
+  .person-name {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 6px;
+  }
+  .person-role { font-size: 10px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; line-height: 1.5; }
+  .person-main { padding: 24px 28px; }
+  .person-quote {
+    font-size: 20px; font-style: italic; font-weight: 700;
+    line-height: 1.5; color: var(--red);
+    border-left: 4px solid var(--red); padding-left: 16px; margin-bottom: 16px;
+  }
+  .person-body { font-size: 13px; line-height: 1.85; color: var(--ink-sub); }
+  .person-koike {
+    margin-top: 14px; padding: 10px 14px;
+    background: var(--red-light); border-left: 3px solid var(--red);
+    font-size: 11px; color: var(--ink-sub); line-height: 1.6;
+  }
+  .person-koike::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em; color: var(--red);
+    display: block; margin-bottom: 4px;
+  }
+
+  /* ── カレンダー ── */
+  .calendar-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 32px;
+  }
+  .calendar-item {
+    padding: 14px 16px; background: var(--bg-alt);
+    border-top: 3px solid var(--red);
+  }
+  .calendar-date { font-size: 10px; font-weight: 700; color: var(--red); margin-bottom: 4px; letter-spacing: 0.1em; }
+  .calendar-event {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 6px;
+  }
+  .calendar-take { font-size: 11px; color: var(--ink-mute); line-height: 1.5; }
+
+  /* ── 編集後記 ── */
+  .postscript {
+    border-top: 3px double var(--line-strong);
+    padding-top: 20px; margin-top: 32px;
+  }
+  .postscript-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); margin-bottom: 10px; text-transform: uppercase;
+  }
+  .postscript-body { font-size: 13px; line-height: 1.85; text-indent: 1em; }
+
+  /* ── 用語解説 ── */
+  .glossary { margin-top: 32px; }
+  .glossary-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); margin-bottom: 10px; text-transform: uppercase;
+    border-bottom: 1px solid var(--line); padding-bottom: 6px;
+  }
+  .glossary-list { display: flex; flex-direction: column; gap: 6px; }
+  .glossary-item { font-size: 12px; line-height: 1.7; }
+  .glossary-term { font-weight: 700; color: var(--red); }
+
+  /* ── フッター ── */
+  .colophon {
+    margin-top: 32px; padding: 16px 0 0;
+    border-top: 1px solid var(--line);
+    font-size: 10px; color: var(--ink-mute);
+    display: flex; justify-content: space-between;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── レスポンシブ ── */
+  @media (max-width: 767px) {
+    .masthead-main { padding: 16px 16px 0; }
+    .masthead-sub-row { padding: 6px 16px; }
+    .masthead-top-bar { padding: 6px 16px; }
+    .wrap { padding: 0 16px 40px; }
+    .masthead-title { font-size: 42px; }
+    .masthead-date-num { font-size: 56px; }
+    .lead-inner { grid-template-columns: 1fr; gap: 24px; }
+    .lead-headline { font-size: 30px; }
+    .big-number { flex-direction: column; gap: 0; }
+    .big-number-val { font-size: 64px; padding: 20px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; }
+    .big-number-desc { padding: 16px 24px; }
+    .market-grid { grid-template-columns: repeat(3, 1fr); }
+    .paper-columns { grid-template-columns: 1fr; }
+    .ticker { flex-direction: column; }
+    .ticker-item { border-right: none; border-bottom: 1px solid var(--line); }
+    .person-box { grid-template-columns: 1fr; }
+    .person-sidebar { padding: 20px; }
+    .person-label { margin-bottom: 16px; }
+    .calendar-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── マストヘッド ── -->
+<header class="masthead">
+  <div class="masthead-top-bar">
+    <span>第 13 号 ／ FOR YUGO KOIKE</span>
+    <span>newgo-koike.github.io/newgo-timez</span>
+  </div>
+  <div class="masthead-main">
+    <div class="masthead-left">
+      <div class="masthead-label">the daily edition</div>
+      <h1 class="masthead-title">NewGo <em>Timez</em></h1>
+    </div>
+    <div class="masthead-date-block">
+      <div class="masthead-date-small">土曜日</div>
+      <div class="masthead-date-num">5/16</div>
+      <div class="masthead-date-year">2026年（令和8年）</div>
+    </div>
+  </div>
+  <div class="masthead-sub-row">
+    <span>発行: NewGo Editorial</span>
+    <span>FOR YUGO KOIKE ONLY</span>
+    <span>2026年5月16日</span>
+  </div>
+  <div class="masthead-red-line"></div>
+</header>
+
+<div class="wrap">
+
+<!-- ── ティッカー ── -->
+<div class="ticker">
+  <div class="ticker-item">
+    <div class="ticker-cat">医療政策</div>
+    <div class="ticker-title">健保法改正案が参院審議入り　OTC類似薬1100品目に患者追加負担</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">薬剤師</div>
+    <div class="ticker-title">世界初iPS製品「アムシェプリ」5,530万円で薬価収載　5/20付</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">AI・テック</div>
+    <div class="ticker-title">Anthropicの職場AI採用率がOpenAIを初めて上回る　34.4%対32.3%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">国際</div>
+    <div class="ticker-title">ロシアがウクライナに大規模ドローン攻撃　24人死亡</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">長野</div>
+    <div class="ticker-title">塩尻市で成獣クマ目撃　伊那地域は5月に30度超の真夏日</div>
+  </div>
+</div>
+
+<!-- ── マーケット ── -->
+<div class="market">
+  <div class="market-grid">
+    <div class="market-cell">
+      <div class="market-label">日経平均</div>
+      <div class="market-val down">61,409円</div>
+      <div class="market-change down">▼1,304（-2.08%）</div>
+      <div class="market-note">週末に半導体株が軟調で続落。東エレクなど大型株が軒並み売られた。</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">ドル円</div>
+      <div class="market-val down">158.38円</div>
+      <div class="market-change down">▼円安進行</div>
+      <div class="market-note">実需ドル買いと米利下げ先送り観測が重なり円安が加速。一時158.58円まで上伸。</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">NYダウ</div>
+      <div class="market-val up">50,063ドル</div>
+      <div class="market-change up">▲370（+0.75%）</div>
+      <div class="market-note">3カ月ぶりに5万ドル台を回復。シスコ13%高、エヌビディア4%高と急騰。</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">WTI原油</div>
+      <div class="market-val up">$103.50</div>
+      <div class="market-change up">▲$0.80（+0.8%）</div>
+      <div class="market-note">中東エネルギー情勢の不透明感が払拭されず100ドル台前半で推移。</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">金（GOLD）</div>
+      <div class="market-val up">$3,248台</div>
+      <div class="market-change up">▲地政学リスク</div>
+      <div class="market-note">ウクライナへの大規模ドローン攻撃で地政学リスクが高まり国内金価格も高止まり。</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">日米金利差</div>
+      <div class="market-val">1.75%</div>
+      <div class="market-change">米4.30% ／ 日2.55%</div>
+      <div class="market-note">日本10年国債利回りは2.55%と29年ぶり高水準。日銀追加利上げ判断が焦点。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 一面トップ ── -->
+<section class="lead">
+  <div class="lead-inner">
+    <div>
+      <div class="lead-kicker">本日のトップ ― 医療政策</div>
+      <h2 class="lead-headline">健保法改正案が参院審議入り　OTC類似薬1100品目に患者追加負担</h2>
+      <div class="lead-body">
+        <p>参議院本会議は15日、OTC類似薬約1100品目に患者の追加自己負担を求める健康保険法等改正案の実質審議に入った。市販品と同等の効果を持つ湿布・保湿剤・胃腸薬などを「部分的な自費診療」として扱い、薬剤費の約25%を別途患者が負担させる仕組みだ。衆院を通過した同案は2027年3月の施行を目指しており、約77有効成分・1100品目が対象となる。</p>
+        <p>財政制度等審議会は公的保険の持続可能性からこの改革を評価する一方、医師・薬剤師・患者団体は「投薬控えや通院離れを招く」と強く反発している。東京都薬剤師会の高橋正之会長は財政審が同時に提言した薬局集約案に対しても「非常に残念」と公然と不快感を示した。</p>
+        <p>改正案が成立すれば日本の薬局経営は岐路を迎える。OTC類似薬の売上比率が高い薬局は収益が大幅に落ち込む可能性があり、経営モデルの転換が急務となっている。かかりつけ薬剤師の定着と服薬指導の高度化による付加価値向上が業界全体の生き残り策として浮上している。</p>
+      </div>
+      <div class="lead-source">出典: 薬事日報「【参議院本会議】健保法改正案の審議開始‐OTC類似薬保険外など」</div>
+      <div class="koike-take">OTC類似薬の保険外化は調剤薬局のビジネスモデルを直撃する。PharmaEight∞では「薬局の将来像」をキャリア支援の最重要論点として扱うべき転換点だ。</div>
+    </div>
+    <div class="lead-sidebar">
+      <div class="lead-sidebar-label">EDITOR'S FOCUS</div>
+      <div class="lead-pull-quote">湿布・保湿剤・胃腸薬が「部分的な自費」へ。2027年3月施行で薬剤費の25%が追加自己負担となる見込み。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 今日の数字 ── -->
+<div class="big-number">
+  <div class="big-number-val">5,530万円</div>
+  <div class="big-number-desc">
+    <div class="big-number-caption">世界初・iPS細胞由来製品「アムシェプリ」の薬価</div>
+    <div class="big-number-body">住友ファーマのパーキンソン病治療薬「アムシェプリ」に付いた薬価は5530万6737円。先駆加算10%・市場性加算10%が適用され、5月20日付で薬価基準に収載される世界初のiPS製品だ。</div>
+    <div class="koike-take">iPS製品の薬価確定は再生医療専門薬剤師の価値を押し上げる。PharmaEight∞の「専門性でスペシャリストへ」という軸に最適な事例だ。</div>
+  </div>
+</div>
+
+<!-- ── 今朝のヘッドライン ── -->
+<div class="section-rule page-full">
+  <span class="section-name">今朝のヘッドライン</span>
+  <span class="section-name-en">HEADLINES</span>
+  <div class="section-line"></div>
+</div>
+<div class="headlines-list">
+  <div class="headline-item">
+    <div class="headline-cat">訃報</div>
+    <div class="headline-title">声優・山崎和佳奈さん61歳で逝去　コナン毛利蘭役を30年間担い続けた「優しい声」</div>
+    <div class="headline-source">ファミ通・Yahoo!ニュース</div>
+  </div>
+  <div class="headline-item">
+    <div class="headline-cat">社会</div>
+    <div class="headline-title">ハンタウイルス感染、クルーズ船3名死亡　米で41人監視対象・厚労省「国内リスク低」</div>
+    <div class="headline-source">AFP・薬事日報</div>
+  </div>
+  <div class="headline-item">
+    <div class="headline-cat">スポーツ</div>
+    <div class="headline-title">大相撲夏場所7日目　上位陣が白星を重ね中盤戦へ</div>
+    <div class="headline-source">NHK</div>
+  </div>
+  <div class="headline-item">
+    <div class="headline-cat">経済</div>
+    <div class="headline-title">石油元売り、マレーシア沖で原油「積み替え」　中東リスク回避の異例ルート稼働</div>
+    <div class="headline-source">NHK</div>
+  </div>
+  <div class="headline-item">
+    <div class="headline-cat">気象</div>
+    <div class="headline-title">長野含む全国で5月なのに真夏日続出　気象庁が熱中症注意呼びかけ</div>
+    <div class="headline-source">気象庁・NBS長野放送</div>
+  </div>
+</div>
+
+<!-- ── 人物クローズアップ ── -->
+<div class="section-rule">
+  <span class="section-name">人物クローズアップ</span>
+  <span class="section-name-en">PERSON</span>
+  <div class="section-line"></div>
+</div>
+<div class="person-box">
+  <div class="person-sidebar">
+    <div class="person-label">PERSON IN FOCUS</div>
+    <div class="person-name">ウェス・ストリーティング</div>
+    <div class="person-role">英国保健相（辞任）</div>
+  </div>
+  <div class="person-main">
+    <div class="person-quote">「スターマー首相への信頼が失われた。ビジョンが必要とされるところに空白が生じている」</div>
+    <div class="person-body">英国の地方選大敗を受けてスターマー首相に対する退陣圧力が高まる中、保健相ストリーティング氏が14日に辞意を表明した。議員85人超が退陣署名に名を連ねており、政権基盤が大きく揺らいでいる。ストリーティング氏は次期首相候補として取り沙汰され、党首選への出馬準備とみられる。医療費・住宅問題への対応の遅さが地方選大敗の主因とされ、英国の医療政策そのものが問われている。</div>
+    <div class="person-koike">公的医療の限界という課題は万国共通。英国の政権崩壊は「自助・副収入の重要性」というFP支援の文脈で強力なエビデンスになる。</div>
+  </div>
+</div>
+
+<!-- ── カテゴリ面（2段組） ── -->
+<div class="paper-columns">
+
+  <!-- 政治・経済 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">政治・経済</span>
+      <span class="section-name-en">POLITICS &amp; ECONOMY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">日経平均 週末61,409円で引け　半導体安が重荷・週間で1,304円下落</h4>
+        <div class="article-body">
+          <p>5月15日（金）の東京株式市場は半導体関連を中心に売りが広がり、日経平均株価は前週末比1,304円安の61,409円で週末を迎えた。</p>
+          <p>米中の貿易協議進展への期待感が一服し、国内機関投資家のポジション調整が加速した。東エレク・アドバンテストなど半導体製造装置株が特に軟調で、指数を大きく押し下げた。一方で米国市場ではシスコシステムズやエヌビディアが上昇し、NYダウが50,000ドル台を3カ月ぶりに回復。日米間の方向感の乖離が投資家の不安材料となっている。</p>
+        </div>
+        <p class="article-source">出典: 株探ニュース（2026年5月15日）</p>
+        <div class="article-koike">株価下落でもAI・米国銘柄は堅調。NISAや株式相談の需要が高まるタイミングで、FP相談のフックとして活用できる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">石油元売り マレーシア沖で原油積み替え　中東依存リスク回避の新ルート</h4>
+        <div class="article-body">
+          <p>中東情勢の緊迫を受け、日本の石油元売り大手がマレーシア沖・インド沖で外国船から日本船に原油を積み替える「洋上積み替え」を本格展開していることが判明した。</p>
+          <p>ホルムズ海峡を経由しない安全な調達ルートの確保が狙いで、政府も容認している。ただし輸送コストの増加は短期的に不可避で、家庭向けガス・電気料金への波及も予想される。エネルギー安保の多角化という観点では評価できる取り組みだが、消費者・企業のコスト増大というトレードオフも存在する。</p>
+        </div>
+        <p class="article-source">出典: NHKニュース</p>
+        <div class="article-koike">エネルギー費上昇はすべての中小事業者に直撃する。はなひらく・チャレンジャー企業の経費増を念頭に光熱費削減策を検討したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">中医協、GLP-1薬「マンジャロ」25%薬価引き下げを承認</h4>
+        <div class="article-body">
+          <p>中央社会保険医療協議会（中医協）は15日の総会で、糖尿病・肥満症治療薬「マンジャロ」（チルゼパチド）について特例価格調整を適用し薬価を25%引き下げることを決定した。</p>
+          <p>マンジャロは急速な普及で市場予測を大幅に超えており、改定年度外の特例的引き下げが適用される珍しいケースとなった。GLP-1薬は肥満症治療として日本でも急拡大中で、薬局は処方増と単価引き下げの両面への対応が急務だ。高額薬剤の市場浸透による特例調整ルール適用は今後も増える見通しで、薬局経営の収益計画に不確実性を与えている。</p>
+        </div>
+        <p class="article-source">出典: 薬事日報「【中医協総会】マンジャロ25%引き下げ」</p>
+        <div class="article-koike">GLP-1薬の急伸は薬剤師の専門性を再定義しつつある。PharmaEight∞で「生活習慣病領域の専門薬剤師」セミナーは高い需要が期待できる。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 世界の動き -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">世界の動き</span>
+      <span class="section-name-en">WORLD</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">ロシアがウクライナに大規模ドローン攻撃　集合住宅崩壊・24人死亡</h4>
+        <div class="article-body">
+          <p>ロシア軍は15日、ウクライナ各地に大規模ドローン攻撃を実施。キーウをはじめ複数都市の集合住宅が直撃を受け、少なくとも24人が死亡した。</p>
+          <p>今回の攻撃は9〜11日の停戦期間後で最大規模となり、800機超のドローンが波状投入された。民間インフラへの攻撃が続き、停戦交渉の先行きに深刻な影を落としている。ドイツのメルツ首相はこの日、ロシア領内への長距離攻撃を容認する方針を示し、欧米の対応が強硬化する兆候が表れた。</p>
+        </div>
+        <p class="article-source">出典: 時事通信（2026年5月15日）</p>
+        <div class="article-koike">ウクライナ情勢の悪化は資源・食料価格を通じて国内インフレに影響する。FP相談でリスク分散の重要性を改めて訴えていきたい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">英ストリーティング保健相が辞任　スターマー政権に退陣圧力・次期首相候補に浮上</h4>
+        <div class="article-body">
+          <p>英国のストリーティング保健相が14日、「スターマー首相への信頼が失われた」として辞意を表明。地方選大敗後、議員85人超が退陣を求める中での閣僚離脱は政権の大きな打撃となった。</p>
+          <p>統一地方選での労働党大敗の主因は住宅不足・医療費問題への対応の遅さとされる。ストリーティング氏は次期首相候補として取り沙汰されており、党首選への出馬準備とみられている。英国の国民保険サービス（NHS）改革の遅れが政権崩壊の導火線となっており、公的医療制度の限界を改めて浮き彫りにした。</p>
+        </div>
+        <p class="article-source">出典: 時事通信AFP（2026年5月15日）</p>
+        <div class="article-koike">公的医療の限界は万国共通の課題。英国の政権崩壊を「自助・副収入の重要性」というFP支援の文脈で活用できる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">ハンタウイルス（アンデス株）クルーズ船集団感染で3名死亡　米で41人監視対象</h4>
+        <div class="article-body">
+          <p>南大西洋を航行中の豪華客船でハンタウイルスのアンデス株による集団感染が発生し、乗客・乗員7名が感染・3名が死亡した。米国でも41人が監視対象に入っている。</p>
+          <p>アンデス株はハンタウイルスの中で唯一「人から人へ」感染する特性を持つ。今回の発生源は客船内のげっ歯類との接触が疑われている。上野厚労相は国内への直接的影響は「直ちに大きくはない」と述べつつ、水際対策と情報収集を継続する方針を表明した。</p>
+        </div>
+        <p class="article-source">出典: AFP・薬事日報（2026年5月15日）</p>
+        <div class="article-koike">感染症への公衆衛生対応は薬剤師の職能発揮の場。はなひらくでも施設利用者向けの感染対策情報共有を徹底したい。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- AI・テック -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">AI・テック</span>
+      <span class="section-name-en">AI &amp; TECHNOLOGY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">Anthropic、職場AI採用率でOpenAIを初めて上回る　34.4%対32.3%</h4>
+        <div class="article-body">
+          <p>Rampが発表した2026年5月のAI利用動向レポートで、Anthropicの職場AI採用率が34.4%となり、OpenAIの32.3%を初めて上回ったことが明らかになった。</p>
+          <p>コーディング・文書作成での活用が広がるClaude（Anthropic）が企業利用シェアでChatGPT（OpenAI）を逆転したのは初めて。使いやすさと安全性を重視する企業ニーズと合致した結果とされる。Anthropicはあわせて「Claude Security」のpublic betaを発表。コードリポジトリの脆弱性スキャンと修正提案を自動化するツールで、Claude Enterpriseユーザーへの提供が開始された。</p>
+        </div>
+        <p class="article-source">出典: Ramp AI Index 2026年5月号</p>
+        <div class="article-koike">AnthropicがシェアでOpenAIを逆転は自分も使うClaude Codeの信頼性を裏付ける。業務効率化サービスの売り込みトークに使える事例だ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">OpenAI、GPT-5.5シリーズ公開　医療分野で幻覚率52.5%減・サイバー特化版も</h4>
+        <div class="article-body">
+          <p>OpenAIがGPT-5.5シリーズを公開した。ChatGPTのデフォルトには「Instant版」が採用され、医療分野での幻覚（ハルシネーション）率が52.5%減少したとしている。</p>
+          <p>サイバーセキュリティ特化の「GPT-5.5-Cyber」も同時リリースされ、政府・企業向けセキュリティ部門への提供が始まった。3種の新リアルタイム音声モデルも発表され、AI音声の自然さが大幅に向上した。医療特化性能の向上はPharmaEight∞が提供する薬剤師向けAI活用セミナーの重要事例となりうる。</p>
+        </div>
+        <p class="article-source">出典: OpenAI・CSDN AIニュース（2026年5月）</p>
+        <div class="article-koike">医療分野で幻覚率が下がったGPT-5.5は薬剤師業務の補助ツールとして実用レベルへ。PharmaEight∞セミナーの即活用ネタだ。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- スタートアップ -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">スタートアップ</span>
+      <span class="section-name-en">STARTUPS</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">ヘンリー、シリーズCで30億円調達　生成AIで病院経営を効率化・累計57億円</h4>
+        <div class="article-body">
+          <p>病院向けクラウド型電子カルテ「Henry」を開発するヘンリーがシリーズCラウンドで30億円を調達した。累計調達額は約57億円に達する。</p>
+          <p>Angel Bridge・グロービス・ゆうちょアセットが共同リードインベスター。調達資金は中規模・包括期病院への対応強化と生成AI機能の開発に充てる。200〜500床規模の中規模病院への拡大が次の焦点だ。日本の医療DX市場は政府が強力推進しており、クラウド電子カルテへの切り替えを検討する病院が急増している。</p>
+        </div>
+        <p class="article-source">出典: PRtimes・日本経済新聞（2026年5月15日）</p>
+        <div class="article-koike">病院向け電子カルテのDX化は薬剤師の業務フローを根本から変える。医療DX企業をPharmaEight∞メンバーの転職先・副業先リストに加える価値がある。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">NovAccel、12億円調達　国産放射性同位体でがん治療薬の安定供給を目指す</h4>
+        <div class="article-body">
+          <p>放射性同位体製造技術を開発するNovAccelが12億円を調達。国内供給がほぼ皆無のがん核医学治療用RIの国産体制確立を目指す。</p>
+          <p>放射性医薬品は現在ほぼ海外輸入に依存しており、供給途絶リスクが医療現場の懸案となっている。NovAccelは日本国内での製造体制を確立することで治療薬の安定確保を目指す。アルファ線治療薬など次世代放射性医薬品の市場は国内外で急拡大。製薬会社・医療機関との連携強化が今後の焦点となる。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞スタートアップ資金調達まとめ（5月10〜15日）</p>
+        <div class="article-koike">放射性医薬品は薬剤師の高度専門領域。PharmaEight∞でニッチ専門職のキャリアパスとして紹介できる新分野だ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">movus technologies、42.6億円調達　インドネシアでライドシェア車両1万台体制へ</h4>
+        <div class="article-body">
+          <p>インドネシアでライドシェア用自動車の法人貸し出しサービスを展開するmovus technologiesが42億6000万円を調達。2年後に車両1万台体制を目指す。</p>
+          <p>インドネシアのライドシェア市場は急拡大しているが、運転手の車両調達コストが参入障壁だった。movusは法人として車両を提供しドライバーの負担を下げる仕組みで市場拡大を支援する。日本のスタートアップが東南アジアの移動課題を解くモデルとして、グローバル展開を狙う起業家の参考事例として注目されている。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞スタートアップ資金調達まとめ（5月10〜15日）</p>
+        <div class="article-koike">インドネシア進出モデルは副業・事業多角化を考えるチャレンジャーにとってアジアへの視野を広げるケーススタディだ。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 薬剤師関連 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">薬剤師関連</span>
+      <span class="section-name-en">PHARMACY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">世界初iPS細胞由来製品「アムシェプリ」5,530万円で薬価収載　5/20付</h4>
+        <div class="article-body">
+          <p>中医協総会は15日、住友ファーマの非自己iPS細胞由来ドパミン神経前駆細胞「アムシェプリ」（ラグネプロセル）の薬価5530万6737円を承認。5月20日付で薬価基準に収載される。</p>
+          <p>アムシェプリはパーキンソン病を対象とした世界初のiPS細胞由来再生医療等製品。先駆加算10%と市場性加算Ⅰ10%が適用され高額薬価が認められた。今後の再生医療製品薬価算定の先例となる。iPS細胞由来製品の保険適用は日本の再生医療政策の大きな節目で、薬剤師には再生医療・遺伝子治療の基礎知識習得が求められる新局面を迎えた。</p>
+        </div>
+        <p class="article-source">出典: 薬事日報「【中医協総会】iPS製品、初の薬価収載‐アムシェプリは5530万円」</p>
+        <div class="article-koike">iPS製品の薬価確定は再生医療専門薬剤師の価値を押し上げる。PharmaEight∞の「専門性でスペシャリストへ」という軸の最適事例として即活用したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">財政審「薬局集約」提言に都薬会長「非常に残念」　業界挙げて反発</h4>
+        <div class="article-body">
+          <p>財政制度等審議会が費用対効果を根拠に薬局の集約化を提言したことに対し、東京都薬剤師会の高橋正之会長が「非常に残念」と公然と不快感を示した。</p>
+          <p>財政審意見書は薬局の乱立状態を問題視し、面的な薬局体制の最適化を誘導する方向を打ち出した。薬局業界は地域医療の担い手としての役割を強調し真っ向から反対している。OTC類似薬の保険外化とともに、薬局のビジネスモデルは複数の政策リスクに同時にさらされており、経営戦略の根本的見直しが今まさに求められている。</p>
+        </div>
+        <p class="article-source">出典: 薬事日報「財政審意見に不快感示す‐都薬 高橋会長、薬局集約は非常に残念」</p>
+        <div class="article-koike">薬局集約化が進めば薬剤師の転職・副業ニーズは一段と高まる。PharmaEight∞がその受け皿になる準備を今から整えていきたい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">中医協、不眠障害向けアプリなど医療機器7品目の保険適用を了承　デジタル療法本格始動</h4>
+        <div class="article-body">
+          <p>中医協総会は不眠障害向けアプリをはじめとするデジタル療法（DTx）を含む医療機器7品目の保険適用を了承した。薬に頼らない治療法の保険収載が本格化する。</p>
+          <p>DTxは薬を使わずアプリ操作や行動療法で症状改善を図る治療法。精神科・睡眠外来を中心に急速に広まっており、保険適用により処方の加速が見込まれる。DTxの処方権は医師にあるが、患者への支援・服薬継続指導は薬剤師が担う場面が多く、新たな職能領域として薬剤師の役割拡大が期待される。</p>
+        </div>
+        <p class="article-source">出典: 薬事日報「【中医協総会】医療機器7品目の保険適用を了承‐不眠障害用アプリなど」</p>
+        <div class="article-koike">デジタル療法の普及は「薬以外」での患者支援領域を広げる。薬剤師がDTxサポーターになるキャリアはPharmaEight∞の新展開候補として検討したい。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 障がい福祉 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">障がい福祉</span>
+      <span class="section-name-en">DISABILITY WELFARE</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">外国人介護人材の資格取得を後押し　滋賀県が新規研修プログラムを開講</h4>
+        <div class="article-body">
+          <p>滋賀県は外国人介護人材が国家資格（介護福祉士）を取得できるよう支援する研修プログラムを新規に開講すると発表した。介護人材不足への新たな施策として注目される。</p>
+          <p>研修では日本語支援と介護実技を組み合わせ、技能実習・特定技能の在留資格者が資格取得を目指せる体制を整備する。県内介護施設の深刻な人手不足に応え、全国の先行モデルとなることが期待される。厚生労働省も外国人介護人材の活躍推進を政策として明示しており、受け入れ施設への補助も拡充される方向で調整が進んでいる。</p>
+        </div>
+        <p class="article-source">出典: 福祉新聞「外国人介護人材の資格取得後押し　滋賀県が新たに研修開講」</p>
+        <div class="article-koike">外国人介護人材の増加ははなひらくの採用戦略に直結する。特定技能制度を活用した採用検討を今のうちに加速させるべき時期だ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">デジタル療法（DTx）が保険適用へ　障害福祉・精神科領域にも普及の波</h4>
+        <div class="article-body">
+          <p>不眠障害向けアプリなどデジタル療法7品目が保険適用に向けて承認され、精神科・障害福祉領域への普及が本格化する。</p>
+          <p>DTxは向精神薬への依存を減らしアプリで行動変容・症状管理を図る新しいアプローチ。障害福祉施設での日中活動や就労支援との連携活用も検討が始まっている。就労継続支援B型などの施設では、利用者のメンタルヘルス管理にDTxを取り入れることで支援の質向上が期待される。支援員への研修ニーズも生まれる見通しだ。</p>
+        </div>
+        <p class="article-source">出典: 薬事日報「【中医協総会】医療機器7品目の保険適用を了承」</p>
+        <div class="article-koike">DTxが障害福祉施設に入ってくれば、はなひらくの利用者支援の選択肢が広がる。制度理解のための勉強会を早めに企画したい。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- エンタメ -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">エンタメ</span>
+      <span class="section-name-en">ENTERTAINMENT</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">ウルトラマン「笑点」に60周年特別出演決定　SNSで「見たい」の声殺到</h4>
+        <div class="article-body">
+          <p>放送60周年を迎えたウルトラマンが日本テレビ「笑点」の特別企画に出演することが決定した。同じ60年代スタートのレジェンドコンテンツ同士のコラボにSNSが沸いている。</p>
+          <p>笑点も同じく60周年を迎えており、「日本長寿コンテンツ60周年対決」として企画された。ウルトラマンシリーズは映画・配信で若年層への再ブームを見せており、笑点を通じた世代を超えたリーチが狙いだ。「怪獣も笑点大喜利に参加？」などXに投稿が溢れ、老若男女のテレビファンの期待感が高まっている。</p>
+        </div>
+        <p class="article-source">出典: ライブドアニュース（5/16更新）</p>
+        <div class="article-koike">60年続くコンテンツの価値は圧倒的。長期視点でブランドを育てる意義をPersonal OSや事業継続の文脈で伝えたい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">松村沙友理、3月出産後初イベント　アパレルブランド4周年を祝う</h4>
+        <div class="article-body">
+          <p>元乃木坂46の松村沙友理さんが3月に長女を出産後、初めて公の場に登場。自身のアパレルブランド4周年記念イベントに出席し、育児と仕事の両立について語った。</p>
+          <p>産後2カ月での復帰に「無理せず自分のペースで続けていく」とコメントした松村さん。彼女が手がけるブランドは20代女性に支持されており、今後の展開が注目される。芸能活動と起業・経営を両立するロールモデルとして、同世代への影響力も大きい。</p>
+        </div>
+        <p class="article-source">出典: ライブドアニュース（5/16更新）</p>
+        <div class="article-koike">育児と事業を両立するロールモデルはFP支援・Personal OSの文脈で共感を呼ぶ。ライフプラン全体を支える視点の好事例だ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">日向坂46 正源司陽子、自身の名字のルーツを探る番組企画が放送へ</h4>
+        <div class="article-body">
+          <p>日向坂46の正源司陽子さんが自身の珍しい名字「正源司」のルーツを探るバラエティ番組企画への出演が決定。全国的にも希少な名字として注目が集まっている。</p>
+          <p>「正源司」は全国的にも珍しい苗字で、沖縄・九州にルーツを持つとされる。正源司さんの親しみやすいキャラクターとルーツ探しの組み合わせで、ファンからの期待も高い。アイドルグループのメンバーが自身のアイデンティティを掘り下げる企画は近年増加傾向で、視聴者との共感を生む新しいコンテンツ形式として定着しつつある。</p>
+        </div>
+        <p class="article-source">出典: ライブドアニュース（5/16更新）</p>
+        <div class="article-koike">自分のルーツを探る企画はself-discovery系コンテンツとしてPersonal OSの「自己理解フェーズ」との親和性が高い。コンテンツ発想の参考にしたい。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 長野県 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">長野県</span>
+      <span class="section-name-en">NAGANO LOCAL</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">塩尻市で成獣クマ目撃　体長1.5m・警察が住民に注意呼びかけ</h4>
+        <div class="article-body">
+          <p>長野県塩尻市で5月15日夕方、猟友会員が体長約1.5mの成獣クマ1頭を目撃した。警察が周辺住民に注意を呼びかけている。</p>
+          <p>クマの活動が活発化する5〜6月に入り、長野県内では今シーズン初の成獣クマ目撃が相次いでいる。塩尻市の目撃場所は住宅地に隣接した里山地域で、朝夕の単独行動を控えるよう注意喚起が出た。昨年は県内で記録的なクマ出没・被害が続いており、市は住民への周知と合わせ捕獲檻の設置も検討している。</p>
+        </div>
+        <p class="article-source">出典: NBS長野放送（2026年5月15日）</p>
+        <div class="article-koike">はなひらくスタッフへのクマ遭遇リスク周知も大切。施設周辺の安全確認とスタッフへの情報共有を徹底したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">伊那地域で5月16日に30度超の真夏日　農業・高齢者施設への影響を懸念</h4>
+        <div class="article-body">
+          <p>長野県伊那地域で5月16日（土）に最高気温30度超の真夏日が予測されており、長野地方気象台が熱中症への注意を呼びかけている。</p>
+          <p>前日15日も26.8度と7月上旬並みを記録しており、5月中旬にしては異例の高温が続いている。農業では高温による早期着色・品質劣化が懸念され、りんご・桃農家が対策を急いでいる。福祉施設や高齢者宅では早急なエアコン試運転と水分補給の徹底が呼びかけられており、塩尻・松本・伊那各市では熱中症予防の広報活動も始まっている。</p>
+        </div>
+        <p class="article-source">出典: NBS長野放送・気象庁（2026年5月16日）</p>
+        <div class="article-koike">はなひらくの施設利用者は熱中症ハイリスク。5月でも30度超なら夏対策を前倒しで実施。スタッフへの水分補給・室温管理の指示を今すぐ出したい。</div>
+      </article>
+    </div>
+  </div>
+
+</div><!-- /paper-columns -->
+
+<!-- ── 今週のカレンダー ── -->
+<div class="section-rule page-full">
+  <span class="section-name">今週のカレンダー</span>
+  <span class="section-name-en">THIS WEEK</span>
+  <div class="section-line"></div>
+</div>
+<div class="calendar-grid">
+  <div class="calendar-item">
+    <div class="calendar-date">5/16（土）</div>
+    <div class="calendar-event">長野・全国で真夏日予報・熱中症注意</div>
+    <div class="calendar-take">はなひらく施設のエアコン試運転と水分補給指導を今日中に徹底</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">5/20（水）</div>
+    <div class="calendar-event">新薬価基準収載（アムシェプリ等3成分3品目）</div>
+    <div class="calendar-take">世界初iPS製品が正式収載。薬剤師・医療スタッフへの情報共有を</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">5/21（木）頃</div>
+    <div class="calendar-event">大相撲夏場所 中日（8日目）</div>
+    <div class="calendar-take">はなひらく利用者との会話のきっかけに。取組結果は毎日チェックを</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">5/22（金）頃</div>
+    <div class="calendar-event">健保法改正案 参院委員会 審議継続</div>
+    <div class="calendar-take">OTC類似薬保険外化の動向を注視。薬局経営への影響を早めに整理</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">5/25（月）</div>
+    <div class="calendar-event">五十日（ゴトー日）・為替・金融注意</div>
+    <div class="calendar-take">ドル円が158円台で推移中。FP相談での為替リスク説明に活用</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">6/14（日）〜</div>
+    <div class="calendar-event">FIFA W杯2026 北中米大会開幕</div>
+    <div class="calendar-take">日本代表26名が発表済み。W杯期間中の相談スケジュール調整を早めに</div>
+  </div>
+</div>
+
+<!-- ── 編集後記 ── -->
+<div class="postscript">
+  <div class="postscript-label">EDITORIAL NOTE ／ 編集後記</div>
+  <div class="postscript-body">世界初のiPS製品が5530万円で薬価収載され、OTC類似薬の保険外化が参院で動き出した。薬局業界には複数の嵐が同時に迫っている。一方で山崎和佳奈さんの訃報は、30年間ひとつの役を演じ続けることの重みと美しさを静かに教えてくれた。継続が信頼を生む——その言葉を胸に、今週も一歩ずつ前に進みたい。</div>
+</div>
+
+<!-- ── 用語解説 ── -->
+<div class="glossary">
+  <div class="glossary-label">GLOSSARY ／ 用語解説</div>
+  <div class="glossary-list">
+    <div class="glossary-item"><span class="glossary-term">OTC類似薬: </span>ドラッグストアなどで市販されている一般用医薬品（OTC）と同等の効果・成分を持ち、現在も保険処方されている薬のこと。湿布・保湿剤・胃腸薬などが含まれ、今回の改正案で患者が追加自己負担を求められる対象となる</div>
+    <div class="glossary-item"><span class="glossary-term">iPS細胞: </span>体細胞を初期化して作られた万能細胞（人工多能性幹細胞）。様々な細胞・組織に分化できるため再生医療に活用され、今回パーキンソン病治療薬として世界初の薬価収載が実現した</div>
+    <div class="glossary-item"><span class="glossary-term">中医協（中央社会保険医療協議会）: </span>薬価や診療報酬を審議する厚生労働大臣の諮問機関。医師・患者・保険者（健保組合等）の代表が参加し、医療保険制度の価格決定に大きな影響力を持つ</div>
+    <div class="glossary-item"><span class="glossary-term">先駆加算: </span>画期的な医薬品・医療機器に適用される薬価上乗せ制度。希少疾病・世界初の製品を対象に最大10%の割増薬価が認められる。アムシェプリはこの加算が適用された</div>
+    <div class="glossary-item"><span class="glossary-term">GLP-1薬: </span>腸から分泌されるホルモン「GLP-1」の働きを模倣し、インスリン分泌促進・食欲抑制効果を持つ薬剤。糖尿病・肥満症治療として普及が急拡大しており、マンジャロ（チルゼパチド）はその代表格</div>
+    <div class="glossary-item"><span class="glossary-term">DTx（デジタル療法／デジタルセラピューティクス）: </span>スマートフォンアプリ等を使って疾患の治療や管理を行う医療機器ソフトウェア。薬を使わず行動変容・症状管理を行う新しい治療法で、医師が処方する。不眠障害用アプリが今回保険適用へ</div>
+    <div class="glossary-item"><span class="glossary-term">ハンタウイルス（アンデス株）: </span>げっ歯類（ネズミ等）が保有するウイルスで、通常は動物から人のみへの感染。アンデス株は唯一「人から人へ」も感染する特性を持ち、南米を中心に散発的に発生している</div>
+    <div class="glossary-item"><span class="glossary-term">シリーズC: </span>スタートアップが事業拡大フェーズで実施する大型の資金調達ラウンド。初期（シードA/B）の実績をもとに、さらなる成長投資のために大規模な資金を集める段階</div>
+    <div class="glossary-item"><span class="glossary-term">放射性同位体（RI）: </span>不安定な原子核が放射線を放出しながら崩壊する元素の種類。医療用RIはがんの核医学診断・治療（アルファ線療法等）に使われるが、日本はほぼ海外輸入に依存しており供給安定化が課題</div>
+    <div class="glossary-item"><span class="glossary-term">特例価格調整: </span>医薬品の市場での実売量が薬価算定時の予測を大幅に超えた場合、次の改定年度を待たず特例的に薬価を引き下げる制度。GLP-1薬マンジャロが今回適用を受けた</div>
+    <div class="glossary-item"><span class="glossary-term">洋上積み替え: </span>公海上で船から船へ荷物を積み替えること。今回は中東のホルムズ海峡通過を避けるため、日本の石油元売りがマレーシア沖・インド沖で原油をタンカー間で移し替える形で活用されている</div>
+  </div>
+</div>
+
+<!-- ── フッター ── -->
+<footer class="colophon">
+  <span>NewGo Timez 第 13 号</span>
+  <span>2026-05-16</span>
+  <span>編集発行 NewGo Editorial</span>
+</footer>
+
+</div><!-- /wrap -->
+</body>
+</html>
