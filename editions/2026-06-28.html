@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewGo Timez ― 2026年6月28日</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Shippori+Mincho+B1:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdf8f2;
+    --bg-alt: #f5ede0;
+    --ink: #1a1208;
+    --ink-sub: #4a3c28;
+    --ink-mute: #9a8a72;
+    --red: #8b1a1a;
+    --red-light: #f5e8e0;
+    --line: #ddd0be;
+    --line-strong: #1a1208;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.85;
+    font-size: 14px;
+  }
+
+  /* ── マストヘッド ── */
+  .masthead { border-bottom: 3px double var(--line-strong); }
+  .masthead-top-bar {
+    background: var(--red);
+    padding: 6px 36px;
+    font-size: 10px; color: rgba(255,255,255,0.7); letter-spacing: 0.2em;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .masthead-top-bar strong { color: #fff; }
+  .masthead-main {
+    max-width: 1080px; margin: 0 auto; padding: 24px 36px 0;
+    display: flex; align-items: flex-end; justify-content: space-between;
+  }
+  .masthead-label {
+    font-size: 10px; letter-spacing: 0.5em; color: var(--red);
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .masthead-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 80px; line-height: 0.95;
+    letter-spacing: -0.02em; color: var(--ink);
+  }
+  .masthead-title em { font-style: italic; color: var(--red); }
+  .masthead-date-block { text-align: right; padding-bottom: 8px; }
+  .masthead-date-small {
+    font-size: 11px; color: var(--ink-mute); letter-spacing: 0.15em;
+    margin-bottom: 2px; text-align: right;
+  }
+  .masthead-date-num {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 72px; line-height: 1;
+    color: var(--ink); letter-spacing: -0.03em;
+  }
+  .masthead-date-year {
+    font-size: 11px; color: var(--ink-mute); letter-spacing: 0.15em; text-align: right;
+  }
+  .masthead-sub-row {
+    max-width: 1080px; margin: 0 auto;
+    padding: 6px 36px; display: flex; justify-content: space-between;
+    font-size: 10px; color: var(--ink-mute); letter-spacing: 0.12em;
+    border-top: 1px solid var(--line); margin-top: 8px;
+  }
+  .masthead-red-line { height: 5px; background: var(--red); }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 36px 48px; }
+
+  /* ── ティッカー ── */
+  .ticker {
+    display: flex; gap: 0;
+    background: var(--bg-alt);
+    border-bottom: 2px solid var(--red);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .ticker-item {
+    flex: 1; padding: 10px 18px;
+    border-right: 1px solid var(--line);
+    min-width: 0;
+  }
+  .ticker-item:last-child { border-right: none; }
+  .ticker-cat {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); text-transform: uppercase; margin-bottom: 3px;
+  }
+  .ticker-title {
+    font-size: 11px; font-weight: 700; color: var(--ink); line-height: 1.4;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  /* ── マーケット ── */
+  .market { margin-bottom: 28px; }
+  .market-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 0;
+    border: 1px solid var(--line);
+  }
+  .market-cell { padding: 12px 14px; border-right: 1px solid var(--line); }
+  .market-cell:last-child { border-right: none; }
+  .market-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.25em;
+    color: var(--ink-mute); margin-bottom: 6px; text-transform: uppercase;
+  }
+  .market-val { font-size: 17px; font-weight: 800; line-height: 1.2; }
+  .market-change { font-size: 10px; color: var(--ink-mute); margin-top: 3px; }
+  .up { color: #2d6a4f; }
+  .down { color: var(--red); }
+
+  /* ── 一面トップ ── */
+  .lead {
+    border-top: 4px solid var(--red);
+    padding: 28px 0;
+    margin-bottom: 8px;
+  }
+  .lead-inner { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; }
+  .lead-kicker {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .lead-headline {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 44px; font-weight: 800; line-height: 1.2;
+    letter-spacing: 0.01em; margin-bottom: 16px;
+    border-bottom: 2px solid var(--line); padding-bottom: 16px;
+  }
+  .lead-body {
+    font-size: 14px; line-height: 1.95; text-align: justify;
+  }
+  .lead-body p { margin-bottom: 10px; text-indent: 1em; }
+  .lead-source { font-size: 10px; color: var(--ink-mute); font-style: italic; margin-top: 10px; }
+  .lead-sidebar {}
+  .lead-sidebar-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.4em; color: var(--red);
+    text-transform: uppercase; border-bottom: 1px solid var(--red); padding-bottom: 6px; margin-bottom: 12px;
+  }
+  .lead-pull-quote {
+    font-size: 20px; font-style: italic; font-weight: 700;
+    line-height: 1.5; color: var(--red); margin-bottom: 16px;
+  }
+
+  /* ── 小池目線 ── */
+  .koike-take {
+    padding: 12px 14px; background: var(--red-light);
+    border-left: 4px solid var(--red);
+    font-size: 11px; line-height: 1.7; color: var(--ink-sub);
+    margin-top: 8px;
+  }
+  .koike-take::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em;
+    color: var(--red); display: block; margin-bottom: 4px;
+  }
+
+  /* ── 今日の数字 ── */
+  .big-number {
+    background: var(--red); color: #fff;
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 32px;
+  }
+  .big-number-val {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 100px; line-height: 1;
+    white-space: nowrap; letter-spacing: -0.04em;
+    flex-shrink: 0; padding: 28px 36px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .big-number-desc { flex: 1; padding: 24px 32px; }
+  .big-number-caption {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6); margin-bottom: 8px;
+  }
+  .big-number-body { font-size: 15px; line-height: 1.8; }
+  .big-number .koike-take {
+    background: rgba(255,255,255,0.15); border-left-color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.85); margin-top: 12px;
+  }
+  .big-number .koike-take::before { color: rgba(255,255,255,0.6); }
+
+  /* ── ヘッドライン一覧 ── */
+  .headlines-list { margin-bottom: 28px; }
+  .headline-item {
+    display: flex; gap: 16px; align-items: baseline;
+    padding: 9px 0; border-bottom: 1px solid var(--line);
+  }
+  .headline-item:first-child { border-top: 1px solid var(--line); }
+  .headline-cat {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.2em;
+    color: var(--red); white-space: nowrap; min-width: 42px;
+  }
+  .headline-title {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 14px; font-weight: 700; flex: 1; line-height: 1.6;
+  }
+  .headline-source { font-size: 10px; color: var(--ink-mute); white-space: nowrap; }
+
+  /* ── セクション区切り ── */
+  .section-rule {
+    display: flex; align-items: center; gap: 12px;
+    margin: 28px 0 14px;
+  }
+  .section-rule::before {
+    content: ""; flex: 0 0 3px; width: 3px; height: 18px;
+    background: var(--red);
+  }
+  .section-name {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 16px; font-weight: 800; letter-spacing: 0.1em;
+  }
+  .section-name-en {
+    font-family: "Playfair Display", serif;
+    font-size: 10px; color: var(--ink-mute); letter-spacing: 0.3em;
+    text-transform: uppercase; margin-left: 8px;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--line); }
+
+  /* ── カテゴリ2段組 ── */
+  .paper-columns {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px;
+    align-items: start;
+  }
+  .page-full { grid-column: 1 / -1; }
+
+  /* ── 記事 ── */
+  .articles-list { display: flex; flex-direction: column; gap: 20px; }
+  .article {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .article:last-child { border-bottom: none; padding-bottom: 0; }
+  .article-headline {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 17px; font-weight: 800; line-height: 1.45;
+    margin-bottom: 6px; letter-spacing: 0.02em;
+  }
+  .article-body {
+    font-size: 13px; line-height: 1.85;
+    color: var(--ink-sub); text-align: justify;
+  }
+  .article-body p { margin-bottom: 4px; text-indent: 1em; }
+  .article-source {
+    font-size: 10px; color: var(--ink-mute); margin-top: 5px;
+    font-style: italic;
+  }
+  .article-koike {
+    margin-top: 8px; padding: 8px 12px;
+    border-left: 3px solid var(--red); background: var(--red-light);
+    font-size: 11px; color: var(--ink-sub); line-height: 1.6;
+  }
+  .article-koike::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em; color: var(--red);
+  }
+
+  /* ── 人物クローズアップ ── */
+  .person-box {
+    border: 2px solid var(--line-strong);
+    margin-bottom: 32px; display: grid; grid-template-columns: 200px 1fr;
+  }
+  .person-sidebar {
+    background: var(--ink); color: #fff;
+    padding: 24px 20px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .person-label {
+    font-size: 8px; letter-spacing: 0.5em; color: rgba(255,255,255,0.5);
+    margin-bottom: 40px; text-transform: uppercase;
+  }
+  .person-name {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 6px;
+  }
+  .person-role { font-size: 10px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; line-height: 1.5; }
+  .person-main { padding: 24px 28px; }
+  .person-quote {
+    font-size: 20px; font-style: italic; font-weight: 700;
+    line-height: 1.5; color: var(--red);
+    border-left: 4px solid var(--red); padding-left: 16px; margin-bottom: 16px;
+  }
+  .person-body { font-size: 13px; line-height: 1.85; color: var(--ink-sub); }
+  .person-koike {
+    margin-top: 14px; padding: 10px 14px;
+    background: var(--red-light); border-left: 3px solid var(--red);
+    font-size: 11px; color: var(--ink-sub); line-height: 1.6;
+  }
+  .person-koike::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em; color: var(--red);
+    display: block; margin-bottom: 4px;
+  }
+
+  /* ── カレンダー ── */
+  .calendar-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 32px;
+  }
+  .calendar-item {
+    padding: 14px 16px; background: var(--bg-alt);
+    border-top: 3px solid var(--red);
+  }
+  .calendar-date { font-size: 10px; font-weight: 700; color: var(--red); margin-bottom: 4px; letter-spacing: 0.1em; }
+  .calendar-event {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 6px;
+  }
+  .calendar-take { font-size: 11px; color: var(--ink-mute); line-height: 1.5; }
+
+  /* ── 編集後記 ── */
+  .postscript {
+    border-top: 3px double var(--line-strong);
+    padding-top: 20px; margin-top: 32px;
+  }
+  .postscript-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); margin-bottom: 10px; text-transform: uppercase;
+  }
+  .postscript-body { font-size: 13px; line-height: 1.85; text-indent: 1em; }
+
+  /* ── 用語解説 ── */
+  .glossary { margin-top: 32px; }
+  .glossary-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); margin-bottom: 10px; text-transform: uppercase;
+    border-bottom: 1px solid var(--line); padding-bottom: 6px;
+  }
+  .glossary-list { display: flex; flex-direction: column; gap: 6px; }
+  .glossary-item { font-size: 12px; line-height: 1.7; }
+  .glossary-term { font-weight: 700; color: var(--red); }
+
+  /* ── フッター ── */
+  .colophon {
+    margin-top: 32px; padding: 16px 0 0;
+    border-top: 1px solid var(--line);
+    font-size: 10px; color: var(--ink-mute);
+    display: flex; justify-content: space-between;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── レスポンシブ ── */
+  @media (max-width: 767px) {
+    .masthead-main { padding: 16px 16px 0; }
+    .masthead-sub-row { padding: 6px 16px; }
+    .masthead-top-bar { padding: 6px 16px; }
+    .wrap { padding: 0 16px 40px; }
+    .masthead-title { font-size: 42px; }
+    .masthead-date-num { font-size: 56px; }
+    .lead-inner { grid-template-columns: 1fr; gap: 24px; }
+    .lead-headline { font-size: 30px; }
+    .big-number { flex-direction: column; gap: 0; }
+    .big-number-val { font-size: 64px; padding: 20px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; }
+    .big-number-desc { padding: 16px 24px; }
+    .market-grid { grid-template-columns: repeat(3, 1fr); }
+    .paper-columns { grid-template-columns: 1fr; }
+    .ticker { flex-direction: column; }
+    .ticker-item { border-right: none; border-bottom: 1px solid var(--line); }
+    .person-box { grid-template-columns: 1fr; }
+    .person-sidebar { padding: 20px; }
+    .person-label { margin-bottom: 16px; }
+    .calendar-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── マストヘッド ── -->
+<header class="masthead">
+  <div class="masthead-top-bar">
+    <span>第 50 号 ／ FOR YUGO KOIKE</span>
+    <span>newgo-koike.github.io/newgo-timez</span>
+  </div>
+  <div class="masthead-main">
+    <div class="masthead-left">
+      <div class="masthead-label">the daily edition</div>
+      <h1 class="masthead-title">NewGo <em>Timez</em></h1>
+    </div>
+    <div class="masthead-date-block">
+      <div class="masthead-date-small">土曜日</div>
+      <div class="masthead-date-num">6/28</div>
+      <div class="masthead-date-year">2026 （令和8年）</div>
+    </div>
+  </div>
+  <div class="masthead-sub-row">
+    <span>発行: NewGo Editorial</span>
+    <span>FOR YUGO KOIKE ONLY</span>
+    <span>2026年6月28日</span>
+  </div>
+  <div class="masthead-red-line"></div>
+</header>
+
+<div class="wrap">
+
+<!-- ── ティッカー ── -->
+<div class="ticker">
+  <div class="ticker-item">
+    <div class="ticker-cat">AI・テック</div>
+    <div class="ticker-title">国産AI開発の全容判明 製造業軸に40社超が参画</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">政治・経済</div>
+    <div class="ticker-title">個人の国債保有増へ 自民が相続減税論 NISAの対象化も</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">長野</div>
+    <div class="ticker-title">長野県景況感「プラス」68% バブル期以来34年ぶり高水準</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">エンタメ</div>
+    <div class="ticker-title">audiobook.jp 登録者350万人突破 AI時代に「ヒトの声」の価値</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">世界</div>
+    <div class="ticker-title">北京高層ビルに小型機衝突 死者1人・負傷者13人</div>
+  </div>
+</div>
+
+<!-- ── マーケット ── -->
+<div class="market">
+  <div class="market-grid">
+    <div class="market-cell">
+      <div class="market-label">日経平均</div>
+      <div class="market-val down">69,360円</div>
+      <div class="market-change down">▼3,005円(-4.15%)</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">USD / JPY</div>
+      <div class="market-val down">161円73〜75銭</div>
+      <div class="market-change down">▼0.08円 円高方向</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">NY ダウ</div>
+      <div class="market-val down">51,876ドル</div>
+      <div class="market-change down">▼44.51ドル(-0.09%)</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">WTI原油</div>
+      <div class="market-val down">$70.24</div>
+      <div class="market-change down">▼$1.68(-2.33%)</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">金（GOLD）</div>
+      <div class="market-val" style="font-size:13px; color: var(--ink-mute);">データなし</div>
+      <div class="market-change">本日取得なし</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">国内長期金利</div>
+      <div class="market-val down">2.610%</div>
+      <div class="market-change down">▼0.015%</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 一面トップ ── -->
+<section class="lead">
+  <div class="lead-inner">
+    <div>
+      <div class="lead-kicker">本日のトップ ― AI・産業政策</div>
+      <h2 class="lead-headline">国産AI開発の全容判明 製造業を軸に40社超が参画 シャープ・大和ハウスも</h2>
+      <div class="lead-body">
+        <p>日本経済新聞の独自調査で、国産大規模言語モデル（LLM）の開発に取り組む国内企業が製造業を中心に40社超に上ることが判明した。シャープや大和ハウス工業といった異業種大手の参画が確認され、その全容が初めて明らかになった。</p>
+        <p>各社が自社開発・共同開発を選ぶ主な理由は「海外モデルへの機密情報依存を避けること」と「製造現場の専門用語や設計ノウハウに特化した精度の確保」だ。設計・品質管理・サプライチェーン最適化といった領域での活用を見据えた動きが活発化している。</p>
+        <p>政府も経済安全保障の観点からGPU調達支援や研究開発補助を打ち出しており、国産AI開発は産業政策の柱として定着しつつある。企業間の協調と競争が複雑に絡み合う中、日本の製造業が生成AI時代の主役に名乗りを上げた。</p>
+      </div>
+      <div class="lead-source">出典: 日本経済新聞「国産AI開発の全容判明、製造業軸に40社超 シャープ・大和ハウスも」</div>
+      <div class="koike-take">製造業へのAI導入支援はYUMEMATCHのコンサル新市場。国産LLMの普及は「AI内製化支援」という新たな切り口を生む。早めに把握しておきたい潮流。</div>
+    </div>
+    <div class="lead-sidebar">
+      <div class="lead-sidebar-label">EDITOR'S FOCUS</div>
+      <div class="lead-pull-quote">海外モデル依存から脱却し、機密データを国内で完結——日本製造業がAI覇権の主戦場に踏み出した。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 今日の数字 ── -->
+<div class="big-number">
+  <div class="big-number-val">1,000億円超</div>
+  <div class="big-number-desc">
+    <div class="big-number-caption">三菱重工がガスタービン増産に投じる日米合計投資額</div>
+    <div class="big-number-body">三菱重工業がガスタービン生産能力を日米2拠点で倍増させるため、総額1000億円超を投じる。AI・データセンター建設ラッシュによる電力需要の爆発的増加が追い風。AI時代が重工業の設備投資を塗り替えつつある。</div>
+    <div class="koike-take">AIインフラの電力需要が製造業を動かす構図。業務効率化支援をするなら電力・エネルギー産業の変化も把握すべき時代になった。</div>
+  </div>
+</div>
+
+<!-- ── 今朝のヘッドライン ── -->
+<div class="section-rule page-full">
+  <span class="section-name">今朝のヘッドライン</span>
+  <span class="section-name-en">HEADLINES</span>
+  <div class="section-line"></div>
+</div>
+<div class="headlines-list">
+  <div class="headline-item">
+    <span class="headline-cat">社会</span>
+    <span class="headline-title">「自宅でみとり」に地域格差 神奈川は高知の5.5倍 在宅医療の普及なお途上</span>
+    <span class="headline-source">日本経済新聞</span>
+  </div>
+  <div class="headline-item">
+    <span class="headline-cat">エネルギー</span>
+    <span class="headline-title">東京電力 資本提携先の選定へ 社外取締役の特別委を設置 非公開化も選択肢に</span>
+    <span class="headline-source">日本経済新聞</span>
+  </div>
+  <div class="headline-item">
+    <span class="headline-cat">通信</span>
+    <span class="headline-title">KDDIが楽天モバイルに揺さぶり 回線貸し出し協業を縮小も</span>
+    <span class="headline-source">日本経済新聞</span>
+  </div>
+  <div class="headline-item">
+    <span class="headline-cat">安全保障</span>
+    <span class="headline-title">陸上自衛隊がUSBウイルス感染を公式発表 システム影響なし 取得経路を調査中</span>
+    <span class="headline-source">日本経済新聞</span>
+  </div>
+  <div class="headline-item">
+    <span class="headline-cat">流通</span>
+    <span class="headline-title">ヨドバシカメラが6月30日に池袋へ出店 「家電の聖地」競争が激化</span>
+    <span class="headline-source">日本経済新聞</span>
+  </div>
+</div>
+
+<!-- ── 人物クローズアップ ── -->
+<div class="section-rule">
+  <span class="section-name">人物クローズアップ</span>
+  <span class="section-name-en">PERSON</span>
+  <div class="section-line"></div>
+</div>
+<div class="person-box">
+  <div class="person-sidebar">
+    <div class="person-label">PERSON IN FOCUS</div>
+    <div class="person-name">御嶽海 久司</div>
+    <div class="person-role">大相撲・元大関（長野県上松町出身）</div>
+  </div>
+  <div class="person-main">
+    <div class="person-quote">「一場所一場所、突き詰めていく」</div>
+    <div class="person-body">長野県上松町出身の元大関・御嶽海が信濃毎日新聞のインタビューで今後の相撲人生と現状を語った。大関復帰を目指す現在の心境として、目前の一番に集中する姿勢を強調し、愚直に精進を続ける決意を示した。信州初の大関として県民の期待を一身に担う御嶽海の言葉には、土俵での経験が積み重なった重みがある。</div>
+    <div class="person-koike">長野発の全国的ロールモデル。地元への愛着と愚直な積み上げを大切にする姿勢は、はなひらくや地域密着FP事業の精神と重なる。</div>
+  </div>
+</div>
+
+<!-- ── カテゴリ面（2段組） ── -->
+<div class="paper-columns">
+
+  <!-- 政治・経済 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">政治・経済</span>
+      <span class="section-name-en">POLITICS &amp; ECONOMY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">個人の国債保有増へ 自民が相続減税論 国民民主「NISAの対象に」</h4>
+        <div class="article-body">
+          <p>財政運営の安定を図るため個人の国債保有拡大に向けた政策論議が本格化している。</p>
+          <p>自民党内から国債の相続時に優遇税制を設ける案が浮上した。国民民主党はNISA口座での国債購入を可能にするよう求めており、個人マネーを財政に動員する議論が加速している。</p>
+          <p>政府は財政目標として「債務残高対GDP比の低下」を中核に置く方針を確認しており、個人投資家の参加拡大が国債の安定消化の鍵となる見通しだ。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「個人の国債保有増へ、自民に相続減税論 国民民主『NISA対象に』」</p>
+        <div class="article-koike">FP業務に直結。国債×NISAの組み合わせは顧客への新たな資産形成提案の切り口になり得る。制度化の動向を継続的に追いたい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">日本語試験の実施回数を拡充 外国人労働者の増加需要に対応</h4>
+        <div class="article-body">
+          <p>外国人労働者の受け入れ拡大に向け、政府が日本語能力試験の年間実施頻度を増やす方針を固めた。</p>
+          <p>人手不足が深刻な介護・建設・農業などの分野での外国人材活用を促進するため、日本語試験の実施回数を拡充する。在留資格取得の手続き円滑化にもつながる。</p>
+          <p>障害福祉分野でも外国人スタッフ採用を検討する法人が増えており、語学試験体制の整備は業界全体への追い風となる見込みだ。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「日本語試験の実施回数を拡充 外国人労働者が増加、需要に対応」</p>
+        <div class="article-koike">はなひらくの人材確保策として外国人スタッフ採用を検討する際の制度的な裏付けになる。FP顧客の中小企業経営者にも関係する政策動向。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">対米投資の巨額ドル調達が難路 メガバンクが政府に支援を要請</h4>
+        <div class="article-body">
+          <p>円安環境下で対米直接投資のためのドル資金調達が壁となり、3メガバンクが連携して政府支援を求めた。</p>
+          <p>三菱UFJ・三井住友・みずほの3メガバンクが対米投資向けの大規模ドル資金調達について政府に支援を要請したことが明らかになった。外貨準備の活用や政策投資銀行の関与も選択肢に挙がっている。</p>
+          <p>財務省・日本銀行との協議が続いており、官民一体での対米投資支援体制の構築が急がれている。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「対米投資、巨額のドル調達は難路 メガバンクが政府に支援要請」</p>
+        <div class="article-koike">FP目線では日米金利差と円安の長期化を前提とした資産配分の見直しが急務。顧客への外貨資産提案の根拠を補強する材料として活用できる。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 世界の動き -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">世界の動き</span>
+      <span class="section-name-en">WORLD</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">中国・北京の高層ビルに小型機が衝突 死者1人・負傷者13人と当局発表</h4>
+        <div class="article-body">
+          <p>北京市内の高層ビルに小型航空機が衝突し、中国当局が死傷者数を発表した。</p>
+          <p>中国当局の発表によると、北京の高層ビルに小型機が衝突し1人が死亡、13人が負傷した。事故の原因は調査中で、都市部上空の飛行管理体制の問題点が議論を呼んでいる。</p>
+          <p>中国ではGDP成長に伴う航空機の増加が続いており、民間航空当局による都市部上空管理の強化が長年の課題となっている。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「中国・北京の高層ビルに小型機衝突 1人死亡、13人負傷と当局発表」</p>
+        <div class="article-koike">直接的な事業影響は薄いが、中国リスクの多様化を示す事例として把握。訪日中国人客向けサービスを検討する際の背景知識に。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">「日本のUSB送れ」留学生に密命 中国軍のサイバー攻撃の影が浮かぶ</h4>
+        <div class="article-body">
+          <p>中国軍が留学生を利用してUSBウイルスを拡散させた疑いが、日経の独自調査で浮かび上がった。</p>
+          <p>日本経済新聞の調査で、中国系サイバー攻撃の手段として繰り返しUSBメモリが用いられていた実態が判明。2017年には警視庁が中国人留学生への事情聴取から中国軍との関与を示す証拠をつかんでいたとされる。</p>
+          <p>今回公表された陸上自衛隊のUSB感染事案も同じ構図で読み解ける可能性があり、政府・自衛隊のサイバー防衛態勢の抜本的な見直しが急がれる。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「『日本のUSB送れ』留学生に密命 過去のサイバー攻撃に中国軍の影」</p>
+        <div class="article-koike">業務でクラウドや外部デバイスを多用する立場として、情報セキュリティ管理を改めて点検する動機になる。Claude Codeを使う自分も対岸の火事ではない。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">「米中が世界の脱炭素を促す皮肉」 FTが両大国の競争がもたらす逆説を論じる</h4>
+        <div class="article-body">
+          <p>米国と中国のクリーンエネルギー補助金競争が、皮肉にも世界の脱炭素化を加速させているとFTが指摘した。</p>
+          <p>フィナンシャル・タイムズは論説で、米中両国が太陽光パネルや電気自動車への補助金競争を展開した結果、世界全体のコスト低下と再生可能エネルギー普及が加速しているという逆説的現象を分析した。</p>
+          <p>日本の製造業や商社にとっては低コストの中国製EV・再エネ設備という競合リスクと、調達コスト低減という機会が同時に存在する。エネルギー転換への対応が急がれる。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞／FT「米中が世界の脱炭素を促す皮肉」</p>
+        <div class="article-koike">脱炭素コスト削減の視点はYUMEMATCHのコンサルクライアントへの提案に使える。省エネ・再エネ活用を業務効率化の文脈で語れる時代。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- AI・テック -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">AI・テック</span>
+      <span class="section-name-en">AI &amp; TECHNOLOGY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">なりすましメール防御「甘い日本」 危機意識乏しく詐欺の標的になりやすい構造</h4>
+        <div class="article-body">
+          <p>送信ドメイン認証技術の普及率で日本企業が世界に大きく遅れをとっていることが明らかになった。</p>
+          <p>日本経済新聞の調査で、メールなりすましを防ぐ認証技術（DMARC等）の導入率が日本企業において著しく低く、ビジネスメール詐欺（BEC）の標的になりやすい構造が浮き彫りになった。</p>
+          <p>AI生成文書の精度向上でフィッシングメールの識別が困難になる中、技術的なメールセキュリティ対策の整備が急務とされている。経営者の危機意識の低さが最大の課題だ。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「なりすましメール防御、甘い日本 危機意識乏しく詐欺の標的に」</p>
+        <div class="article-koike">YUMEMATCHのIT支援クライアントへのセキュリティ啓蒙に即使える話題。はなひらくのメール設定（DMARC導入状況）も確認しておきたい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">米アイダホ大学が広島大学内に分校を設置 日米で半導体エンジニアを育成</h4>
+        <div class="article-body">
+          <p>日米の半導体人材育成連携が大学キャンパスレベルに拡大し、産学一体の実践教育が始まる。</p>
+          <p>米アイダホ大学が広島大学のキャンパス内に分校を設置し、半導体工学の専門教育プログラムを開始する。米国の大学が日本国内に物理的な拠点を構えるのは異例のことだ。</p>
+          <p>熊本・広島に集積する半導体製造拠点が抱える人材不足を補う狙いがあり、製造現場に直結した実践的なカリキュラムが期待される。日米の技術安保連携の象徴的な事例ともなる。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「米アイダホ大学、広島大学キャンパス内に分校 日米で半導体人材育成」</p>
+        <div class="article-koike">半導体×教育の連携はAI・テック人材育成の裾野拡大を示す。YUMEMATCHのデジタル人材育成支援事業の参考事例として把握しておきたい。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- スタートアップ -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">スタートアップ</span>
+      <span class="section-name-en">STARTUPS</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">大阪大学発スタートアップが老化抑制を実証 生活習慣介入で筋力・認知力が改善</h4>
+        <div class="article-body">
+          <p>薬ではなく生活習慣への働きかけだけで老化進行を抑えられることを、阪大発新興企業が示した。</p>
+          <p>大阪大学発のスタートアップが実施した臨床介入研究で、食事・運動・睡眠の最適化を組み合わせることで筋力や認知機能の老化指標が改善する傾向が確認された。</p>
+          <p>薬に頼らず「老いを遅らせる」市場は健康保険財政の逼迫を背景に急拡大している。介護予防や予防医療の分野での事業化が注目され、大学発スタートアップとしてのロールモデルになり得る。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「生活習慣介入で老化抑制、筋力や認知力など改善傾向 大阪大発新興」</p>
+        <div class="article-koike">はなひらくの利用者高齢化を見据えると介護予防×就労支援は新サービス開発の軸になり得る。Personal OSの健康管理機能の参考事例としても活用したい。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 薬剤師関連 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">薬剤師関連</span>
+      <span class="section-name-en">PHARMACY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <p style="color: var(--ink-mute); font-size: 12px; font-style: italic; padding: 8px 0;">本日該当なし（薬事日報・NHK取得不可）</p>
+    </div>
+  </div>
+
+  <!-- 障がい福祉 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">障がい福祉</span>
+      <span class="section-name-en">DISABILITY WELFARE</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <p style="color: var(--ink-mute); font-size: 12px; font-style: italic; padding: 8px 0;">本日該当なし（福祉新聞・NHK取得不可）</p>
+    </div>
+  </div>
+
+  <!-- エンタメ -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">エンタメ</span>
+      <span class="section-name-en">ENTERTAINMENT</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">audiobook.jpが登録者350万人突破 AIタイパ時代に「ヒトの声」の強みを社長が語る</h4>
+        <div class="article-body">
+          <p>オーディオブック最大手のaudiobook.jpが350万人登録を突破。AI音声との差別化として「感情表現」を挙げた。</p>
+          <p>音声読書サービス「audiobook.jp」を運営するオトバンクの久保田裕也社長が日経Podcastで登録者350万人突破の背景を語った。主婦層の「ながら聴き」需要が急増しており、AI生成音声では代替できない「ヒトの感情表現・息遣い」が差別化の核心だという。</p>
+          <p>タイムパフォーマンスを重視する時代において、ゆっくり深く内容を吸収できる音声コンテンツの価値が再評価されつつある。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「耳で学ぶ audiobook.jp 350万人 AIタイパ時代の強み、社長に聞く」</p>
+        <div class="article-koike">AI時代でも「ヒトの声・温度感」に価値があるという示唆は、FP相談やコーチング業務における対人価値の言語化に使えるフレームだ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">渋谷の「光と影」を総括 変わり続ける若者の街の歴史を紙面が深掘り</h4>
+        <div class="article-body">
+          <p>日経カバーストーリーが渋谷の都市変遷を通じて日本の若者文化の盛衰を読み解いた。</p>
+          <p>日本経済新聞のカバーストーリーが渋谷という街の歩みを軸に、日本の若者文化がたどってきた光と影を深掘りした。再開発が続く現在の渋谷が失いつつあるものと獲得しつつあるものの両面を描く。</p>
+          <p>2000年代のギャル文化から現在のインバウンド消費まで、渋谷の変遷は日本社会の縮図として読める。文化的拠点の再定義が問われている。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「渋谷の歩んだ光と影 変わり続ける若者の街 カバーストーリー」</p>
+        <div class="article-koike">街のブランドと文化の関係は、地域密着のはなひらくや長野ローカルビジネスを考える上でのヒントになる。都市と地方の文化設計の違いを意識したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">東京・大阪のタワマン最上階 6割が現金一括購入 市場を揺らす富裕層マネー</h4>
+        <div class="article-body">
+          <p>都心タワーマンション最上階の購入者の約6割が現金一括払いという実態が明らかになった。</p>
+          <p>日本経済新聞の調査で、東京・大阪の都心タワーマンション最上階において購入者の約6割が現金一括購入していることが判明。超低金利時代でも「フルローン不要」な富裕層が高額不動産市場をけん引する構造が可視化された。</p>
+          <p>資産格差の拡大と不動産市場の二極化を象徴するデータであり、一般的な住宅購入層との市場分断が一段と鮮明になっている。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「東京・大阪の都心タワマン最上階、6割が現金一括購入 市場揺らす富裕層」</p>
+        <div class="article-koike">富裕層向け資産管理・不動産投資提案の需要を再確認する材料。FP業務で「現金資産の運用先」相談ニーズが増える層へのアプローチ強化が機会になる。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 長野県 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">長野県</span>
+      <span class="section-name-en">NAGANO LOCAL</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">長野県内景況感「プラス」68% バブル期以来34年ぶりの高水準</h4>
+        <div class="article-body">
+          <p>信濃毎日新聞の経済アンケートで長野県内企業の景況感がバブル期最盛期以来の高水準を記録した。</p>
+          <p>信濃毎日新聞が県内主要企業を対象に実施した経済アンケートで、自社業界の景気をプラス判断した割合が68%に達した。バブル期最盛期の1990年冬（69%）以来の高水準で、前回調査（半年前）から10ポイント上昇し3期連続で改善している。</p>
+          <p>製造業・観光業を中心に業況回復が続いており、人手不足が課題となる一方で賃上げの浸透も景況感を押し上げているとみられる。</p>
+        </div>
+        <p class="article-source">出典: 信濃毎日新聞「長野県内景況感『プラス』68% バブル期以来の高水準【経済アンケート】」</p>
+        <div class="article-koike">長野の景況感改善はFP顧客の県内中小企業の経営好転を意味する。融資・資産形成相談が増えるタイミングとして積極的にアプローチしたい局面。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">渡り鳥ジョウビタキが浅間山麓に定住 軽井沢町で繁殖事例が急増</h4>
+        <div class="article-body">
+          <p>本来は冬の渡り鳥であるジョウビタキが浅間山麓に留まって繁殖する事例が急増し、研究者が注目している。</p>
+          <p>軽井沢町の浅間山麓周辺で、本来シベリアなどから冬に渡来するジョウビタキが通年定住して繁殖する事例が急増していることが確認された。温暖化による生息環境の変化が定住化を促しているとみられる。</p>
+          <p>長野県は高山帯の植生変化や氷河の縮小など気候変動の影響が現れやすい地域として研究者の関心を集めており、生態系の変化が継続的に報告されている。</p>
+        </div>
+        <p class="article-source">出典: 信濃毎日新聞「渡り鳥のジョウビタキ、浅間山麓にとどまり繁殖 軽井沢町の一帯で急増」</p>
+        <div class="article-koike">長野の自然環境変化は、はなひらくの農福連携や屋外活動プログラムの設計にも長期的に影響する。地域の生態系変化を把握することはリスク管理の一部。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">松本空港にPFAS泡消火剤3480リットル 地方空港の合計は計7万リットルに</h4>
+        <div class="article-body">
+          <p>発がん性が懸念されるPFASを含む泡消火剤が松本空港に大量保管されていることが判明した。</p>
+          <p>有機フッ素化合物（PFAS）を含む泡消火剤が松本空港に3480リットル保管されていることが信濃毎日新聞の調査で明らかになった。地方自治体が管理する空港全体では計7万リットルに上ることも判明した。</p>
+          <p>PFASは土壌・地下水への蓄積リスクが指摘される「永遠の化学物質」。処分費用と代替消火剤への移行コストが地方空港の財政を圧迫する懸念がある。</p>
+        </div>
+        <p class="article-source">出典: 信濃毎日新聞「PFAS泡消火剤、松本空港に3480リットル 地方自治体管理の空港、計7万リットル」</p>
+        <div class="article-koike">長野県の環境問題として把握が必要。はなひらくの利用者が空港周辺在住であれば健康への影響への関心も高い。地域の環境リスクを把握しておきたい。</div>
+      </article>
+    </div>
+  </div>
+
+</div><!-- /paper-columns -->
+
+<!-- ── 今週のカレンダー ── -->
+<div class="section-rule page-full">
+  <span class="section-name">今週のカレンダー</span>
+  <span class="section-name-en">THIS WEEK</span>
+  <div class="section-line"></div>
+</div>
+<div class="calendar-grid">
+  <div class="calendar-item">
+    <div class="calendar-date">6/28（土）</div>
+    <div class="calendar-event">NewGo Timez 2026-06-28号 発行</div>
+    <div class="calendar-take">本日号。長野景況感34年ぶり高水準・国産AI40社超・半導体日米連携が主要テーマ。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">6/30（月）</div>
+    <div class="calendar-event">ヨドバシカメラ 池袋店 グランドオープン</div>
+    <div class="calendar-take">家電量販競争の新章。消費動向と家電価格の変化を読む材料として注目。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">6/30（月）</div>
+    <div class="calendar-event">サッカーW杯 日本代表 vs ブラジル代表（テキサス州ダラス）</div>
+    <div class="calendar-take">20年ぶりの対戦。試合結果は翌朝確認。日本中が注目する大一番。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">7/2（水）</div>
+    <div class="calendar-event">米6月雇用統計 発表</div>
+    <div class="calendar-take">FRBの利下げ判断に直結する重要指標。ドル円・国内長期金利への波及を注視。FP顧客への説明材料として要確認。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">7/4（金）</div>
+    <div class="calendar-event">米国独立記念日（米市場休場）</div>
+    <div class="calendar-take">米市場休場で週前半に動きが集中しやすい週。投資判断は週初めに早めに整理しておきたい。</div>
+  </div>
+</div>
+
+<!-- ── 編集後記 ── -->
+<div class="postscript">
+  <div class="postscript-label">EDITORIAL NOTE ／ 編集後記</div>
+  <div class="postscript-body">本日はNHK・Yahoo・薬事日報・福祉新聞が取得できず、日経・信濃毎日の2媒体からの収集となった。それでも「国産AI40社超」という静かな転換点と、長野県景況感68%というバブル期以来の高水準は、今日という日の重さを十分に伝える。AIが生む富と地方経済の回復が同時進行するこの時代に、個人の行動設計の質が問われ続けている。</div>
+</div>
+
+<!-- ── 用語解説 ── -->
+<div class="glossary">
+  <div class="glossary-label">GLOSSARY ／ 用語解説</div>
+  <div class="glossary-list">
+    <div class="glossary-item"><span class="glossary-term">DMARC（ディーマーク）: </span>電子メールの送信者を認証する技術規格。なりすましメールや詐欺メールを防ぐ仕組みの中核。日本企業の導入率が世界的に低い水準にある。</div>
+    <div class="glossary-item"><span class="glossary-term">PFAS（ピーファス）: </span>有機フッ素化合物の総称。耐熱・耐薬品性に優れる反面、自然界で分解されにくく「永遠の化学物質」と呼ばれる。土壌・地下水汚染と発がんリスクへの懸念から世界的に規制が強化されている。</div>
+    <div class="glossary-item"><span class="glossary-term">LLM（大規模言語モデル）: </span>大量のテキストデータで学習したAIモデル。ChatGPTやClaudeなどがこれに当たる。今回の「国産AI開発」もLLMの自社構築・カスタマイズが中心。</div>
+    <div class="glossary-item"><span class="glossary-term">NISA（ニーサ）: </span>少額投資非課税制度。株式・投資信託などの利益が非課税になる日本独自の制度。今回は国債をNISA対象に加える案が政策論議に登場した。</div>
+    <div class="glossary-item"><span class="glossary-term">BEC（ビジネスメール詐欺）: </span>企業の経営幹部や取引先を装ったなりすましメールで従業員を騙し、送金や機密情報提供をさせる詐欺手口。AI技術の進化で文面が巧妙化し被害が増加している。</div>
+    <div class="glossary-item"><span class="glossary-term">ローミング（通信）: </span>自社の通信設備が届かない地域で他社の設備を借りてサービスを提供する仕組み。楽天モバイルはKDDIの回線を借りて全国展開を維持している。</div>
+    <div class="glossary-item"><span class="glossary-term">ジョウビタキ: </span>スズメ目の小鳥。通常は冬にシベリアなどから日本に渡来する渡り鳥だが、近年は温暖化の影響で通年定住して繁殖するケースが報告されている。</div>
+    <div class="glossary-item"><span class="glossary-term">ガスタービン: </span>燃料を燃焼させてタービンを回し発電する機器。データセンター向け電力需要の急増を背景に、三菱重工業が日米で生産能力倍増に向けた大型投資を発表した。</div>
+    <div class="glossary-item"><span class="glossary-term">DAZN（ダ・ゾーン）: </span>スポーツ動画配信サービス。サッカーやモータースポーツ中継を中心に展開。配信方針の変更をめぐってネット炎上が発生し、企業の「怒りのコスト」とブランドリスクの問題として話題になった。</div>
+  </div>
+</div>
+
+<!-- ── フッター ── -->
+<footer class="colophon">
+  <span>NewGo Timez 第 50 号</span>
+  <span>2026-06-28</span>
+  <span>編集発行 NewGo Editorial</span>
+</footer>
+
+</div><!-- /wrap -->
+</body>
+</html>
