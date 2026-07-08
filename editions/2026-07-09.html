@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewGo Timez ― 2026年7月9日</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Shippori+Mincho+B1:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdf8f2;
+    --bg-alt: #f5ede0;
+    --ink: #1a1208;
+    --ink-sub: #4a3c28;
+    --ink-mute: #9a8a72;
+    --red: #8b1a1a;
+    --red-light: #f5e8e0;
+    --line: #ddd0be;
+    --line-strong: #1a1208;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.85;
+    font-size: 14px;
+  }
+
+  /* ── マストヘッド ── */
+  .masthead { border-bottom: 3px double var(--line-strong); }
+  .masthead-top-bar {
+    background: var(--red);
+    padding: 6px 36px;
+    font-size: 10px; color: rgba(255,255,255,0.7); letter-spacing: 0.2em;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .masthead-top-bar strong { color: #fff; }
+  .masthead-main {
+    max-width: 1080px; margin: 0 auto; padding: 24px 36px 0;
+    display: flex; align-items: flex-end; justify-content: space-between;
+  }
+  .masthead-label {
+    font-size: 10px; letter-spacing: 0.5em; color: var(--red);
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .masthead-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 80px; line-height: 0.95;
+    letter-spacing: -0.02em; color: var(--ink);
+  }
+  .masthead-title em { font-style: italic; color: var(--red); }
+  .masthead-date-block { text-align: right; padding-bottom: 8px; }
+  .masthead-date-small {
+    font-size: 11px; color: var(--ink-mute); letter-spacing: 0.15em;
+    margin-bottom: 2px; text-align: right;
+  }
+  .masthead-date-num {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 72px; line-height: 1;
+    color: var(--ink); letter-spacing: -0.03em;
+  }
+  .masthead-date-year {
+    font-size: 11px; color: var(--ink-mute); letter-spacing: 0.15em; text-align: right;
+  }
+  .masthead-sub-row {
+    max-width: 1080px; margin: 0 auto;
+    padding: 6px 36px; display: flex; justify-content: space-between;
+    font-size: 10px; color: var(--ink-mute); letter-spacing: 0.12em;
+    border-top: 1px solid var(--line); margin-top: 8px;
+  }
+  .masthead-red-line { height: 5px; background: var(--red); }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 36px 48px; }
+
+  /* ── ティッカー ── */
+  .ticker {
+    display: flex; gap: 0;
+    background: var(--bg-alt);
+    border-bottom: 2px solid var(--red);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .ticker-item {
+    flex: 1; padding: 10px 18px;
+    border-right: 1px solid var(--line);
+    min-width: 0;
+  }
+  .ticker-item:last-child { border-right: none; }
+  .ticker-cat {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); text-transform: uppercase; margin-bottom: 3px;
+  }
+  .ticker-title {
+    font-size: 11px; font-weight: 700; color: var(--ink); line-height: 1.4;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  /* ── マーケット ── */
+  .market { margin-bottom: 28px; }
+  .market-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 0;
+    border: 1px solid var(--line);
+  }
+  .market-cell { padding: 12px 14px; border-right: 1px solid var(--line); }
+  .market-cell:last-child { border-right: none; }
+  .market-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.25em;
+    color: var(--ink-mute); margin-bottom: 6px; text-transform: uppercase;
+  }
+  .market-val { font-size: 17px; font-weight: 800; line-height: 1.2; }
+  .market-change { font-size: 10px; color: var(--ink-mute); margin-top: 3px; }
+  .up { color: #2d6a4f; }
+  .down { color: var(--red); }
+
+  /* ── 一面トップ ── */
+  .lead {
+    border-top: 4px solid var(--red);
+    padding: 28px 0;
+    margin-bottom: 8px;
+  }
+  .lead-inner { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; }
+  .lead-kicker {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .lead-headline {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 44px; font-weight: 800; line-height: 1.2;
+    letter-spacing: 0.01em; margin-bottom: 16px;
+    border-bottom: 2px solid var(--line); padding-bottom: 16px;
+  }
+  .lead-body {
+    font-size: 14px; line-height: 1.95; text-align: justify;
+  }
+  .lead-body p { margin-bottom: 10px; text-indent: 1em; }
+  .lead-source { font-size: 10px; color: var(--ink-mute); font-style: italic; margin-top: 10px; }
+  .lead-sidebar {}
+  .lead-sidebar-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.4em; color: var(--red);
+    text-transform: uppercase; border-bottom: 1px solid var(--red); padding-bottom: 6px; margin-bottom: 12px;
+  }
+  .lead-pull-quote {
+    font-size: 20px; font-style: italic; font-weight: 700;
+    line-height: 1.5; color: var(--red); margin-bottom: 16px;
+  }
+
+  /* ── 小池目線 ── */
+  .koike-take {
+    padding: 12px 14px; background: var(--red-light);
+    border-left: 4px solid var(--red);
+    font-size: 11px; line-height: 1.7; color: var(--ink-sub);
+    margin-top: 8px;
+  }
+  .koike-take::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em;
+    color: var(--red); display: block; margin-bottom: 4px;
+  }
+
+  /* ── 今日の数字 ── */
+  .big-number {
+    background: var(--red); color: #fff;
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 32px;
+  }
+  .big-number-val {
+    font-family: "Playfair Display", serif;
+    font-weight: 900; font-size: 100px; line-height: 1;
+    white-space: nowrap; letter-spacing: -0.04em;
+    flex-shrink: 0; padding: 28px 36px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .big-number-desc { flex: 1; padding: 24px 32px; }
+  .big-number-caption {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6); margin-bottom: 8px;
+  }
+  .big-number-body { font-size: 15px; line-height: 1.8; }
+  .big-number .koike-take {
+    background: rgba(255,255,255,0.15); border-left-color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.85); margin-top: 12px;
+  }
+  .big-number .koike-take::before { color: rgba(255,255,255,0.6); }
+
+  /* ── ヘッドライン一覧 ── */
+  .headlines-list { margin-bottom: 28px; }
+  .headline-item {
+    display: flex; gap: 16px; align-items: baseline;
+    padding: 9px 0; border-bottom: 1px solid var(--line);
+  }
+  .headline-item:first-child { border-top: 1px solid var(--line); }
+  .headline-cat {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.2em;
+    color: var(--red); white-space: nowrap; min-width: 42px;
+  }
+  .headline-title {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 14px; font-weight: 700; flex: 1; line-height: 1.6;
+  }
+  .headline-source { font-size: 10px; color: var(--ink-mute); white-space: nowrap; }
+
+  /* ── セクション区切り ── */
+  .section-rule {
+    display: flex; align-items: center; gap: 12px;
+    margin: 28px 0 14px;
+  }
+  .section-rule::before {
+    content: ""; flex: 0 0 3px; width: 3px; height: 18px;
+    background: var(--red);
+  }
+  .section-name {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 16px; font-weight: 800; letter-spacing: 0.1em;
+  }
+  .section-name-en {
+    font-family: "Playfair Display", serif;
+    font-size: 10px; color: var(--ink-mute); letter-spacing: 0.3em;
+    text-transform: uppercase; margin-left: 8px;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--line); }
+
+  /* ── カテゴリ2段組 ── */
+  .paper-columns {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px;
+    align-items: start;
+  }
+  .page-full { grid-column: 1 / -1; }
+
+  /* ── 記事 ── */
+  .articles-list { display: flex; flex-direction: column; gap: 20px; }
+  .article {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .article:last-child { border-bottom: none; padding-bottom: 0; }
+  .article-headline {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 17px; font-weight: 800; line-height: 1.45;
+    margin-bottom: 6px; letter-spacing: 0.02em;
+  }
+  .article-body {
+    font-size: 13px; line-height: 1.85;
+    color: var(--ink-sub); text-align: justify;
+  }
+  .article-body p { margin-bottom: 4px; text-indent: 1em; }
+  .article-source {
+    font-size: 10px; color: var(--ink-mute); margin-top: 5px;
+    font-style: italic;
+  }
+  .article-koike {
+    margin-top: 8px; padding: 8px 12px;
+    border-left: 3px solid var(--red); background: var(--red-light);
+    font-size: 11px; color: var(--ink-sub); line-height: 1.6;
+  }
+  .article-koike::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em; color: var(--red);
+  }
+
+  /* ── 人物クローズアップ ── */
+  .person-box {
+    border: 2px solid var(--line-strong);
+    margin-bottom: 32px; display: grid; grid-template-columns: 200px 1fr;
+  }
+  .person-sidebar {
+    background: var(--ink); color: #fff;
+    padding: 24px 20px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .person-label {
+    font-size: 8px; letter-spacing: 0.5em; color: rgba(255,255,255,0.5);
+    margin-bottom: 40px; text-transform: uppercase;
+  }
+  .person-name {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 6px;
+  }
+  .person-role { font-size: 10px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; line-height: 1.5; }
+  .person-main { padding: 24px 28px; }
+  .person-quote {
+    font-size: 20px; font-style: italic; font-weight: 700;
+    line-height: 1.5; color: var(--red);
+    border-left: 4px solid var(--red); padding-left: 16px; margin-bottom: 16px;
+  }
+  .person-body { font-size: 13px; line-height: 1.85; color: var(--ink-sub); }
+  .person-koike {
+    margin-top: 14px; padding: 10px 14px;
+    background: var(--red-light); border-left: 3px solid var(--red);
+    font-size: 11px; color: var(--ink-sub); line-height: 1.6;
+  }
+  .person-koike::before {
+    content: "KOIKE'S TAKE  ";
+    font-weight: 700; font-size: 8px; letter-spacing: 0.3em; color: var(--red);
+    display: block; margin-bottom: 4px;
+  }
+
+  /* ── カレンダー ── */
+  .calendar-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 32px;
+  }
+  .calendar-item {
+    padding: 14px 16px; background: var(--bg-alt);
+    border-top: 3px solid var(--red);
+  }
+  .calendar-date { font-size: 10px; font-weight: 700; color: var(--red); margin-bottom: 4px; letter-spacing: 0.1em; }
+  .calendar-event {
+    font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 6px;
+  }
+  .calendar-take { font-size: 11px; color: var(--ink-mute); line-height: 1.5; }
+
+  /* ── 編集後記 ── */
+  .postscript {
+    border-top: 3px double var(--line-strong);
+    padding-top: 20px; margin-top: 32px;
+  }
+  .postscript-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); margin-bottom: 10px; text-transform: uppercase;
+  }
+  .postscript-body { font-size: 13px; line-height: 1.85; text-indent: 1em; }
+
+  /* ── 用語解説 ── */
+  .glossary { margin-top: 32px; }
+  .glossary-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.4em;
+    color: var(--red); margin-bottom: 10px; text-transform: uppercase;
+    border-bottom: 1px solid var(--line); padding-bottom: 6px;
+  }
+  .glossary-list { display: flex; flex-direction: column; gap: 6px; }
+  .glossary-item { font-size: 12px; line-height: 1.7; }
+  .glossary-term { font-weight: 700; color: var(--red); }
+
+  /* ── フッター ── */
+  .colophon {
+    margin-top: 32px; padding: 16px 0 0;
+    border-top: 1px solid var(--line);
+    font-size: 10px; color: var(--ink-mute);
+    display: flex; justify-content: space-between;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── レスポンシブ ── */
+  @media (max-width: 767px) {
+    .masthead-main { padding: 16px 16px 0; }
+    .masthead-sub-row { padding: 6px 16px; }
+    .masthead-top-bar { padding: 6px 16px; }
+    .wrap { padding: 0 16px 40px; }
+    .masthead-title { font-size: 42px; }
+    .masthead-date-num { font-size: 56px; }
+    .lead-inner { grid-template-columns: 1fr; gap: 24px; }
+    .lead-headline { font-size: 30px; }
+    .big-number { flex-direction: column; gap: 0; }
+    .big-number-val { font-size: 64px; padding: 20px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; }
+    .big-number-desc { padding: 16px 24px; }
+    .market-grid { grid-template-columns: repeat(3, 1fr); }
+    .paper-columns { grid-template-columns: 1fr; }
+    .ticker { flex-direction: column; }
+    .ticker-item { border-right: none; border-bottom: 1px solid var(--line); }
+    .person-box { grid-template-columns: 1fr; }
+    .person-sidebar { padding: 20px; }
+    .person-label { margin-bottom: 16px; }
+    .calendar-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── マストヘッド ── -->
+<header class="masthead">
+  <div class="masthead-top-bar">
+    <span>第 58 号 ／ FOR YUGO KOIKE</span>
+    <span>newgo-koike.github.io/newgo-timez</span>
+  </div>
+  <div class="masthead-main">
+    <div class="masthead-left">
+      <div class="masthead-label">the daily edition</div>
+      <h1 class="masthead-title">NewGo <em>Timez</em></h1>
+    </div>
+    <div class="masthead-date-block">
+      <div class="masthead-date-small">水曜日</div>
+      <div class="masthead-date-num">7/9</div>
+      <div class="masthead-date-year">2026（令和8年）</div>
+    </div>
+  </div>
+  <div class="masthead-sub-row">
+    <span>発行: NewGo Editorial</span>
+    <span>FOR YUGO KOIKE ONLY</span>
+    <span>2026年7月9日</span>
+  </div>
+  <div class="masthead-red-line"></div>
+</header>
+
+<div class="wrap">
+
+<!-- ── ティッカー ── -->
+<div class="ticker">
+  <div class="ticker-item">
+    <div class="ticker-cat">中東情勢</div>
+    <div class="ticker-title">米軍、イランに連日追加空爆 — ホルムズ封鎖懸念で原油急騰</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">マーケット</div>
+    <div class="ticker-title">日経平均 1,437円安 66,819円 — NYダウも576ドル安</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">気象</div>
+    <div class="ticker-title">九州北部・近畿など梅雨明け、台風9号も接近中</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">政治</div>
+    <div class="ticker-title">衆院で皇室典範改正案がきょう審議入り</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-cat">薬剤師</div>
+    <div class="ticker-title">コンサータの薬局間譲渡、今月中旬にも運用開始 — 厚労相表明</div>
+  </div>
+</div>
+
+<!-- ── マーケット ── -->
+<div class="market">
+  <div class="market-grid">
+    <div class="market-cell">
+      <div class="market-label">日経平均</div>
+      <div class="market-val down">66,819円</div>
+      <div class="market-change down">▼1,437.91 (-2.11%)</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">USD/JPY</div>
+      <div class="market-val down">162円59銭</div>
+      <div class="market-change down">▲+0.38 円安方向</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">NYダウ</div>
+      <div class="market-val down">52,348ドル</div>
+      <div class="market-change down">▼576.76 (-1.09%)</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">WTI原油</div>
+      <div class="market-val up">$74.76</div>
+      <div class="market-change up">▲+4.32 (+6.1%)</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">金（GOLD）</div>
+      <div class="market-val down">$3,260台</div>
+      <div class="market-change down">▼続落</div>
+    </div>
+    <div class="market-cell">
+      <div class="market-label">日米金利差</div>
+      <div class="market-val">1.47%</div>
+      <div class="market-change">米4.335% / 日2.865%</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 一面トップ ── -->
+<section class="lead">
+  <div class="lead-inner">
+    <div>
+      <div class="lead-kicker">本日のトップ ― 中東情勢</div>
+      <h2 class="lead-headline">米軍、イランに連日追加空爆　ホルムズ封鎖懸念で原油急騰・株価急落</h2>
+      <div class="lead-body">
+        <p>米中央軍は8日（現地時間）、イランに対して追加の空爆を開始したとSNSで発表した。攻撃は2日連続で、ホルムズ海峡の航行の自由を脅かす能力を低減させることが目的だと説明している。イラン側は海峡の再封鎖を示唆しており、世界のエネルギー供給を左右する要衝を巡る緊張が急激に高まっている。</p>
+        <p>トランプ大統領は「停戦は終わったと思う」と発言し、さらに「イランに対して今夜激しい攻撃を実施する」と表明。この発言を受けNY原油先物は1バレル74ドル台まで急騰（前日比+4.32ドル）、NYダウは一時855ドル安まで売り込まれた。最終的には576ドル安で引けた。なおトランプ氏はアンカラの会見でイランを「日本」と言い間違える場面もあった。</p>
+        <p>日本時間9日朝には日経平均が1437円安の66,819円で推移。エネルギー輸入に依存する日本経済にとって中東情勢の悪化は原油・ガスの調達コスト上昇と物価再上昇への警戒を呼び起こす。</p>
+      </div>
+      <div class="lead-source">出典: NHKニュース「アメリカ中央軍 イランに対し追加攻撃を開始した」、日本経済新聞「米軍、イランに追加攻撃 商船攻撃の責任問う」</div>
+      <div class="koike-take">エネルギーコスト上昇は医療・福祉施設の光熱費を直撃する。はなひらくの運営コスト管理見直しと、FPクライアントの資産防衛提案を急ぎたい。</div>
+    </div>
+    <div class="lead-sidebar">
+      <div class="lead-sidebar-label">EDITOR'S FOCUS</div>
+      <div class="lead-pull-quote">「商船を攻撃すれば10倍の力で反撃する」——トランプ氏の警告が世界市場を直撃した。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 今日の数字 ── -->
+<div class="big-number">
+  <div class="big-number-val">855ドル安</div>
+  <div class="big-number-desc">
+    <div class="big-number-caption">NYダウ 7月8日の一時最大下落幅</div>
+    <div class="big-number-body">米軍のイラン空爆とトランプ氏「停戦終わった」発言が引き金となりNYダウは一時855ドル安を記録。終値は576ドル安（52,348ドル）だが、世界市場へのリスクオフの波は現在進行形だ。</div>
+    <div class="koike-take">FPとして市場急変時のクライアント対応力が問われる場面。「暴落に慌てない」判断基準をあらかじめ共有しておく重要性を改めて感じる。</div>
+  </div>
+</div>
+
+<!-- ── 今朝のヘッドライン ── -->
+<div class="section-rule page-full">
+  <span class="section-name">今朝のヘッドライン</span>
+  <span class="section-name-en">HEADLINES</span>
+  <div class="section-line"></div>
+</div>
+<div class="headlines-list">
+  <div class="headline-item">
+    <span class="headline-cat">気象</span>
+    <span class="headline-title">台風9号 沖縄・先島諸島に非常に強い勢力で接近へ 早めの備えを</span>
+    <span class="headline-source">NHKニュース</span>
+  </div>
+  <div class="headline-item">
+    <span class="headline-cat">社会</span>
+    <span class="headline-title">三笘薫選手が板橋区で人身事故 双方が赤信号で進行か 女性は軽傷</span>
+    <span class="headline-source">テレビ朝日/日テレ</span>
+  </div>
+  <div class="headline-item">
+    <span class="headline-cat">社会</span>
+    <span class="headline-title">元東京地検特捜部の検事 捜査対象の女性と不適切関係か 停職2日</span>
+    <span class="headline-source">NHKニュース</span>
+  </div>
+  <div class="headline-item">
+    <span class="headline-cat">気象</span>
+    <span class="headline-title">九州北部・中国地方・近畿で梅雨明け 9日はさらに気温上昇へ</span>
+    <span class="headline-source">NHKニュース</span>
+  </div>
+  <div class="headline-item">
+    <span class="headline-cat">スポーツ</span>
+    <span class="headline-title">W杯2026 ベスト8出そろう フランス対モロッコなど準々決勝好カード続々</span>
+    <span class="headline-source">NHKニュース/日経</span>
+  </div>
+</div>
+
+<!-- ── 人物クローズアップ ── -->
+<div class="section-rule">
+  <span class="section-name">人物クローズアップ</span>
+  <span class="section-name-en">PERSON</span>
+  <div class="section-line"></div>
+</div>
+<div class="person-box">
+  <div class="person-sidebar">
+    <div class="person-label">PERSON IN FOCUS</div>
+    <div class="person-name">ドナルド・トランプ</div>
+    <div class="person-role">米国第47代大統領</div>
+  </div>
+  <div class="person-main">
+    <div class="person-quote">「停戦は終わった。今夜イランに激しい攻撃を実施する」</div>
+    <div class="person-body">イランへの連日空爆を指揮したトランプ大統領は、トルコ・アンカラでの記者会見で停戦終結を宣言し世界市場を急変させた。「商船を攻撃すれば10倍の力で反撃」という強硬発言が原油急騰・株安を招いた一方、会見中に「日本イスラム共和国」とイランを日本と言い間違えるハプニングも。NATOサミット閉幕翌日に中東情勢が再燃し、国際秩序の大きな転換点として歴史に記されることになりそうだ。</div>
+    <div class="person-koike">中東リスクは石油依存の日本経済に直撃する。FPとしてエネルギーコスト上昇局面の資産防衛をクライアントと議論する好機だ。</div>
+  </div>
+</div>
+
+<!-- ── カテゴリ面（2段組） ── -->
+<div class="paper-columns">
+
+  <!-- 政治・経済 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">政治・経済</span>
+      <span class="section-name-en">POLITICS &amp; ECONOMY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">皇室典範改正案 衆院できょう審議入り 与野党が正面論戦へ</h4>
+        <div class="article-body">
+          <p>皇族数を確保するための皇室典範改正案が衆議院で9日に審議入りする。</p>
+          <p>参議院では立憲民主党が「旧皇族の養子縁組容認は認められない」と反対方針を示すなか、衆院でも各党の立場が鮮明になる見通しだ。自民党は集中審議の開催方針を示し、中道政党は付帯決議案の修正を前提に賛成方針を決めている。</p>
+          <p>皇室制度の根幹に関わる問題だが、旧皇族の復帰・養子縁組をめぐって保守系と護憲系が真っ向から対立する。今国会の最大テーマとして終盤国会の行方が注目される。</p>
+        </div>
+        <p class="article-source">出典: NHKニュース「衆院で法案審議再開へ 皇室典範改正案あす審議入りで論戦へ」</p>
+        <div class="article-koike">皇室典範審議が終盤国会のスケジュールを左右し、税制・保険制度改正法案の審議日程にも影響する。FP事業への波及を継続注視したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">加熱式たばこ 規制強化を見送り 喫煙目的施設は届け出制へ 厚労省</h4>
+        <div class="article-body">
+          <p>厚生労働省は加熱式たばこの規制強化を見送り、喫煙目的施設を届け出制とする方針を固めた。</p>
+          <p>加熱式たばこは紙巻きたばこより規制が緩い現状があり、禁煙推進団体などが規制強化を求めてきた。しかし事業者への影響などを考慮し、強化ではなく届け出制による管理にとどめる方針となった。</p>
+          <p>医療・公衆衛生の観点から批判的な見方もある一方、飲食・宿泊業界からは一定の評価が上がっている。</p>
+        </div>
+        <p class="article-source">出典: NHKニュース「加熱式たばこ規制強化見送り 喫煙目的施設は届け出制へ 厚労省」</p>
+        <div class="article-koike">健康経営推進の観点でFPクライアントへの提案機会。禁煙支援と保険設計を組み合わせたアドバイスの需要が見込める場面だ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">全東信が破産 加盟2万店超に代金未入金 飲食店のカード決済に混乱</h4>
+        <div class="article-body">
+          <p>クレジットカード決済代行の全東信が破産し、加盟する2万店超に代金の未入金が生じている。</p>
+          <p>全東信の破産により飲食店など加盟店がクレジットカード決済の集金を受け取れない状況が続いている。主に中小飲食店が影響を受けており、資金繰りが一時的に悪化するケースも出ている。</p>
+          <p>キャッシュレス決済の普及が進む中、決済代行業者の信用リスクという課題が浮き彫りになった。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「全東信の破産、飲食店が混乱 クレカ決済使えず資金繰り悪化も」</p>
+        <div class="article-koike">小規模事業者がキャッシュレス決済に依存するリスクを改めて認識。はなひらくの資金管理でも決済手段の分散を意識しておきたい。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 世界の動き -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">世界の動き</span>
+      <span class="section-name-en">WORLD</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">NATOサミット閉幕 「米以外の加盟国が防衛でより大きな役割を」 高市首相は欠席</h4>
+        <div class="article-body">
+          <p>NATOサミットがアンカラで閉幕し、米国外の加盟国が防衛費分担でより大きな役割を担うことで大筋合意した。</p>
+          <p>トランプ大統領が「満足していない」と不満を示す中、NATO加盟国はGDP比5%という高い防衛費目標を議論。欧州諸国は防衛費の大幅増額を迫られており、イラン情勢の緊迫化が同盟の結束をさらに試している。</p>
+          <p>高市首相はNATO会議を欠席し、外交機会を逸したとの批判が出ている。欧州との関係強化が急がれる中、日本の存在感低下を懸念する声も上がっている。</p>
+        </div>
+        <p class="article-source">出典: NHKニュース「NATO首脳会議閉幕 米以外の加盟国が防衛により大きな役割」</p>
+        <div class="article-koike">防衛費増額が国内財政・社会保障費に与える影響はFP視点で重要。欧州防衛株など分散投資の選択肢としても注目したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">ベネズエラ大地震 5万8000棟超が被害 国連が継続支援を各国に呼びかけ</h4>
+        <div class="article-body">
+          <p>ベネズエラを襲った大地震で5万8000棟超の建物が被害を受け、国連が各国に継続的な人道支援を求めている。</p>
+          <p>NASA衛星の分析でも建物被害の甚大さが確認されており、被災した住民の生活再建に向けた支援が急がれている。経済危機が長引くベネズエラにとって、自然災害はさらなる打撃となっている。</p>
+          <p>国連は「復興には数年を要する」との見通しを示しており、国際社会の長期的な関与が求められている。</p>
+        </div>
+        <p class="article-source">出典: NHKニュース「ベネズエラ地震 国連が継続支援を各国に呼びかけ」</p>
+        <div class="article-koike">大規模自然災害は国際的な人道支援ニーズを高める。FPとして海外支援寄付の税メリットをクライアントに案内する機会にもなりうる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">FRB 6月会合議事録を公開 新議長のもとで金利見通しが委員間で分かれる</h4>
+        <div class="article-body">
+          <p>新議長のもとで開かれたFRBの6月会合議事録が公開され、委員間で金利見通しが分かれていることが判明した。</p>
+          <p>インフレ鈍化と雇用市場の緩和を受けて複数の委員が利下げを支持する一方、中東情勢の不確実性によるインフレ再燃リスクを警戒する声も出た。早期利下げ観測と据え置き論が拮抗している格好だ。</p>
+          <p>今後の米金融政策は原油価格の動向に大きく左右されるとみられ、イラン情勢の帰趨が焦点となっている。</p>
+        </div>
+        <p class="article-source">出典: NHKニュース「新議長のもとでの6月のFRB会合議事録 金利の見通し分かれる」</p>
+        <div class="article-koike">FRBの利下げ時期は日米金利差・為替・国内株に直結する。FPとしてクライアントの外貨建て資産の見直しタイミングを判断する重要指標だ。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- AI・テック -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">AI・テック</span>
+      <span class="section-name-en">AI &amp; TECHNOLOGY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">「社員と化すAIエージェント」費用は人件費か　人事とITの境界が溶ける</h4>
+        <div class="article-body">
+          <p>AIエージェントが自律的に業務をこなす時代が迫り、利用料が人件費に分類されるかどうか企業の会計・人事処理が問われ始めている。</p>
+          <p>AIエージェントがタスクを自律処理する段階になると、単なる「ツール費用（IT費）」と整理できなくなる可能性がある。人事・法務・会計の制度的整備が追いつかない中、先進企業では独自ルールで対応を進めている。</p>
+          <p>医療・福祉・金融など人的サービスが核心の業種では、AIの役割定義が業界規制とも絡む課題となりそうだ。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「社員と化すAIエージェント、費用は人件費？ 人事とITの境界溶かす」</p>
+        <div class="article-koike">Claude Codeを活用した業務自動化が進む中、AIエージェントのコスト計上方法は今後の会計実務で重大テーマになる。Personal OS事業の経費管理にも影響しうる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">ファーウェイ「ムーアの法則」に対抗軸　半導体を縦に積む独自戦略を発表</h4>
+        <div class="article-body">
+          <p>中国・ファーウェイが最先端プロセスへのアクセスを閉ざされる中、半導体の3D積層技術による高性能化戦略を打ち出した。</p>
+          <p>米国の先端半導体輸出規制により最新プロセスへのアクセスを閉ざされたファーウェイは、縦方向に複数チップを積み重ねる「3Dスタッキング」技術で性能を高める独自路線を推進している。</p>
+          <p>AI半導体の覇権をめぐる米中対立に新局面をもたらす可能性があり、日本の半導体関連産業にも波及が注目される。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「ファーウェイ、ムーアの法則の対抗軸提唱 半導体の積層で高性能化」</p>
+        <div class="article-koike">AI半導体の供給構造は医療・福祉DXのコスト構造を長期的に規定する。Claude Code活用コストにも波及する可能性があり、動向注視が必要だ。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- スタートアップ -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">スタートアップ</span>
+      <span class="section-name-en">STARTUPS</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">ブルーオリジン 新株発行で1.6兆円調達　スペースXへの対抗に本腰</h4>
+        <div class="article-body">
+          <p>ジェフ・ベゾス氏の宇宙企業ブルーオリジンが新株を発行して1.6兆円規模の大型資金調達を実施した。</p>
+          <p>スペースXが宇宙輸送・通信（スターリンク）で圧倒的なシェアを握る中、ブルーオリジンは新型ロケット「ニューグレン」の量産体制構築と宇宙ステーション事業への参入を狙う。調達資金は製造拠点の拡充とエンジン開発に充てられる予定だ。</p>
+          <p>宇宙産業への民間投資が急拡大する中、宇宙関連スタートアップへの波及効果も注目される。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「ベゾス氏の宇宙企業ブルーオリジン、新株で1.6兆円調達 スペースX対抗」</p>
+        <div class="article-koike">宇宙産業への巨額民間投資は長期の分散投資テーマとして注目。FPとして宇宙関連ETFや新興企業株へのアロケーションを検討する価値がある。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">創薬スタートアップ支援に300億円基金　政府が拠点整備・実用化を後押し</h4>
+        <div class="article-body">
+          <p>政府は創薬スタートアップの育成・実用化を支援するため、300億円規模の基金を設置すると発表した。</p>
+          <p>国内製薬企業の国際競争力向上と、AI創薬・バイオ医薬品分野での革新を促す狙いがある。大学発ベンチャーの臨床開発支援や海外展開のサポートを重点分野としている。</p>
+          <p>日本の医薬品開発力は欧米に遅れをとっているが、今回の基金がバイオスタートアップのエコシステム形成の起爆剤となるかが注目される。</p>
+        </div>
+        <p class="article-source">出典: 日本経済新聞「創薬スタートアップ支援、300億円基金 拠点整備や実用化を後押し」</p>
+        <div class="article-koike">創薬×AI×スタートアップの交差点はYUMEMATCHや医療職キャリア支援事業の将来展望とも重なる。バイオ系人材のキャリア相談需要も増えそうだ。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 薬剤師関連 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">薬剤師関連</span>
+      <span class="section-name-en">PHARMACY</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">11大学病院が薬剤師増員　文科省事業で治験・臨床研究の役割を訴求</h4>
+        <div class="article-body">
+          <p>文部科学省の大学病院機能強化推進事業に選定された77大学のうち、11大学が病院薬剤師の増員計画を改革プランに盛り込んでいたことが分かった。</p>
+          <p>深刻な病院薬剤師不足が続く中、各大学病院が薬剤師育成体制の整備を国の補助事業に組み込む動きが広がっている。治験や臨床研究への薬剤師の貢献を前面に出すことで、人材確保につながる可能性がある。</p>
+          <p>病院薬剤師は薬局薬剤師に比べて給与水準が低い課題が指摘されてきたが、処遇改善と役割強化が同時に進むことで若い薬剤師にとっての魅力向上につながるか注目される。</p>
+        </div>
+        <p class="article-source">出典: 薬事日報「11大学病院が薬剤師増員 改革案で治験の役割訴求」</p>
+        <div class="article-koike">病院薬剤師の処遇・役割強化はYUMEMATCHが提供するキャリア支援の需要増大に直結する。治験薬剤師・臨床研究支援のキャリアパスをコンテンツ化したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">コンサータの薬局間譲渡が可能に　厚労相が表明 今月中旬にも運用開始</h4>
+        <div class="article-body">
+          <p>上野厚生労働大臣は、ADHD治療薬コンサータの薬局間での在庫譲渡を認める運用を今月中旬にも開始すると表明した。</p>
+          <p>コンサータは処方箋管理の厳格化で薬局ごとの在庫格差が生じやすく、患者が薬を受け取れないケースが問題となっていた。薬局間での在庫融通を可能にすることで供給安定化が図られる見込みだ。</p>
+          <p>向精神薬の管理厳格化と患者の安定供給のバランスをどう取るかが問われており、今後の薬局運営に影響する重要な制度変更となる。</p>
+        </div>
+        <p class="article-source">出典: 薬事日報「上野厚労相 コンサータ薬局間譲渡可 今月中旬にも運用開始へ」</p>
+        <div class="article-koike">向精神薬の安定供給は医療現場の信頼に直結する。「管理と供給の両立」ができる薬剤師の価値が高まる場面で、YUMEMATCHのコンテンツ素材としても使えそうだ。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">厚労省が地域医療構想指針を公表　2040年へ医歯薬連携を促進</h4>
+        <div class="article-body">
+          <p>厚生労働省は2040年を見据えた地域医療構想の指針を公表し、医師・歯科医師・薬剤師の多職種連携を重点施策として位置付けた。</p>
+          <p>高齢化のピークを迎える2040年に向け、病院から在宅・地域への医療シフトが不可避となる中、薬剤師の在宅訪問・多職種連携コーディネート機能への期待が高まっている。</p>
+          <p>地域医療構想の推進は各地域の医療資源の再編を促すため、薬局・病院薬剤師のいずれにとっても大きな環境変化となる。</p>
+        </div>
+        <p class="article-source">出典: 薬事日報「厚労省 地域医療構想指針を公表 40年へ医歯薬連携促す」</p>
+        <div class="article-koike">2040年地域医療構想はYUMEMATCHの長期コンテンツ戦略の核心。地域医療×薬剤師キャリアの未来像を早期に言語化して発信する絶好の機会だ。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 障がい福祉 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">障がい福祉</span>
+      <span class="section-name-en">DISABILITY WELFARE</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">障害報酬改定で議論　就労系サービスの不適切運営に関係団体が対案示す</h4>
+        <div class="article-body">
+          <p>障害福祉サービスの次期報酬改定に向け、就労継続支援など就労系サービスの不適切運営実態を踏まえ、関係団体が具体的な対案を提示した。</p>
+          <p>一部事業者による工賃の過少払いや実績の水増し報告など不適切な運営が相次いで発覚する中、全国の福祉関係団体は「支援の質を評価軸に置いた報酬体系」への転換を厚生労働省の検討委員会に訴えた。</p>
+          <p>次期改定では支援内容の見える化と自己評価ツールの導入、第三者評価の強化などが焦点。誠実な運営事業者にとっては適切な評価が受けられる制度設計が求められている。</p>
+        </div>
+        <p class="article-source">出典: 福祉新聞「障害報酬改定で議論 就労系サービスの不適切運営に関係団体が対案示す」</p>
+        <div class="article-koike">はなひらくが誠実に運営するB型事業所にとって質評価型の報酬体系は大きなチャンス。支援内容の見える化を今から準備すれば次期改定を有利に迎えられる。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- エンタメ -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">エンタメ</span>
+      <span class="section-name-en">ENTERTAINMENT</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">三笘薫選手が板橋区で人身事故　「心より深くお詫び」と事務所コメント</h4>
+        <div class="article-body">
+          <p>プレミアリーグで活躍するサッカー日本代表の三笘薫選手が東京・板橋区で自転車との人身事故を起こした。</p>
+          <p>7月8日夕方、三笘選手が運転する車が交差点で自転車と衝突し、女性が軽傷を負った。警視庁の調べでは車側・自転車側の双方が赤信号で交差点に進入した可能性が浮上している。所属事務所は「心より深くお詫び申し上げます」とコメントを発表した。</p>
+          <p>日本代表の絶対的エースへの注目度からSNS上でも大きな話題となっており、交通ルール遵守の重要性を改めて問い直す声も上がっている。</p>
+        </div>
+        <p class="article-source">出典: テレビ朝日/日テレ NEWS NNN「三笘薫選手が板橋区で人身事故」</p>
+        <div class="article-koike">有名人の交通事故は信頼管理の観点でも教訓となる。FPとしてクライアントへの賠償責任保険の重要性を改めて伝えたい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">橋本愛が佐藤二朗の夫婦役否定発言を告白　フジ弁護士の発言も波紋</h4>
+        <div class="article-body">
+          <p>女優・橋本愛が、俳優・佐藤二朗から「夫婦役を受けるべきでない」とキャリアを否定する発言を受けたと明かし大きな反響を呼んでいる。</p>
+          <p>橋本愛によると、共演の際に佐藤二朗から「トラウマがあるなら夫婦役を受けるべきでない」との趣旨の発言を受けたという。フジテレビ側の弁護士が「佐藤さんのタレント生命に傷がつく」と述べたとされ、発言の真意をめぐって議論が広がっている。</p>
+          <p>大女優・渡辺えりが橋本側に共感を示す一方、佐藤二朗側も独占インタビューで真意を説明。俳優同士の信頼関係と制作現場の環境問題として注目されている。</p>
+        </div>
+        <p class="article-source">出典: SmartFLASH/Yahoo!ニュース「橋本愛 夫婦役発言問題」</p>
+        <div class="article-koike">職場でのコミュニケーション問題は、はなひらくのスタッフ育成や職場環境整備を考える上でも参考になる。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">岡本和真が満塁本塁打　敵地ファン騒然 大リーグで存在感を高める</h4>
+        <div class="article-body">
+          <p>大リーグで活躍する岡本和真選手が満塁本塁打を放ち、敵地ファンが騒然となる活躍を見せた。</p>
+          <p>岡本選手は今シーズン好調を維持しており、大リーグでの日本人野手としての地位を確立しつつある。満塁弾という大仕事で存在感を発揮しチームの勝利に貢献した。</p>
+          <p>三笘薫選手のサッカー界での活躍と並んで、日本人アスリートが世界の最高峰で結果を残し続けている。</p>
+        </div>
+        <p class="article-source">出典: Yahoo!ニュース「岡本和真が満塁アーチ」</p>
+        <div class="article-koike">世界トップで活躍する日本人の姿はあらゆる職業人への刺激となる。Personal OSの目標設定コンテンツの文脈でも活用できる話題だ。</div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 長野県 -->
+  <div>
+    <div class="section-rule">
+      <span class="section-name">長野県</span>
+      <span class="section-name-en">NAGANO LOCAL</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="articles-list">
+      <article class="article">
+        <h4 class="article-headline">スキー複合の五輪除外が確定　長野県出身選手たちから悲痛な声</h4>
+        <div class="article-body">
+          <p>ノルディックスキー複合の五輪競技除外が決定し、長野県出身の選手たちが悲痛な気持ちを明かしている。</p>
+          <p>「何も考えられない」「僕の人生もある」——長野県にゆかりを持つ選手たちは突然の除外決定に衝撃を受けている。長野五輪（1998年）以来、複合競技は長野県のスキー文化の象徴的な存在だった。</p>
+          <p>除外の背景には参加国の広がりの問題などがあるとされるが、地域を挙げて育ててきた競技の突然の消滅に、選手・指導者・競技関係者のショックは大きい。</p>
+        </div>
+        <p class="article-source">出典: 信濃毎日新聞デジタル「スキー複合五輪除外 長野県出身選手から悲痛の声」</p>
+        <div class="article-koike">長野のウィンタースポーツ文化が揺れている。地域振興・観光への影響も出うる問題として、長野ビジネス全体への波及を注視したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">松本市の新複合施設「松本シェーナ」が創業支援スペースとして活用へ</h4>
+        <div class="article-body">
+          <p>松本市に新たにオープンした複合施設「松本シェーナ」のフロアが、起業家・スタートアップの創業支援スペースとして整備されることになった。</p>
+          <p>「松本シェーナ」は2026年に開業した松本市の新複合施設で、商業・文化・教育機能を併せ持つ。フロアの一部を創業支援に活用することで、長野県内のスタートアップ育成拠点としての機能を担う予定だ。</p>
+          <p>長野県の地方創生戦略の一環として、Uターン・Iターン希望者や地元在住の起業希望者を取り込む狙いがある。</p>
+        </div>
+        <p class="article-source">出典: 信濃毎日新聞デジタル「松本市の新たな複合施設『松本シェーナ』フロア使って創業支援へ」</p>
+        <div class="article-koike">長野県で起業・創業支援が充実すれば、Personal OSやYUMEMATCHのユーザー層と親和性が高い。地元起業支援との連携機会として積極的に情報収集したい。</div>
+      </article>
+      <article class="article">
+        <h4 class="article-headline">人口減・老朽化で長野県の水道事業が岐路に　将来像への県の関わりが問われる</h4>
+        <div class="article-body">
+          <p>人口減少と施設の老朽化が長野県の水道事業を直撃しており、将来的な経営維持に向けた県の役割が問われている。</p>
+          <p>南佐久郡南相木村など中山間地の小規模自治体では、高校卒業後に就職した若い職員が村の水道を2人で担うような状況だ。人口減少と施設更新コストの増大が重なり、料金値上げや広域化によらずには持続できない事業体が増加している。</p>
+          <p>長野県は山間地が多く水道の独立採算が困難な地域を多く抱える。国の制度支援の充実と県による広域調整機能の強化が急がれている。</p>
+        </div>
+        <p class="article-source">出典: 信濃毎日新聞デジタル「水道事業を直撃する人口減や施設の老朽化 将来像に長野県はどう関わるのか」</p>
+        <div class="article-koike">インフラ維持コスト上昇は地方自治体財政を圧迫し福祉予算とのトレードオフを生む。はなひらくの地域基盤としての長野を守る政策議論として注視したい。</div>
+      </article>
+    </div>
+  </div>
+
+</div><!-- /paper-columns -->
+
+<!-- ── 今週のカレンダー ── -->
+<div class="section-rule page-full">
+  <span class="section-name">今週のカレンダー</span>
+  <span class="section-name-en">THIS WEEK</span>
+  <div class="section-line"></div>
+</div>
+<div class="calendar-grid">
+  <div class="calendar-item">
+    <div class="calendar-date">7/9（水）</div>
+    <div class="calendar-event">衆院 皇室典範改正案 審議入り</div>
+    <div class="calendar-take">国会終盤の最大の焦点。与野党対立が政治リスクとなる可能性があり、審議動向を注視したい。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">7/9（水）</div>
+    <div class="calendar-event">知の巨人アタリ氏登壇 仏野外会議 日経主催・生配信（午後6時〜）</div>
+    <div class="calendar-take">未来予測・社会変革の第一人者の議論。FP・Personal OS事業の長期戦略構築の参考になる。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">7/11（金）</div>
+    <div class="calendar-event">W杯2026 準々決勝 第1試合</div>
+    <div class="calendar-take">フランス対モロッコなど好カードが続く。世界規模のスポーツイベントはSNSマーケティングの好機でもある。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">7/12（土）</div>
+    <div class="calendar-event">諏訪湖畔「レイクフッドオカヤ」3周年イベント（11・12日）</div>
+    <div class="calendar-take">長野・諏訪の観光施設が地域に感謝を示す催し。地域コミュニティとの連携を大切にするはなひらくの活動と共鳴する。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">7/12（土）</div>
+    <div class="calendar-event">信毎サイトメンテナンス（午前1〜5時）紙面ビューアー一時停止</div>
+    <div class="calendar-take">情報収集スケジュールを事前に調整しておく。</div>
+  </div>
+  <div class="calendar-item">
+    <div class="calendar-date">7/16（木）</div>
+    <div class="calendar-event">第298回医療・医薬品情報研究会（薬事日報主催）</div>
+    <div class="calendar-take">薬剤師・医療職向けの最新情報収集の好機。YUMEMATCHのコンテンツ企画に活かしたい。</div>
+  </div>
+</div>
+
+<!-- ── 編集後記 ── -->
+<div class="postscript">
+  <div class="postscript-label">EDITORIAL NOTE ／ 編集後記</div>
+  <div class="postscript-body">米軍がイランへの攻撃を2日連続で実施し、原油急騰・世界株急落という最悪のシナリオが現実となった。ホルムズ海峡の再封鎖懸念はエネルギー輸入国の日本に直撃する。トランプ氏が「日本イスラム共和国」と言い間違えるコメディ的な一幕もあったが、情勢は笑い事ではない。国内では梅雨明けと台風9号が同時進行し、皇室典範改正案の審議も始まった。長野ではスキー複合の五輪除外と水道老朽化問題が重なった。一方で創薬スタートアップ基金、薬剤師増員計画、地域医療構想指針と、医療・福祉インフラを守る動きも着実に前進している。</div>
+</div>
+
+<!-- ── 用語解説 ── -->
+<div class="glossary">
+  <div class="glossary-label">GLOSSARY ／ 用語解説</div>
+  <div class="glossary-list">
+    <div class="glossary-item"><span class="glossary-term">ホルムズ海峡: </span>イランとオマーン・UAEの間にある海峡で、世界の原油輸送の約2割が通過する重要な航路。封鎖されると世界のエネルギー市場に甚大な影響を与える。</div>
+    <div class="glossary-item"><span class="glossary-term">リスクオフ: </span>投資家が不確実性や損失リスクを回避するため、株式などリスク資産を売却し国債・金・円など安全資産に資金を移す行動。地政学リスクが高まった際によく見られる。</div>
+    <div class="glossary-item"><span class="glossary-term">AIエージェント: </span>指示を受けずに自律的にタスクを判断・実行するAIシステム。検索・計算・ファイル操作など複数の作業を連鎖的にこなす次世代型AIの形態。</div>
+    <div class="glossary-item"><span class="glossary-term">3Dスタッキング（半導体積層技術）: </span>複数の半導体チップを縦方向に積み重ねて接続する技術。一枚の基板上より多くの回路を小面積で実現でき、性能・省電力化を図る手法。</div>
+    <div class="glossary-item"><span class="glossary-term">ムーアの法則: </span>インテル共同創業者ゴードン・ムーアが提唱した経験則。半導体のトランジスタ数が約2年ごとに倍増するという観察で、長年のIT産業の発展を予測してきた。</div>
+    <div class="glossary-item"><span class="glossary-term">就労継続支援B型: </span>障害福祉サービスの一つ。雇用契約を結ばずに就労訓練・生産活動の機会を提供し工賃を支払う事業所形態。一般就労が難しい障害者の働く場として全国に広がっている。</div>
+    <div class="glossary-item"><span class="glossary-term">コンサータ（メチルフェニデート）: </span>ADHD（注意欠如・多動症）の治療薬。依存性リスクがあることから処方箋の厳格な管理が義務付けられている向精神薬の一つ。</div>
+    <div class="glossary-item"><span class="glossary-term">地域医療構想: </span>2040年を見据え、地域の医療需要に応じた適切な医療機能を持つ病院・クリニックの役割分担と連携を推進する国の計画。病床の機能分化・在宅医療への移行が柱。</div>
+    <div class="glossary-item"><span class="glossary-term">FRB（連邦準備制度理事会）: </span>米国の中央銀行に相当する機関。政策金利の決定を通じてインフレ制御や雇用最大化を図る。議長交代など近年は構成員にも注目が集まっている。</div>
+    <div class="glossary-item"><span class="glossary-term">NATO GDP比目標: </span>NATO（北大西洋条約機構）が加盟国に求める国防費の基準。GDP（国内総生産）の2%以上（一部では5%議論も）を防衛費に充てることを目標としている。</div>
+  </div>
+</div>
+
+<!-- ── フッター ── -->
+<footer class="colophon">
+  <span>NewGo Timez 第 58 号</span>
+  <span>2026-07-09</span>
+  <span>編集発行 NewGo Editorial</span>
+</footer>
+
+</div><!-- /wrap -->
+</body>
+</html>
