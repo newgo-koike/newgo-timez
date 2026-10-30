@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>NewGo Timez 第135号 ― 2026年10月30日（金）</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Shippori+Mincho+B1:wght@700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* v8 (2026-10-30): 読む部分は明朝、操作する部分はゴシック。黒・紙・赤の3色で、夜は紙を反転 */
+  :root {
+    --paper: #f5efe4;
+    --paper-2: #ebe3d4;
+    --paper-3: #e1d7c5;
+    --ink: #17120d;
+    --ink-2: #463b30;
+    --mute: #8b7f6e;
+    --rule: #d2c6b3;
+    --rule-strong: #17120d;
+    --red: #a8271b;
+    --red-soft: #f1dfda;
+    --black: #141008;
+    --black-ink: #efe6d6;
+    --black-mute: #9c927f;
+    --green: #2f6d4b;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --serif-b: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --display: "Playfair Display", "Times New Roman", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+    --max: 1120px;
+    --gutter: 40px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14110d; --paper-2: #1b1712; --paper-3: #261f18;
+      --ink: #ece3d3; --ink-2: #c6bba8; --mute: #8a8070;
+      --rule: #2f2821; --rule-strong: #ece3d3;
+      --red: #e4604f; --red-soft: #2b1a16;
+      --black: #0b0907; --black-ink: #efe6d6; --black-mute: #8d8372;
+      --green: #7cc79a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14110d; --paper-2: #1b1712; --paper-3: #261f18;
+    --ink: #ece3d3; --ink-2: #c6bba8; --mute: #8a8070;
+    --rule: #2f2821; --rule-strong: #ece3d3;
+    --red: #e4604f; --red-soft: #2b1a16;
+    --black: #0b0907; --black-ink: #efe6d6; --black-mute: #8d8372;
+    --green: #7cc79a;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    font-family: var(--serif);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.9;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--red); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+  .in { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .label {
+    font-family: var(--sans); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.32em; text-transform: uppercase; color: var(--red);
+  }
+
+  /* ── トップバー ── */
+  .topbar { background: var(--black); color: var(--black-ink); }
+  .topbar-in {
+    max-width: var(--max); margin: 0 auto; padding: 9px var(--gutter);
+    display: flex; align-items: center; gap: 18px;
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.14em;
+  }
+  .topbar-issue { font-weight: 700; }
+  .topbar-date { color: var(--black-mute); }
+  .topbar-for { margin-left: auto; color: var(--black-mute); }
+  .theme-btn {
+    font: 700 10px/1 var(--sans); letter-spacing: 0.22em;
+    color: var(--black-ink); background: transparent;
+    border: 1px solid rgba(239,230,214,0.35); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer;
+  }
+  .theme-btn:hover { border-color: var(--black-ink); }
+
+  /* ── マストヘッド ── */
+  .masthead { padding-top: 26px; }
+  .masthead-in {
+    max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+  }
+  .masthead-label {
+    font-family: var(--display); font-style: italic; font-size: 13px;
+    color: var(--mute); letter-spacing: 0.08em; margin-bottom: 2px;
+  }
+  .masthead-title {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(54px, 8.6vw, 104px); line-height: 0.92; letter-spacing: -0.025em;
+  }
+  .masthead-title em { font-style: italic; color: var(--red); }
+  .masthead-date { text-align: right; padding-bottom: 6px; }
+  .md-weekday {
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; color: var(--mute);
+  }
+  .md-num {
+    font-family: var(--display); font-weight: 900; font-size: clamp(44px, 6vw, 72px);
+    line-height: 1; letter-spacing: -0.03em;
+  }
+  .md-year { font-family: var(--sans); font-size: 11px; letter-spacing: 0.18em; color: var(--mute); }
+  .masthead-rule {
+    max-width: var(--max); margin: 12px auto 0; height: 7px;
+    border-top: 1px solid var(--rule-strong); border-bottom: 3px solid var(--rule-strong);
+  }
+  @media (min-width: 1200px) { .masthead-rule { max-width: calc(var(--max) - var(--gutter) * 2); } }
+
+  /* ── 読了プログレス（画面最上部の赤い線） ── */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--red); z-index: 40; }
+
+  /* ── セクションナビ ── */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-in {
+    max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter);
+    display: flex; align-items: stretch;
+  }
+  .nav-links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav a {
+    flex: 0 0 auto; font-family: var(--sans); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; padding: 11px 12px; color: var(--ink-2);
+    border-bottom: 2px solid transparent; white-space: nowrap;
+  }
+  .nav a.on, .nav a:hover { color: var(--red); border-bottom-color: var(--red); }
+  .nav a.done::after {
+    content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--red); margin-left: 6px; vertical-align: middle; opacity: .85;
+  }
+  .nav-meta {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 10px; padding-left: 12px;
+    border-left: 1px solid var(--rule); font-family: var(--sans); font-size: 11px;
+    color: var(--mute); white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .skim-btn {
+    font: 700 10px/1 var(--sans); letter-spacing: 0.12em; border: 1px solid var(--rule);
+    border-radius: 999px; padding: 5px 9px; background: transparent; color: var(--ink-2); cursor: pointer;
+  }
+  .skim-btn.on { border-color: var(--red); color: var(--red); }
+  .skim .article-body p:not(.article-lead), .skim .headline-main, .skim .lead-body p:not(:first-child), .skim .buzz-why { display: none; }
+
+  /* ── 3 行で今日 ── */
+  .tldr {
+    border: 1px solid var(--rule-strong); padding: 16px 20px 14px; margin-bottom: 28px;
+    display: grid; gap: 8px;
+  }
+  .tldr .label { margin-bottom: 2px; }
+  .tldr-item {
+    display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline;
+    font-family: var(--serif-b); font-size: 15.5px; font-weight: 700; line-height: 1.55;
+  }
+  .tldr-key {
+    font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+    color: var(--red); border-bottom: 1px solid var(--red); padding-bottom: 2px; text-align: center;
+  }
+
+  /* ── 次へ・締め ── */
+  .next-link {
+    display: inline-block; margin-top: 14px; font-family: var(--sans); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--mute); border-bottom: 1px solid var(--rule); padding-bottom: 2px;
+  }
+  .next-link::after { content: " \203A"; }
+  .next-link:hover { color: var(--red); border-bottom-color: var(--red); }
+  .fin { margin-top: 44px; padding: 28px 0 8px; border-top: 3px double var(--rule-strong); text-align: center; }
+  .fin-title { font-family: var(--serif-b); font-size: 20px; font-weight: 800; letter-spacing: 0.08em; }
+  .fin-sub { font-family: var(--sans); font-size: 11px; color: var(--mute); letter-spacing: 0.14em; margin-top: 8px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 28px var(--gutter) 56px; }
+
+  /* ── マーケット ── */
+  .market-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); margin-bottom: 36px;
+  }
+  .market-cell { background: var(--black); color: var(--black-ink); padding: 14px 16px; min-width: 0; }
+  .market-label {
+    font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.26em;
+    color: var(--black-mute); margin-bottom: 8px;
+  }
+  .market-val {
+    font-family: var(--display); font-weight: 700; font-size: 21px; line-height: 1.1;
+    font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+  }
+  .market-change { font-family: var(--sans); font-size: 11px; margin-top: 5px; color: var(--black-mute); }
+  .market-change.up { color: #8fd6ac; }
+  .market-change.down { color: #f08a7c; }
+  .market-note { font-size: 10.5px; color: var(--black-mute); line-height: 1.5; margin-top: 6px; }
+
+  /* ── 一面トップ ── */
+  .lead { padding: 6px 0 30px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; }
+  .lead-inner { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; }
+  .lead-kicker { margin-bottom: 14px; }
+  .lead-headline {
+    font-family: var(--serif-b); font-weight: 800;
+    font-size: clamp(30px, 4.4vw, 50px); line-height: 1.22; letter-spacing: 0.005em;
+    margin-bottom: 20px; text-wrap: balance;
+  }
+  .lead-body { font-size: 15.5px; line-height: 2; text-align: justify; }
+  .lead-body p { margin-bottom: 12px; text-indent: 1em; }
+  .lead-source { font-family: var(--sans); font-size: 11px; color: var(--mute); margin-top: 8px; }
+  .lead-source a, .article-source a { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  .lead-sidebar { border-left: 3px solid var(--red); padding-left: 24px; align-self: start; }
+  .lead-sidebar .label { margin-bottom: 14px; }
+  .lead-pull-quote {
+    font-family: var(--serif-b); font-weight: 700; font-size: 22px; line-height: 1.6; color: var(--ink);
+    position: relative; padding-top: 30px;
+  }
+  .lead-pull-quote::before {
+    content: "\201C"; position: absolute; top: -6px; left: -6px;
+    font-family: var(--display); font-weight: 900; font-size: 64px; line-height: 1; color: var(--red); opacity: .9;
+  }
+
+  /* ── 今日の一手 ── */
+  .moves-box { background: var(--black); color: var(--black-ink); padding: 24px 28px 18px; margin-bottom: 32px; }
+  .moves-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+  .moves-label .label { color: var(--red); }
+  .moves-label span:last-child { font-family: var(--serif-b); font-size: 15px; font-weight: 700; }
+  .moves-count { margin-left: auto; font-family: var(--sans); font-size: 11px; color: var(--black-mute); font-variant-numeric: tabular-nums; }
+  .move-row {
+    display: grid; grid-template-columns: 22px 128px 1fr; gap: 2px 16px; align-items: baseline;
+    padding: 11px 0; border-top: 1px solid rgba(239,230,214,0.14); cursor: pointer;
+  }
+  .move-row.no-check { grid-template-columns: 1fr; cursor: default; }
+  .move-check {
+    appearance: none; -webkit-appearance: none; width: 16px; height: 16px; margin: 0;
+    border: 1.5px solid var(--black-mute); border-radius: 3px; position: relative; top: 3px; cursor: pointer;
+  }
+  .move-check:checked { background: var(--red); border-color: var(--red); }
+  .move-check:checked::after {
+    content: ""; position: absolute; left: 4px; top: 1px; width: 5px; height: 9px;
+    border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg);
+  }
+  .move-biz {
+    font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #f08a7c;
+  }
+  .move-action { font-size: 15px; line-height: 1.75; }
+  .move-row.done .move-action { color: var(--black-mute); text-decoration: line-through; text-decoration-color: rgba(239,230,214,0.45); }
+  .move-ref { grid-column: 3; font-family: var(--sans); font-size: 10.5px; color: var(--black-mute); }
+
+  /* ── 今日の数字 ── */
+  .number { background: var(--red); color: #fff; display: grid; grid-template-columns: auto 1fr; margin-bottom: 36px; }
+  .number-val {
+    font-family: var(--display); font-weight: 900; font-size: clamp(60px, 10vw, 108px); line-height: 1;
+    letter-spacing: -0.04em; padding: 30px 40px; border-right: 1px solid rgba(255,255,255,0.22);
+    white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .number.veiled .number-val { filter: blur(16px); cursor: pointer; user-select: none; }
+  .number-hint { display: none; font-family: var(--sans); font-size: 11px; letter-spacing: 0.2em; opacity: .8; margin-top: 10px; }
+  .number.veiled .number-hint { display: block; }
+  .number.veiled { cursor: pointer; }
+  .number-desc { padding: 26px 32px; align-self: center; }
+  .number-caption { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; opacity: .75; margin-bottom: 8px; }
+  .number-body { font-size: 15px; line-height: 1.8; }
+
+  /* ── セクション区切り ── */
+  .section-rule { display: flex; align-items: baseline; gap: 12px; margin: 36px 0 16px; }
+  .section-rule::before { content: ""; align-self: stretch; flex: 0 0 4px; background: var(--red); }
+  .section-name { font-family: var(--serif-b); font-size: 20px; font-weight: 800; letter-spacing: 0.08em; }
+  .section-name-en { font-family: var(--display); font-style: italic; font-size: 11px; color: var(--mute); letter-spacing: 0.2em; }
+  .section-line { flex: 1; height: 1px; background: var(--rule); align-self: center; }
+
+  /* ── 世間の話題 ── */
+  .buzz-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; margin-bottom: 8px; }
+  .buzz-item {
+    display: grid; grid-template-columns: 44px 1fr auto; gap: 2px 12px; align-items: baseline;
+    padding: 12px 0; border-bottom: 1px solid var(--rule);
+  }
+  .buzz-rank { font-family: var(--display); font-weight: 900; font-size: 26px; color: var(--red); line-height: 1; letter-spacing: -0.03em; }
+  .buzz-title { font-family: var(--serif-b); font-size: 15.5px; font-weight: 700; line-height: 1.5; }
+  .buzz-source { font-family: var(--sans); font-size: 10px; color: var(--mute); white-space: nowrap; }
+  .buzz-why { grid-column: 2 / 4; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+
+  /* ── ヘッドライン ── */
+  .headlines-list { margin-bottom: 8px; }
+  .headline-item {
+    display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: baseline;
+    padding: 11px 0; border-bottom: 1px solid var(--rule);
+  }
+  .headline-item:first-child { border-top: 1px solid var(--rule); }
+  .headline-cat {
+    font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--red); border: 1px solid var(--red); padding: 2px 6px; text-align: center; white-space: nowrap;
+  }
+  .headline-text { min-width: 0; }
+  .headline-title { font-family: var(--serif-b); font-size: 15.5px; font-weight: 700; line-height: 1.55; display: block; }
+  .headline-main { display: block; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; margin-top: 2px; }
+  .headline-source { font-family: var(--sans); font-size: 10px; color: var(--mute); white-space: nowrap; }
+
+  /* ── 人物 ── */
+  .person-box { display: grid; grid-template-columns: 220px 1fr; border: 1px solid var(--rule-strong); margin-bottom: 8px; }
+  .person-sidebar { background: var(--black); color: var(--black-ink); padding: 26px 22px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .person-sidebar .label { margin-bottom: 44px; color: var(--black-mute); }
+  .person-name { font-family: var(--serif-b); font-size: 24px; font-weight: 800; line-height: 1.25; margin-bottom: 8px; }
+  .person-role { font-family: var(--sans); font-size: 11px; color: var(--black-mute); line-height: 1.5; letter-spacing: 0.04em; }
+  .person-main { padding: 26px 30px; }
+  .person-quote {
+    font-family: var(--serif-b); font-size: 20px; font-weight: 700; line-height: 1.6; color: var(--red);
+    border-left: 3px solid var(--red); padding-left: 18px; margin-bottom: 16px;
+  }
+  .person-body { font-size: 14px; line-height: 1.9; color: var(--ink-2); }
+
+  /* ── カテゴリ2段組 ── */
+  .paper-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 56px; align-items: start; }
+  .articles-list { display: flex; flex-direction: column; gap: 22px; }
+  .article { padding-bottom: 22px; border-bottom: 1px solid var(--rule); }
+  .article:last-child { border-bottom: none; }
+  .article-headline { font-family: var(--serif-b); font-size: 18px; font-weight: 800; line-height: 1.45; margin-bottom: 8px; letter-spacing: 0.01em; }
+  .article-body { font-size: 13.5px; line-height: 1.9; color: var(--ink-2); text-align: justify; }
+  .article-body p { margin-bottom: 4px; }
+  .article-body .article-lead { color: var(--ink); font-weight: 500; }
+  .article-source { font-family: var(--sans); font-size: 10.5px; color: var(--mute); margin-top: 6px; }
+
+  /* ── カレンダー ── */
+  .calendar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 8px; }
+  .calendar-item { padding: 12px 16px; background: var(--paper-2); border-left: 3px solid var(--red); }
+  .calendar-date { font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .calendar-event { font-family: var(--serif-b); font-size: 14px; font-weight: 700; line-height: 1.45; }
+  .calendar-note { font-size: 12px; color: var(--ink-2); line-height: 1.55; margin-top: 4px; }
+
+  /* ── 省略・編集後記・用語 ── */
+  .omitted { font-family: var(--sans); font-size: 11px; color: var(--mute); margin-top: 28px; letter-spacing: 0.06em; }
+  .postscript { border-top: 1px solid var(--rule-strong); border-bottom: 3px solid var(--rule-strong); padding: 22px 0; margin-top: 36px; }
+  .postscript .label { margin-bottom: 10px; }
+  .postscript-body { font-size: 14.5px; line-height: 1.95; text-indent: 1em; max-width: 68ch; }
+  .glossary { margin-top: 32px; }
+  .glossary .label { margin-bottom: 12px; display: block; }
+  .glossary-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 40px; }
+  .glossary-item { font-size: 12.5px; line-height: 1.7; display: grid; grid-template-columns: auto 1fr; gap: 10px; }
+  .glossary-term { font-family: var(--serif-b); font-weight: 700; color: var(--red); white-space: nowrap; }
+  .glossary-def { color: var(--ink-2); }
+  .colophon {
+    margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--rule);
+    font-family: var(--sans); font-size: 10px; color: var(--mute); letter-spacing: 0.14em;
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+
+  /* ── スマホ ── */
+  @media (max-width: 767px) {
+    :root { --gutter: 18px; }
+    body { font-size: 15px; }
+    .topbar-in { gap: 10px; font-size: 10px; }
+    .topbar-date { display: none; }
+    .masthead { padding-top: 18px; }
+    .masthead-in { align-items: flex-end; gap: 12px; }
+    .masthead-date { padding-bottom: 2px; }
+    .wrap { padding-top: 20px; }
+    .market-grid { grid-template-columns: repeat(3, 1fr); margin-bottom: 26px; }
+    .market-cell { padding: 11px 12px; }
+    .market-val { font-size: 17px; }
+    .market-note { display: none; }
+    .lead-inner { grid-template-columns: 1fr; gap: 22px; }
+    .lead-body { font-size: 15px; }
+    .lead-pull-quote { font-size: 18px; }
+    .moves-box { padding: 20px 18px 14px; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    .move-row { grid-template-columns: 22px 1fr; gap: 2px 12px; }
+    .move-biz, .move-action, .move-ref { grid-column: 2; }
+    .move-row.no-check { grid-template-columns: 1fr; }
+    .move-row.no-check .move-action { grid-column: 1; }
+    .nav-meta { padding-left: 8px; gap: 8px; font-size: 10px; }
+    .tldr { padding: 14px 16px 12px; }
+    .tldr-item { font-size: 14.5px; }
+    .number { grid-template-columns: 1fr; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    .number-val { padding: 22px 20px 10px; border-right: none; font-size: clamp(52px, 16vw, 76px); white-space: normal; }
+    .number-desc { padding: 0 20px 22px; }
+    .section-rule { margin: 30px 0 12px; }
+    .buzz-list { grid-template-columns: 1fr; }
+    .buzz-item { grid-template-columns: 40px 1fr; }
+    .buzz-source { grid-column: 2; }
+    .buzz-why { grid-column: 2; }
+    .headline-item { grid-template-columns: 1fr; gap: 4px; }
+    .headline-cat { justify-self: start; }
+    .person-box { grid-template-columns: 1fr; }
+    .person-sidebar { padding: 18px; }
+    .person-sidebar .label { margin-bottom: 14px; }
+    .person-main { padding: 18px; }
+    .paper-columns { grid-template-columns: 1fr; }
+    .calendar-grid { grid-template-columns: 1fr; }
+    .glossary-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in"><span class="topbar-issue">第 136 号</span><span class="topbar-date">2026年10月31日（土）</span><span class="topbar-for">FOR YUGO KOIKE</span><button class="theme-btn" id="themeBtn" type="button" aria-label="配色を切り替える">NIGHT</button></div></div>
+<header class="masthead"><div class="masthead-in"><div class="masthead-left"><div class="masthead-label">The weekly edition</div><h1 class="masthead-title">NewGo <em>Timez</em></h1></div>
+<div class="masthead-date"><div class="md-weekday">土曜日</div><div class="md-num">10/31</div><div class="md-year">2026 · 令和8年</div></div></div><div class="masthead-rule"></div></header>
+<nav class="nav" id="nav"><div class="nav-in"><div class="nav-links"><a href="#lead">一面トップ</a><a href="#moves">一手</a><a href="#number">数字</a><a href="#calendar">予定</a></div></div></nav>
+<main class="wrap">
+<section id="lead"><div class="section-rule"><span class="section-name">今週の一面トップ</span><span class="section-name-en">Top stories of the week</span><div class="section-line"></div></div><div class="calendar-grid"><div class="calendar-item"><div class="calendar-date">10/26（月）</div><div class="calendar-event">米国が中東の要員撤収を進める。フーシ派はサウジ攻撃を主張し、NY原油は103ドル台に</div><div class="calendar-note">出典: 日本経済新聞</div></div><div class="calendar-item"><div class="calendar-date">10/27（火）</div><div class="calendar-event">米アンソロピックがIPO目論見書を公開。売上高は2年で100倍、日本でも公募へ</div><div class="calendar-note">出典: 日本経済新聞</div></div><div class="calendar-item"><div class="calendar-date">10/28（水）</div><div class="calendar-event">熊本地震から3か月。住まいの確保と在宅避難者への継続支援が課題に</div><div class="calendar-note">出典: NHK</div></div><div class="calendar-item"><div class="calendar-date">10/30（金）</div><div class="calendar-event">日銀、30日に金融政策決定会合。政策金利は据え置きの方向、焦点は「2%到達」の判断</div><div class="calendar-note">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261029de68131" target="_blank" rel="noopener">NHK</a></div></div></div></section>
+<section class="moves-box" id="moves"><div class="moves-label"><span class="label">Weekly moves</span><span>今週の一手</span></div><div class="move-row"><span class="move-biz">はなひらく</span><span class="move-action">送迎車の燃料費と弁当の食材・配送費を10月分で集計し、工賃原資への影響を確認する</span><span class="move-ref">← 10/26 NY原油103ドル台</span></div><div class="move-row"><span class="move-biz">YUMEMATCH</span><span class="move-action">自動化に使うAIツールへの依存度を一覧にし、代替手段を1つずつ決める</span><span class="move-ref">← 10/27 アンソロピックIPO目論見書</span></div><div class="move-row"><span class="move-biz">はなひらく</span><span class="move-action">利用者ごとの自宅待機時の避難計画を、BCPに1行ずつ追記する</span><span class="move-ref">← 10/28 熊本地震3か月</span></div><div class="move-row"><span class="move-biz">はなひらく</span><span class="move-action">寿・塩尻の11月検針の電気代を確認し、12月の電気ガス支援を月次収支の見込みに入れる</span><span class="move-ref">← 10/30 電気料金が過去最高</span></div></section>
+<section id="number"><div class="section-rule"><span class="section-name">今週の数字</span><span class="section-name-en">Numbers of the week</span><div class="section-line"></div></div><div class="calendar-grid"><div class="calendar-item"><div class="calendar-date">10/26</div><div class="calendar-event" style="font-size:1.6em;font-weight:700">55%</div><div class="calendar-note">日本政府の対中対応で「対話の機会を増やすべきだ」と答えた割合（日経・テレビ東京世論調査）</div></div><div class="calendar-item"><div class="calendar-date">10/27</div><div class="calendar-event" style="font-size:1.6em;font-weight:700">1.5%</div><div class="calendar-note">日本のベンチャー投資は、米国の1.5%にとどまる</div></div><div class="calendar-item"><div class="calendar-date">10/28</div><div class="calendar-event" style="font-size:1.6em;font-weight:700">50万トン</div><div class="calendar-note">来年産の主食用米、需要は今年比で最大これだけ少ない見通し</div></div><div class="calendar-item"><div class="calendar-date">10/30</div><div class="calendar-event" style="font-size:1.6em;font-weight:700">2億6000万人分</div><div class="calendar-note">4月以降の不正アクセスによる個人情報漏えい（のべ）</div></div></div></section>
+<section id="calendar"><div class="section-rule"><span class="section-name">来週のカレンダー</span><span class="section-name-en">Next week</span><div class="section-line"></div></div><div class="calendar-grid"><div class="calendar-item"><div class="calendar-date">11/4（水）</div><div class="calendar-event">衆院財務金融委 消費税減税法案の質疑</div><div class="calendar-note">30日に続いて実施で与野党が合意</div></div><div class="calendar-item"><div class="calendar-date">11/6（金）</div><div class="calendar-event">M6搭載14インチMacBook Pro発売</div><div class="calendar-note">日本では33万9,800円から</div></div><div class="calendar-item"><div class="calendar-date">11/6〜10</div><div class="calendar-event">ロシア・ウクライナ・米の高官協議</div><div class="calendar-note">UAEで開催をゼレンスキー氏が期待</div></div><div class="calendar-item"><div class="calendar-date">11/7（土）</div><div class="calendar-event">精神と時の部屋（〜8日）</div><div class="calendar-note">小池さんの予定</div></div></div></section>
+<section class="postscript"><div class="label">Editorial note ／ 編集後記</div><div class="postscript-body">今週は中東情勢と原油高に始まり、AI企業の上場準備、熊本地震3か月の被災地、日銀会合と、家計や事業の足もとに響く話が続いた。29日は欠号だった。来週は消費税減税法案の質疑と高官協議が控える。燃料費と電気代の確認、AIツールへの依存点検、避難計画の追記という今週の一手を、週明けまでに終えておきたい。</div></section>
+<footer class="colophon"><span>NewGo Timez 第 136 号</span><span>2026-10-31</span><span>編集発行 NewGo Editorial</span></footer>
+</main>
+<script>
+(function(){var r=document.documentElement,b=document.getElementById('themeBtn');
+function dark(){var t=r.getAttribute('data-theme');return t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);}
+function lab(){b.textContent=dark()?'DAY':'NIGHT';}
+b.addEventListener('click',function(){r.setAttribute('data-theme',dark()?'light':'dark');lab();});lab();})();
+</script>
+</body></html>
