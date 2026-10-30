@@ -120,6 +120,9 @@
   }
   @media (min-width: 1200px) { .masthead-rule { max-width: calc(var(--max) - var(--gutter) * 2); } }
 
+  /* ── 読了プログレス（画面最上部の赤い線） ── */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--red); z-index: 40; }
+
   /* ── セクションナビ ── */
   .nav {
     position: sticky; top: 0; z-index: 20;
@@ -129,15 +132,57 @@
   }
   .nav-in {
     max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter);
-    display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none;
+    display: flex; align-items: stretch;
   }
-  .nav-in::-webkit-scrollbar { display: none; }
+  .nav-links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+  .nav-links::-webkit-scrollbar { display: none; }
   .nav a {
     flex: 0 0 auto; font-family: var(--sans); font-size: 12px; font-weight: 700;
     letter-spacing: 0.08em; padding: 11px 12px; color: var(--ink-2);
     border-bottom: 2px solid transparent; white-space: nowrap;
   }
   .nav a.on, .nav a:hover { color: var(--red); border-bottom-color: var(--red); }
+  .nav a.done::after {
+    content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--red); margin-left: 6px; vertical-align: middle; opacity: .85;
+  }
+  .nav-meta {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 10px; padding-left: 12px;
+    border-left: 1px solid var(--rule); font-family: var(--sans); font-size: 11px;
+    color: var(--mute); white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .skim-btn {
+    font: 700 10px/1 var(--sans); letter-spacing: 0.12em; border: 1px solid var(--rule);
+    border-radius: 999px; padding: 5px 9px; background: transparent; color: var(--ink-2); cursor: pointer;
+  }
+  .skim-btn.on { border-color: var(--red); color: var(--red); }
+  .skim .article-body p:not(.article-lead), .skim .headline-main, .skim .lead-body p:not(:first-child), .skim .buzz-why { display: none; }
+
+  /* ── 3 行で今日 ── */
+  .tldr {
+    border: 1px solid var(--rule-strong); padding: 16px 20px 14px; margin-bottom: 28px;
+    display: grid; gap: 8px;
+  }
+  .tldr .label { margin-bottom: 2px; }
+  .tldr-item {
+    display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline;
+    font-family: var(--serif-b); font-size: 15.5px; font-weight: 700; line-height: 1.55;
+  }
+  .tldr-key {
+    font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+    color: var(--red); border-bottom: 1px solid var(--red); padding-bottom: 2px; text-align: center;
+  }
+
+  /* ── 次へ・締め ── */
+  .next-link {
+    display: inline-block; margin-top: 14px; font-family: var(--sans); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--mute); border-bottom: 1px solid var(--rule); padding-bottom: 2px;
+  }
+  .next-link::after { content: " \203A"; }
+  .next-link:hover { color: var(--red); border-bottom-color: var(--red); }
+  .fin { margin-top: 44px; padding: 28px 0 8px; border-top: 3px double var(--rule-strong); text-align: center; }
+  .fin-title { font-family: var(--serif-b); font-size: 20px; font-weight: 800; letter-spacing: 0.08em; }
+  .fin-sub { font-family: var(--sans); font-size: 11px; color: var(--mute); letter-spacing: 0.14em; margin-top: 8px; }
 
   .wrap { max-width: var(--max); margin: 0 auto; padding: 28px var(--gutter) 56px; }
 
@@ -189,15 +234,27 @@
   .moves-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
   .moves-label .label { color: var(--red); }
   .moves-label span:last-child { font-family: var(--serif-b); font-size: 15px; font-weight: 700; }
+  .moves-count { margin-left: auto; font-family: var(--sans); font-size: 11px; color: var(--black-mute); font-variant-numeric: tabular-nums; }
   .move-row {
-    display: grid; grid-template-columns: 128px 1fr; gap: 2px 18px; align-items: baseline;
-    padding: 11px 0; border-top: 1px solid rgba(239,230,214,0.14);
+    display: grid; grid-template-columns: 22px 128px 1fr; gap: 2px 16px; align-items: baseline;
+    padding: 11px 0; border-top: 1px solid rgba(239,230,214,0.14); cursor: pointer;
+  }
+  .move-row.no-check { grid-template-columns: 1fr; cursor: default; }
+  .move-check {
+    appearance: none; -webkit-appearance: none; width: 16px; height: 16px; margin: 0;
+    border: 1.5px solid var(--black-mute); border-radius: 3px; position: relative; top: 3px; cursor: pointer;
+  }
+  .move-check:checked { background: var(--red); border-color: var(--red); }
+  .move-check:checked::after {
+    content: ""; position: absolute; left: 4px; top: 1px; width: 5px; height: 9px;
+    border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg);
   }
   .move-biz {
     font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #f08a7c;
   }
   .move-action { font-size: 15px; line-height: 1.75; }
-  .move-ref { grid-column: 2; font-family: var(--sans); font-size: 10.5px; color: var(--black-mute); }
+  .move-row.done .move-action { color: var(--black-mute); text-decoration: line-through; text-decoration-color: rgba(239,230,214,0.45); }
+  .move-ref { grid-column: 3; font-family: var(--sans); font-size: 10.5px; color: var(--black-mute); }
 
   /* ── 今日の数字 ── */
   .number { background: var(--red); color: #fff; display: grid; grid-template-columns: auto 1fr; margin-bottom: 36px; }
@@ -206,6 +263,10 @@
     letter-spacing: -0.04em; padding: 30px 40px; border-right: 1px solid rgba(255,255,255,0.22);
     white-space: nowrap; font-variant-numeric: tabular-nums;
   }
+  .number.veiled .number-val { filter: blur(16px); cursor: pointer; user-select: none; }
+  .number-hint { display: none; font-family: var(--sans); font-size: 11px; letter-spacing: 0.2em; opacity: .8; margin-top: 10px; }
+  .number.veiled .number-hint { display: block; }
+  .number.veiled { cursor: pointer; }
   .number-desc { padding: 26px 32px; align-self: center; }
   .number-caption { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; opacity: .75; margin-bottom: 8px; }
   .number-body { font-size: 15px; line-height: 1.8; }
@@ -310,8 +371,13 @@
     .lead-body { font-size: 15px; }
     .lead-pull-quote { font-size: 18px; }
     .moves-box { padding: 20px 18px 14px; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
-    .move-row { grid-template-columns: 1fr; gap: 2px; }
-    .move-ref { grid-column: 1; }
+    .move-row { grid-template-columns: 22px 1fr; gap: 2px 12px; }
+    .move-biz, .move-action, .move-ref { grid-column: 2; }
+    .move-row.no-check { grid-template-columns: 1fr; }
+    .move-row.no-check .move-action { grid-column: 1; }
+    .nav-meta { padding-left: 8px; gap: 8px; font-size: 10px; }
+    .tldr { padding: 14px 16px 12px; }
+    .tldr-item { font-size: 14.5px; }
     .number { grid-template-columns: 1fr; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
     .number-val { padding: 22px 20px 10px; border-right: none; font-size: clamp(52px, 16vw, 76px); white-space: normal; }
     .number-desc { padding: 0 20px 22px; }
@@ -333,6 +399,7 @@
 </style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <div class="topbar">
   <div class="topbar-in">
@@ -360,23 +427,34 @@
 
 <nav class="nav" id="nav" aria-label="紙面の見出し">
   <div class="nav-in">
-    <a href="#lead">一面</a>
-    <a href="#moves">今日の一手</a>
-    <a href="#buzz">世間の話題</a>
-    <a href="#headlines">ヘッドライン</a>
-    <a href="#politics_economy">政治・経済</a>
-    <a href="#world">世界</a>
-    <a href="#ai_tech">AI</a>
-    <a href="#startups">起業</a>
-    <a href="#pharmacy">薬剤師</a>
-    <a href="#welfare">福祉</a>
-    <a href="#entertainment">エンタメ</a>
-    <a href="#nagano">長野</a>
-    <a href="#calendar">予定</a>
+    <div class="nav-links">
+      <a href="#lead">一面</a>
+      <a href="#moves">今日の一手</a>
+      <a href="#buzz">世間の話題</a>
+      <a href="#headlines">ヘッドライン</a>
+      <a href="#politics_economy">政治・経済</a>
+      <a href="#world">世界</a>
+      <a href="#ai_tech">AI</a>
+      <a href="#startups">起業</a>
+      <a href="#pharmacy">薬剤師</a>
+      <a href="#welfare">福祉</a>
+      <a href="#entertainment">エンタメ</a>
+      <a href="#nagano">長野</a>
+      <a href="#calendar">予定</a>
+    </div>
+    <div class="nav-meta">
+      <button class="skim-btn" id="skimBtn" type="button">見出しだけ</button>
+      <span id="navProgress">残り — 分</span>
+    </div>
   </div>
 </nav>
 
 <main class="wrap">
+
+<section class="tldr" id="tldr" aria-label="3行で今日">
+  <div class="label">3 lines today ／ 3 行で今日</div>
+  <a class="tldr-item" href="#lead"><span class="tldr-key">一面</span><span class="tldr-text">日銀、30日に金融政策決定会合 政策金利は据え置きの方向、焦点は「2%到達」の判断</span></a><a class="tldr-item" href="#moves"><span class="tldr-key">一手</span><span class="tldr-text">【はなひらく】寿・塩尻の11月検針の電気代を確認し、12月の電気ガス支援を月次収支の見込みに入れる（今週）</span></a><a class="tldr-item" href="#buzz"><span class="tldr-key">話題</span><span class="tldr-text">台風31号が非常に強い勢力に</span></a>
+</section>
 
 <section class="market" aria-label="朝のマーケット">
   <div class="market-grid"><div class="market-cell"><div class="market-label">日経平均</div><div class="market-val">62,807円</div><div class="market-change up">▲ +618 (+0.99%)</div><div class="market-note">前日終値は62,190円</div></div><div class="market-cell"><div class="market-label">ドル円</div><div class="market-val">157円45銭</div><div class="market-change up">▲ +0.62</div><div class="market-note">円安方向。前日は156円83銭</div></div><div class="market-cell"><div class="market-label">NYダウ</div><div class="market-val">52,343ドル</div><div class="market-change down">▼ -525 (-0.99%)</div><div class="market-note">反落。前日は52,868ドル</div></div><div class="market-cell"><div class="market-label">NY原油 WTI</div><div class="market-val">$102.79</div><div class="market-change up">▲ +1.03 (+1.01%)</div><div class="market-note">100ドル超の高止まりが続く</div></div><div class="market-cell"><div class="market-label">金</div><div class="market-val">$4,020</div><div class="market-change down">▼ -18.0 (-0.45%)</div><div class="market-note">小幅安。前日は4,038ドル</div></div><div class="market-cell"><div class="market-label">日米金利差</div><div class="market-val">—</div><div class="market-change ">米4.99 / 日—</div><div class="market-note">日本10年債の値が取得できず算出せず</div></div></div>
@@ -398,15 +476,16 @@
 </section>
 
 <section class="moves-box" id="moves">
-  <div class="moves-label"><span class="label">Today's move</span><span>今日の一手</span></div>
-  <div class="move-row"><span class="move-biz">はなひらく</span><span class="move-action">寿・塩尻の11月検針の電気代を確認し、12月の電気ガス支援を月次収支の見込みに入れる（今週）</span><span class="move-ref">← 電気料金 11月使用分が大手7社で過去最高</span></div><div class="move-row"><span class="move-biz">YUMEMATCH</span><span class="move-action">顧客のメール配信など外部サービスの利用有無を聞き取り、点検リストを送る（今週）</span><span class="move-ref">← 不正アクセスによる個人情報漏えい のべ約2億6000万人分</span></div><div class="move-row"><span class="move-biz">FP</span><span class="move-action">変動金利の住宅ローン利用の顧客に、日銀会合の結果と返済額の試算を連絡する（今日）</span><span class="move-ref">← 日銀 政策金利維持の見通し</span></div><div class="move-row"><span class="move-biz">医療職キャリア</span><span class="move-action">薬局勤務の相談者向けに、2027年度中間年薬価改定の論点を1枚にまとめて共有する（今週）</span><span class="move-ref">← 【薬価部会】安定供給へ薬価引上げを</span></div>
+  <div class="moves-label"><span class="label">Today's move</span><span>今日の一手</span><span class="moves-count" id="movesCount"></span></div>
+  <label class="move-row"><input type="checkbox" class="move-check" id="move-1" aria-label="済みにする"><span class="move-biz">はなひらく</span><span class="move-action">寿・塩尻の11月検針の電気代を確認し、12月の電気ガス支援を月次収支の見込みに入れる（今週）</span><span class="move-ref">← 電気料金 11月使用分が大手7社で過去最高</span></label><label class="move-row"><input type="checkbox" class="move-check" id="move-2" aria-label="済みにする"><span class="move-biz">YUMEMATCH</span><span class="move-action">顧客のメール配信など外部サービスの利用有無を聞き取り、点検リストを送る（今週）</span><span class="move-ref">← 不正アクセスによる個人情報漏えい のべ約2億6000万人分</span></label><label class="move-row"><input type="checkbox" class="move-check" id="move-3" aria-label="済みにする"><span class="move-biz">FP</span><span class="move-action">変動金利の住宅ローン利用の顧客に、日銀会合の結果と返済額の試算を連絡する（今日）</span><span class="move-ref">← 日銀 政策金利維持の見通し</span></label><label class="move-row"><input type="checkbox" class="move-check" id="move-4" aria-label="済みにする"><span class="move-biz">医療職キャリア</span><span class="move-action">薬局勤務の相談者向けに、2027年度中間年薬価改定の論点を1枚にまとめて共有する（今週）</span><span class="move-ref">← 【薬価部会】安定供給へ薬価引上げを</span></label>
 </section>
 
-<section class="number" aria-label="今日の数字">
+<section class="number" id="number" aria-label="今日の数字">
   <div class="number-val">2億6000万人分</div>
   <div class="number-desc">
     <div class="number-caption">4月以降の不正アクセスによる個人情報漏えい（のべ）</div>
     <div class="number-body">政府の個人情報保護委員会のまとめで、ことし4月以降に漏えいした個人情報はのべ約2億6000万人分にのぼることが分かった。</div>
+    <div class="number-hint">TAP TO REVEAL ／ いくつだと思う？ タップで表示</div>
   </div>
 </section>
 
@@ -519,6 +598,11 @@
   <div class="glossary-list"><div class="glossary-item"><span class="glossary-term">2%物価目標</span><span class="glossary-def">日銀が目指す物価上昇率。到達と判断すると、利上げの議論が進みやすくなる。</span></div><div class="glossary-item"><span class="glossary-term">激変緩和措置</span><span class="glossary-def">ガソリンなどの急な値上がりを国の補助で和らげる仕組み。</span></div><div class="glossary-item"><span class="glossary-term">逆ざや</span><span class="glossary-def">医療機関や薬局が薬を買う価格が、公定の薬価を上回る状態。</span></div><div class="glossary-item"><span class="glossary-term">中間年改定</span><span class="glossary-def">2年に1度の薬価改定の間の年に行う、薬価の見直し。</span></div></div>
 </section>
 
+<section class="fin" id="fin">
+  <div class="fin-title">きょうの紙面はここまで</div>
+  <div class="fin-sub"><span id="finMin"></span><span id="finMoves"></span></div>
+</section>
+
 <footer class="colophon">
   <span>NewGo Timez 第 135 号</span>
   <span>2026-10-30</span>
@@ -529,42 +613,111 @@
 
 <script>
 (function () {
-  var root = document.documentElement;
+  var root = document.documentElement, body = document.body;
+  var DATE = '2026-10-30';
+  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  /* 昼夜 */
   var btn = document.getElementById('themeBtn');
   function apply(t) {
     if (t) root.setAttribute('data-theme', t); else root.removeAttribute('data-theme');
     var dark = t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
     btn.textContent = dark ? 'DAY' : 'NIGHT';
   }
-  var saved = null;
-  try { saved = localStorage.getItem('newgo-theme'); } catch (e) {}
-  apply(saved || '');
+  apply(load('newgo-theme') || '');
   btn.addEventListener('click', function () {
     var dark = root.getAttribute('data-theme') === 'dark' ||
       (!root.getAttribute('data-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
     var next = dark ? 'light' : 'dark';
-    apply(next);
-    try { localStorage.setItem('newgo-theme', next); } catch (e) {}
+    apply(next); store('newgo-theme', next);
   });
 
+  /* 見出しだけ／全文（設定は日をまたいで残す） */
+  var skimBtn = document.getElementById('skimBtn');
+  function setSkim(on) { body.classList.toggle('skim', on); skimBtn.classList.toggle('on', on); skimBtn.textContent = on ? '全文を読む' : '見出しだけ'; }
+  setSkim(load('newgo-skim') === '1');
+  skimBtn.addEventListener('click', function () { var on = !body.classList.contains('skim'); setSkim(on); store('newgo-skim', on ? '1' : '0'); });
+
+  /* 今日の一手: チェックは日付ごとに保存 */
+  var moveKey = 'newgo-moves-' + DATE;
+  var checks = [].slice.call(document.querySelectorAll('.move-check'));
+  var savedMoves = (load(moveKey) || '').split(',');
+  var countEl = document.getElementById('movesCount');
+  function syncMoves() {
+    var done = 0;
+    checks.forEach(function (c) { c.closest('.move-row').classList.toggle('done', c.checked); if (c.checked) done++; });
+    if (countEl) countEl.textContent = checks.length ? (done + ' / ' + checks.length + ' 済み') : '';
+    var fm = document.getElementById('finMoves');
+    if (fm) fm.textContent = checks.length ? ('　一手 ' + done + ' / ' + checks.length + ' 済み') : '';
+    store(moveKey, checks.map(function (c) { return c.checked ? '1' : '0'; }).join(','));
+  }
+  checks.forEach(function (c, i) { c.checked = savedMoves[i] === '1'; c.addEventListener('change', syncMoves); });
+  syncMoves();
+
+  /* 今日の数字: 一度だけ伏せる（タップで表示。JS が無ければ最初から見える） */
+  var num = document.getElementById('number');
+  if (num && load('newgo-num-' + DATE) !== '1') {
+    num.classList.add('veiled');
+    num.addEventListener('click', function () { num.classList.remove('veiled'); store('newgo-num-' + DATE, '1'); }, { once: true });
+  }
+
+  /* 読了プログレス・残り分・既読ドット・位置の記憶 */
+  var main = document.querySelector('main');
+  var totalChars = (main.innerText || '').replace(/\s+/g, '').length;
+  var totalMin = Math.max(1, Math.round(totalChars / 600));
+  var bar = document.getElementById('progress'), navProg = document.getElementById('navProgress');
+  var finMin = document.getElementById('finMin');
+  if (finMin) finMin.textContent = '読了の目安 ' + totalMin + ' 分';
+
   var links = [].slice.call(document.querySelectorAll('.nav a'));
-  var map = {};
+  var map = {}, secs = [];
   links.forEach(function (a) {
-    var id = a.getAttribute('href').slice(1);
-    if (!document.getElementById(id)) { a.hidden = true; return; }
-    map[id] = a;
+    var id = a.getAttribute('href').slice(1), el = document.getElementById(id);
+    if (!el) { a.hidden = true; return; }
+    map[id] = a; secs.push(el);
   });
+
+  function onScroll() {
+    var h = root, max = h.scrollHeight - h.clientHeight, r = max > 0 ? Math.min(1, h.scrollTop / max) : 1;
+    if (bar) bar.style.width = (r * 100) + '%';
+    if (navProg) navProg.textContent = r >= 0.97 ? '読了' : ('残り ' + Math.max(1, Math.round(totalMin * (1 - r))) + ' 分');
+    secs.forEach(function (el) { map[el.id].classList.toggle('done', el.getBoundingClientRect().bottom < 60); });
+    store('newgo-pos-' + DATE, r >= 0.97 ? '0' : String(Math.round(h.scrollTop)));
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () { onScroll(); ticking = false; });
+  }, { passive: true });
+  onScroll();
+
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         links.forEach(function (a) { a.classList.remove('on'); });
         var a = map[e.target.id];
-        if (a) { a.classList.add('on'); }
+        if (a) { a.classList.add('on'); a.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
       });
     }, { rootMargin: '-30% 0px -60% 0px' });
-    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+    secs.forEach(function (el) { io.observe(el); });
   }
+
+  /* 前回の続きから（途中で閉じた日だけ） */
+  var pos = parseInt(load('newgo-pos-' + DATE) || '0', 10);
+  if (pos > 600 && !location.hash) { setTimeout(function () { window.scrollTo(0, pos); }, 250); }
+
+  /* 欄の末尾に「次は …」 */
+  var cats = [].slice.call(document.querySelectorAll('.cat'));
+  cats.forEach(function (sec, i) {
+    var next = cats[i + 1] || document.getElementById('calendar');
+    if (!next) return;
+    var name = (next.querySelector('.section-name') || {}).textContent || '予定';
+    var a = document.createElement('a');
+    a.className = 'next-link'; a.href = '#' + next.id; a.textContent = '次は ' + name;
+    sec.appendChild(a);
+  });
 })();
 </script>
 </body>
