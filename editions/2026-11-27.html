@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>NewGo Timez 第155号 ― 2026年11月27日（金）</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Shippori+Mincho+B1:wght@700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* v8 (2026-10-30): 読む部分は明朝、操作する部分はゴシック。黒・紙・赤の3色で、夜は紙を反転 */
+  :root {
+    --paper: #f5efe4;
+    --paper-2: #ebe3d4;
+    --paper-3: #e1d7c5;
+    --ink: #17120d;
+    --ink-2: #463b30;
+    --mute: #8b7f6e;
+    --rule: #d2c6b3;
+    --rule-strong: #17120d;
+    --red: #a8271b;
+    --red-soft: #f1dfda;
+    --black: #141008;
+    --black-ink: #efe6d6;
+    --black-mute: #9c927f;
+    --green: #2f6d4b;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --serif-b: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --display: "Playfair Display", "Times New Roman", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+    --max: 1120px;
+    --gutter: 40px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14110d; --paper-2: #1b1712; --paper-3: #261f18;
+      --ink: #ece3d3; --ink-2: #c6bba8; --mute: #8a8070;
+      --rule: #2f2821; --rule-strong: #ece3d3;
+      --red: #e4604f; --red-soft: #2b1a16;
+      --black: #0b0907; --black-ink: #efe6d6; --black-mute: #8d8372;
+      --green: #7cc79a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14110d; --paper-2: #1b1712; --paper-3: #261f18;
+    --ink: #ece3d3; --ink-2: #c6bba8; --mute: #8a8070;
+    --rule: #2f2821; --rule-strong: #ece3d3;
+    --red: #e4604f; --red-soft: #2b1a16;
+    --black: #0b0907; --black-ink: #efe6d6; --black-mute: #8d8372;
+    --green: #7cc79a;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    font-family: var(--serif);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.9;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--red); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+  .in { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .label {
+    font-family: var(--sans); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.32em; text-transform: uppercase; color: var(--red);
+  }
+
+  /* ── トップバー ── */
+  .topbar { background: var(--black); color: var(--black-ink); }
+  .topbar-in {
+    max-width: var(--max); margin: 0 auto; padding: 9px var(--gutter);
+    display: flex; align-items: center; gap: 18px;
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.14em;
+  }
+  .topbar-issue { font-weight: 700; }
+  .topbar-date { color: var(--black-mute); }
+  .topbar-for { margin-left: auto; color: var(--black-mute); }
+  .theme-btn {
+    font: 700 10px/1 var(--sans); letter-spacing: 0.22em;
+    color: var(--black-ink); background: transparent;
+    border: 1px solid rgba(239,230,214,0.35); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer;
+  }
+  .theme-btn:hover { border-color: var(--black-ink); }
+
+  /* ── マストヘッド ── */
+  .masthead { padding-top: 26px; }
+  .masthead-in {
+    max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+  }
+  .masthead-label {
+    font-family: var(--display); font-style: italic; font-size: 13px;
+    color: var(--mute); letter-spacing: 0.08em; margin-bottom: 2px;
+  }
+  .masthead-title {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(54px, 8.6vw, 104px); line-height: 0.92; letter-spacing: -0.025em;
+  }
+  .masthead-title em { font-style: italic; color: var(--red); }
+  .masthead-date { text-align: right; padding-bottom: 6px; }
+  .md-weekday {
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; color: var(--mute);
+  }
+  .md-num {
+    font-family: var(--display); font-weight: 900; font-size: clamp(44px, 6vw, 72px);
+    line-height: 1; letter-spacing: -0.03em;
+  }
+  .md-year { font-family: var(--sans); font-size: 11px; letter-spacing: 0.18em; color: var(--mute); }
+  .masthead-rule {
+    max-width: var(--max); margin: 12px auto 0; height: 7px;
+    border-top: 1px solid var(--rule-strong); border-bottom: 3px solid var(--rule-strong);
+  }
+  @media (min-width: 1200px) { .masthead-rule { max-width: calc(var(--max) - var(--gutter) * 2); } }
+
+  /* ── 読了プログレス（画面最上部の赤い線） ── */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--red); z-index: 40; }
+
+  /* ── セクションナビ ── */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-in {
+    max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter);
+    display: flex; align-items: stretch;
+  }
+  .nav-links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav a {
+    flex: 0 0 auto; font-family: var(--sans); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; padding: 11px 12px; color: var(--ink-2);
+    border-bottom: 2px solid transparent; white-space: nowrap;
+  }
+  .nav a.on, .nav a:hover { color: var(--red); border-bottom-color: var(--red); }
+  .nav a.done::after {
+    content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--red); margin-left: 6px; vertical-align: middle; opacity: .85;
+  }
+  .nav-meta {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 10px; padding-left: 12px;
+    border-left: 1px solid var(--rule); font-family: var(--sans); font-size: 11px;
+    color: var(--mute); white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .skim-btn {
+    font: 700 10px/1 var(--sans); letter-spacing: 0.12em; border: 1px solid var(--rule);
+    border-radius: 999px; padding: 5px 9px; background: transparent; color: var(--ink-2); cursor: pointer;
+  }
+  .skim-btn.on { border-color: var(--red); color: var(--red); }
+  .skim .article-body p:not(.article-lead), .skim .headline-main, .skim .lead-body p:not(:first-child), .skim .buzz-why { display: none; }
+
+  /* ── 3 行で今日 ── */
+  .tldr {
+    border: 1px solid var(--rule-strong); padding: 16px 20px 14px; margin-bottom: 28px;
+    display: grid; gap: 8px;
+  }
+  .tldr .label { margin-bottom: 2px; }
+  .tldr-item {
+    display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline;
+    font-family: var(--serif-b); font-size: 15.5px; font-weight: 700; line-height: 1.55;
+  }
+  .tldr-key {
+    font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+    color: var(--red); border-bottom: 1px solid var(--red); padding-bottom: 2px; text-align: center;
+  }
+
+  /* ── 次へ・締め ── */
+  .next-link {
+    display: inline-block; margin-top: 14px; font-family: var(--sans); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--mute); border-bottom: 1px solid var(--rule); padding-bottom: 2px;
+  }
+  .next-link::after { content: " \203A"; }
+  .next-link:hover { color: var(--red); border-bottom-color: var(--red); }
+  .fin { margin-top: 44px; padding: 28px 0 8px; border-top: 3px double var(--rule-strong); text-align: center; }
+  .fin-title { font-family: var(--serif-b); font-size: 20px; font-weight: 800; letter-spacing: 0.08em; }
+  .fin-sub { font-family: var(--sans); font-size: 11px; color: var(--mute); letter-spacing: 0.14em; margin-top: 8px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 28px var(--gutter) 56px; }
+
+  /* ── マーケット ── */
+  .market-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); margin-bottom: 36px;
+  }
+  .market-cell { background: var(--black); color: var(--black-ink); padding: 14px 16px; min-width: 0; }
+  .market-label {
+    font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.26em;
+    color: var(--black-mute); margin-bottom: 8px;
+  }
+  .market-val {
+    font-family: var(--display); font-weight: 700; font-size: 21px; line-height: 1.1;
+    font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+  }
+  .market-change { font-family: var(--sans); font-size: 11px; margin-top: 5px; color: var(--black-mute); }
+  .market-change.up { color: #8fd6ac; }
+  .market-change.down { color: #f08a7c; }
+  .market-note { font-size: 10.5px; color: var(--black-mute); line-height: 1.5; margin-top: 6px; }
+
+  /* ── 一面トップ ── */
+  .lead { padding: 6px 0 30px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; }
+  .lead-inner { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; }
+  .lead-kicker { margin-bottom: 14px; }
+  .lead-headline {
+    font-family: var(--serif-b); font-weight: 800;
+    font-size: clamp(30px, 4.4vw, 50px); line-height: 1.22; letter-spacing: 0.005em;
+    margin-bottom: 20px; text-wrap: balance;
+  }
+  .lead-body { font-size: 15.5px; line-height: 2; text-align: justify; }
+  .lead-body p { margin-bottom: 12px; text-indent: 1em; }
+  .lead-source { font-family: var(--sans); font-size: 11px; color: var(--mute); margin-top: 8px; }
+  .lead-source a, .article-source a { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  .lead-sidebar { border-left: 3px solid var(--red); padding-left: 24px; align-self: start; }
+  .lead-sidebar .label { margin-bottom: 14px; }
+  .lead-pull-quote {
+    font-family: var(--serif-b); font-weight: 700; font-size: 22px; line-height: 1.6; color: var(--ink);
+    position: relative; padding-top: 30px;
+  }
+  .lead-pull-quote::before {
+    content: "\201C"; position: absolute; top: -6px; left: -6px;
+    font-family: var(--display); font-weight: 900; font-size: 64px; line-height: 1; color: var(--red); opacity: .9;
+  }
+
+  /* ── 今日の一手 ── */
+  .moves-box { background: var(--black); color: var(--black-ink); padding: 24px 28px 18px; margin-bottom: 32px; }
+  .moves-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+  .moves-label .label { color: var(--red); }
+  .moves-label span:last-child { font-family: var(--serif-b); font-size: 15px; font-weight: 700; }
+  .moves-count { margin-left: auto; font-family: var(--sans); font-size: 11px; color: var(--black-mute); font-variant-numeric: tabular-nums; }
+  .move-row {
+    display: grid; grid-template-columns: 22px 128px 1fr; gap: 2px 16px; align-items: baseline;
+    padding: 11px 0; border-top: 1px solid rgba(239,230,214,0.14); cursor: pointer;
+  }
+  .move-row.no-check { grid-template-columns: 1fr; cursor: default; }
+  .move-check {
+    appearance: none; -webkit-appearance: none; width: 16px; height: 16px; margin: 0;
+    border: 1.5px solid var(--black-mute); border-radius: 3px; position: relative; top: 3px; cursor: pointer;
+  }
+  .move-check:checked { background: var(--red); border-color: var(--red); }
+  .move-check:checked::after {
+    content: ""; position: absolute; left: 4px; top: 1px; width: 5px; height: 9px;
+    border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg);
+  }
+  .move-biz {
+    font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #f08a7c;
+  }
+  .move-action { font-size: 15px; line-height: 1.75; }
+  .move-row.done .move-action { color: var(--black-mute); text-decoration: line-through; text-decoration-color: rgba(239,230,214,0.45); }
+  .move-ref { grid-column: 3; font-family: var(--sans); font-size: 10.5px; color: var(--black-mute); }
+
+  /* ── 今日の数字 ── */
+  .number { background: var(--red); color: #fff; display: grid; grid-template-columns: auto 1fr; margin-bottom: 36px; }
+  .number-val {
+    font-family: var(--display); font-weight: 900; font-size: clamp(60px, 10vw, 108px); line-height: 1;
+    letter-spacing: -0.04em; padding: 30px 40px; border-right: 1px solid rgba(255,255,255,0.22);
+    white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .number.veiled .number-val { filter: blur(16px); cursor: pointer; user-select: none; }
+  .number-hint { display: none; font-family: var(--sans); font-size: 11px; letter-spacing: 0.2em; opacity: .8; margin-top: 10px; }
+  .number.veiled .number-hint { display: block; }
+  .number.veiled { cursor: pointer; }
+  .number-desc { padding: 26px 32px; align-self: center; }
+  .number-caption { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; opacity: .75; margin-bottom: 8px; }
+  .number-body { font-size: 15px; line-height: 1.8; }
+
+  /* ── セクション区切り ── */
+  .section-rule { display: flex; align-items: baseline; gap: 12px; margin: 36px 0 16px; }
+  .section-rule::before { content: ""; align-self: stretch; flex: 0 0 4px; background: var(--red); }
+  .section-name { font-family: var(--serif-b); font-size: 20px; font-weight: 800; letter-spacing: 0.08em; }
+  .section-name-en { font-family: var(--display); font-style: italic; font-size: 11px; color: var(--mute); letter-spacing: 0.2em; }
+  .section-line { flex: 1; height: 1px; background: var(--rule); align-self: center; }
+
+  /* ── 世間の話題 ── */
+  .buzz-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; margin-bottom: 8px; }
+  .buzz-item {
+    display: grid; grid-template-columns: 44px 1fr auto; gap: 2px 12px; align-items: baseline;
+    padding: 12px 0; border-bottom: 1px solid var(--rule);
+  }
+  .buzz-rank { font-family: var(--display); font-weight: 900; font-size: 26px; color: var(--red); line-height: 1; letter-spacing: -0.03em; }
+  .buzz-title { font-family: var(--serif-b); font-size: 15.5px; font-weight: 700; line-height: 1.5; }
+  .buzz-source { font-family: var(--sans); font-size: 10px; color: var(--mute); white-space: nowrap; }
+  .buzz-why { grid-column: 2 / 4; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+
+  /* ── ヘッドライン ── */
+  .headlines-list { margin-bottom: 8px; }
+  .headline-item {
+    display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: baseline;
+    padding: 11px 0; border-bottom: 1px solid var(--rule);
+  }
+  .headline-item:first-child { border-top: 1px solid var(--rule); }
+  .headline-cat {
+    font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--red); border: 1px solid var(--red); padding: 2px 6px; text-align: center; white-space: nowrap;
+  }
+  .headline-text { min-width: 0; }
+  .headline-title { font-family: var(--serif-b); font-size: 15.5px; font-weight: 700; line-height: 1.55; display: block; }
+  .headline-main { display: block; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; margin-top: 2px; }
+  .headline-source { font-family: var(--sans); font-size: 10px; color: var(--mute); white-space: nowrap; }
+
+  /* ── 人物 ── */
+  .person-box { display: grid; grid-template-columns: 220px 1fr; border: 1px solid var(--rule-strong); margin-bottom: 8px; }
+  .person-sidebar { background: var(--black); color: var(--black-ink); padding: 26px 22px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .person-sidebar .label { margin-bottom: 44px; color: var(--black-mute); }
+  .person-name { font-family: var(--serif-b); font-size: 24px; font-weight: 800; line-height: 1.25; margin-bottom: 8px; }
+  .person-role { font-family: var(--sans); font-size: 11px; color: var(--black-mute); line-height: 1.5; letter-spacing: 0.04em; }
+  .person-main { padding: 26px 30px; }
+  .person-quote {
+    font-family: var(--serif-b); font-size: 20px; font-weight: 700; line-height: 1.6; color: var(--red);
+    border-left: 3px solid var(--red); padding-left: 18px; margin-bottom: 16px;
+  }
+  .person-body { font-size: 14px; line-height: 1.9; color: var(--ink-2); }
+
+  /* ── カテゴリ2段組 ── */
+  .paper-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 56px; align-items: start; }
+  .articles-list { display: flex; flex-direction: column; gap: 22px; }
+  .article { padding-bottom: 22px; border-bottom: 1px solid var(--rule); }
+  .article:last-child { border-bottom: none; }
+  .article-headline { font-family: var(--serif-b); font-size: 18px; font-weight: 800; line-height: 1.45; margin-bottom: 8px; letter-spacing: 0.01em; }
+  .article-body { font-size: 13.5px; line-height: 1.9; color: var(--ink-2); text-align: justify; }
+  .article-body p { margin-bottom: 4px; }
+  .article-body .article-lead { color: var(--ink); font-weight: 500; }
+  .article-source { font-family: var(--sans); font-size: 10.5px; color: var(--mute); margin-top: 6px; }
+
+  /* ── カレンダー ── */
+  .calendar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 8px; }
+  .calendar-item { padding: 12px 16px; background: var(--paper-2); border-left: 3px solid var(--red); }
+  .calendar-date { font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .calendar-event { font-family: var(--serif-b); font-size: 14px; font-weight: 700; line-height: 1.45; }
+  .calendar-note { font-size: 12px; color: var(--ink-2); line-height: 1.55; margin-top: 4px; }
+
+  /* ── 省略・編集後記・用語 ── */
+  .omitted { font-family: var(--sans); font-size: 11px; color: var(--mute); margin-top: 28px; letter-spacing: 0.06em; }
+  .postscript { border-top: 1px solid var(--rule-strong); border-bottom: 3px solid var(--rule-strong); padding: 22px 0; margin-top: 36px; }
+  .postscript .label { margin-bottom: 10px; }
+  .postscript-body { font-size: 14.5px; line-height: 1.95; text-indent: 1em; max-width: 68ch; }
+  .glossary { margin-top: 32px; }
+  .glossary .label { margin-bottom: 12px; display: block; }
+  .glossary-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 40px; }
+  .glossary-item { font-size: 12.5px; line-height: 1.7; display: grid; grid-template-columns: auto 1fr; gap: 10px; }
+  .glossary-term { font-family: var(--serif-b); font-weight: 700; color: var(--red); white-space: nowrap; }
+  .glossary-def { color: var(--ink-2); }
+  .colophon {
+    margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--rule);
+    font-family: var(--sans); font-size: 10px; color: var(--mute); letter-spacing: 0.14em;
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+
+  /* ── スマホ ── */
+  @media (max-width: 767px) {
+    :root { --gutter: 18px; }
+    body { font-size: 15px; }
+    .topbar-in { gap: 10px; font-size: 10px; }
+    .topbar-date { display: none; }
+    .masthead { padding-top: 18px; }
+    .masthead-in { align-items: flex-end; gap: 12px; }
+    .masthead-date { padding-bottom: 2px; }
+    .wrap { padding-top: 20px; }
+    .market-grid { grid-template-columns: repeat(3, 1fr); margin-bottom: 26px; }
+    .market-cell { padding: 11px 12px; }
+    .market-val { font-size: 17px; }
+    .market-note { display: none; }
+    .lead-inner { grid-template-columns: 1fr; gap: 22px; }
+    .lead-body { font-size: 15px; }
+    .lead-pull-quote { font-size: 18px; }
+    .moves-box { padding: 20px 18px 14px; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    .move-row { grid-template-columns: 22px 1fr; gap: 2px 12px; }
+    .move-biz, .move-action, .move-ref { grid-column: 2; }
+    .move-row.no-check { grid-template-columns: 1fr; }
+    .move-row.no-check .move-action { grid-column: 1; }
+    .nav-meta { padding-left: 8px; gap: 8px; font-size: 10px; }
+    .tldr { padding: 14px 16px 12px; }
+    .tldr-item { font-size: 14.5px; }
+    .number { grid-template-columns: 1fr; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    .number-val { padding: 22px 20px 10px; border-right: none; font-size: clamp(52px, 16vw, 76px); white-space: normal; }
+    .number-desc { padding: 0 20px 22px; }
+    .section-rule { margin: 30px 0 12px; }
+    .buzz-list { grid-template-columns: 1fr; }
+    .buzz-item { grid-template-columns: 40px 1fr; }
+    .buzz-source { grid-column: 2; }
+    .buzz-why { grid-column: 2; }
+    .headline-item { grid-template-columns: 1fr; gap: 4px; }
+    .headline-cat { justify-self: start; }
+    .person-box { grid-template-columns: 1fr; }
+    .person-sidebar { padding: 18px; }
+    .person-sidebar .label { margin-bottom: 14px; }
+    .person-main { padding: 18px; }
+    .paper-columns { grid-template-columns: 1fr; }
+    .calendar-grid { grid-template-columns: 1fr; }
+    .glossary-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="topbar-issue">第 155 号</span>
+    <span class="topbar-date">2026年11月27日（金）</span>
+    <span class="topbar-for">FOR YUGO KOIKE</span>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="配色を切り替える">NIGHT</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="masthead-left">
+      <div class="masthead-label">The daily edition</div>
+      <h1 class="masthead-title">NewGo <em>Timez</em></h1>
+    </div>
+    <div class="masthead-date">
+      <div class="md-weekday">金曜日</div>
+      <div class="md-num">11/27</div>
+      <div class="md-year">2026 · 令和8年</div>
+    </div>
+  </div>
+  <div class="masthead-rule"></div>
+</header>
+
+<nav class="nav" id="nav" aria-label="紙面の見出し">
+  <div class="nav-in">
+    <div class="nav-links">
+      <a href="#lead">一面</a>
+      <a href="#moves">今日の一手</a>
+      <a href="#buzz">世間の話題</a>
+      <a href="#headlines">ヘッドライン</a>
+      <a href="#politics_economy">政治・経済</a>
+      <a href="#world">世界</a>
+      <a href="#ai_tech">AI</a>
+      <a href="#startups">起業</a>
+      <a href="#pharmacy">薬剤師</a>
+      <a href="#welfare">福祉</a>
+      <a href="#entertainment">エンタメ</a>
+      <a href="#nagano">長野</a>
+      <a href="#calendar">予定</a>
+    </div>
+    <div class="nav-meta">
+      <button class="skim-btn" id="skimBtn" type="button">見出しだけ</button>
+      <span id="navProgress">残り — 分</span>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section class="tldr" id="tldr" aria-label="3行で今日">
+  <div class="label">3 lines today ／ 3 行で今日</div>
+  <a class="tldr-item" href="#lead"><span class="tldr-key">一面</span><span class="tldr-text">続報 関文科相の問責決議案、きょう参院で採決 可否はギリギリの情勢</span></a><a class="tldr-item" href="#moves"><span class="tldr-key">一手</span><span class="tldr-text">【はなひらく】虐待防止の指針と研修記録を点検し、12月の全体MTの議題に入れる（今週）</span></a><a class="tldr-item" href="#buzz"><span class="tldr-key">話題</span><span class="tldr-text">関文科相の問責決議案、きょう採決</span></a>
+</section>
+
+<section class="market" aria-label="朝のマーケット">
+  <div class="market-grid"><div class="market-cell"><div class="market-label">日経平均</div><div class="market-val">57,499円</div><div class="market-change down">▼ -1,945 (-3.27%)</div><div class="market-note">26日終値。27年の下限6万円を割り込んだ</div></div><div class="market-cell"><div class="market-label">ドル円</div><div class="market-val">159円25銭</div><div class="market-change down">▼ -0.45</div><div class="market-note">27日朝の水準。前日比で小幅な円高</div></div><div class="market-cell"><div class="market-label">NYダウ</div><div class="market-val">50,183ドル</div><div class="market-change down">▼ -15 (-0.03%)</div><div class="market-note">ほぼ横ばい。ナスダックは一時4%超安</div></div><div class="market-cell"><div class="market-label">NY原油 WTI</div><div class="market-val">$84.91</div><div class="market-change up">▲ +0.93 (+1.11%)</div><div class="market-note">サウジの製油所攻撃報道が材料</div></div><div class="market-cell"><div class="market-label">金</div><div class="market-val">$3,593</div><div class="market-change up">▲ +78.0 (+2.22%)</div><div class="market-note">株安を受けて買われた</div></div><div class="market-cell"><div class="market-label">日米金利差</div><div class="market-val">—</div><div class="market-change ">米4.85 / 日—</div><div class="market-note">日本の長期金利が未確認のため算出せず</div></div></div>
+</section>
+
+<section class="lead" id="lead">
+  <div class="lead-inner">
+    <div>
+      <div class="label lead-kicker">本日のトップ ― 政治</div>
+      <h2 class="lead-headline">続報 関文科相の問責決議案、きょう参院で採決 可否はギリギリの情勢（11/27）</h2>
+      <div class="lead-body"><p>野党側は26日、政治資金パーティーをめぐる指摘が相次ぐ関文科相の問責決議案を参院に提出した。採決は27日で、NHKは可否がギリギリの情勢だと伝えている。</p><p>26日夜には自民、維新の幹事長らが採決前に国会情勢をめぐって意見交換した。日本経済新聞によると、高市政権は否決を狙っている。結果次第で国会運営と文科行政の先行きが変わる。</p></div>
+      <div class="lead-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261127de82148" target="_blank" rel="noopener">NHK「関文科相問責決議案 きょう採決 可否はギリギリの情勢か」</a></div>
+    </div>
+    <aside class="lead-sidebar">
+      <div class="label">Editor's focus</div>
+      <div class="lead-pull-quote">政治資金パーティーをめぐる指摘が相次ぐ関文科相への問責決議案が、27日に参院本会議で採決される。</div>
+    </aside>
+  </div>
+</section>
+
+<section class="moves-box" id="moves">
+  <div class="moves-label"><span class="label">Today's move</span><span>今日の一手</span><span class="moves-count" id="movesCount"></span></div>
+  <label class="move-row"><input type="checkbox" class="move-check" id="move-1" aria-label="済みにする"><span class="move-biz">はなひらく</span><span class="move-action">虐待防止の指針と研修記録を点検し、12月の全体MTの議題に入れる（今週）</span><span class="move-ref">← 虐待防止の指針整備、2028年度から義務化</span></label><label class="move-row"><input type="checkbox" class="move-check" id="move-2" aria-label="済みにする"><span class="move-biz">YUMEMATCH</span><span class="move-action">AI導入支援のチェック項目に外部委託先の情報管理を加える（今週）</span><span class="move-ref">← ピーチ944万件など個人情報漏えい相次ぐ</span></label><label class="move-row"><input type="checkbox" class="move-check" id="move-3" aria-label="済みにする"><span class="move-biz">FP</span><span class="move-action">65歳以上の介護保険料の見直し案を、顧客向け説明メモに1枚足す（今週）</span><span class="move-ref">← 65歳以上の介護保険料 一部の高齢者引き上げへ</span></label><label class="move-row"><input type="checkbox" class="move-check" id="move-4" aria-label="済みにする"><span class="move-biz">医療職キャリア</span><span class="move-action">薬局減算の対象拡大案を、薬局勤務の相談者向けの論点に加える（今週）</span><span class="move-ref">← 財政審が建議 薬局減算は対象拡大も</span></label>
+</section>
+
+<section class="number" id="number" aria-label="今日の数字">
+  <div class="number-val">79万件超</div>
+  <div class="number-desc">
+    <div class="number-caption">2025年度に把握された学校のいじめ（過去最多）</div>
+    <div class="number-body">文部科学省の調査で、全国の学校が把握したいじめは79万件を超えて過去最多となった。今回は初めて性的いじめも調べた。</div>
+    <div class="number-hint">TAP TO REVEAL ／ いくつだと思う？ タップで表示</div>
+  </div>
+</section>
+
+<section id="buzz">
+  <div class="section-rule">
+    <span class="section-name">世間の話題</span>
+    <span class="section-name-en">What people are talking about</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="buzz-list"><div class="buzz-item"><span class="buzz-rank">01</span><span class="buzz-title"><a href="https://news.web.nhk/newsweb/na/nd-20261127de82148" target="_blank" rel="noopener">関文科相の問責決議案、きょう採決</a></span><span class="buzz-source">NHK</span><span class="buzz-why">可否はギリギリの情勢で、政権運営に響く</span></div><div class="buzz-item"><span class="buzz-rank">02</span><span class="buzz-title"><a href="https://news.web.nhk/newsweb/na/nd-20261127de82176" target="_blank" rel="noopener">沖縄本島北部に線状降水帯</a></span><span class="buzz-source">NHK</span><span class="buzz-why">東村全域に避難指示が出た</span></div><div class="buzz-item"><span class="buzz-rank">03</span><span class="buzz-title"><a href="https://news.yahoo.co.jp/pickup/6604089?source=rss" target="_blank" rel="noopener">学校のいじめ79万件超 過去最多</a></span><span class="buzz-source">Yahooニュース</span><span class="buzz-why">性的いじめを初めて調べ、8,158件だった</span></div><div class="buzz-item"><span class="buzz-rank">04</span><span class="buzz-title"><a href="https://news.web.nhk/newsweb/na/nd-20261126de82062" target="_blank" rel="noopener">個人情報の漏えいが連日続く</a></span><span class="buzz-source">NHK</span><span class="buzz-why">ピーチは最大のべ約944万件に上る</span></div><div class="buzz-item"><span class="buzz-rank">05</span><span class="buzz-title"><a href="https://news.yahoo.co.jp/articles/0f4516e2aa285b7e3e1bfac92cf7395380e1c715" target="_blank" rel="noopener">バスケ男子 W杯予選でレバノンと対戦</a></span><span class="buzz-source">Yahooニュース</span><span class="buzz-why">敵地で2連勝ならW杯出場が決まる</span></div></div>
+</section>
+
+<section id="headlines">
+  <div class="section-rule">
+    <span class="section-name">今朝のヘッドライン</span>
+    <span class="section-name-en">Headlines</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="headlines-list"><div class="headline-item"><span class="headline-cat">事件</span><div class="headline-text"><span class="headline-title"><a href="https://news.web.nhk/newsweb/na/nd-20261127de82183" target="_blank" rel="noopener">続報 福岡の刺殺事件、男が服を買い替え逃走か（11/27）</a></span><span class="headline-main">福岡市の駐輪場で70歳の男性が刺され死亡した事件。男がカーディガンを購入しており、逃走のため服装を変えたとみられる。</span></div><span class="headline-source">NHK</span></div><div class="headline-item"><span class="headline-cat">事件</span><div class="headline-text"><span class="headline-title"><a href="https://news.web.nhk/newsweb/na/nd-20261126de82101" target="_blank" rel="noopener">石川の山林女性遺体、元交際相手を再逮捕（11/26）</a></span><span class="headline-main">40代の元交際相手の男を、殺人の疑いで再逮捕した。</span></div><span class="headline-source">NHK</span></div><div class="headline-item"><span class="headline-cat">社会</span><div class="headline-text"><span class="headline-title"><a href="https://news.yahoo.co.jp/pickup/6604108?source=rss" target="_blank" rel="noopener">持ち帰り残業めぐり、労災を認める判決（11/26）</a></span><span class="headline-main">持ち帰り残業が原因でうつ病になったとして、労災を認める判決が出た。</span></div><span class="headline-source">Yahooニュース</span></div><div class="headline-item"><span class="headline-cat">社会</span><div class="headline-text"><span class="headline-title"><a href="https://news.web.nhk/newsweb/na/nd-20261126de82106" target="_blank" rel="noopener">詐欺容疑で逮捕の阿波市長が辞職願を提出（11/26）</a></span><span class="headline-main">徳島県阿波市の市長が、弁護士を通じて辞職願を提出した。</span></div><span class="headline-source">NHK</span></div><div class="headline-item"><span class="headline-cat">スポーツ</span><div class="headline-text"><span class="headline-title"><a href="https://news.web.nhk/newsweb/na/nd-20261126de82128" target="_blank" rel="noopener">フィギュアNHK杯、きょう開幕（11/27）</a></span><span class="headline-main">グランプリシリーズ最終第6戦が27日に東京で開幕する。</span></div><span class="headline-source">NHK</span></div></div>
+</section>
+
+<section id="person">
+  <div class="section-rule">
+    <span class="section-name">人物クローズアップ</span>
+    <span class="section-name-en">Person in focus</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="person-box">
+    <div class="person-sidebar">
+      <div class="label">Person in focus</div>
+      <div class="person-name">赤根智子</div>
+      <div class="person-role">国際刑事裁判所（ICC）所長</div>
+    </div>
+    <div class="person-main">
+      <div class="person-quote">「ICCを守り抜く」</div>
+      <div class="person-body">トランプ政権から制裁を受けるなか、東京で会見に臨み、制裁に屈しない姿勢を強調した。若者たちへの訴えもあった。</div>
+    </div>
+  </div>
+</section>
+
+<div class="paper-columns">
+<!--SECTION:politics_economy-->
+  <section class="cat" id="politics_economy">
+    <div class="section-rule"><span class="section-name">政治・経済</span><span class="section-name-en">Politics &amp; economy</span><div class="section-line"></div></div>
+    <div class="articles-list"><article class="article"><h4 class="article-headline">日銀のETF評価益76兆円、国債評価損は55兆円に（11/26）</h4><div class="article-body"><p class="article-lead">日銀の保有資産の含み損益が拡大した。</p><p>日銀のETF（上場投資信託）の評価益は76兆円に拡大した。一方、保有する国債の評価損も55兆円に膨らんだ。</p></div><p class="article-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261126de81984" target="_blank" rel="noopener">NHK「日銀 ETF評価益76兆円に拡大も国債評価損55兆円に膨らむ」</a></p></article><article class="article"><h4 class="article-headline">自民税調、東京と地方の税収格差の是正で意見相次ぐ（11/26）</h4><div class="article-body"><p class="article-lead">来年度税制改正の焦点の一つ。</p><p>自民党税制調査会は、東京と地方の税収格差の是正をめぐって議論した。意見が相次いだ。</p></div><p class="article-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261126de82085" target="_blank" rel="noopener">NHK「自民税制調査会 東京と地方の税収格差是正で意見相次ぐ」</a></p></article><article class="article"><h4 class="article-headline">中部電力、浜岡原発のデータ不正で元役員7人を処分（11/26）</h4><div class="article-body"><p class="article-lead">勝野前会長ら7人が対象。</p><p>中部電力は、浜岡原発のデータ不正をめぐり、勝野前会長ら7人の元役員を処分した。</p></div><p class="article-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261126de81881" target="_blank" rel="noopener">NHK「中部電力 浜岡原発のデータ不正で勝野前会長ら7人の元役員処分」</a></p></article></div>
+  </section>
+<!--/SECTION:politics_economy-->
+<!--SECTION:world-->
+  <section class="cat" id="world">
+    <div class="section-rule"><span class="section-name">世界の動き</span><span class="section-name-en">World</span><div class="section-line"></div></div>
+    <div class="articles-list"><article class="article"><h4 class="article-headline">ECB次期総裁にスペインのデコス氏、EU首脳が合意（11/27）</h4><div class="article-body"><p class="article-lead">欧州中央銀行の次の総裁が決まった。</p><p>EU首脳は、欧州中央銀行の次期総裁にスペインのデコス氏を指名することで合意した。</p></div><p class="article-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261127de82180" target="_blank" rel="noopener">NHK「欧州中央銀行次期総裁にスペインのデコス氏指名で合意」</a></p></article><article class="article"><h4 class="article-headline">ロシア外務省、中国での日ロ首脳の意見交換を認める（11/27）</h4><div class="article-body"><p class="article-lead">高市首相との首脳対話をロシアが認めた。</p><p>ロシア外務省は、中国での日ロ首脳の意見交換の事実を認めた。</p></div><p class="article-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261127de82181" target="_blank" rel="noopener">NHK「ロシア外務省 日ロ首脳の中国での意見交換の事実を認める」</a></p></article><article class="article"><h4 class="article-headline">サウジ南部の製油所をフーシ派が攻撃か、操業を一時停止（11/27）</h4><div class="article-body"><p class="article-lead">原油価格の押し上げ材料になった。</p><p>サウジアラビア南部の製油所が、フーシ派の攻撃を受けたとみられる。操業は一時停止した。</p></div><p class="article-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261127de82191" target="_blank" rel="noopener">NHK「サウジアラビア南部の製油所をフーシ派攻撃か 操業一時停止」</a></p></article></div>
+  </section>
+<!--/SECTION:world-->
+<!--SECTION:ai_tech-->
+  <section class="cat" id="ai_tech">
+    <div class="section-rule"><span class="section-name">AI・テック</span><span class="section-name-en">AI &amp; technology</span><div class="section-line"></div></div>
+    <div class="articles-list"><article class="article"><h4 class="article-headline">AI法改正案、事業者に安全確保の義務 罰則も（11/26）</h4><div class="article-body"><p class="article-lead">高性能AIの悪用や暴走への懸念に対応する。</p><p>政府のAI法改正案は、事業者に安全確保の義務を課し、罰則も適用できるとする。</p></div><p class="article-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261126de81752" target="_blank" rel="noopener">NHK「AI法改正案の概要 “事業者に安全確保義務 罰則適用も”」</a></p></article><article class="article"><h4 class="article-headline">スペースX、宇宙のデータセンター網を米国で初認可（11/26）</h4><div class="article-body"><p class="article-lead">宇宙空間にデータセンターを構築する計画。</p><p>スペースXが宇宙にデータセンター網を構築する計画が、アメリカで初めて認可された。</p></div><p class="article-source">出典: <a href="https://news.web.nhk/newsweb/na/nd-20261126de82054" target="_blank" rel="noopener">NHK「スペースXが宇宙にデータセンター網構築へ アメリカで初認可」</a></p></article></div>
+  </section>
+<!--/SECTION:ai_tech-->
+<!--SECTION:startups-->
+  <section class="cat" id="startups">
+    <div class="section-rule"><span class="section-name">スタートアップ</span><span class="section-name-en">Startups</span><div class="section-line"></div></div>
+    <div class="articles-list"><article class="article"><h4 class="article-headline">AIの使い方を届けるEvery、シリーズAで1,750万ドルを調達（11/26）</h4><div class="article-body"><p class="article-lead">記事・ソフト・研修でAI活用を広げる。</p><p>Everyは、AIの使い方を記事・ソフトウェア・研修で届けている。シリーズAで1,750万ドルを調達した。</p></div><p class="article-source">出典: <a href="https://thebridge.jp/2026/11/every-raises-17-5m-series-a" target="_blank" rel="noopener">TheBridge「AIの使い方を記事・ソフトウェア・研修で届けるEvery、シリーズAで1,750万ドルを調達」</a></p></article><article class="article"><h4 class="article-headline">エイトノット、出資と融資で約1.7億円を調達（11/26）</h4><div class="article-body"><p class="article-lead">小型船舶向けの自律航行技術を開発。</p><p>「AI CAPTAIN」を手がけるエイトノットが、出資と融資で約1.7億円を調達した。</p></div><p class="article-source">出典: <a href="https://thebridge.jp/2026/11/eightknot-series-a-second-close" target="_blank" rel="noopener">TheBridge「小型船舶向け自律航行技術「AI CAPTAIN」のエイトノット、出資と融資で約1.7億円を調達」</a></p></article><article class="article"><h4 class="article-headline">Maple AI、シードで530万ドルを調達（11/26）</h4><div class="article-body"><p class="article-lead">運営側も会話を見られない設計のAI。</p><p>Maple AIは、運営側も会話を見られない設計でAIを動かす。シードで530万ドルを調達した。</p></div><p class="article-source">出典: <a href="https://thebridge.jp/2026/11/maple-ai-raises-5-3m-seed" target="_blank" rel="noopener">TheBridge「運営側も会話を見られない設計でAIを動かすMaple AI、シードで530万ドルを調達」</a></p></article></div>
+  </section>
+<!--/SECTION:startups-->
+<!--SECTION:pharmacy-->
+  <section class="cat" id="pharmacy">
+    <div class="section-rule"><span class="section-name">薬剤師関連</span><span class="section-name-en">Pharmacy</span><div class="section-line"></div></div>
+    <div class="articles-list"><article class="article"><h4 class="article-headline">エーザイ、レケンビ5年投与でAD進行を1年以上遅らせる（11/26）</h4><div class="article-body"><p class="article-lead">早期アルツハイマー病治療薬の長期データ。</p><p>早期アルツハイマー病治療薬レカネマブ（製品名レケンビ）を5年投与すると、病気の進行を1年以上遅らせられるという。</p></div><p class="article-source">出典: <a href="https://www.yakuji.co.jp/entry142071.html" target="_blank" rel="noopener">薬事日報「【エーザイ】AD進行1年以上遅らせる‐「レケンビ」5年投与で」</a></p></article><article class="article"><h4 class="article-headline">塩野義製薬、買収後のR&amp;D戦略を発表 神経筋疾患などに重点（11/26）</h4><div class="article-body"><p class="article-lead">JTグループの医薬事業の買収後の方針。</p><p>塩野義製薬は、買収したJTグループの医薬事業などを踏まえ、神経筋疾患などを重点領域とするR&amp;D戦略を発表した。</p></div><p class="article-source">出典: <a href="https://www.yakuji.co.jp/entry142072.html" target="_blank" rel="noopener">薬事日報「【塩野義製薬】神経筋疾患など重点領域に‐買収後のR＆D戦略発表」</a></p></article><article class="article"><h4 class="article-headline">医療安全推進週間、22〜28日 患者の安全確保を最優先に（11/27）</h4><div class="article-body"><p class="article-lead">厚生労働省と医療関係団体が実施中。</p><p>厚生労働省と医療関係団体、医療機関などは、22〜28日を2026年度の医療安全推進週間としている。</p></div><p class="article-source">出典: <a href="https://www.yakuji.co.jp/entry142182.html" target="_blank" rel="noopener">薬事日報「患者の医療安全確保を最優先に」</a></p></article></div>
+  </section>
+<!--/SECTION:pharmacy-->
+<!--SECTION:welfare-->
+  <section class="cat" id="welfare">
+    <div class="section-rule"><span class="section-name">障がい福祉</span><span class="section-name-en">Disability welfare</span><div class="section-line"></div></div>
+    <div class="articles-list"><article class="article"><h4 class="article-headline">認知症グループホーム、2ユニット1人夜勤を可能に 厚労省提案（11/26）</h4><div class="article-body"><p class="article-lead">安全確保などの条件つき。審議会では反対意見も。</p><p>厚生労働省は、認知症グループホームで2ユニットを1人の夜勤で運営できるようにする案を示した。安全確保などが条件で、反対意見も出た。</p></div><p class="article-source">出典: <a href="https://www.joint-kaigo.com/articles/50771/" target="_blank" rel="noopener">介護ニュースJoint「認知症グループホーム、2ユニット1人夜勤を可能に 厚労省提案」</a></p></article><article class="article"><h4 class="article-headline">通所介護の報酬を再編 集合住宅の利用者は別単価に（11/26）</h4><div class="article-body"><p class="article-lead">送迎の有無を反映する案。</p><p>厚労省は来年度改定に向け、通所介護の報酬を再編する案を示した。集合住宅の利用者は別単価とし、送迎の有無を反映する。</p></div><p class="article-source">出典: <a href="https://www.joint-kaigo.com/articles/50765/" target="_blank" rel="noopener">介護ニュースJoint「通所介護の報酬を再編 集合住宅の利用者に別単価 送迎の有無を反映 厚労省提案」</a></p></article><article class="article"><h4 class="article-headline">障害福祉の虐待防止指針、2028年度から義務化（11/26）</h4><div class="article-body"><p class="article-lead">未実施減算も引き上げる。</p><p>厚労省は、障害福祉サービスで虐待防止の指針整備を2028年度から義務化する案を示した。未実施減算も引き上げる。</p></div><p class="article-source">出典: <a href="https://www.joint-kaigo.com/articles/50733/" target="_blank" rel="noopener">介護ニュースJoint「【障害福祉】虐待防止の指針整備、2028年度から義務化 未実施減算も引き上げ 厚労省提案」</a></p></article></div>
+  </section>
+<!--/SECTION:welfare-->
+<!--SECTION:entertainment-->
+  <section class="cat" id="entertainment">
+    <div class="section-rule"><span class="section-name">エンタメ</span><span class="section-name-en">Entertainment</span><div class="section-line"></div></div>
+    <div class="articles-list"><article class="article"><h4 class="article-headline">12月31日に「孤独のグルメ」SP、10年連続（11/26）</h4><div class="article-body"><p class="article-lead">大みそかの恒例になった。</p><p>「孤独のグルメ」のスペシャルが12月31日に放送される。10年連続となる。</p></div><p class="article-source">出典: <a href="https://news.yahoo.co.jp/pickup/6604113?source=rss" target="_blank" rel="noopener">Yahooニュース「12/31に孤独のグルメSP 10年連続」</a></p></article><article class="article"><h4 class="article-headline">今田美桜、年間CM露出で2年連続1位（11/26）</h4><div class="article-body"><p class="article-lead">CM露出の年間ランキング。</p><p>今田美桜さんが、年間のCM露出ランキングで2年連続の1位になった。</p></div><p class="article-source">出典: <a href="https://news.yahoo.co.jp/pickup/6604077?source=rss" target="_blank" rel="noopener">Yahooニュース「今田美桜 年間CM露出2年連続1位」</a></p></article><article class="article"><h4 class="article-headline">中田乃愛さん死去、出演作は公開へ（11/26）</h4><div class="article-body"><p class="article-lead">出演作は予定どおり公開される。</p><p>中田乃愛さんが亡くなった。出演作は公開される。</p></div><p class="article-source">出典: <a href="https://news.yahoo.co.jp/pickup/6604118?source=rss" target="_blank" rel="noopener">Yahooニュース「中田乃愛さん死去 出演作は公開へ」</a></p></article></div>
+  </section>
+<!--/SECTION:entertainment-->
+<!--SECTION:nagano-->
+  <section class="cat" id="nagano">
+    <div class="section-rule"><span class="section-name">長野県</span><span class="section-name-en">Nagano local</span><div class="section-line"></div></div>
+    <div class="articles-list"><article class="article"><h4 class="article-headline">あがたの森公園のヒマラヤスギ、伐採は8本に半減（11/27）</h4><div class="article-body"><p class="article-lead">松本市教委に専門家が提言した。</p><p>松本市のあがたの森公園のヒマラヤスギについて、専門家は伐採を当初計画から半減の8本とするよう、市教育委員会に提言した。</p></div><p class="article-source">出典: <a href="https://www.shinmai.co.jp/news/article/gf01dc415ho6gaeo67bokr40" target="_blank" rel="noopener">信濃毎日新聞「あがたの森公園ヒマラヤスギ、伐採は当初計画から半減の「８本」」</a></p></article><article class="article"><h4 class="article-headline">松本国際高校の野球部監督が不適切指導か（11/27）</h4><div class="article-body"><p class="article-lead">部員への暴言やボールを投げつける行為。</p><p>松本国際高校（松本市）の男子野球部の監督が、部員に暴言を吐き、ボールを投げつけた疑いがある。</p></div><p class="article-source">出典: <a href="https://www.shinmai.co.jp/news/article/gf01dc43r006gaeo67bol460" target="_blank" rel="noopener">信濃毎日新聞「松本国際高校の野球部監督が不適切指導か」</a></p></article><article class="article"><h4 class="article-headline">来年4月の諏訪市長選、伊藤浩平氏が立候補を表明（11/27）</h4><div class="article-body"><p class="article-lead">新人が正式に表明した。</p><p>2027年4月18日告示、25日投開票の諏訪市長選に、新人の伊藤浩平氏が立候補を正式表明した。</p></div><p class="article-source">出典: <a href="https://www.shinmai.co.jp/news/article/gf01dc3vdckqj6e1ga870rcg" target="_blank" rel="noopener">信濃毎日新聞「来年4月の諏訪市長選 新人の伊藤浩平氏が立候補を正式表明」</a></p></article></div>
+  </section>
+<!--/SECTION:nagano-->
+</div>
+
+<section id="calendar">
+  <div class="section-rule">
+    <span class="section-name">今週のカレンダー</span>
+    <span class="section-name-en">This week</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="calendar-grid"><div class="calendar-item"><div class="calendar-date">11/27（金）</div><div class="calendar-event">フィギュアNHK杯 開幕</div><div class="calendar-note">東京で開幕する最終第6戦</div></div><div class="calendar-item"><div class="calendar-date">11/27（金）</div><div class="calendar-event">参院で関文科相の問責決議案を採決</div><div class="calendar-note">NHK報道では可否はギリギリ</div></div><div class="calendar-item"><div class="calendar-date">11/29（日）</div><div class="calendar-event">茅野市長選 現職が意向表明か</div><div class="calendar-note">信濃毎日の報道</div></div><div class="calendar-item"><div class="calendar-date">12/19（土）</div><div class="calendar-event">医療職の忘年会</div><div class="calendar-note">じぶんどき松本駅前店</div></div><div class="calendar-item"><div class="calendar-date">12/31（木）</div><div class="calendar-event">孤独のグルメSP</div><div class="calendar-note">10年連続の放送</div></div></div>
+</section>
+
+
+
+<section class="postscript">
+  <div class="label">Editorial note ／ 編集後記</div>
+  <div class="postscript-body">株価は大きく下げ、日経平均は27年の下限とされた6万円を割り込んだ。一方で金は買われ、原油も上がった。個人情報の漏えいは連日続いており、顧客データを預かる側の備えが問われる。福祉と介護では来年度の報酬改定の中身が少しずつ見えてきた。今日は国会の採決から目が離せない。</div>
+</section>
+
+<section class="glossary">
+  <span class="label">Glossary ／ 用語解説</span>
+  <div class="glossary-list"><div class="glossary-item"><span class="glossary-term">問責決議</span><span class="glossary-def">国会が大臣の責任を問う決議。法的な拘束力はないが、可決されると政権運営に響く。</span></div><div class="glossary-item"><span class="glossary-term">ETF</span><span class="glossary-def">株価指数などに連動する上場投資信託。日銀は金融緩和の一環で買い入れてきた。</span></div><div class="glossary-item"><span class="glossary-term">線状降水帯</span><span class="glossary-def">発達した雨雲が帯状に連なり、同じ場所に強い雨を降らせ続ける現象。</span></div><div class="glossary-item"><span class="glossary-term">ECB</span><span class="glossary-def">欧州中央銀行。ユーロを使う国の金融政策を決める。</span></div></div>
+</section>
+
+<section class="fin" id="fin">
+  <div class="fin-title">きょうの紙面はここまで</div>
+  <div class="fin-sub"><span id="finMin"></span><span id="finMoves"></span></div>
+</section>
+
+<footer class="colophon">
+  <span>NewGo Timez 第 155 号</span>
+  <span>2026-11-27</span>
+  <span>編集発行 NewGo Editorial</span>
+</footer>
+
+</main>
+
+<script>
+(function () {
+  var root = document.documentElement, body = document.body;
+  var DATE = '2026-11-27';
+  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  /* 昼夜 */
+  var btn = document.getElementById('themeBtn');
+  function apply(t) {
+    if (t) root.setAttribute('data-theme', t); else root.removeAttribute('data-theme');
+    var dark = t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    btn.textContent = dark ? 'DAY' : 'NIGHT';
+  }
+  apply(load('newgo-theme') || '');
+  btn.addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    apply(next); store('newgo-theme', next);
+  });
+
+  /* 見出しだけ／全文（設定は日をまたいで残す） */
+  var skimBtn = document.getElementById('skimBtn');
+  function setSkim(on) { body.classList.toggle('skim', on); skimBtn.classList.toggle('on', on); skimBtn.textContent = on ? '全文を読む' : '見出しだけ'; }
+  setSkim(load('newgo-skim') === '1');
+  skimBtn.addEventListener('click', function () { var on = !body.classList.contains('skim'); setSkim(on); store('newgo-skim', on ? '1' : '0'); });
+
+  /* 今日の一手: チェックは日付ごとに保存 */
+  var moveKey = 'newgo-moves-' + DATE;
+  var checks = [].slice.call(document.querySelectorAll('.move-check'));
+  var savedMoves = (load(moveKey) || '').split(',');
+  var countEl = document.getElementById('movesCount');
+  function syncMoves() {
+    var done = 0;
+    checks.forEach(function (c) { c.closest('.move-row').classList.toggle('done', c.checked); if (c.checked) done++; });
+    if (countEl) countEl.textContent = checks.length ? (done + ' / ' + checks.length + ' 済み') : '';
+    var fm = document.getElementById('finMoves');
+    if (fm) fm.textContent = checks.length ? ('　一手 ' + done + ' / ' + checks.length + ' 済み') : '';
+    store(moveKey, checks.map(function (c) { return c.checked ? '1' : '0'; }).join(','));
+  }
+  checks.forEach(function (c, i) { c.checked = savedMoves[i] === '1'; c.addEventListener('change', syncMoves); });
+  syncMoves();
+
+  /* 今日の数字: 一度だけ伏せる（タップで表示。JS が無ければ最初から見える） */
+  var num = document.getElementById('number');
+  if (num && load('newgo-num-' + DATE) !== '1') {
+    num.classList.add('veiled');
+    num.addEventListener('click', function () { num.classList.remove('veiled'); store('newgo-num-' + DATE, '1'); }, { once: true });
+  }
+
+  /* 読了プログレス・残り分・既読ドット・位置の記憶 */
+  var main = document.querySelector('main');
+  var totalChars = (main.innerText || '').replace(/\s+/g, '').length;
+  var totalMin = Math.max(1, Math.round(totalChars / 600));
+  var bar = document.getElementById('progress'), navProg = document.getElementById('navProgress');
+  var finMin = document.getElementById('finMin');
+  if (finMin) finMin.textContent = '読了の目安 ' + totalMin + ' 分';
+
+  var links = [].slice.call(document.querySelectorAll('.nav a'));
+  var map = {}, secs = [];
+  links.forEach(function (a) {
+    var id = a.getAttribute('href').slice(1), el = document.getElementById(id);
+    if (!el) { a.hidden = true; return; }
+    map[id] = a; secs.push(el);
+  });
+
+  function onScroll() {
+    var h = root, max = h.scrollHeight - h.clientHeight, r = max > 0 ? Math.min(1, h.scrollTop / max) : 1;
+    if (bar) bar.style.width = (r * 100) + '%';
+    if (navProg) navProg.textContent = r >= 0.97 ? '読了' : ('残り ' + Math.max(1, Math.round(totalMin * (1 - r))) + ' 分');
+    secs.forEach(function (el) { map[el.id].classList.toggle('done', el.getBoundingClientRect().bottom < 60); });
+    store('newgo-pos-' + DATE, r >= 0.97 ? '0' : String(Math.round(h.scrollTop)));
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () { onScroll(); ticking = false; });
+  }, { passive: true });
+  onScroll();
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.remove('on'); });
+        var a = map[e.target.id];
+        if (a) { a.classList.add('on'); a.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    secs.forEach(function (el) { io.observe(el); });
+  }
+
+  /* 前回の続きから（途中で閉じた日だけ） */
+  var pos = parseInt(load('newgo-pos-' + DATE) || '0', 10);
+  if (pos > 600 && !location.hash) { setTimeout(function () { window.scrollTo(0, pos); }, 250); }
+
+  /* 欄の末尾に「次は …」 */
+  var cats = [].slice.call(document.querySelectorAll('.cat'));
+  cats.forEach(function (sec, i) {
+    var next = cats[i + 1] || document.getElementById('calendar');
+    if (!next) return;
+    var name = (next.querySelector('.section-name') || {}).textContent || '予定';
+    var a = document.createElement('a');
+    a.className = 'next-link'; a.href = '#' + next.id; a.textContent = '次は ' + name;
+    sec.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>
